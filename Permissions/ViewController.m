@@ -9,16 +9,21 @@
 @import AddressBook;
 @import EventKit;
 @import AVFoundation;
+@import CoreBluetooth;
+@import CoreMotion;
+
 
 #import "ViewController.h"
 
 @interface ViewController ()
 
 //iOS permissions
-@property (nonatomic, retain)CLLocationManager *locationManager;
-@property (nonatomic, retain)EKEventStore *eventStore;
-@property (nonatomic, retain)UIImagePickerController *picker;
+@property (nonatomic, strong)CLLocationManager *locationManager;
+@property (nonatomic, strong)EKEventStore *eventStore;
+@property (nonatomic, strong)UIImagePickerController *picker;
 @property (nonatomic, strong)CBCentralManager *cbManager;
+@property (nonatomic, strong)CMMotionActivityManager *cmManger;
+@property (nonatomic, strong)NSOperationQueue* motionActivityQueue;
 
 - (ABAddressBookRef)addressBook;
 - (void)setAddressBook:(ABAddressBookRef)newAddressBook;
@@ -131,14 +136,18 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
                 [session setCategory:@"AVAudioSessionCategoryPlayAndRecord" error:&error];
             }
             else {
+                
                 NSLog(@"Permission Denied");
             }
         }];
     }
     else if ([buttonTitle isEqualToString:@"Motion Activity"]){
         NSLog(@"Motion Acitivty");
+        self.cmManger = [[CMMotionActivityManager alloc]init];
+        self.motionActivityQueue = [[NSOperationQueue alloc] init];
         
-        
+        [self.cmManger startActivityUpdatesToQueue:self.motionActivityQueue withHandler:^(CMMotionActivity *activity) {
+        }];
     }
 }
 
