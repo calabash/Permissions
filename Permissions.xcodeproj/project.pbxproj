@@ -21,6 +21,8 @@
 		92D56A2218A38F0400B4369B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0418A38F0300B4369B /* UIKit.framework */; };
 		92D56A2A18A38F0400B4369B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A2818A38F0400B4369B /* InfoPlist.strings */; };
 		92D56A2C18A38F0400B4369B /* PermissionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A2B18A38F0400B4369B /* PermissionsTests.m */; };
+		92D56A3918A3944C00B4369B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3818A3944C00B4369B /* CoreLocation.framework */; };
+		92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3A18A3945700B4369B /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		92D56A2718A38F0400B4369B /* PermissionsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PermissionsTests-Info.plist"; sourceTree = "<group>"; };
 		92D56A2918A38F0400B4369B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		92D56A2B18A38F0400B4369B /* PermissionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PermissionsTests.m; sourceTree = "<group>"; };
+		92D56A3818A3944C00B4369B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		92D56A3A18A3945700B4369B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */,
+				92D56A3918A3944C00B4369B /* CoreLocation.framework in Frameworks */,
 				92D56A0318A38F0300B4369B /* CoreGraphics.framework in Frameworks */,
 				92D56A0518A38F0300B4369B /* UIKit.framework in Frameworks */,
 				92D56A0118A38F0300B4369B /* Foundation.framework in Frameworks */,
@@ -101,6 +107,8 @@
 		92D569FF18A38F0300B4369B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92D56A3A18A3945700B4369B /* CoreBluetooth.framework */,
+				92D56A3818A3944C00B4369B /* CoreLocation.framework */,
 				92D56A0018A38F0300B4369B /* Foundation.framework */,
 				92D56A0218A38F0300B4369B /* CoreGraphics.framework */,
 				92D56A0418A38F0300B4369B /* UIKit.framework */,
