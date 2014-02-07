@@ -3,10 +3,12 @@ Feature: Running a test
   I want to have a sample feature file
   So I can begin testing quickly
 
-Scenario: Example steps
+Scenario: Location Steps 
   Given I am on the Welcome Screen
-  Then I swipe left
-  And I wait until I don't see "Please swipe left"
+  Then I should see a "Location Services" button
   And take picture
 
-
+	Scenario: Contacts
+		Given I am on the Welcome Screen
+		Then I should see a "Contacts" button
+		And take picture

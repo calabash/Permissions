@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Permissions-cal.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Permissions.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>92D56A1D18A38F0400B4369B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>f2b0840d66ae919054c0d355</key>
 		<dict>
 			<key>primary</key>
 			<true/>
