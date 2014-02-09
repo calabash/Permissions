@@ -126,14 +126,18 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
     }
     else if ([buttonTitle isEqualToString:@"Microphone"]){
         NSLog(@"Microphone");
+        //requestRecordPermission:
         AVAudioSession *session = [[AVAudioSession alloc] init];
         [session requestRecordPermission:^(BOOL granted) {
             if (granted) {
-                NSLog(@"Permission Granted");
+                NSLog(@"Micro Permission Granted");
                 
                 NSError *error;
                 
+                // [session setActive:YES error:&error];
+                
                 [session setCategory:@"AVAudioSessionCategoryPlayAndRecord" error:&error];
+                
             }
             else {
                 
