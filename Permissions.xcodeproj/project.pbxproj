@@ -15,6 +15,7 @@
 		4f7bb9459365c0be77334a3c /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0418A38F0300B4369B /* UIKit.framework */; };
 		52ae7b036880ddf4f8963fab /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = b0255be9be319745b429c3af /* CFNetwork.framework */; };
 		808bc6056dcf0e4643b12835 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A0918A38F0300B4369B /* InfoPlist.strings */; };
+		92917FF818CF72500095F2F7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92917FF718CF72500095F2F7 /* CoreAudio.framework */; };
 		92D56A0118A38F0300B4369B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0018A38F0300B4369B /* Foundation.framework */; };
 		92D56A0318A38F0300B4369B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0218A38F0300B4369B /* CoreGraphics.framework */; };
 		92D56A0518A38F0300B4369B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0418A38F0300B4369B /* UIKit.framework */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		4bae86e08f26eba4b76433d7 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
+		92917FF718CF72500095F2F7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		92C2148618A4D034004CCA78 /* Permissions-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Permissions-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D569FD18A38F0300B4369B /* Permissions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Permissions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D56A0018A38F0300B4369B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -102,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92917FF818CF72500095F2F7 /* CoreAudio.framework in Frameworks */,
 				061a4130cd0126ad2e775888 /* CoreBluetooth.framework in Frameworks */,
 				2854bf8b40f4dab4100ef405 /* CoreLocation.framework in Frameworks */,
 				21193b74c907ccfa58d17ed4 /* CoreGraphics.framework in Frameworks */,
@@ -138,6 +141,7 @@
 		92D569FF18A38F0300B4369B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92917FF718CF72500095F2F7 /* CoreAudio.framework */,
 				92D56A3A18A3945700B4369B /* CoreBluetooth.framework */,
 				92D56A3818A3944C00B4369B /* CoreLocation.framework */,
 				92D56A0018A38F0300B4369B /* Foundation.framework */,

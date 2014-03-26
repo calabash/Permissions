@@ -90,6 +90,8 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
             });
         }
     }
+    
+#pragma mark Calendar
     else if ([buttonTitle isEqualToString:@"Calendars"]){
         
         NSLog(@"Calendar is called");
@@ -108,22 +110,22 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
     else if ([buttonTitle isEqualToString:@"Photos"]){
         NSLog(@"Photos requested");
         UIImagePickerController *picker = [[UIImagePickerController alloc]init];
-        picker.delegate = self;
-        //[picker setDelegate:self];
+        [picker setDelegate:self];
         
         [self presentViewController:picker animated:YES completion:nil];
     }
+#pragma mark Bluetooth
     else if ([buttonTitle isEqualToString:@"Bluetooth Sharing"]){
         NSLog(@"Bluetooth Sharing");
         if(!self.cbManager) {
             self.cbManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         }
         
-        /*
-         When the application requests to start scanning for bluetooth devices that is when the user is presented with a consent dialog.
-         */
         [self.cbManager scanForPeripheralsWithServices:nil options:nil];
+        
+        
     }
+#pragma mark Microphone
     else if ([buttonTitle isEqualToString:@"Microphone"]){
         NSLog(@"Microphone");
         //requestRecordPermission:
@@ -134,7 +136,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
                 
                 NSError *error;
                 
-                // [session setActive:YES error:&error];
+                [session setActive:YES error:&error];
                 
                 [session setCategory:@"AVAudioSessionCategoryPlayAndRecord" error:&error];
                 
@@ -172,7 +174,12 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central{
-    
+    if (central.state != CBCentralManagerStatePoweredOn){
+        return;
+    }
+    if (central.state == CBCentralManagerStatePoweredOn) {
+        [self.cbManager scanForPeripheralsWithServices:nil options:nil];
+    }
 }
 
 @end
