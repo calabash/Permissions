@@ -62,7 +62,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
     
     if ([buttonTitle isEqualToString:@"Location Services"]) {
         
-        NSLog(@"Location Services clicked");
+        NSLog(@"Location Services requested");
         
         // CLLocationManager *locationManager;
         self.locationManager = [[CLLocationManager alloc] init];
@@ -71,6 +71,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
         [self.locationManager startUpdatingLocation];
     }
     else if ([buttonTitle isEqualToString:@"Contacts"]){
+        NSLog(@"Contacts requested");
         ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
         
         if(addressBook) {
@@ -94,7 +95,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
 #pragma mark Calendar
     else if ([buttonTitle isEqualToString:@"Calendars"]){
         
-        NSLog(@"Calendar is called");
+        NSLog(@"Calendar requested");
         
         self.eventStore = [[EKEventStore alloc] init];
         
@@ -102,6 +103,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
         
     }
     else if ([buttonTitle isEqualToString:@"Reminders"]){
+        NSLog(@"Reminders requested");
         
         self.eventStore = [[EKEventStore alloc] init];
         
@@ -116,7 +118,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
     }
 #pragma mark Bluetooth
     else if ([buttonTitle isEqualToString:@"Bluetooth Sharing"]){
-        NSLog(@"Bluetooth Sharing");
+        NSLog(@"Bluetooth Sharing is requested");
         if(!self.cbManager) {
             self.cbManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         }
@@ -127,7 +129,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
     }
 #pragma mark Microphone
     else if ([buttonTitle isEqualToString:@"Microphone"]){
-        NSLog(@"Microphone");
+        NSLog(@"Microphone requested");
         //requestRecordPermission:
         AVAudioSession *session = [[AVAudioSession alloc] init];
         [session requestRecordPermission:^(BOOL granted) {
@@ -148,12 +150,21 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
         }];
     }
     else if ([buttonTitle isEqualToString:@"Motion Activity"]){
-        NSLog(@"Motion Acitivty");
+        NSLog(@"Motion Acitivty requested");
         self.cmManger = [[CMMotionActivityManager alloc]init];
         self.motionActivityQueue = [[NSOperationQueue alloc] init];
         
         [self.cmManger startActivityUpdatesToQueue:self.motionActivityQueue withHandler:^(CMMotionActivity *activity) {
         }];
+    }
+    else if ([buttonTitle isEqualToString:@"Camera"]){
+        NSLog(@"Camera request");
+        UIImagePickerController *picker = [UIImagePickerController new];
+        [picker setDelegate:self];
+        
+        [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera];
+        
+        
     }
 }
 
