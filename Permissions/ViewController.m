@@ -183,7 +183,20 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
     }
     else if([buttonTitle isEqualToString:@"Facebook"]){
         NSLog(@"Facebook requested");
+        if (!self.accountStore) {
+            self.accountStore = [[ACAccountStore alloc] init];
+        }
+        ACAccountType *facebookAccount = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
         
+        NSDictionary *options = @{
+            ACFacebookAppIdKey: @"app_key",
+        ACFacebookPermissionsKey: @[@"v_gimm@hotmail.com", @"user_about_me"],
+        ACFacebookAudienceKey: ACFacebookAudienceFriends,
+            };
+        
+        [self.accountStore requestAccessToAccountsWithType:facebookAccount options:options completion:^(BOOL granted, NSError *error) {
+            
+        }];
     }
 }
 
