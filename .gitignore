@@ -22,3 +22,5 @@ DerivedData
 # CocoaPods
 Pods
 
+#Calabash
+.irb-history
