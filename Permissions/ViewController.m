@@ -11,6 +11,7 @@
 @import AVFoundation;
 @import CoreBluetooth;
 @import CoreMotion;
+@import Accounts;
 
 
 #import "ViewController.h"
@@ -24,6 +25,7 @@
 @property (nonatomic, strong)CBCentralManager *cbManager;
 @property (nonatomic, strong)CMMotionActivityManager *cmManger;
 @property (nonatomic, strong)NSOperationQueue* motionActivityQueue;
+@property (nonatomic, strong)ACAccountStore *accountStore;
 
 - (ABAddressBookRef)addressBook;
 - (void)setAddressBook:(ABAddressBookRef)newAddressBook;
@@ -166,6 +168,23 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
         
         
     }
+#pragma mark Social Media Services
+    
+    if ([buttonTitle isEqualToString:@"Twitter"]) {
+        NSLog(@"Twitter Requested");
+        
+        if (!self.accountStore) {
+            self.accountStore = [[ACAccountStore alloc] init];
+        }
+        ACAccountType *twitterAccount = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        
+        [self.accountStore requestAccessToAccountsWithType:twitterAccount options:nil completion:^(BOOL granted, NSError *error) {
+        }];
+    }
+    else if([buttonTitle isEqualToString:@"Facebook"]){
+        NSLog(@"Facebook requested");
+        
+    }
 }
 
 - (ABAddressBookRef)addressBook {
@@ -192,5 +211,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
         [self.cbManager scanForPeripheralsWithServices:nil options:nil];
     }
 }
+
+
 
 @end
