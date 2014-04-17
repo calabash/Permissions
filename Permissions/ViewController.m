@@ -12,6 +12,7 @@
 @import CoreBluetooth;
 @import CoreMotion;
 @import Accounts;
+@import UIKit;
 
 
 #import "ViewController.h"
@@ -104,6 +105,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
         [self.eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {}];
         
     }
+#pragma mark Reminders
     else if ([buttonTitle isEqualToString:@"Reminders"]){
         NSLog(@"Reminders requested");
         
@@ -111,6 +113,8 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
         
         [self.eventStore requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {}];
     }
+    
+#pragma mark Photo Library
     else if ([buttonTitle isEqualToString:@"Photos"]){
         NSLog(@"Photos requested");
         UIImagePickerController *picker = [[UIImagePickerController alloc]init];
@@ -158,15 +162,6 @@ void handleAddressBookChange(ABAddressBookRef addressBook, CFDictionaryRef info,
         
         [self.cmManger startActivityUpdatesToQueue:self.motionActivityQueue withHandler:^(CMMotionActivity *activity) {
         }];
-    }
-    else if ([buttonTitle isEqualToString:@"Camera"]){
-        NSLog(@"Camera request");
-        UIImagePickerController *picker = [UIImagePickerController new];
-        [picker setDelegate:self];
-        
-        [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera];
-        
-        
     }
 #pragma mark Social Media Services
     
