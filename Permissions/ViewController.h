@@ -11,6 +11,10 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate, UIImagePickerControllerDelegate, CBCentralManagerDelegate>
+@interface ViewController : UIViewController
+<CLLocationManagerDelegate,
+UINavigationControllerDelegate,
+UIImagePickerControllerDelegate,
+CBCentralManagerDelegate>
 
 @end
