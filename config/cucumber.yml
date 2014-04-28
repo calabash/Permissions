@@ -1,0 +1,93 @@
+<%
+
+date = Time.now.strftime('%Y-%m-%d-%H%M-%S')
+default_report = "./reports/calabash-#{date}.html"
+json_report = "./reports/calabash.json"
+
+ss_path = "./screenshots/"
+
+FileUtils.mkdir("./screenshots") unless File.exists?("./screenshots")
+FileUtils.mkdir("./reports") unless File.exists?("./reports")
+
+
+xamarin_dir = "#{ENV['HOME']}/.xamarin"
+
+devices = {}
+
+device_list = ['venus', 'earp', 'mars']
+
+device_list.each do |device|
+  dir = "#{xamarin_dir}/devices/#{device}"
+  ip = IO.read("#{dir}/ip") if File.exists?("#{dir}/ip")
+  udid = IO.read("#{dir}/udid") if File.exists?("#{dir}/udid")
+  report = "./reports/#{device}/#{date}-#{device}.html"
+  ss_path = "./reports/#{device}/screenshots/"
+  ht = {:dir => dir,
+        :ip => ip,
+        :udid => udid,
+        :report => report,
+        :ss_path => ss_path}
+  devices[device.to_sym] = ht
+
+  FileUtils.mkdir("./reports/#{device}") unless File.exists?("./reports/#{device}")
+  FileUtils.mkdir("./reports/#{device}/screenshots") unless File.exists?("./reports/#{device}/screenshots")
+end
+
+
+%>
+
+verbose: CALABASH_FULL_CONSOLE_OUTPUT=1 DEBUG=1
+common: --no-source -f 'Slowhandcuke::Formatter'
+
+# generating json reports for simulator builds (jenkins)
+json_report:  -f json -o <%= json_report %>
+
+ss_path: SCREENSHOT_PATH=<%= ss_path %>
+
+html_report:  -f 'Calabash::Formatters::Html' -o <%= default_report %>
+venus_html:   -f 'Calabash::Formatters::Html' -o <%= devices[:venus][:report] %>
+mars_html:    -f 'Calabash::Formatters::Html' -o <%= devices[:mars][:report] %>
+earp_html:    -f 'Calabash::Formatters::Html' -o <%= devices[:earp][:report] %>
+
+venus_ss:   SCREENSHOT_PATH=<%= devices[:venus][:ss_path] %>
+mars_ss:    SCREENSHOT_PATH=<%= devices[:mars][:ss_path] %>
+earp_ss:    SCREENSHOT_PATH=<%= devices[:earp][:ss_path] %>
+
+no_launch:    NO_LAUNCH=1 --tags ~@launch
+do_launch:    NO_LAUNCH=0 --tags ~@no_launch
+no_reset_btw: RESET_BETWEEN_SCENARIOS=0
+reset_btw:    RESET_BETWEEN_SCENARIOS=1
+stop:         NO_STOP=0
+no_stop:      NO_STOP=1
+
+ipad:   DEVICE=ipad   -p common --tags ~@iphone --tags ~@iphone_only
+iphone: DEVICE=iphone -p common --tags ~@ipad --tags ~@ipad_only
+
+simulator:    -p common -p ss_path -p html_report -p json_report --tags ~@device_only --tags ~@device
+sim_launch:   -p simulator -p do_launch -p no_reset_btw -p no_stop
+
+sim70r:       -p sim_launch DEVICE_TARGET='iPhone Retina (3.5-inch) - Simulator - iOS 7.0'
+sim71r:       -p sim_launch DEVICE_TARGET='iPhone Retina (3.5-inch) - Simulator - iOS 7.1'
+
+sim70_4in:    -p sim_launch DEVICE_TARGET='iPhone Retina (4-inch) - Simulator - iOS 7.0'
+sim71_4in:    -p sim_launch DEVICE_TARGET='iPhone Retina (4-inch) - Simulator - iOS 7.1'
+
+sim70_64b:    -p sim_launch DEVICE_TARGET='iPhone Retina (4-inch 64-bit) - Simulator - iOS 7.0'
+sim71_64b:    -p sim_launch DEVICE_TARGET='iPhone Retina (4-inch 64-bit) - Simulator - iOS 7.1'
+
+default:      -p sim71_4in
+
+# required only for devices
+bundle_id:    BUNDLE_ID=com.xamarin.Permissions-cal
+
+device_common:  -p bundle_id --tags ~@simulator --tags ~@simulator_only
+
+venus_common:   DEVICE_TARGET=<%= devices[:venus][:udid] %> DEVICE_ENDPOINT=<%= devices[:venus][:ip] %> -p device_common -p ipad -p venus_html -p venus_ss
+venus:          -p venus_common -p do_launch -p no_stop
+
+mars_common:   DEVICE_TARGET=<%= devices[:mars][:udid] %> DEVICE_ENDPOINT=<%= devices[:mars][:ip] %> -p device_common -p ipad -p mars_html -p mars_ss
+mars:          -p mars_common -p do_launch -p no_stop
+
+
+earp_common:   DEVICE_TARGET=<%= devices[:earp][:udid] %> DEVICE_ENDPOINT=<%= devices[:earp][:ip] %> -p device_common -p iphone -p earp_html -p earp_ss
+earp:          -p earp_common -p do_launch -p no_stop
