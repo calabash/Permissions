@@ -1,26 +1,53 @@
-# OS X
+# emacs turds
+(.*/)?\#[^/]*\#$
+
+## Mac OS X
 .DS_Store
+__MACOSX
 
-# Xcode
-build/
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata
-*.xccheckout
-profile
-*.moved-aside
-DerivedData
-*.hmap
-*.ipa
+*.orig
+*.bak
 
-# CocoaPods
-Pods
+# ci
+build
+ci-reports
 
-#Calabash
+# the xamarin build directory
+xtc-staging
+
+# Jetbrains
+workspace.xml
+find.xml
+*.iml
+.rakeTasks
+
+# ruby
 .irb-history
+vendor
+Gemfile.lock
+*.gem
+.ruby-version
+
+# bundler
+.bundle
+.calabash-branch
+
+# briar
+.env
+
+# cucumber
+rerun
+reports
+screenshots
+*.png
+*.html
+
+# RubyMine
+.idea
+
+# Xcode 4
+*.xcodeproj/*.mode*
+*.xcodeproj/*.perspective*
+*.xcodeproj/*.pbxuser
+*.xcodeproj/xcuserdata
+*.xcodeproj/project.xcworkspace/xcuserdata
