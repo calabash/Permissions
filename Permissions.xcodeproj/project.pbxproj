@@ -25,13 +25,13 @@
 		92D56A1418A38F0300B4369B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A1218A38F0300B4369B /* Main.storyboard */; };
 		92D56A1718A38F0300B4369B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A1618A38F0300B4369B /* ViewController.m */; };
 		92D56A1918A38F0300B4369B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A1818A38F0300B4369B /* Images.xcassets */; };
-		92D56A2018A38F0400B4369B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A1F18A38F0400B4369B /* XCTest.framework */; };
 		92D56A2118A38F0400B4369B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0018A38F0300B4369B /* Foundation.framework */; };
 		92D56A2218A38F0400B4369B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0418A38F0300B4369B /* UIKit.framework */; };
 		92D56A2A18A38F0400B4369B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A2818A38F0400B4369B /* InfoPlist.strings */; };
 		92D56A2C18A38F0400B4369B /* PermissionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A2B18A38F0400B4369B /* PermissionsTests.m */; };
 		92D56A3918A3944C00B4369B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3818A3944C00B4369B /* CoreLocation.framework */; };
 		92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3A18A3945700B4369B /* CoreBluetooth.framework */; };
+		F5D4F9491A41FB790026C3F2 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D4F9481A41FB790026C3F2 /* Reveal.framework */; };
 		bab4e294c315b18a5140062e /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A1618A38F0300B4369B /* ViewController.m */; };
 		bcf61b340cc8ddd000a2e9bf /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0218A38F0300B4369B /* CoreGraphics.framework */; };
 		db10064d1cf9883f7aa3d773 /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4bae86e08f26eba4b76433d7 /* calabash.framework */; };
@@ -66,13 +66,13 @@
 		92D56A1618A38F0300B4369B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; tabWidth = 4; };
 		92D56A1818A38F0300B4369B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		92D56A1E18A38F0400B4369B /* PermissionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PermissionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		92D56A1F18A38F0400B4369B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		92D56A2718A38F0400B4369B /* PermissionsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PermissionsTests-Info.plist"; sourceTree = "<group>"; };
 		92D56A2918A38F0400B4369B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		92D56A2B18A38F0400B4369B /* PermissionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PermissionsTests.m; sourceTree = "<group>"; tabWidth = 4; };
 		92D56A3818A3944C00B4369B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		92D56A3A18A3945700B4369B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		F55997D8190E99A000BE8537 /* Permissions-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Permissions-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D4F9481A41FB790026C3F2 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		b0255be9be319745b429c3af /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -93,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92D56A2018A38F0400B4369B /* XCTest.framework in Frameworks */,
 				92D56A2218A38F0400B4369B /* UIKit.framework in Frameworks */,
 				92D56A2118A38F0400B4369B /* Foundation.framework in Frameworks */,
 			);
@@ -106,6 +105,7 @@
 				00d956f47563083b991abf86 /* CoreBluetooth.framework in Frameworks */,
 				7e9f4ba9756ecd83b79f8532 /* CoreLocation.framework in Frameworks */,
 				bcf61b340cc8ddd000a2e9bf /* CoreGraphics.framework in Frameworks */,
+				F5D4F9491A41FB790026C3F2 /* Reveal.framework in Frameworks */,
 				74970c4cd462e58c8a7d819a /* UIKit.framework in Frameworks */,
 				8f61b206ab5fe47fcfd32345 /* Foundation.framework in Frameworks */,
 				09ddaf9e291ccafa8a8eaa20 /* CFNetwork.framework in Frameworks */,
@@ -141,13 +141,13 @@
 		92D569FF18A38F0300B4369B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5D4F9481A41FB790026C3F2 /* Reveal.framework */,
 				92917FF718CF72500095F2F7 /* CoreAudio.framework */,
 				92D56A3A18A3945700B4369B /* CoreBluetooth.framework */,
 				92D56A3818A3944C00B4369B /* CoreLocation.framework */,
 				92D56A0018A38F0300B4369B /* Foundation.framework */,
 				92D56A0218A38F0300B4369B /* CoreGraphics.framework */,
 				92D56A0418A38F0300B4369B /* UIKit.framework */,
-				92D56A1F18A38F0400B4369B /* XCTest.framework */,
 				b0255be9be319745b429c3af /* CFNetwork.framework */,
 				4bae86e08f26eba4b76433d7 /* calabash.framework */,
 			);
@@ -393,13 +393,18 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
 					"-force_load",
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
@@ -561,13 +566,18 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
 					"-force_load",
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
