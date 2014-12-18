@@ -1,23 +1,15 @@
 source 'https://rubygems.org'
 
-# use bundle and bundle config to specify local gem locations
-# bundle config local.GEM_NAME /path/to/local/git/repository
+gem 'rake'
+gem 'xcpretty'
 
-username = `whoami`.strip
+# gem 'calabash-cucumber', '~> 0.12.0.pre2'
+# gem 'briar', '~> 1.1.6'
+gem 'xamarin-test-cloud', '~> 0.10.0.pre1'
 
-#noinspection GemInspection
-case username
+# Development settings.
 
-  when 'moody'
-
-    gem 'briar', :github => 'jmoody/briar', :branch => '1.0.1'
-    gem 'calabash-cucumber', :github => 'jmoody/calabash-ios', :branch => 'master'
-    gem 'xamarin-test-cloud', :git => 'git@github.com:jmoody/test-cloud-command-line.git', :branch => 'master'
-
-  when 'your username here'
-
-  else
-    gem 'briar', '1.0.0'
-end
-
-gem 'pry'
+gem 'run_loop', :github => 'calabash/run_loop', :branch => 'develop'
+gem 'calabash-cucumber', :github => 'jmoody/calabash-ios', :branch => 'develop'
+gem 'briar', :github => 'jmoody/briar', :branch => 'develop'
+#gem 'xamarin-test-cloud', :git => 'xamarin/test-cloud-command-line.git', :branch => 'master'
