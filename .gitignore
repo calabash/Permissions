@@ -1,55 +1,53 @@
-# emacs turds
+# turds
 (.*/)?\#[^/]*\#$
+tags
+*.bak
 
-## Mac OS X
+# git mergetool (Guiffy)
+*.orig
+
+# binaries
+*.ipa
+*.apk
+*.app
+*.dSYM
+
+# Mac OS X
 .DS_Store
 __MACOSX
 
-*.orig
-*.bak
-
-# ci
-build
-ci-reports
-
-# the xamarin build directory
-xtc-staging
-
 # Jetbrains
-workspace.xml
-find.xml
-*.iml
-.rakeTasks
+.idea
 
-# ruby
+# ruby/calabash/cucumber
 .irb-history
-vendor
-Gemfile.lock
-*.gem
-.ruby-version
-
-# bundler
+.irbrc-*
 .bundle
-.calabash-branch
+*.gem
+reports
+screenshots
+*screenshot*.png
+.ruby-version
 
 # briar
 .env
 
-# cucumber
-rerun
-reports
-screenshots
-*.png
-*.html
+# Jenkins CI
+ci-reports
 
-# RubyMine
-.idea
+# xamarin build directory for XTC
+xtc-staging
 
-# Xcode 4
+# Xcode 4+
 *.xcodeproj/*.mode*
 *.xcodeproj/*.perspective*
 *.xcodeproj/*.pbxuser
 *.xcodeproj/xcuserdata
 *.xcodeproj/project.xcworkspace/xcuserdata
+*.xcuserdatad
+*.xcworkspace/xcshareddata/*.xccheckout
 *.xccheckout
 
+## Build products
+build/*
+*/build/*
