@@ -3,19 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02cec08caf94bd6e1b3f4d8c /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4bae86e08f26eba4b76433d7 /* calabash.framework */; };
-		061a4130cd0126ad2e775888 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3A18A3945700B4369B /* CoreBluetooth.framework */; };
-		0bd06446bdbb691c03480ece /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A1618A38F0300B4369B /* ViewController.m */; };
-		21193b74c907ccfa58d17ed4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0218A38F0300B4369B /* CoreGraphics.framework */; };
-		2854bf8b40f4dab4100ef405 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3818A3944C00B4369B /* CoreLocation.framework */; };
-		4f7bb9459365c0be77334a3c /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0418A38F0300B4369B /* UIKit.framework */; };
-		52ae7b036880ddf4f8963fab /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = b0255be9be319745b429c3af /* CFNetwork.framework */; };
-		808bc6056dcf0e4643b12835 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A0918A38F0300B4369B /* InfoPlist.strings */; };
-		92917FF818CF72500095F2F7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92917FF718CF72500095F2F7 /* CoreAudio.framework */; };
 		92D56A0118A38F0300B4369B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0018A38F0300B4369B /* Foundation.framework */; };
 		92D56A0318A38F0300B4369B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0218A38F0300B4369B /* CoreGraphics.framework */; };
 		92D56A0518A38F0300B4369B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0418A38F0300B4369B /* UIKit.framework */; };
@@ -25,18 +16,13 @@
 		92D56A1418A38F0300B4369B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A1218A38F0300B4369B /* Main.storyboard */; };
 		92D56A1718A38F0300B4369B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A1618A38F0300B4369B /* ViewController.m */; };
 		92D56A1918A38F0300B4369B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A1818A38F0300B4369B /* Images.xcassets */; };
-		92D56A2018A38F0400B4369B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A1F18A38F0400B4369B /* XCTest.framework */; };
 		92D56A2118A38F0400B4369B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0018A38F0300B4369B /* Foundation.framework */; };
 		92D56A2218A38F0400B4369B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0418A38F0300B4369B /* UIKit.framework */; };
 		92D56A2A18A38F0400B4369B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A2818A38F0400B4369B /* InfoPlist.strings */; };
 		92D56A2C18A38F0400B4369B /* PermissionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A2B18A38F0400B4369B /* PermissionsTests.m */; };
 		92D56A3918A3944C00B4369B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3818A3944C00B4369B /* CoreLocation.framework */; };
 		92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3A18A3945700B4369B /* CoreBluetooth.framework */; };
-		ac23bb21051a90e34758b6d2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A1818A38F0300B4369B /* Images.xcassets */; };
-		ad78aaa7075b9a8118c67a8e /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0018A38F0300B4369B /* Foundation.framework */; };
-		bc57dacddb10a7088f88968a /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A1018A38F0300B4369B /* AppDelegate.m */; };
-		bcea714899cbb1407782ac82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A0C18A38F0300B4369B /* main.m */; };
-		e493ed051f64b3262ad84b73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A1218A38F0300B4369B /* Main.storyboard */; };
+		F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F54CCC281B84D79C0007F68D /* RowDetails.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +38,6 @@
 /* Begin PBXFileReference section */
 		4bae86e08f26eba4b76433d7 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		92917FF718CF72500095F2F7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		92C2148618A4D034004CCA78 /* Permissions-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Permissions-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D569FD18A38F0300B4369B /* Permissions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Permissions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D56A0018A38F0300B4369B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		92D56A0218A38F0300B4369B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -68,12 +53,13 @@
 		92D56A1618A38F0300B4369B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; tabWidth = 4; };
 		92D56A1818A38F0300B4369B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		92D56A1E18A38F0400B4369B /* PermissionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PermissionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		92D56A1F18A38F0400B4369B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		92D56A2718A38F0400B4369B /* PermissionsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PermissionsTests-Info.plist"; sourceTree = "<group>"; };
 		92D56A2918A38F0400B4369B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		92D56A2B18A38F0400B4369B /* PermissionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PermissionsTests.m; sourceTree = "<group>"; tabWidth = 4; };
 		92D56A3818A3944C00B4369B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		92D56A3A18A3945700B4369B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		F54CCC271B84D79C0007F68D /* RowDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowDetails.h; sourceTree = "<group>"; };
+		F54CCC281B84D79C0007F68D /* RowDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowDetails.m; sourceTree = "<group>"; };
 		b0255be9be319745b429c3af /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -94,24 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92D56A2018A38F0400B4369B /* XCTest.framework in Frameworks */,
 				92D56A2218A38F0400B4369B /* UIKit.framework in Frameworks */,
 				92D56A2118A38F0400B4369B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		e2eab3803e27e22358c19d99 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				92917FF818CF72500095F2F7 /* CoreAudio.framework in Frameworks */,
-				061a4130cd0126ad2e775888 /* CoreBluetooth.framework in Frameworks */,
-				2854bf8b40f4dab4100ef405 /* CoreLocation.framework in Frameworks */,
-				21193b74c907ccfa58d17ed4 /* CoreGraphics.framework in Frameworks */,
-				4f7bb9459365c0be77334a3c /* UIKit.framework in Frameworks */,
-				ad78aaa7075b9a8118c67a8e /* Foundation.framework in Frameworks */,
-				52ae7b036880ddf4f8963fab /* CFNetwork.framework in Frameworks */,
-				02cec08caf94bd6e1b3f4d8c /* calabash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,16 +96,15 @@
 				92D569FF18A38F0300B4369B /* Frameworks */,
 				92D569FE18A38F0300B4369B /* Products */,
 			);
-			indentWidth = 4;
+			indentWidth = 2;
 			sourceTree = "<group>";
-			tabWidth = 4;
+			tabWidth = 2;
 		};
 		92D569FE18A38F0300B4369B /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				92D569FD18A38F0300B4369B /* Permissions.app */,
 				92D56A1E18A38F0400B4369B /* PermissionsTests.xctest */,
-				92C2148618A4D034004CCA78 /* Permissions-cal.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,7 +118,6 @@
 				92D56A0018A38F0300B4369B /* Foundation.framework */,
 				92D56A0218A38F0300B4369B /* CoreGraphics.framework */,
 				92D56A0418A38F0300B4369B /* UIKit.framework */,
-				92D56A1F18A38F0400B4369B /* XCTest.framework */,
 				b0255be9be319745b429c3af /* CFNetwork.framework */,
 				4bae86e08f26eba4b76433d7 /* calabash.framework */,
 			);
@@ -164,6 +132,8 @@
 				92D56A1218A38F0300B4369B /* Main.storyboard */,
 				92D56A1518A38F0300B4369B /* ViewController.h */,
 				92D56A1618A38F0300B4369B /* ViewController.m */,
+				F54CCC271B84D79C0007F68D /* RowDetails.h */,
+				F54CCC281B84D79C0007F68D /* RowDetails.m */,
 				92D56A1818A38F0300B4369B /* Images.xcassets */,
 				92D56A0718A38F0300B4369B /* Supporting Files */,
 			);
@@ -237,42 +207,22 @@
 			productReference = 92D56A1E18A38F0400B4369B /* PermissionsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		f2b0840d66ae919054c0d355 /* Permissions-cal */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4b7f850d926c2bc0dd716c13 /* Build configuration list for PBXNativeTarget "Permissions-cal" */;
-			buildPhases = (
-				245af14db391262c14d13d7c /* Sources */,
-				e2eab3803e27e22358c19d99 /* Frameworks */,
-				023d2f1218a5cc3e32ad50e0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Permissions-cal";
-			productName = "Permissions-cal";
-			productReference = 92C2148618A4D034004CCA78 /* Permissions-cal.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		92D569F518A38F0300B4369B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Villars Gimm";
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Calabash;
 				TargetAttributes = {
 					92D56A1D18A38F0400B4369B = {
 						TestTargetID = 92D569FC18A38F0300B4369B;
 					};
-					f2b0840d66ae919054c0d355 = {
-						DevelopmentTeam = 4N4ZH2S384;
-					};
 				};
 			};
 			buildConfigurationList = 92D569F818A38F0300B4369B /* Build configuration list for PBXProject "Permissions" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -286,22 +236,11 @@
 			targets = (
 				92D569FC18A38F0300B4369B /* Permissions */,
 				92D56A1D18A38F0400B4369B /* PermissionsTests */,
-				f2b0840d66ae919054c0d355 /* Permissions-cal */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		023d2f1218a5cc3e32ad50e0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ac23bb21051a90e34758b6d2 /* Images.xcassets in Resources */,
-				808bc6056dcf0e4643b12835 /* InfoPlist.strings in Resources */,
-				e493ed051f64b3262ad84b73 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		92D569FB18A38F0300B4369B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,21 +262,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		245af14db391262c14d13d7c /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0bd06446bdbb691c03480ece /* ViewController.m in Sources */,
-				bc57dacddb10a7088f88968a /* AppDelegate.m in Sources */,
-				bcea714899cbb1407782ac82 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		92D569F918A38F0300B4369B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				92D56A1718A38F0300B4369B /* ViewController.m in Sources */,
+				F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */,
 				92D56A1118A38F0300B4369B /* AppDelegate.m in Sources */,
 				92D56A0D18A38F0300B4369B /* main.m in Sources */,
 			);
@@ -389,32 +319,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		690b64d99679a31e314ba53b /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
-				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-force_load",
-					"\"$(SRCROOT)/calabash.framework/calabash\"",
-					"-lstdc++",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
 		92D56A2D18A38F0400B4369B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -433,6 +337,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -447,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -479,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -495,6 +400,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-force_load",
+					"\"${PROJECT_DIR}/calabash.framework/calabash\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -511,6 +422,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -533,6 +446,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PermissionsTests/PermissionsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -551,50 +465,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "PermissionsTests/PermissionsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
-		f556bcd0641435f3f94e50d0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
-				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-force_load",
-					"\"$(SRCROOT)/calabash.framework/calabash\"",
-					"-lstdc++",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4b7f850d926c2bc0dd716c13 /* Build configuration list for PBXNativeTarget "Permissions-cal" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				690b64d99679a31e314ba53b /* Debug */,
-				f556bcd0641435f3f94e50d0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		92D569F818A38F0300B4369B /* Build configuration list for PBXProject "Permissions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

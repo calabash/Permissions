@@ -1,0 +1,53 @@
+<%
+
+APP = ENV['CAL_APP'] || File.expand_path("./Calabash-app/Permissions.app")
+IPA = ENV['CAL_APP'] || File.expand_path("./Calabash-ipa/Permissions.ipa")
+
+calabash_dir = File.expand_path(File.join(ENV['HOME'], .calabash))
+
+devices = {}
+
+device_list = ['iphone5C_80', 'iphone4S_80', 'iphone6', 'iphone6plus']
+
+device_list.each do |device|
+  dir = "#{calabash_dir}/devices/#{device}"
+  ip = IO.read("#{dir}/ip") if File.exists?("#{dir}/ip")
+  udid = IO.read("#{dir}/udid") if File.exists?("#{dir}/udid")
+  ht = {:dir => dir,
+        :ip => ip,
+        :udid => udid}
+  devices[device.to_sym] = ht
+end
+
+if ENV["USER"] == "jenkins"
+  formatter = "progress"
+else
+  formatter = "Slowhandcuke::Formatter"
+end
+
+%>
+
+verbose: CAL_DEBUG=1
+formatter: -f <%= formatter %>
+
+# Launch on default simulator.
+simulator_vars: CAL_APP=<%= APP %>
+simulator_tags: --tags ~@device_only
+default:        -p simulator_vars -p simulator_tags -p formatter
+
+# Launch on device.
+device_vars:  CAL_APP=<%= IPA %>
+device_tags:  --tags ~@simulator_only
+device:       -p device_vars -p device_tags -p formatter
+
+iphone5C_80: -p device CAL_DEVICE_ID=<%= devices[:iphone5C_80][:udid] %> CAL_ENDPOINT=<%= devices[:iphone5C_80][:ip] %>
+iphone4S_80: -p device CAL_DEVICE_ID=<%= devices[:iphone4S_80][:udid] %> CAL_ENDPOINT=<%= devices[:iphone4S_80][:ip] %>
+iphone6:     -p device CAL_DEVICE_ID=<%= devices[:iphone6][:udid] %>     CAL_ENDPOINT=<%= devices[:iphone6][:ip] %>
+iphone6plus: -p device CAL_DEVICE_ID=<%= devices[:iphone6plus][:udid] %> CAL_ENDPOINT=<%= devices[:iphone6plus][:ip] %>
+
+# Joshua's devices
+neptune: -p iphone4S_80
+saturn:  -p iphone5S_71
+hat:     -p iphone6
+denis:   -p iphone6plus
+

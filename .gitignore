@@ -1,26 +1,53 @@
-# OS X
-.DS_Store
+# turds
+(.*/)?\#[^/]*\#$
+tags
+*.bak
 
-# Xcode
-build/
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata
-*.xccheckout
-profile
-*.moved-aside
-DerivedData
-*.hmap
+# git mergetool (Guiffy)
+*.orig
+
+# binaries
 *.ipa
+*.apk
+*.app
+*.dSYM
 
-# CocoaPods
-Pods
+# Mac OS X
+.DS_Store
+__MACOSX
 
-#Calabash
+# Jetbrains
+.idea
+
+# ruby/calabash/cucumber
 .irb-history
+.irbrc-*
+.bundle
+*.gem
+reports
+screenshots
+*screenshot*.png
+.ruby-version
+
+# briar
+.env
+
+# Jenkins CI
+ci-reports
+
+# xamarin build directory for XTC
+xtc-staging
+
+# Xcode 4+
+*.xcodeproj/*.mode*
+*.xcodeproj/*.perspective*
+*.xcodeproj/*.pbxuser
+*.xcodeproj/xcuserdata
+*.xcodeproj/project.xcworkspace/xcuserdata
+*.xcuserdatad
+*.xcworkspace/xcshareddata/*.xccheckout
+*.xccheckout
+
+## Build products
+build/*
+*/build/*
