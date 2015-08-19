@@ -208,7 +208,7 @@
 		92D569F518A38F0300B4369B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Villars Gimm";
 				TargetAttributes = {
 					92D56A1D18A38F0400B4369B = {
@@ -331,6 +331,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -398,6 +399,7 @@
 					"-force_load",
 					"\"${PROJECT_DIR}/calabash.framework/calabash\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xamarin.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -415,6 +417,7 @@
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xamarin.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -437,6 +440,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PermissionsTests/PermissionsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "RibEye-Studios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -455,6 +459,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "PermissionsTests/PermissionsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "RibEye-Studios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
