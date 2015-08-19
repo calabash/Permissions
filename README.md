@@ -1,16 +1,15 @@
-Permissions
-===========
+## Permissions
 
-This app is created for displaying permissions popup added for the iOS 7 and greater.
+An app for displaying Privacy Alerts for iOS 7 and greater.
 
-#TODO
+### Build
 
+For simplicity, the Permissions target is linked with Calabash when the app is
+built with the **Debug** configuration.
 
-- Location Services
-- Bluetooth
-- Camera
-
-##Social Services
-
-- Twitter
-- Facebook
+```
+1. $ git clone git@github.com:Oddj0b/Permissions.git
+2. $ cd Permissions
+3. $ make app       # Calabash-app/Permissions.app
+4. $ make ipa       # Calabash-ipa/Permissions.ipa
+```

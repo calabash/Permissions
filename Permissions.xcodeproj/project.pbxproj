@@ -22,6 +22,7 @@
 		92D56A2C18A38F0400B4369B /* PermissionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A2B18A38F0400B4369B /* PermissionsTests.m */; };
 		92D56A3918A3944C00B4369B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3818A3944C00B4369B /* CoreLocation.framework */; };
 		92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3A18A3945700B4369B /* CoreBluetooth.framework */; };
+		F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F54CCC281B84D79C0007F68D /* RowDetails.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		92D56A2B18A38F0400B4369B /* PermissionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PermissionsTests.m; sourceTree = "<group>"; tabWidth = 4; };
 		92D56A3818A3944C00B4369B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		92D56A3A18A3945700B4369B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		F54CCC271B84D79C0007F68D /* RowDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowDetails.h; sourceTree = "<group>"; };
+		F54CCC281B84D79C0007F68D /* RowDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowDetails.m; sourceTree = "<group>"; };
 		b0255be9be319745b429c3af /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -129,6 +132,8 @@
 				92D56A1218A38F0300B4369B /* Main.storyboard */,
 				92D56A1518A38F0300B4369B /* ViewController.h */,
 				92D56A1618A38F0300B4369B /* ViewController.m */,
+				F54CCC271B84D79C0007F68D /* RowDetails.h */,
+				F54CCC281B84D79C0007F68D /* RowDetails.m */,
 				92D56A1818A38F0300B4369B /* Images.xcassets */,
 				92D56A0718A38F0300B4369B /* Supporting Files */,
 			);
@@ -262,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92D56A1718A38F0300B4369B /* ViewController.m in Sources */,
+				F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */,
 				92D56A1118A38F0300B4369B /* AppDelegate.m in Sources */,
 				92D56A0D18A38F0300B4369B /* main.m in Sources */,
 			);
