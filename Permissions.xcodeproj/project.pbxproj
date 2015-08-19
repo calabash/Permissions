@@ -399,7 +399,7 @@
 					"-force_load",
 					"\"${PROJECT_DIR}/calabash.framework/calabash\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xamarin.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -417,7 +417,7 @@
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xamarin.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -440,7 +440,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PermissionsTests/PermissionsTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "RibEye-Studios.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -459,7 +459,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "PermissionsTests/PermissionsTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "RibEye-Studios.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
