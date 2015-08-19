@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -95,7 +95,7 @@
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 4;
+			tabWidth = 2;
 		};
 		92D569FE18A38F0300B4369B /* Products */ = {
 			isa = PBXGroup;
@@ -209,7 +209,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = "Villars Gimm";
+				ORGANIZATIONNAME = Calabash;
 				TargetAttributes = {
 					92D56A1D18A38F0400B4369B = {
 						TestTargetID = 92D569FC18A38F0300B4369B;
@@ -217,7 +217,7 @@
 				};
 			};
 			buildConfigurationList = 92D569F818A38F0300B4369B /* Build configuration list for PBXProject "Permissions" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
