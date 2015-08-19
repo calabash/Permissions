@@ -1,15 +1,22 @@
 source 'https://rubygems.org'
 
-gem 'rake'
+gem 'calabash', '2.0.0.pre3'
+gem 'xamarin-test-cloud', '>= 1.1', '< 2.0'
+
+# Cucumber stack
+gem 'cucumber', '~> 2.0'
+gem 'slowhandcuke', '>= 0.0.3', '< 1.0'
+
+# For easy expectations. No screenshots on failures!
+gem 'rspec', '~> 3.0'
+
+# # Debugging.
+gem 'pry'
+gem 'pry-nav'
+
+# Makes tidy Xcode build logs.
 gem 'xcpretty'
 
-# gem 'calabash-cucumber', '~> 0.12.0.pre2'
-# gem 'briar', '~> 1.1.6'
-gem 'xamarin-test-cloud', '~> 0.10.0.pre1'
+# CI and workflow tool
+gem 'luffa'
 
-# Development settings.
-
-gem 'run_loop', :github => 'calabash/run_loop', :branch => 'develop'
-gem 'calabash-cucumber', :github => 'jmoody/calabash-ios', :branch => 'develop'
-gem 'briar', :github => 'jmoody/briar', :branch => 'develop'
-#gem 'xamarin-test-cloud', :git => 'xamarin/test-cloud-command-line.git', :branch => 'master'
