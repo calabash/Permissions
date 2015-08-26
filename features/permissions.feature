@@ -21,3 +21,8 @@ Scenario: Calendars alert is not dismissed
   When I touch the Calendars row
   Then Calabash does not dismiss the alert
 
+@reminders
+Scenario: Reminders alert is not dismissed
+  When I touch the Reminders row
+  Then Calabash does not dismiss the alert
+
