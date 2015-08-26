@@ -342,8 +342,8 @@ typedef enum : NSInteger {
 
     case kRowCalendars: {
       selector = @selector(rowTouchedCalendars);
-      title = @"Calendars";
-      identifier = @"calendars";
+      title = @"Calendar";
+      identifier = @"calendar";
       break;
     }
 
