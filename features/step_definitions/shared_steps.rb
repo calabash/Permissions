@@ -11,3 +11,11 @@ When(/^I touch the Facebook row$/) do
   tap("UITableViewCell marked:'facebook'")
 end
 
+When(/^I touch the Home Kit row$/) do
+  query = "UITableView marked:'table'"
+  options = { :scroll_position => :middle }
+  scroll_to_row_with_mark(query, 'home kit', options)
+
+  tap("UITableViewCell marked:'home kit'")
+end
+

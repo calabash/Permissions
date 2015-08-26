@@ -30,6 +30,7 @@ typedef enum : NSInteger {
   kRowCamera,
   kFacebook,
   kTwitter,
+  kHomeKit,
   kNumberOfRows
 } CalTableRows;
 
@@ -63,6 +64,7 @@ typedef enum : NSInteger {
 - (void) rowTouchedCamera;
 - (void) rowTouchedFacebook;
 - (void) rowTouchedTwitter;
+- (void) rowTouchedHomeKit;
 
 @end
 
@@ -291,6 +293,12 @@ typedef enum : NSInteger {
   }];
 }
 
+#pragma mark - Row Touched: Home Kit
+
+- (void) rowTouchedHomeKit {
+  [[self.alertFactory alertForHomeKitNYI] show];
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (RowDetails *) detailsForRowAtIndexPath:(NSIndexPath *) path {
@@ -378,6 +386,13 @@ typedef enum : NSInteger {
       selector = @selector(rowTouchedTwitter);
       title = @"Twitter";
       identifier = @"twitter";
+      break;
+    }
+
+    case kHomeKit: {
+      selector = @selector(rowTouchedHomeKit);
+      title = @"Home Kit";
+      identifier = @"home kit";
       break;
     }
 
