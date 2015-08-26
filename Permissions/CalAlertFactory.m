@@ -5,6 +5,10 @@
 @property(copy, nonatomic, readonly) NSString *localizedDismiss;
 - (UIAlertView *) alertForNYIWithMessage:(NSString *) message;
 
+- (NSString *) facebookMessage;
+- (NSString *) homeKitMessage;
+- (NSString *) healthKitMessage;
+
 @end
 
 @implementation CalAlertFactory
@@ -37,6 +41,10 @@
                            @"Alert message");
 }
 
+- (NSString *) healthKitMessage {
+  return NSLocalizedString(@"Testing Health Kit permissions has not been implemented.",
+                           @"Alert message");
+}
 
 - (UIAlertView *) alertForNYIWithMessage:(NSString *) message {
   NSString *title = NSLocalizedString(@"Not Implemented",
@@ -56,6 +64,10 @@
 
 - (UIAlertView *) alertForHomeKitNYI {
   return [self alertForNYIWithMessage:[self homeKitMessage]];
+}
+
+- (UIAlertView *) alertForHealthKitNYI {
+  return [self alertForNYIWithMessage:[self healthKitMessage]];
 }
 
 @end

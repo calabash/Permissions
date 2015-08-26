@@ -8,5 +8,6 @@
 
 - (UIAlertView *) alertForFacebookNYI;
 - (UIAlertView *) alertForHomeKitNYI;
+- (UIAlertView *) alertForHealthKitNYI;
 
 @end
