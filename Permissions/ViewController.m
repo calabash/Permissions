@@ -12,7 +12,9 @@
 @import CoreMotion;
 @import Accounts;
 @import UIKit;
+
 #import "RowDetails.h"
+#import "CalAlertFactory.h"
 
 static NSString *const CalCellIdentifier = @"cell identifier";
 
@@ -42,6 +44,7 @@ typedef enum : NSInteger {
 @property (strong, nonatomic) CMMotionActivityManager *cmManger;
 @property (strong, nonatomic) NSOperationQueue* motionActivityQueue;
 @property (strong, nonatomic) ACAccountStore *accountStore;
+@property (strong, nonatomic, readonly) CalAlertFactory *alertFactory;
 
 - (ABAddressBookRef) addressBook;
 - (void) setAddressBook:(ABAddressBookRef) newAddressBook;
@@ -69,6 +72,8 @@ typedef enum : NSInteger {
 
 #pragma mark - Memory Management
 
+@synthesize alertFactory = _alertFactory;
+
 - (void) dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -77,6 +82,12 @@ typedef enum : NSInteger {
   [super didReceiveMemoryWarning];
 }
 
+- (CalAlertFactory *) alertFactory {
+  if (_alertFactory) { return _alertFactory; }
+  _alertFactory = [[CalAlertFactory alloc]
+                   initWithDelegate:self];
+  return _alertFactory;
+}
 
 #pragma mark - Row Touched: Location Services
 
@@ -231,19 +242,7 @@ typedef enum : NSInteger {
   // not yet
   // http://nsscreencast.com/episodes/57-facebook-integration
 
-  NSString *title = NSLocalizedString(@"Not Implemented",
-                                      @"Alert title: feature is not implemented yet");
-  NSString *message = NSLocalizedString(@"Testing Facebook permissions has not been implemented.",
-                                        @"Alert message");
-  NSString *localizedDismiss = NSLocalizedString(@"Dismiss",
-                                                 @"Alert button title: touching dismissing the alert with no consequences");
-  UIAlertView *alert = [[UIAlertView alloc]
-                        initWithTitle:title
-                        message:message
-                        delegate:self
-                        cancelButtonTitle:localizedDismiss
-                        otherButtonTitles:nil];
-  [alert show];
+  [[self.alertFactory alertForFacebookNYI] show];
 
 /*
   NSLog(@"Facebook requested");
@@ -505,6 +504,13 @@ void handleAddressBookChange(ABAddressBookRef addressBook,
       NSLog(@"CoreLocation authorization is not denied");
     }
   }
+}
+
+#pragma mark - <UIAlertViewDelegate>
+
+- (void)   alertView:(UIAlertView *) alertView
+clickedButtonAtIndex:(NSInteger) buttonIndex {
+  NSLog(@"Alert button %@ tapped", @(buttonIndex));
 }
 
 #pragma mark - Orientation / Rotation
