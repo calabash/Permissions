@@ -33,7 +33,12 @@ Scenario: Photos alert is dismissed
   And I see the photo roll
 
 @motion
-Scenario: Motion Activity is not dismissed
+Scenario: Motion Activity alert is not dismissed
   When I touch the Motion Activity row
+  Then Calabash does not dismiss the alert
+
+@camera
+Scenario: Camera alert is not dismissed
+  When I touch the Camera row
   Then Calabash does not dismiss the alert
 

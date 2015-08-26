@@ -385,7 +385,7 @@ typedef enum : NSInteger {
     case kRowCamera: {
       selector = @selector(rowTouchedCamera);
       title = @"Camera";
-      identifier = @"camara";
+      identifier = @"camera";
       break;
     }
 
