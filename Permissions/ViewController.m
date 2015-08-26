@@ -192,14 +192,20 @@ typedef enum : NSInteger {
 - (void) rowTouchedMicrophone {
   NSLog(@"Microphone requested");
 
-  AVAudioSession *session = [[AVAudioSession alloc] init];
-  [session requestRecordPermission:^(BOOL granted) {
+  [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
     if (granted) {
       NSLog(@"Micro Permission Granted");
       NSError *error;
 
-      [session setActive:YES error:&error];
-      [session setCategory:@"AVAudioSessionCategoryPlayAndRecord" error:&error];
+      if (![[AVAudioSession sharedInstance] setActive:YES error:&error]) {
+        NSLog(@"error: %@", [error localizedDescription]);
+      }
+
+      if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord
+                                                  error:&error]) {
+        NSLog(@"error: %@", [error localizedDescription]);
+      }
+
     } else {
       NSLog(@"Permission Denied");
     }
