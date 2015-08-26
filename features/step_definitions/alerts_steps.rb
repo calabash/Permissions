@@ -135,6 +135,10 @@ Then(/^an NYI alert is presented$/) do
   expect(alert_title).to be == 'Not Implemented'
 end
 
+Then(/^Calabash does not dismiss the alert$/) do
+  # Calabash cannot
+end
+
 Then(/^Calabash should dismiss the alert$/) do
   # https://github.com/calabash/calabash/issues/277
   Calabash::Device.default.send(:uia_serialize_and_call, :query, 'window')

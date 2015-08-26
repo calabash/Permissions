@@ -16,3 +16,8 @@ Scenario: Contacts alert is dismissed
   When I touch the Contacts row
   Then Calabash should dismiss the alert
 
+@calendars
+Scenario: Calendars alert is not dismissed
+  When I touch the Calendars row
+  Then Calabash does not dismiss the alert
+
