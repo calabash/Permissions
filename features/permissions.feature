@@ -11,3 +11,8 @@ Scenario: Location alert is dismissed
   When I touch the Location Services row
   Then Calabash should dismiss the alert
 
+@contacts
+Scenario: Contacts alert is dismissed
+  When I touch the Contacts row
+  Then Calabash should dismiss the alert
+

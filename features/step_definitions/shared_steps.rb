@@ -18,13 +18,12 @@ Given(/^I can see the list of services requiring authorization$/) do
   wait_for_view("view marked:'table'")
 end
 
-When(/^I touch the Facebook row$/) do
-  tap_row('facebook')
+When(/^I touch the (Facebook|Contacts) row$/) do |row|
+  tap_row(row.downcase)
 end
 
-When(/^I touch the (Home|Health) Kit row$/) do |kind|
-  id = "#{kind.downcase} kit"
-  tap_row(id)
+When(/^I touch the (Home|Health) Kit row$/) do |row|
+  tap_row("#{row.downcase} kit")
 end
 
 When(/^I touch the Location Services row$/) do
