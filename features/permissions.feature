@@ -26,3 +26,9 @@ Scenario: Reminders alert is not dismissed
   When I touch the Reminders row
   Then Calabash does not dismiss the alert
 
+@photos
+Scenario: Photos alert is dismissed
+  When I touch the Photos row
+  Then Calabash should dismiss the alert
+  And I see the photo roll
+

@@ -18,7 +18,7 @@ Given(/^I can see the list of services requiring authorization$/) do
   wait_for_view("view marked:'table'")
 end
 
-When(/^I touch the (Facebook|Contacts|Calendars|Reminders) row$/) do |row|
+When(/^I touch the (Facebook|Contacts|Calendars|Reminders|Photos) row$/) do |row|
   tap_row(row.downcase)
 end
 
@@ -28,5 +28,9 @@ end
 
 When(/^I touch the Location Services row$/) do
   tap_row('location')
+end
+
+And(/^I see the photo roll$/) do
+  wait_for_view("view marked:'Photos'")
 end
 
