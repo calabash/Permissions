@@ -43,7 +43,7 @@ And(/^I see the photo roll$/) do
 end
 
 Then(/^I am waiting to figure out how to generate a (Bluetooth|Microphone) alert$/) do |type|
-  message = "Have not figured out how to generate a '#{type}' alert yet. :("
+  message = "Cannot reliably generate a '#{type}' alert yet. :("
   pending(message)
 end
 
