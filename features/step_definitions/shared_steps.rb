@@ -30,6 +30,10 @@ When(/^I touch the Location Services row$/) do
   tap_row('location')
 end
 
+When(/^I touch the Motion Activity row$/) do
+  tap_row('motion')
+end
+
 And(/^I see the photo roll$/) do
   wait_for_view("view marked:'Photos'")
 end

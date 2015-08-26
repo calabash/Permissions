@@ -32,3 +32,8 @@ Scenario: Photos alert is dismissed
   Then Calabash should dismiss the alert
   And I see the photo roll
 
+@motion
+Scenario: Motion Activity is not dismissed
+  When I touch the Motion Activity row
+  Then Calabash does not dismiss the alert
+
