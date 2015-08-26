@@ -16,6 +16,7 @@ UINavigationControllerDelegate,
 UIImagePickerControllerDelegate,
 CBCentralManagerDelegate,
 UITableViewDataSource,
-UITableViewDelegate>
+UITableViewDelegate,
+UIAlertViewDelegate>
 
 @end

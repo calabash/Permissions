@@ -231,6 +231,20 @@ typedef enum : NSInteger {
   // not yet
   // http://nsscreencast.com/episodes/57-facebook-integration
 
+  NSString *title = NSLocalizedString(@"Not Implemented",
+                                      @"Alert title: feature is not implemented yet");
+  NSString *message = NSLocalizedString(@"Testing Facebook permissions has not been implemented.",
+                                        @"Alert message");
+  NSString *localizedDismiss = NSLocalizedString(@"Dismiss",
+                                                 @"Alert button title: touching dismissing the alert with no consequences");
+  UIAlertView *alert = [[UIAlertView alloc]
+                        initWithTitle:title
+                        message:message
+                        delegate:self
+                        cancelButtonTitle:localizedDismiss
+                        otherButtonTitles:nil];
+  [alert show];
+
 /*
   NSLog(@"Facebook requested");
   if (!self.accountStore) {
