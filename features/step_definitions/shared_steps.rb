@@ -18,7 +18,7 @@ Given(/^I can see the list of services requiring authorization$/) do
   wait_for_view("view marked:'table'")
 end
 
-When(/^I touch the (Facebook|Contacts|Calendars|Reminders|Photos|Camera) row$/) do |row|
+When(/^I touch the (Facebook|Contacts|Calendars|Reminders|Photos|Camera|Microphone) row$/) do |row|
   tap_row(row.downcase)
 end
 
@@ -32,6 +32,10 @@ end
 
 When(/^I touch the Motion Activity row$/) do
   tap_row('motion')
+end
+
+When(/^I touch the Bluetooth Sharing row$/) do
+  tap_row('bluetooth')
 end
 
 And(/^I see the photo roll$/) do
