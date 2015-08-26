@@ -32,12 +32,12 @@ formatter: -f <%= formatter %>
 
 # Launch on default simulator.
 simulator_vars: CAL_APP=<%= APP %>
-simulator_tags: --tags ~@device_only
+simulator_tags: --tags ~@device_only --tags ~@device
 default:        -p simulator_vars -p simulator_tags -p formatter
 
 # Launch on device.
 device_vars:  CAL_APP=<%= IPA %>
-device_tags:  --tags ~@simulator_only
+device_tags:  --tags ~@simulator_only --tags ~@simulator
 device:       -p device_vars -p device_tags -p formatter
 
 iphone5C_80: -p device CAL_DEVICE_ID=<%= devices[:iphone5C_80][:udid] %> CAL_ENDPOINT=<%= devices[:iphone5C_80][:ip] %>
