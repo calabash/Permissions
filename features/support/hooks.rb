@@ -1,6 +1,12 @@
 require 'calabash'
 
 Before do |scenario|
+  $stdout.puts
+  $stdout.puts Calabash::Color.blue('INFO: Resetting simulator content and settings')
+  $stdout.puts
+  $stdout.flush
+
+  RunLoop::SimControl.new.reset_sim_content_and_settings
   if scenario.respond_to?(:scenario_outline)
     scenario = scenario.scenario_outline
   end
@@ -20,7 +26,7 @@ module AppLifeCycle
     include Calabash
   end
 
-  DEFAULT_RESET_BETWEEN = :never
+  DEFAULT_RESET_BETWEEN = :scenarios
   DEFAULT_RESET_METHOD = :reinstall
 
   RESET_BETWEEN = if Calabash::Environment.variable('RESET_BETWEEN')

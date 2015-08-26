@@ -1,4 +1,4 @@
-module CalSmoke
+module Permissions
   module Alerts
 
     def alert_exists?(alert_title=nil)
@@ -129,9 +129,19 @@ module CalSmoke
   end
 end
 
-World(CalSmoke::Alerts)
+World(Permissions::Alerts)
 
 Then(/^an NYI alert is presented$/) do
   expect(alert_title).to be == 'Not Implemented'
+end
+
+Then(/^Calabash should dismiss the alert$/) do
+  # https://github.com/calabash/calabash/issues/277
+  Calabash::Device.default.send(:uia_serialize_and_call, :query, 'window')
+  timeout = 1.0
+  message = "Timed out after #{timeout} seconds for alert to be dismissed"
+  wait_for(message, {:timeout => timeout}) do
+    !alert_exists?
+  end
 end
 
