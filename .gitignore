@@ -28,6 +28,7 @@ reports
 screenshots
 *screenshot*.png
 .ruby-version
+ideviceinstaller.log
 
 # briar
 .env

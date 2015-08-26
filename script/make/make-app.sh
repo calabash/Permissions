@@ -71,3 +71,5 @@ echo "INFO: installed ${INSTALL_DIR}/${APP}"
 mv "${DSYM_BUNDLE}" "${INSTALL_DIR}/${DSYM}"
 echo "INFO: installed ${INSTALL_DIR}/${DSYM}"
 
+bundle exec run-loop simctl install --app "${INSTALL_DIR}/${APP}" --debug
+

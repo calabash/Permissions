@@ -12,7 +12,9 @@
 @import CoreMotion;
 @import Accounts;
 @import UIKit;
+
 #import "RowDetails.h"
+#import "CalAlertFactory.h"
 
 static NSString *const CalCellIdentifier = @"cell identifier";
 
@@ -28,6 +30,8 @@ typedef enum : NSInteger {
   kRowCamera,
   kFacebook,
   kTwitter,
+  kHomeKit,
+  kHealthKit,
   kNumberOfRows
 } CalTableRows;
 
@@ -42,6 +46,7 @@ typedef enum : NSInteger {
 @property (strong, nonatomic) CMMotionActivityManager *cmManger;
 @property (strong, nonatomic) NSOperationQueue* motionActivityQueue;
 @property (strong, nonatomic) ACAccountStore *accountStore;
+@property (strong, nonatomic, readonly) CalAlertFactory *alertFactory;
 
 - (ABAddressBookRef) addressBook;
 - (void) setAddressBook:(ABAddressBookRef) newAddressBook;
@@ -60,6 +65,8 @@ typedef enum : NSInteger {
 - (void) rowTouchedCamera;
 - (void) rowTouchedFacebook;
 - (void) rowTouchedTwitter;
+- (void) rowTouchedHomeKit;
+- (void) rowTouchedHealthKit;
 
 @end
 
@@ -69,6 +76,8 @@ typedef enum : NSInteger {
 
 #pragma mark - Memory Management
 
+@synthesize alertFactory = _alertFactory;
+
 - (void) dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -77,6 +86,12 @@ typedef enum : NSInteger {
   [super didReceiveMemoryWarning];
 }
 
+- (CalAlertFactory *) alertFactory {
+  if (_alertFactory) { return _alertFactory; }
+  _alertFactory = [[CalAlertFactory alloc]
+                   initWithDelegate:self];
+  return _alertFactory;
+}
 
 #pragma mark - Row Touched: Location Services
 
@@ -177,14 +192,20 @@ typedef enum : NSInteger {
 - (void) rowTouchedMicrophone {
   NSLog(@"Microphone requested");
 
-  AVAudioSession *session = [[AVAudioSession alloc] init];
-  [session requestRecordPermission:^(BOOL granted) {
+  [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
     if (granted) {
       NSLog(@"Micro Permission Granted");
       NSError *error;
 
-      [session setActive:YES error:&error];
-      [session setCategory:@"AVAudioSessionCategoryPlayAndRecord" error:&error];
+      if (![[AVAudioSession sharedInstance] setActive:YES error:&error]) {
+        NSLog(@"error: %@", [error localizedDescription]);
+      }
+
+      if (![[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord
+                                                  error:&error]) {
+        NSLog(@"error: %@", [error localizedDescription]);
+      }
+
     } else {
       NSLog(@"Permission Denied");
     }
@@ -230,6 +251,8 @@ typedef enum : NSInteger {
 - (void) rowTouchedFacebook {
   // not yet
   // http://nsscreencast.com/episodes/57-facebook-integration
+
+  [[self.alertFactory alertForFacebookNYI] show];
 
 /*
   NSLog(@"Facebook requested");
@@ -278,6 +301,18 @@ typedef enum : NSInteger {
   }];
 }
 
+#pragma mark - Row Touched: Home Kit
+
+- (void) rowTouchedHomeKit {
+  [[self.alertFactory alertForHomeKitNYI] show];
+}
+
+#pragma mark - Row Touched: Health Kit
+
+- (void) rowTouchedHealthKit {
+  [[self.alertFactory alertForHealthKitNYI] show];
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (RowDetails *) detailsForRowAtIndexPath:(NSIndexPath *) path {
@@ -307,8 +342,8 @@ typedef enum : NSInteger {
 
     case kRowCalendars: {
       selector = @selector(rowTouchedCalendars);
-      title = @"Calendars";
-      identifier = @"calendars";
+      title = @"Calendar";
+      identifier = @"calendar";
       break;
     }
 
@@ -350,7 +385,7 @@ typedef enum : NSInteger {
     case kRowCamera: {
       selector = @selector(rowTouchedCamera);
       title = @"Camera";
-      identifier = @"camara";
+      identifier = @"camera";
       break;
     }
 
@@ -365,6 +400,20 @@ typedef enum : NSInteger {
       selector = @selector(rowTouchedTwitter);
       title = @"Twitter";
       identifier = @"twitter";
+      break;
+    }
+
+    case kHomeKit: {
+      selector = @selector(rowTouchedHomeKit);
+      title = @"Home Kit";
+      identifier = @"home kit";
+      break;
+    }
+
+    case kHealthKit: {
+      selector = @selector(rowTouchedHealthKit);
+      title = @"Health Kit";
+      identifier = @"health kit";
       break;
     }
 
@@ -491,6 +540,13 @@ void handleAddressBookChange(ABAddressBookRef addressBook,
       NSLog(@"CoreLocation authorization is not denied");
     }
   }
+}
+
+#pragma mark - <UIAlertViewDelegate>
+
+- (void)   alertView:(UIAlertView *) alertView
+clickedButtonAtIndex:(NSInteger) buttonIndex {
+  NSLog(@"Alert button %@ tapped", @(buttonIndex));
 }
 
 #pragma mark - Orientation / Rotation

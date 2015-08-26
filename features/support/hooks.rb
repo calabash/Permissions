@@ -1,6 +1,39 @@
 require 'calabash'
 
+module Permissions
+  module Hooks
+    @@reset_device_settings = false
+
+    def self.reset_device_settings
+      @@reset_device_settings
+    end
+
+    def self.reset_device_settings=(new_value)
+      @@reset_device_settings = new_value
+    end
+  end
+end
+
 Before do |scenario|
+  device = Calabash::Device.default
+  if device.simulator?
+    $stdout.puts
+    $stdout.puts Calabash::Color.blue('INFO: Resetting simulator content and settings')
+    $stdout.puts
+    $stdout.flush
+  else
+    if !Calabash::Environment.xamarin_test_cloud?
+      if !Permissions::Hooks.reset_device_settings
+        $stdout.puts
+        $stdout.puts Calabash::Color.blue('INFO: Physical device detected.')
+        $stdout.flush
+        ask("Clear device privacy settings, then hit the return key.", 60 * 5)
+        !Permissions::Hooks.reset_device_settings = true
+      end
+    end
+  end
+
+  RunLoop::SimControl.new.reset_sim_content_and_settings
   if scenario.respond_to?(:scenario_outline)
     scenario = scenario.scenario_outline
   end
