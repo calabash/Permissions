@@ -17,14 +17,14 @@ Scenario: Contacts alert is dismissed
   Then Calabash should dismiss the alert
 
 @calendar
-Scenario: Calendar alert is not dismissed
+Scenario: Calendar alert is dismissed
   When I touch the Calendar row
-  Then Calabash does not dismiss the alert
+  Then Calabash should dismiss the alert
 
 @reminders
 Scenario: Reminders alert is not dismissed
   When I touch the Reminders row
-  Then Calabash does not dismiss the alert
+  Then Calabash should dismiss the alert
 
 @photos
 Scenario: Photos alert is dismissed
@@ -38,19 +38,27 @@ Scenario: Bluetooth Sharing alert
   When I touch the Bluetooth Sharing row
   Then I am waiting to figure out how to generate a Bluetooth alert
 
-@pending
+@device
 @microphone
 Scenario: Microphone
   When I touch the Microphone row
-  Then I am waiting to figure out how to generate a Microphone alert
+  Then Calabash should dismiss the alert
+
+@pending
+@simulator
+@microphone
+Scenario: Microphone
+  When I touch the Microphone row
+  Then Calabash should dismiss the alert
+  Then I am waiting to figure out how to generate a Bluetooth alert
 
 @motion
-Scenario: Motion Activity alert is not dismissed
+Scenario: Motion Activity alert is dismissed
   When I touch the Motion Activity row
-  Then Calabash does not dismiss the alert
+  Then Calabash should dismiss the alert
 
 @camera
 Scenario: Camera alert is not dismissed
   When I touch the Camera row
-  Then Calabash does not dismiss the alert
+  Then Calabash should dismiss the alert
 
