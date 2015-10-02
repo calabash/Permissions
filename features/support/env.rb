@@ -1,14 +1,19 @@
-require 'calabash/ios'
+require 'luffa'
 
-World(Calabash::IOS)
+calabash = ENV['CALABASH']
 
-Calabash::IOS.setup_defaults!
-
-# Pry is not allowed on the Xamarin Test Cloud.  This will force a validation
-# error if you mistakenly submit a binding.pry to the Test Cloud.
-unless Calabash::Environment.xamarin_test_cloud?
-  require 'pry'
-  Pry.config.history.file = '.pry-history'
-  require 'pry-nav'
+case calabash
+  when '20'
+    Luffa.log_info("Running with Calabash 2.0")
+    Luffa.log_error("Calabash 2.0 implemention is broken.")
+    Luffa.log_error("Requires an update for run-loop and Xcode 7")
+    exit 1
+  when '0x'
+    Luffa.log_info("Running with Calabash 0.x")
+  else
+    Luffa.log_error("Expected CALABASH to be '20' or '0x' but found '#{calabash}'")
+    exit 1
 end
+
+require 'rspec'
 
