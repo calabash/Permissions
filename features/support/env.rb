@@ -1,14 +1,19 @@
-require 'calabash/ios'
+require 'run_loop'
 
-World(Calabash::IOS)
+calabash = ENV['CALABASH']
 
-Calabash::IOS.setup_defaults!
-
-# Pry is not allowed on the Xamarin Test Cloud.  This will force a validation
-# error if you mistakenly submit a binding.pry to the Test Cloud.
-unless Calabash::Environment.xamarin_test_cloud?
-  require 'pry'
-  Pry.config.history.file = '.pry-history'
-  require 'pry-nav'
+case calabash
+  when '2x'
+    RunLoop.log_debug("Running with Calabash 2.x")
+    RunLoop.log_error("Calabash 2.x implemention is broken.")
+    RunLoop.log_error("Requires an update for run-loop and Xcode 7")
+    exit 1
+  when '0x'
+    RunLoop.log_debug("Running with Calabash 0.x")
+  else
+    RunLoop.log_error("Expected CALABASH to be '2x' or '0x' but found '#{calabash}'")
+    exit 1
 end
+
+require 'rspec'
 

@@ -37,7 +37,7 @@ ideviceinstaller.log
 ci-reports
 
 # xamarin build directory for XTC
-xtc-staging
+xtc-submit
 
 # Xcode 4+
 *.xcodeproj/*.mode*

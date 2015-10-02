@@ -33,23 +33,6 @@ module Permissions
       end
     end
 
-    def wait_for_alert
-      timeout = 4
-      message = "Waited #{timeout} seconds for an alert to appear"
-      wait_for(message, {:timeout => timeout}) do
-        alert_exists?
-      end
-    end
-
-    def wait_for_alert_with_title(alert_title)
-      timeout = 4
-      message = "Waited #{timeout} seconds for an alert with title '#{alert_title}' to appear"
-
-      wait_for(message, {:timeout => timeout}) do
-        alert_exists?(alert_title)
-      end
-    end
-
     def tap_alert_button(button_title)
       wait_for_alert
 
@@ -57,7 +40,7 @@ module Permissions
     end
 
     def alert_view_query_str
-      if ios8?
+      if ios8? || ios9?
         "view:'_UIAlertControllerView'"
       elsif ios7?
         "view:'_UIModalItemAlertContentView'"
@@ -69,7 +52,7 @@ module Permissions
     def button_views
       wait_for_alert
 
-      if ios8?
+      if ios8? || ios9?
         query = "view:'_UIAlertControllerActionView'"
       elsif ios7?
         query = "view:'_UIModalItemAlertContentView' descendant UITableView descendant label"

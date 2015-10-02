@@ -32,6 +32,7 @@ Scenario: Photos alert is dismissed
   Then Calabash should dismiss the alert
   And I see the photo roll
 
+@not_xtc
 @pending
 @bluetooth
 Scenario: Bluetooth Sharing alert
@@ -50,7 +51,7 @@ Scenario: Microphone
 Scenario: Microphone
   When I touch the Microphone row
   Then Calabash should dismiss the alert
-  Then I am waiting to figure out how to generate a Bluetooth alert
+  Then I am waiting to figure out how to generate a Microphone alert
 
 @motion
 Scenario: Motion Activity alert is dismissed
