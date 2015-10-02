@@ -1,8 +1,14 @@
 all:
+	$(MAKE) clean
 	$(MAKE) app
+	$(MAKE) ipa
+
 
 clean:
 	rm -rf build
+	rm -rf Products
+
+  # Legacy - can be safely removed at some point
 	rm -rf Calabash-app
 	rm -rf Calabash-ipa
 
@@ -12,16 +18,9 @@ clean:
 # if you have multiple Developer accounts.
 # $ CODE_SIGN_IDENTITY="iPhone Developer: Joshua Moody (8<snip>F)" make ipa
 ipa:
-	rm -rf build
-	rm -rf Calabash-ipa
-	script/make/make-ipa.sh
+	bin/make/ipa.sh
 
 # Builds an app linked with the Calabash server.
 app:
-	rm -rf build
-	rm -rf Calabash-app
-	script/make/make-app.sh
-
-tags:
-	script/make/vim-ctags.sh
+	bin/make/app.sh
 
