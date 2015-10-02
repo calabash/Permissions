@@ -2,7 +2,7 @@
 
 require 'luffa'
 
-REQUIRES = "-r features/support -r features/0x/support -r features/0x/steps"
+REQUIRES = "-r features/support -r features/steps -r features/0x/support"
 
 if ENV["APP_BUNDLE_PATH"]
   Luffa.log_warn("APP_BUNDLE_PATH is deprecated; use APP instead")

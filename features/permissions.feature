@@ -50,7 +50,7 @@ Scenario: Microphone
 Scenario: Microphone
   When I touch the Microphone row
   Then Calabash should dismiss the alert
-  Then I am waiting to figure out how to generate a Bluetooth alert
+  Then I am waiting to figure out how to generate a Microphone alert
 
 @motion
 Scenario: Motion Activity alert is dismissed
