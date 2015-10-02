@@ -10,8 +10,9 @@ built with the **Debug** configuration.
 ```
 1. $ git clone git@github.com:Oddj0b/Permissions.git
 2. $ cd Permissions
-3. $ make app       # Calabash-app/Permissions.app
-4. $ make ipa       # Calabash-ipa/Permissions.ipa
+3. $ bundle install
+4. $ make app       # Products/app/Permissions.app
+5. $ make ipa       # Products/ipa/Permissions.ipa
 ```
 
 ### Testing
