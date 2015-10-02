@@ -1,7 +1,7 @@
 <%
 
-APP = ENV['CAL_APP'] || File.expand_path("./Calabash-app/Permissions.app")
-IPA = ENV['CAL_APP'] || File.expand_path("./Calabash-ipa/Permissions.ipa")
+APP = ENV['CAL_APP'] || File.expand_path("./Products/app/Permissions.app")
+IPA = ENV['CAL_APP'] || File.expand_path("./Products/ipa/Permissions.ipa")
 
 calabash_dir = File.expand_path(File.join(ENV['HOME'], '.calabash'))
 
