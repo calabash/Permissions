@@ -18,11 +18,11 @@ clean:
 # if you have multiple Developer accounts.
 # $ CODE_SIGN_IDENTITY="iPhone Developer: Joshua Moody (8<snip>F)" make ipa
 ipa:
-	bin/make/make-ipa.sh
+	bin/make/ipa.sh
 
 # Builds an app linked with the Calabash server.
 app:
-	bin/make/make-app.sh
+	bin/make/app.sh
 
 tags:
 	bin/make/vim-ctags.sh
