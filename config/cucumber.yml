@@ -1,1 +1,66 @@
-calabash-0x-profiles.yml
+<%
+
+require 'luffa'
+
+REQUIRES = "-r features/support -r features/0x/support -r features/0x/steps"
+
+if ENV["APP_BUNDLE_PATH"]
+  Luffa.log_warn("APP_BUNDLE_PATH is deprecated; use APP instead")
+end
+
+APP = lambda do
+        ENV["APP"] || ENV["APP_BUNDLE_PATH"] ||
+        File.expand_path("./Products/app/Permissions.app")
+      end.call
+
+calabash_dir = File.expand_path(File.join(ENV["HOME"], ".calabash"))
+
+devices = {}
+
+device_list = ['iphone5C', 'iphone4S', 'iphone6', 'iphone6plus', 'ipadmini']
+
+device_list.each do |device|
+  dir = "#{calabash_dir}/devices/#{device}"
+  ip = IO.read("#{dir}/ip") if File.exists?("#{dir}/ip")
+  udid = IO.read("#{dir}/udid") if File.exists?("#{dir}/udid")
+  ht = {:dir => dir,
+        :ip => ip,
+        :udid => udid}
+  devices[device.to_sym] = ht
+end
+
+if ENV["USER"] == "jenkins"
+  formatter = "progress"
+else
+  formatter = "Slowhandcuke::Formatter"
+end
+
+%>
+
+common:  CALABASH=0x <%= REQUIRES %>
+
+verbose: DEBUG=1
+formatter: -f <%= formatter %>
+
+# Launch on default simulator.
+simulator_vars: APP=<%= APP %>
+simulator_tags: --tags ~@device_only --tags ~@device
+default:        -p simulator_vars -p simulator_tags -p formatter -p common
+
+# Launch on device.
+device_tags:  --tags ~@simulator_only --tags ~@simulator
+device:       -p device_tags -p formatter BUNDLE_ID=sh.calaba.Permissions -p common
+
+iphone5C:    -p device DEVICE_TARGET=<%= devices[:iphone5C][:udid] %>    DEVICE_ENDPOINT=<%= devices[:iphone5C][:ip] %>
+iphone4S:    -p device DEVICE_TARGET=<%= devices[:iphone4S][:udid] %>    DEVICE_ENDPOINT=<%= devices[:iphone4S][:ip] %>
+iphone6:     -p device DEVICE_TARGET=<%= devices[:iphone6][:udid] %>     DEVICE_ENDPOINT=<%= devices[:iphone6][:ip] %>
+iphone6plus: -p device DEVICE_TARGET=<%= devices[:iphone6plus][:udid] %> DEVICE_ENDPOINT=<%= devices[:iphone6plus][:ip] %>
+ipadmini:    -p device DEVICE_TARGET=<%= devices[:ipadmini][:udid] %>    DEVICE_ENDPOINT=<%= devices[:ipadmini][:ip] %>
+
+# Joshua's devices
+neptune: -p iphone4S
+saturn:  -p iphone5S
+hat:     -p iphone6
+denis:   -p iphone6plus
+mercury: -p ipadmini
+
