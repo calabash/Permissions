@@ -24,6 +24,3 @@ ipa:
 app:
 	bin/make/app.sh
 
-tags:
-	bin/make/vim-ctags.sh
-
