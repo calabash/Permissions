@@ -134,7 +134,24 @@ banner "Code Signing Details"
 DETAILS=`xcrun codesign --display --verbose=2 ${INSTALLED_APP} 2>&1`
 
 echo "$(tput setaf 4)$DETAILS$(tput sgr0)"
-echo
+
+banner "Preparing for XTC Submit"
+
+XTC_DIR="xtc-submit"
+rm -rf "${XTC_DIR}"
+mkdir -p "${XTC_DIR}"
+
+ditto_or_exit features "${XTC_DIR}/features"
+info "Copied features to ${XTC_DIR}/"
+
+ditto_or_exit config/xtc-profiles.yml "${XTC_DIR}/cucumber.yml"
+info "Copied config/xtc-profiles.yml to ${XTC_DIR}/"
+
+ditto_or_exit "${INSTALLED_IPA}" "${XTC_DIR}/"
+info "Copied ${IPA} to ${XTC_DIR}/"
+
+ditto_or_exit "${INSTALLED_DSYM}" "${XTC_DIR}/${DSYM}"
+info "Copied ${DSYM} to ${XTC_DIR}/"
 
 info "Done!"
 
