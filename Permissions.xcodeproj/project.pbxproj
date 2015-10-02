@@ -494,7 +494,7 @@
 				92D56A2E18A38F0400B4369B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		92D56A2F18A38F0400B4369B /* Build configuration list for PBXNativeTarget "Permissions" */ = {
 			isa = XCConfigurationList;
@@ -503,7 +503,7 @@
 				92D56A3118A38F0400B4369B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		92D56A3218A38F0400B4369B /* Build configuration list for PBXNativeTarget "PermissionsTests" */ = {
 			isa = XCConfigurationList;
@@ -512,7 +512,7 @@
 				92D56A3418A38F0400B4369B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
