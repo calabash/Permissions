@@ -1,73 +1,121 @@
 #!/usr/bin/env bash
 
-bundle
+function info {
+  echo "$(tput setaf 2)INFO: $1$(tput sgr0)"
+}
 
-TARGET_NAME="Permissions"
+function error {
+  echo "$(tput setaf 1)ERROR: $1$(tput sgr0)"
+}
+
+function banner {
+  echo ""
+  echo "$(tput setaf 5)######## $1 #######$(tput sgr0)"
+  echo ""
+}
+
+function ditto_or_exit {
+  ditto "${1}" "${2}"
+  if [ "$?" != 0 ]; then
+    error "Could not copy:"
+    error "  source: ${1}"
+    error "  target: ${2}"
+    if [ ! -e "${1}" ]; then
+      error "The source file does not exist"
+      error "Did a previous xcodebuild step fail?"
+    fi
+    error "Exiting 1"
+    exit 1
+  fi
+}
+
+banner "Preparing"
+
+if [ "${XCPRETTY}" = "0" ]; then
+  USE_XCPRETTY=
+else
+  USE_XCPRETTY=`which xcpretty | tr -d '\n'`
+fi
+
+if [ ! -z ${USE_XCPRETTY} ]; then
+  XC_PIPE='xcpretty -c'
+else
+  XC_PIPE='cat'
+fi
+
+XC_TARGET="Permissions"
 XC_PROJECT="Permissions.xcodeproj"
 XC_SCHEME="${TARGET_NAME}"
-CAL_BUILD_DIR="${PWD}/build"
-CAL_BUILD_CONFIG=Debug
+XC_BUILD_DIR="build/app"
+XC_CONFIG=Debug
 
-rm -rf "${CAL_BUILD_DIR}"
-mkdir -p "${CAL_BUILD_DIR}"
-
-set +o errexit
-
-if [ -z "${CODE_SIGN_IDENTITY}" ]; then
-  xcrun xcodebuild \
-    -SYMROOT="${CAL_BUILD_DIR}" \
-    -derivedDataPath "${CAL_BUILD_DIR}" \
-    ARCHS="i386 x86_64" \
-    VALID_ARCHS="i386 x86_64" \
-    ONLY_ACTIVE_ARCH=NO \
-    -project "${XC_PROJECT}" \
-    -scheme "${TARGET_NAME}" \
-    -sdk iphonesimulator \
-    -configuration "${CAL_BUILD_CONFIG}" \
-    clean build | bundle exec xcpretty -c
-else
-  xcrun xcodebuild \
-    CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY}" \
-    -SYMROOT="${CAL_BUILD_DIR}" \
-    -derivedDataPath "${CAL_BUILD_DIR}" \
-    ARCHS="i386 x86_64" \
-    VALID_ARCHS="i386 x86_64" \
-    ONLY_ACTIVE_ARCH=NO \
-    -project "${XC_PROJECT}" \
-    -scheme "${TARGET_NAME}" \
-    -sdk iphonesimulator \
-    -configuration "${CAL_BUILD_CONFIG}" \
-    clean build | bundle exec xcpretty -c
-fi
-
-RETVAL=${PIPESTATUS[0]}
-
-set -o errexit
-
-if [ $RETVAL != 0 ]; then
-  echo "FAIL:  Could not build"
-  exit $RETVAL
-else
-  echo "INFO: Successfully built"
-fi
-
-INSTALL_DIR=./Calabash-app
-if [ -d "${INSTALL_DIR}" ]; then
-  rm -rf "${INSTALL_DIR}"
-fi
-
+INSTALL_DIR=Products/app
+rm -rf "${INSTALL_DIR}"
 mkdir -p "${INSTALL_DIR}"
 
-APP=${TARGET_NAME}.app
-DSYM=${TARGET_NAME}.app.dSYM
+APP="${XC_TARGET}.app"
+DSYM="${APP}.dSYM"
 
-PRODUCT_DIR="${CAL_BUILD_DIR}/Build/Products/${CAL_BUILD_CONFIG}-iphonesimulator"
-APP_BUNDLE_PATH="${PRODUCT_DIR}/${APP}"
-DSYM_BUNDLE="${PRODUCT_DIR}/${DSYM}"
+INSTALLED_APP="${INSTALL_DIR}/${APP}"
+INSTALLED_DSYM="${INSTALL_DIR}/${DSYM}"
 
-mv "${APP_BUNDLE_PATH}" "${INSTALL_DIR}/${APP}"
-echo "INFO: installed ${INSTALL_DIR}/${APP}"
+info "Prepared install directory ${INSTALL_DIR}"
 
-mv "${DSYM_BUNDLE}" "${INSTALL_DIR}/${DSYM}"
-echo "INFO: installed ${INSTALL_DIR}/${DSYM}"
+BUILD_PRODUCTS_DIR="${XC_BUILD_DIR}/Build/Products/${XC_CONFIG}-iphonesimulator"
+BUILD_PRODUCTS_APP="${BUILD_PRODUCTS_DIR}/${APP}"
+BUILD_PRODUCTS_DSYM="${BUILD_PRODUCTS_DIR}/${DSYM}"
+
+rm -rf "${BUILD_PRODUCTS_APP}"
+rm -rf "${BUILD_PRODUCTS_DSYM}"
+
+info "Prepared build directory ${XC_BUILD_DIR}"
+
+banner "Building ${APP}"
+
+if [ -z "${CODE_SIGN_IDENTITY}" ]; then
+  COMMAND_LINE_BUILD=1 xcrun xcodebuild  \
+    -SYMROOT="${XC_BUILD_DIR}" \
+    -derivedDataPath "${XC_BUILD_DIR}" \
+    -project "${XC_PROJECT}" \
+    -scheme "${XC_TARGET}" \
+    -configuration "${XC_CONFIG}" \
+    -sdk iphonesimulator \
+    ARCHS="i386 x86_64" \
+    VALID_ARCHS="i386 x86_64" \
+    ONLY_ACTIVE_ARCH=NO \
+    build | $XC_PIPE
+else
+  COMMAND_LINE_BUILD=1 xcrun xcodebuild \
+    CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY}" \
+    -SYMROOT="${XC_BUILD_DIR}" \
+    -derivedDataPath "${XC_BUILD_DIR}" \
+    -project "${XC_PROJECT}" \
+    -scheme "${XC_TARGET}" \
+    -configuration "${XC_CONFIG}" \
+    -sdk iphonesimulator \
+    ARCHS="i386 x86_64" \
+    VALID_ARCHS="i386 x86_64" \
+    ONLY_ACTIVE_ARCH=NO \
+    build | $XC_PIPE
+fi
+
+EXIT_CODE=${PIPESTATUS[0]}
+
+if [ $EXIT_CODE != 0 ]; then
+  error "Building app failed."
+  exit $EXIT_CODE
+else
+  info "Building app succeeded."
+fi
+
+banner "Installing ${APP}"
+
+ditto_or_exit "${BUILD_PRODUCTS_APP}" "${INSTALLED_APP}"
+info "Installed ${INSTALLED_APP}"
+
+ditto_or_exit "${BUILD_PRODUCTS_DSYM}" "${INSTALLED_DSYM}"
+info "Installed ${INSTALLED_DSYM}"
+
+info "Done!"
+
 

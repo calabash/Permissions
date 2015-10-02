@@ -1,8 +1,14 @@
 all:
+	$(MAKE) clean
 	$(MAKE) app
+	$(MAKE) ipa
+
 
 clean:
 	rm -rf build
+	rm -rf Products
+
+  # Legacy - can be safely removed at some point
 	rm -rf Calabash-app
 	rm -rf Calabash-ipa
 
@@ -18,8 +24,6 @@ ipa:
 
 # Builds an app linked with the Calabash server.
 app:
-	rm -rf build
-	rm -rf Calabash-app
 	bin/make/make-app.sh
 
 tags:
