@@ -1,17 +1,17 @@
-require 'luffa'
+require 'run_loop'
 
 calabash = ENV['CALABASH']
 
 case calabash
-  when '20'
-    Luffa.log_info("Running with Calabash 2.0")
-    Luffa.log_error("Calabash 2.0 implemention is broken.")
-    Luffa.log_error("Requires an update for run-loop and Xcode 7")
+  when '2x'
+    RunLoop.log_debug("Running with Calabash 2.x")
+    RunLoop.log_error("Calabash 2.x implemention is broken.")
+    RunLoop.log_error("Requires an update for run-loop and Xcode 7")
     exit 1
   when '0x'
-    Luffa.log_info("Running with Calabash 0.x")
+    RunLoop.log_debug("Running with Calabash 0.x")
   else
-    Luffa.log_error("Expected CALABASH to be '20' or '0x' but found '#{calabash}'")
+    RunLoop.log_error("Expected CALABASH to be '2x' or '0x' but found '#{calabash}'")
     exit 1
 end
 
