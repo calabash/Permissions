@@ -14,14 +14,14 @@ clean:
 ipa:
 	rm -rf build
 	rm -rf Calabash-ipa
-	script/make/make-ipa.sh
+	bin/make/make-ipa.sh
 
 # Builds an app linked with the Calabash server.
 app:
 	rm -rf build
 	rm -rf Calabash-app
-	script/make/make-app.sh
+	bin/make/make-app.sh
 
 tags:
-	script/make/vim-ctags.sh
+	bin/make/vim-ctags.sh
 
