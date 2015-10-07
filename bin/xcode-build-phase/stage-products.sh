@@ -7,7 +7,7 @@ function info {
 }
 
 function error {
-  echo "$ERROR: $1"
+  echo "ERROR: $1"
 }
 
 function banner {
@@ -50,25 +50,42 @@ else
   APP_TARGET_DIR=${SOURCE_ROOT}/Products/app
 fi
 
+banner "Preparing"
+
+info "Xcode build detected; will stage binary to $APP_TARGET_DIR"
+
 rm -rf "${APP_TARGET_DIR}"
 mkdir -p "${APP_TARGET_DIR}"
 
-# Copy the .app to staging directory.
+info "Cleaned install directory: ${APP_TARGET_DIR}"
+
 APP_SOURCE_PATH="${CONFIGURATION_BUILD_DIR}/${FULL_PRODUCT_NAME}"
 APP_TARGET_PATH="${APP_TARGET_DIR}/${FULL_PRODUCT_NAME}"
 ditto_or_exit "${APP_SOURCE_PATH}" "${APP_TARGET_PATH}"
+info "Copied .app to ${APP_TARGET_DIR}/${FULL_PRODUCT_NAME}"
 
-# Copy the .dSYM to the staging directory.
 DSYM_SOURCE_PATH="${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}"
 DSYM_TARGET_PATH="${APP_TARGET_DIR}/${DWARF_DSYM_FILE_NAME}"
 ditto_or_exit "${DSYM_SOURCE_PATH}" "${DSYM_TARGET_PATH}"
+info "Copied .dSYM to ${APP_TARGET_DIR}/${DWARF_DSYM_FILE_NAME}"
 
-# For physical devices, package the .ipa
 if [ ${EFFECTIVE_PLATFORM_NAME} = "-iphoneos" ]; then
+
+  banner "Creating ipa"
+
+  PAYLOAD_DIR="${APP_TARGET_DIR}/Payload"
+  mkdir -p "${PAYLOAD_DIR}"
+  PAYLOAD_APP="${PAYLOAD_DIR}/${FULL_PRODUCT_NAME}"
+  ditto_or_exit "${APP_TARGET_PATH}" "${PAYLOAD_APP}"
+
   IPA_PATH="${APP_TARGET_DIR}/${TARGET_NAME}.ipa"
-  echo "Zipping .app to ${IPA_PATH}"
+
+  info "Zipping .app to ${IPA_PATH}"
   xcrun ditto -ck --rsrc --sequesterRsrc --keepParent \
-    "${APP_TARGET_PATH}" \
+    "${PAYLOAD_APP}" \
     "${IPA_PATH}"
+  info "Installed .ipa to ${IPA_PATH}"
 fi
+
+info "Done!"
 
