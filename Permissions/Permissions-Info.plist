@@ -48,6 +48,8 @@
 	<string>Permissions wants pictures of known associates.</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Permissions wants to bug you all the time.</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -25,6 +25,7 @@
 		F500E66F1B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */; };
 		F500E6701B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */; };
 		F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F54CCC281B84D79C0007F68D /* RowDetails.m */; };
+		F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57605151BC57F6A00E89C97 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalAlertFactory.m; sourceTree = "<group>"; };
 		F54CCC271B84D79C0007F68D /* RowDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowDetails.h; sourceTree = "<group>"; };
 		F54CCC281B84D79C0007F68D /* RowDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowDetails.m; sourceTree = "<group>"; };
+		F57605161BC57F6A00E89C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		b0255be9be319745b429c3af /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -131,9 +133,9 @@
 		92D56A0618A38F0300B4369B /* Permissions */ = {
 			isa = PBXGroup;
 			children = (
+				F57605141BC57F0B00E89C97 /* XIB */,
 				92D56A0F18A38F0300B4369B /* AppDelegate.h */,
 				92D56A1018A38F0300B4369B /* AppDelegate.m */,
-				92D56A1218A38F0300B4369B /* Main.storyboard */,
 				92D56A1518A38F0300B4369B /* ViewController.h */,
 				92D56A1618A38F0300B4369B /* ViewController.m */,
 				F54CCC271B84D79C0007F68D /* RowDetails.h */,
@@ -173,6 +175,15 @@
 				92D56A2818A38F0400B4369B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F57605141BC57F0B00E89C97 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				F57605151BC57F6A00E89C97 /* LaunchScreen.xib */,
+				92D56A1218A38F0300B4369B /* Main.storyboard */,
+			);
+			name = XIB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */,
 				92D56A1918A38F0300B4369B /* Images.xcassets in Resources */,
 				92D56A0B18A38F0300B4369B /* InfoPlist.strings in Resources */,
 				92D56A1418A38F0300B4369B /* Main.storyboard in Resources */,
@@ -341,6 +353,14 @@
 				92D56A2918A38F0400B4369B /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F57605151BC57F6A00E89C97 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F57605161BC57F6A00E89C97 /* Base */,
+			);
+			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
