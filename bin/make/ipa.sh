@@ -45,7 +45,7 @@ fi
 
 XC_TARGET="Permissions"
 XC_PROJECT="Permissions.xcodeproj"
-XC_SCHEME="${TARGET_NAME}"
+XC_SCHEME="${XC_TARGET}"
 XC_BUILD_DIR="build/ipa"
 XC_CONFIG=Debug
 
