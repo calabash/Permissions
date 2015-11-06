@@ -3,11 +3,10 @@ language: objective-c
 before_script:
   - bin/ci/travis/instruments-auth.sh
   - bin/ci/travis/install-keychain.sh
-  - brew install tree
 
 script:
   - bundle update
-# - bin/ci/travis/make-framework.sh
+  - bin/ci/travis/make-framework.sh
   - bin/ci/travis/make-ipa.sh
   - bundle exec bin/test/test-cloud.rb
 
@@ -15,8 +14,8 @@ notifications:
   email:
     recipients:
       - joshuajmoody@gmail.com
-      # - chris.fuentes@xamarin.com
-      # - villars.gimm@xamarin.com
+      - chris.fuentes@xamarin.com
+      - villars.gimm@xamarin.com
     on_success: change
     on_failure: always
 

@@ -10,25 +10,6 @@ if [ "${TRAVIS_SECURE_ENV_VARS}" != "true" ]; then
   exit 0
 fi
 
-
-tree -h calabash.framework
-
-if [ -e calabash.framework/calabash ]; then
-  echo "Calabash framework binary does exist"
-else
-  echo "Calabash framework binary does not exist"
-  exit 1
-fi
-
-if [ -e /Users/travis/build/calabash/Permissions/calabash.framework/calabash ]; then
-  echo "Calabash framework exists at full path"
-else
-  echo "Calabash framework does not exist at full path"
-  exit 1
-fi
-
-lipo -info /Users/travis/build/calabash/Permissions/calabash.framework/calabash
-
 bin/ci/travis/install-keychain.sh
 
 CODE_SIGN_DIR="${HOME}/.calabash/calabash-codesign"

@@ -41,7 +41,3 @@ echo "path: ${PWD}"
 rm -rf calabash.framework
 ditto_or_exit calabash-ios-server/calabash.framework calabash.framework
 
-ls -al
-
-tree calabash.framework
-
