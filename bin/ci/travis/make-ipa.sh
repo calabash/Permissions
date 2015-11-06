@@ -27,6 +27,8 @@ else
   exit 1
 fi
 
+lipo -info /Users/travis/build/calabash/Permissions/calabash.framework/calabash
+
 bin/ci/travis/install-keychain.sh
 
 CODE_SIGN_DIR="${HOME}/.calabash/calabash-codesign"
@@ -35,8 +37,6 @@ KEYCHAIN="${CODE_SIGN_DIR}/ios/Calabash.keychain"
 mv .env-template .env
 
 OUT=`xcrun security find-identity -p codesigning -v "${KEYCHAIN}"`
-echo "out = $OUT"
 IDENTITY=`echo $OUT | awk -F'"' '{print $2}' | tr -d '\n'`
-echo "identity = ${IDENTITY}"
 CODE_SIGN_IDENTITY="${IDENTITY}" make ipa
 
