@@ -27,8 +27,8 @@ And(/^I see the photo roll$/) do
   wait_for_view("view marked:'Photos'")
 end
 
-Then(/^I am waiting to figure out how to generate a (Bluetooth|Microphone) alert$/) do |type|
-  message = "Cannot reliably generate a '#{type}' alert yet. :("
+Then(/^I am waiting to figure out how to generate a Microphone alert$/) do
+  message = "Cannot reliably generate a 'Microphone' alert yet. :("
   pending(message)
 end
 
