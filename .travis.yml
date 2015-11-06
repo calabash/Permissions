@@ -7,7 +7,7 @@ before_script:
 
 script:
   - bundle update
-  - bin/ci/travis/make-framework.sh
+# - bin/ci/travis/make-framework.sh
   - bin/ci/travis/make-ipa.sh
   - bundle exec bin/test/test-cloud.rb
 

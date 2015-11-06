@@ -36,41 +36,39 @@ elsif Luffa::Environment.travis_ci?
   # 2. make the ipa
   # 3. stage the ipa
 
-  Dir.chdir("cucumber") do
-    Bundler.with_clean_env do
-      Luffa.unix_command("bundle update")
+  Bundler.with_clean_env do
+    Luffa.unix_command("bundle update")
 
-      # rake install must succeed
-      calabash_gem = `bundle show calabash-cucumber`.strip
+    # rake install must succeed
+    calabash_gem = `bundle show calabash-cucumber`.strip
 
-      ["dylibs", "staticlib"].each do |lib_dir|
-        FileUtils.mkdir_p(File.join(calabash_gem, lib_dir))
-      end
-
-      ["libCalabashDyn.dylib", "libCalabashDynSim.dylib"].each do |lib|
-        target = File.join(calabash_gem, "dylibs", lib)
-        File.open(target, "w") do |file|
-          file.write(%q{
-These files cannot have zero size.  There is a validation
-step in the rake install script that will abort the build
-if these files are missing.
-                     })
-        end
-      end
-
-      ["libFrankCalabash.a", "calabash.framework.zip"].each do |lib|
-        target = File.join(calabash_gem, "staticlib", lib)
-        File.open(target, "w") do |file|
-          file.write(%q{
-These files cannot have zero size.  There is a validation
-step in the rake install script that will abort the build
-if these files are missing.
-                     })
-        end
-      end
-
-      Luffa.unix_command("bundle exec briar xtc #{device_set}")
+    ["dylibs", "staticlib"].each do |lib_dir|
+      FileUtils.mkdir_p(File.join(calabash_gem, lib_dir))
     end
+
+    ["libCalabashDyn.dylib", "libCalabashDynSim.dylib"].each do |lib|
+      target = File.join(calabash_gem, "dylibs", lib)
+      File.open(target, "w") do |file|
+        file.write(%q{
+These files cannot have zero size.  There is a validation
+step in the rake install script that will abort the build
+if these files are missing.
+                   })
+      end
+    end
+
+    ["libFrankCalabash.a", "calabash.framework.zip"].each do |lib|
+      target = File.join(calabash_gem, "staticlib", lib)
+      File.open(target, "w") do |file|
+        file.write(%q{
+These files cannot have zero size.  There is a validation
+step in the rake install script that will abort the build
+if these files are missing.
+                   })
+      end
+    end
+
+    Luffa.unix_command("bundle exec briar xtc #{device_set}")
   end
 end
 
