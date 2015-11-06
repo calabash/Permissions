@@ -26,7 +26,6 @@
 		F500E6701B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */; };
 		F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F54CCC281B84D79C0007F68D /* RowDetails.m */; };
 		F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57605151BC57F6A00E89C97 /* LaunchScreen.xib */; };
-		F5DA5FB21BECF947005B3413 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = b0255be9be319745b429c3af /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,6 @@
 		F54CCC271B84D79C0007F68D /* RowDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowDetails.h; sourceTree = "<group>"; };
 		F54CCC281B84D79C0007F68D /* RowDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowDetails.m; sourceTree = "<group>"; };
 		F57605161BC57F6A00E89C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		b0255be9be319745b429c3af /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5DA5FB21BECF947005B3413 /* CFNetwork.framework in Frameworks */,
 				92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */,
 				92D56A3918A3944C00B4369B /* CoreLocation.framework in Frameworks */,
 				92D56A0318A38F0300B4369B /* CoreGraphics.framework in Frameworks */,
@@ -125,7 +122,6 @@
 				92D56A0018A38F0300B4369B /* Foundation.framework */,
 				92D56A0218A38F0300B4369B /* CoreGraphics.framework */,
 				92D56A0418A38F0300B4369B /* UIKit.framework */,
-				b0255be9be319745b429c3af /* CFNetwork.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -452,7 +448,9 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-force_load",
-					"\"$(SRCROOT)/calabash.framework/calabash\"",
+					"\"$(SOURCE_ROOT)/calabash.framework/calabash\"",
+					"-framework",
+					CFNetwork,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
