@@ -25,7 +25,8 @@
 		F500E66F1B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */; };
 		F500E6701B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */; };
 		F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F54CCC281B84D79C0007F68D /* RowDetails.m */; };
-		F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57605151BC57F6A00E89C97 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
+		F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57605151BC57F6A00E89C97 /* LaunchScreen.xib */; };
+		F5DA5FB21BECF947005B3413 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = b0255be9be319745b429c3af /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5DA5FB21BECF947005B3413 /* CFNetwork.framework in Frameworks */,
 				92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */,
 				92D56A3918A3944C00B4369B /* CoreLocation.framework in Frameworks */,
 				92D56A0318A38F0300B4369B /* CoreGraphics.framework in Frameworks */,
@@ -451,7 +453,7 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-force_load",
-					"\"${PROJECT_DIR}/calabash.framework/calabash\"",
+					"\"$(SRCROOT)/calabash.framework/calabash\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
