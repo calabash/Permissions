@@ -42,5 +42,6 @@ rm -rf calabash.framework
 ditto_or_exit calabash-ios-server/calabash.framework calabash.framework
 
 ls -al
-ls -al calabash.framework
+
+tree calabash.framework
 

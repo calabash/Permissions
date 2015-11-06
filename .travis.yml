@@ -3,6 +3,7 @@ language: objective-c
 before_script:
   - bin/ci/travis/instruments-auth.sh
   - bin/ci/travis/install-keychain.sh
+  - brew install tree
 
 script:
   - bundle update
