@@ -32,12 +32,10 @@ Scenario: Photos alert is dismissed
   Then Calabash should dismiss the alert
   And I see the photo roll
 
-@not_xtc
-@pending
 @bluetooth
 Scenario: Bluetooth Sharing alert
   When I touch the Bluetooth Sharing row
-  Then I am waiting to figure out how to generate a Bluetooth alert
+  Then Calabash should dismiss the alert
 
 @device
 @microphone
