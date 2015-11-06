@@ -70,4 +70,19 @@
   return [self alertForNYIWithMessage:[self healthKitMessage]];
 }
 
+// We have not been able to generate a Bluetooth alert, but we have one example
+// in English.
+- (UIAlertView *) alertForBluetoothFAKE {
+  NSString *title = @"APP NAME would like to make data available to nearby bluetooth devices even when you're not using the app";
+  NSString *no = @"Don't Allow";
+  NSString *ok = @"OK";
+
+  return [[UIAlertView alloc]
+          initWithTitle:title
+          message:nil
+          delegate:self.delegate
+          cancelButtonTitle:no
+          otherButtonTitles:ok, nil];
+}
+
 @end

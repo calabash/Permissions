@@ -177,6 +177,10 @@ typedef enum : NSInteger {
 - (void) rowTouchedBluetooth {
   NSLog(@"Bluetooth Sharing is requested");
 
+  [[self.alertFactory alertForBluetoothFAKE] show];
+
+  /* Have not been able to generate a Bluetooth alert reliably, so we'll
+     generate a fake one with the same title.
   if (!self.cbManager) {
     self.cbManager = [[CBCentralManager alloc]
                       initWithDelegate:self
@@ -185,6 +189,7 @@ typedef enum : NSInteger {
   }
 
   [self.cbManager scanForPeripheralsWithServices:nil options:nil];
+  */
 }
 
 #pragma mark - Row Touched: Microphone
