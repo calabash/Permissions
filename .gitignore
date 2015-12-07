@@ -29,6 +29,7 @@ screenshots
 *screenshot*.png
 .ruby-version
 ideviceinstaller.log
+Gemfile.lock
 
 # briar
 .env

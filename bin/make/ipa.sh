@@ -46,27 +46,30 @@ fi
 XC_TARGET="Permissions"
 XC_PROJECT="Permissions.xcodeproj"
 XC_SCHEME="${XC_TARGET}"
-XC_BUILD_DIR="build/ipa"
 XC_CONFIG=Debug
+XC_BUILD_DIR="build/ipa-cal/Permissions"
 
-INSTALL_DIR=Products/ipa
-rm -rf "${INSTALL_DIR}"
-mkdir -p "${INSTALL_DIR}"
 
 APP="${XC_TARGET}.app"
 DSYM="${APP}.dSYM"
 IPA="${XC_TARGET}.ipa"
 
+INSTALL_DIR="Products/ipa"
 INSTALLED_APP="${INSTALL_DIR}/${APP}"
 INSTALLED_DSYM="${INSTALL_DIR}/${DSYM}"
 INSTALLED_IPA="${INSTALL_DIR}/${IPA}"
 
+rm -rf "${INSTALL_DIR}"
+mkdir -p "${INSTALL_DIR}"
+
 info "Prepared install directory ${INSTALL_DIR}"
 
-ARCHIVE_BUNDLE="${XC_BUILD_DIR}/${XC_TARGET}.xcarchive"
-ARCHIVED_APP="${ARCHIVE_BUNDLE}/Products/Applications/${APP}"
-ARCHIVED_DSYM="${ARCHIVE_BUNDLE}/dSYMs/${DSYM}"
-rm -rf "${ARCHIVE_BUNDLE}"
+BUILD_PRODUCTS_DIR="${XC_BUILD_DIR}/Build/Products/${XC_CONFIG}-iphoneos"
+BUILD_PRODUCTS_APP="${BUILD_PRODUCTS_DIR}/${APP}"
+BUILD_PRODUCTS_DSYM="${BUILD_PRODUCTS_DIR}/${DSYM}"
+
+rm -rf "${BUILD_PRODUCTS_APP}"
+rm -rf "${BUILD_PRODUCTS_DSYM}"
 
 info "Prepared archive directory"
 
@@ -80,11 +83,10 @@ if [ -z "${CODE_SIGN_IDENTITY}" ]; then
     -scheme "${XC_TARGET}" \
     -configuration "${XC_CONFIG}" \
     -sdk iphoneos \
-    -archivePath "${ARCHIVE_BUNDLE}" \
     ARCHS="armv7 armv7s arm64" \
     VALID_ARCHS="armv7 armv7s arm64" \
     ONLY_ACTIVE_ARCH=NO \
-    archive | $XC_PIPE
+    build | $XC_PIPE
 else
   COMMAND_LINE_BUILD=1 xcrun xcodebuild \
     CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY}" \
@@ -94,11 +96,10 @@ else
     -scheme "${XC_TARGET}" \
     -configuration "${XC_CONFIG}" \
     -sdk iphoneos \
-    -archivePath "${ARCHIVE_BUNDLE}" \
     ARCHS="armv7 armv7s arm64" \
     VALID_ARCHS="armv7 armv7s arm64" \
     ONLY_ACTIVE_ARCH=NO \
-    archive | $XC_PIPE
+    build | $XC_PIPE
 fi
 
 EXIT_CODE=${PIPESTATUS[0]}
@@ -112,7 +113,7 @@ fi
 
 banner "Installing"
 
-ditto_or_exit "${ARCHIVED_APP}" "${INSTALLED_APP}"
+ditto_or_exit "${BUILD_PRODUCTS_APP}" "${INSTALLED_APP}"
 info "Installed ${INSTALLED_APP}"
 
 PAYLOAD_DIR="${INSTALL_DIR}/Payload"
@@ -126,7 +127,7 @@ xcrun ditto -ck --rsrc --sequesterRsrc --keepParent \
 
 info "Installed ${INSTALLED_IPA}"
 
-ditto_or_exit "${ARCHIVED_DSYM}" "${INSTALLED_DSYM}"
+ditto_or_exit "${BUILD_PRODUCTS_DSYM}" "${INSTALLED_DSYM}"
 info "Installed ${INSTALLED_DSYM}"
 
 banner "Code Signing Details"

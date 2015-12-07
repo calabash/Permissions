@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'calabash-cucumber', '>= 0.16.4', '< 1.0'
-gem 'run_loop', '>= 1.5.5', '< 2.0'
+gem 'calabash-cucumber', :github => "calabash/calabash-ios", :branch => "develop"
+gem "run_loop", :github => "calabash/run_loop", :branch => "develop"
 gem 'xamarin-test-cloud', '>= 1.1', '< 2.0'
 
 gem 'retriable', '~> 2.0'
