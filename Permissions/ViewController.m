@@ -20,6 +20,7 @@ static NSString *const CalCellIdentifier = @"cell identifier";
 
 typedef enum : NSInteger {
   kRowLocationServices = 0,
+  kRowBackgroundLocationServices,
   kRowContacts,
   kRowCalendars,
   kRowReminders,
@@ -55,6 +56,7 @@ typedef enum : NSInteger {
 
 - (RowDetails *) detailsForRowAtIndexPath:(NSIndexPath *) path;
 - (void) rowTouchedLocationServices;
+- (void) rowTouchedBackgroundLocationServices;
 - (void) rowTouchedContacts;
 - (void) rowTouchedCalendars;
 - (void) rowTouchedReminders;
@@ -105,6 +107,24 @@ typedef enum : NSInteger {
   if ([self.locationManager respondsToSelector:authorizationSelector]) {
     NSLog(@"Requesting when-in-use authorization");
     [self.locationManager requestWhenInUseAuthorization];
+  } else {
+    if ([CLLocationManager locationServicesEnabled]) {
+      NSLog(@"Calling startUpdatingLocation");
+      [self.locationManager startUpdatingLocation];
+    }
+  }
+}
+
+- (void) rowTouchedBackgroundLocationServices {
+  NSLog(@"Location Services requested");
+
+  self.locationManager = [[CLLocationManager alloc] init];
+  self.locationManager.delegate = self;
+
+  SEL authorizationSelector = @selector(requestAlwaysAuthorization);
+  if ([self.locationManager respondsToSelector:authorizationSelector]) {
+    NSLog(@"Requesting background location authorization");
+    [self.locationManager requestAlwaysAuthorization];
   } else {
     if ([CLLocationManager locationServicesEnabled]) {
       NSLog(@"Calling startUpdatingLocation");
@@ -335,6 +355,13 @@ typedef enum : NSInteger {
       selector = @selector(rowTouchedLocationServices);
       title = @"Location Services";
       identifier = @"location";
+      break;
+    }
+
+    case kRowBackgroundLocationServices: {
+      selector = @selector(rowTouchedBackgroundLocationServices);
+      title = @"Background Location Services";
+      identifier = @"background location";
       break;
     }
 
