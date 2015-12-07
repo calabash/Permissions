@@ -7,8 +7,15 @@ Background: The app has launched
   Given I can see the list of services requiring authorization
 
 @location
+@reset_device_settings
 Scenario: Location alert is dismissed
   When I touch the Location Services row
+  Then Calabash should dismiss the alert
+
+@reset_device_settings
+@location
+Scenario: Background location alert is dismissed
+  When I touch the Background Location Services row
   Then Calabash should dismiss the alert
 
 @contacts
