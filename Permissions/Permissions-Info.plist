@@ -40,6 +40,12 @@
 	<string>Permissons need to use your location to spy on you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Permissons need to use your location to spy on you.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Permissions needs to know where you are ALWAYS.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Permissions wants to record your conversations.</string>
 	<key>NSMotionUsageDescription</key>
