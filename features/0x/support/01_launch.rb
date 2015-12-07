@@ -32,6 +32,7 @@ module LaunchControl
       target = self.target
       sim = RunLoop::Device.device_with_identifier(target)
       RunLoop::CoreSimulator.erase(sim)
+      self.set_sim_locale_and_lang(sim)
     end
   end
 
@@ -65,6 +66,32 @@ module LaunchControl
       ideviceinstaller.install_app
     end
   end
+
+  def self.app_locale
+    @@app_locale = ENV["APP_LOCALE"] || "en_US"
+  end
+
+  def self.app_lang
+    @aap_lang = ENV["APP_LANG"] || "en_US"
+  end
+
+  def self.set_sim_locale_and_lang(sim)
+    if !self.target_is_simulator?
+      raise "Should only be called when target is a simulator"
+    end
+
+    puts "Setting app locale to '#{self.app_locale}'"
+    puts "Setting app language to '#{self.app_lang}'"
+
+    path = File.expand_path(File.join(sim.simulator_preferences_plist_path,
+                                      "..", ".GlobalPreferences.plist"))
+    pbuddy = RunLoop::PlistBuddy.new
+    pbuddy.plist_set("AppleLocale", "string", self.app_locale, path)
+
+    xcrun = RunLoop::Xcrun.new
+    cmd = ["PlistBuddy", "-c", "Add :AppleLanguages:0 string '#{self.app_lang}'", path]
+    xcrun.exec(cmd, {:log_cmd => true})
+  end
 end
 
 Before('@reset_device_settings') do
@@ -81,11 +108,17 @@ Before do |scenario|
   LaunchControl.reset_before_any_tests
   launcher = LaunchControl.launcher
 
-  options = {
-    :args => ["-AppleLanguages", "(da)"],
-    #:uia_strategy => :host
-    #:uia_strategy => :shared_element
-    :uia_strategy => :preferences
+  options =
+    {
+      :args =>
+      [
+        "-AppleLanguages", "(#{LaunchControl.app_lang})",
+        "-AppleLocale", LaunchControl.app_locale
+      ],
+
+      #:uia_strategy => :host
+      #:uia_strategy => :shared_element
+      :uia_strategy => :preferences
   }
 
   launcher.relaunch(options)
