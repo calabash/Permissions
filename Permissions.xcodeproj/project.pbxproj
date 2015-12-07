@@ -16,27 +16,12 @@
 		92D56A1418A38F0300B4369B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A1218A38F0300B4369B /* Main.storyboard */; };
 		92D56A1718A38F0300B4369B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A1618A38F0300B4369B /* ViewController.m */; };
 		92D56A1918A38F0300B4369B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A1818A38F0300B4369B /* Images.xcassets */; };
-		92D56A2118A38F0400B4369B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0018A38F0300B4369B /* Foundation.framework */; };
-		92D56A2218A38F0400B4369B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A0418A38F0300B4369B /* UIKit.framework */; };
-		92D56A2A18A38F0400B4369B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92D56A2818A38F0400B4369B /* InfoPlist.strings */; };
-		92D56A2C18A38F0400B4369B /* PermissionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D56A2B18A38F0400B4369B /* PermissionsTests.m */; };
 		92D56A3918A3944C00B4369B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3818A3944C00B4369B /* CoreLocation.framework */; };
 		92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3A18A3945700B4369B /* CoreBluetooth.framework */; };
 		F500E66F1B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */; };
-		F500E6701B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */; };
 		F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F54CCC281B84D79C0007F68D /* RowDetails.m */; };
 		F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57605151BC57F6A00E89C97 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		92D56A2318A38F0400B4369B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92D569F518A38F0300B4369B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 92D569FC18A38F0300B4369B;
-			remoteInfo = Permissions;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		92917FF718CF72500095F2F7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -54,10 +39,6 @@
 		92D56A1518A38F0300B4369B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; tabWidth = 4; };
 		92D56A1618A38F0300B4369B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; tabWidth = 4; };
 		92D56A1818A38F0300B4369B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		92D56A1E18A38F0400B4369B /* PermissionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PermissionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		92D56A2718A38F0400B4369B /* PermissionsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PermissionsTests-Info.plist"; sourceTree = "<group>"; };
-		92D56A2918A38F0400B4369B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		92D56A2B18A38F0400B4369B /* PermissionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PermissionsTests.m; sourceTree = "<group>"; tabWidth = 4; };
 		92D56A3818A3944C00B4369B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		92D56A3A18A3945700B4369B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		F500E66D1B8DF42D00AA9A03 /* CalAlertFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalAlertFactory.h; sourceTree = "<group>"; };
@@ -80,15 +61,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92D56A1B18A38F0400B4369B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				92D56A2218A38F0400B4369B /* UIKit.framework in Frameworks */,
-				92D56A2118A38F0400B4369B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -96,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				92D56A0618A38F0300B4369B /* Permissions */,
-				92D56A2518A38F0400B4369B /* PermissionsTests */,
 				92D569FF18A38F0300B4369B /* Frameworks */,
 				92D569FE18A38F0300B4369B /* Products */,
 			);
@@ -108,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				92D569FD18A38F0300B4369B /* Permissions.app */,
-				92D56A1E18A38F0400B4369B /* PermissionsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,24 +125,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		92D56A2518A38F0400B4369B /* PermissionsTests */ = {
-			isa = PBXGroup;
-			children = (
-				92D56A2B18A38F0400B4369B /* PermissionsTests.m */,
-				92D56A2618A38F0400B4369B /* Supporting Files */,
-			);
-			path = PermissionsTests;
-			sourceTree = "<group>";
-		};
-		92D56A2618A38F0400B4369B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				92D56A2718A38F0400B4369B /* PermissionsTests-Info.plist */,
-				92D56A2818A38F0400B4369B /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		F57605141BC57F0B00E89C97 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,24 +155,6 @@
 			productReference = 92D569FD18A38F0300B4369B /* Permissions.app */;
 			productType = "com.apple.product-type.application";
 		};
-		92D56A1D18A38F0400B4369B /* PermissionsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 92D56A3218A38F0400B4369B /* Build configuration list for PBXNativeTarget "PermissionsTests" */;
-			buildPhases = (
-				92D56A1A18A38F0400B4369B /* Sources */,
-				92D56A1B18A38F0400B4369B /* Frameworks */,
-				92D56A1C18A38F0400B4369B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				92D56A2418A38F0400B4369B /* PBXTargetDependency */,
-			);
-			name = PermissionsTests;
-			productName = PermissionsTests;
-			productReference = 92D56A1E18A38F0400B4369B /* PermissionsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -229,11 +163,6 @@
 			attributes = {
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Calabash;
-				TargetAttributes = {
-					92D56A1D18A38F0400B4369B = {
-						TestTargetID = 92D569FC18A38F0300B4369B;
-					};
-				};
 			};
 			buildConfigurationList = 92D569F818A38F0300B4369B /* Build configuration list for PBXProject "Permissions" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -249,7 +178,6 @@
 			projectRoot = "";
 			targets = (
 				92D569FC18A38F0300B4369B /* Permissions */,
-				92D56A1D18A38F0400B4369B /* PermissionsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -263,14 +191,6 @@
 				92D56A1918A38F0300B4369B /* Images.xcassets in Resources */,
 				92D56A0B18A38F0300B4369B /* InfoPlist.strings in Resources */,
 				92D56A1418A38F0300B4369B /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		92D56A1C18A38F0400B4369B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				92D56A2A18A38F0400B4369B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,24 +227,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92D56A1A18A38F0400B4369B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F500E6701B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */,
-				92D56A2C18A38F0400B4369B /* PermissionsTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		92D56A2418A38F0400B4369B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 92D569FC18A38F0300B4369B /* Permissions */;
-			targetProxy = 92D56A2318A38F0400B4369B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		92D56A0918A38F0300B4369B /* InfoPlist.strings */ = {
@@ -341,14 +244,6 @@
 				92D56A1318A38F0300B4369B /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		92D56A2818A38F0400B4369B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				92D56A2918A38F0400B4369B /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		F57605151BC57F6A00E89C97 /* LaunchScreen.xib */ = {
@@ -480,48 +375,6 @@
 			};
 			name = Release;
 		};
-		92D56A3318A38F0400B4369B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Permissions.app/Permissions";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "PermissionsTests/PermissionsTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		92D56A3418A38F0400B4369B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Permissions.app/Permissions";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
-				INFOPLIST_FILE = "PermissionsTests/PermissionsTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -539,15 +392,6 @@
 			buildConfigurations = (
 				92D56A3018A38F0400B4369B /* Debug */,
 				92D56A3118A38F0400B4369B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		92D56A3218A38F0400B4369B /* Build configuration list for PBXNativeTarget "PermissionsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				92D56A3318A38F0400B4369B /* Debug */,
-				92D56A3418A38F0400B4369B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
