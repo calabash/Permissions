@@ -1,7 +1,9 @@
 require 'calabash-cucumber/launcher'
 
 module LaunchControl
+
   @@launcher = nil
+  @@is_first_launch = true
 
   def self.launcher
     @@launcher ||= Calabash::Cucumber::Launcher.new
@@ -9,6 +11,28 @@ module LaunchControl
 
   def self.launcher=(launcher)
     @@launcher = launcher
+  end
+
+  def self.reset_before_any_tests
+    if @@is_first_launch
+      if self.target_is_simulator?
+        self.reset_simulator
+      else
+
+      end
+    end
+
+    @@is_first_launch = false
+  end
+
+  def self.reset_simulator
+    if !self.target_is_simulator?
+      raise "Should only be called when target is a simulator"
+    else
+      target = self.target
+      sim = RunLoop::Device.device_with_identifier(target)
+      RunLoop::CoreSimulator.erase(sim)
+    end
   end
 
   def self.target
@@ -43,38 +67,25 @@ module LaunchControl
   end
 end
 
-Before('@reset_app_btw_scenarios') do
-  if xamarin_test_cloud?
-    ENV['RESET_BETWEEN_SCENARIOS'] = '1'
-  elsif LaunchControl.target_is_simulator?
-    target = LaunchControl.target
-    simulator = RunLoop::Device.device_with_identifier(target)
-    bridge = RunLoop::Simctl::Bridge.new(simulator, ENV['APP'])
-    bridge.reset_app_sandbox
-  else
-    LaunchControl.install_on_physical_device
-  end
-end
-
 Before('@reset_device_settings') do
   if xamarin_test_cloud?
     ENV['RESET_BETWEEN_SCENARIOS'] = '1'
   elsif LaunchControl.target_is_simulator?
-    target = LaunchControl.target
-    RunLoop::Core.simulator_target?({:device_target => target})
-    sim_control = RunLoop::SimControl.new
-    sim_control.reset_sim_content_and_settings
+    LaunchControl.reset_simulator
   else
     LaunchControl.install_on_physical_device
   end
 end
 
 Before do |scenario|
+  LaunchControl.reset_before_any_tests
   launcher = LaunchControl.launcher
 
   options = {
+    :args => ["-AppleLanguages", "(da)"],
     #:uia_strategy => :host
     #:uia_strategy => :shared_element
+    :uia_strategy => :preferences
   }
 
   launcher.relaunch(options)
@@ -82,14 +93,6 @@ Before do |scenario|
 
   if xamarin_test_cloud?
     ENV['RESET_BETWEEN_SCENARIOS'] = '0'
-  end
-
-  # Re-installing the app on a device does not clear the Keychain settings,
-  # so we must clear them manually.
-  if scenario.source_tag_names.include?('@reset_device_settings')
-    if xamarin_test_cloud? || LaunchControl.target_is_physical_device?
-      keychain_clear
-    end
   end
 end
 
