@@ -105,8 +105,17 @@ Before('@reset_device_settings') do
 end
 
 Before do |scenario|
-  LaunchControl.reset_before_any_tests
+  if !xamarin_test_cloud?
+    LaunchControl.reset_before_any_tests
+  end
+
   launcher = LaunchControl.launcher
+
+  if xamarin_test_cloud?
+    strategy = :host
+  else
+    strategy = :preferences
+  end
 
   options =
     {
@@ -118,7 +127,7 @@ Before do |scenario|
 
       #:uia_strategy => :host
       #:uia_strategy => :shared_element
-      :uia_strategy => :preferences
+      :uia_strategy => strategy
   }
 
   launcher.relaunch(options)
