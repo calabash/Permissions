@@ -79,7 +79,7 @@ to match a view"
       end
 
       if failed
-        fail(exception_class, message)
+        fail(message)
       end
     end
   end
