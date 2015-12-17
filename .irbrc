@@ -102,6 +102,16 @@ def make_app
   system("make", "app")
 end
 
+def start_en(options={})
+  sim = default_sim
+  RunLoop::CoreSimulator.erase(sim)
+
+  launch_options = {
+    :uia_strategy => :preferences,
+  }.merge(options)
+  start_test_server_in_background(launch_options)
+end
+
 def start_danish(options={})
   sim = default_sim
   RunLoop::CoreSimulator.erase(sim)
