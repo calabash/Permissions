@@ -44,10 +44,10 @@ else
 fi
 
 XC_TARGET="Permissions"
-XC_PROJECT="Permissions.xcodeproj"
-XC_SCHEME="${TARGET_NAME}"
-XC_BUILD_DIR="build/app"
+XC_PROJECT="${XC_TARGET}.xcodeproj"
 XC_CONFIG=Debug
+XC_BUILD_DIR="build/app"
+mkdir -p "${XC_BUILD_DIR}"
 
 INSTALL_DIR=Products/app
 rm -rf "${INSTALL_DIR}"
@@ -67,6 +67,7 @@ BUILD_PRODUCTS_DSYM="${BUILD_PRODUCTS_DIR}/${DSYM}"
 
 rm -rf "${BUILD_PRODUCTS_APP}"
 rm -rf "${BUILD_PRODUCTS_DSYM}"
+mkdir -p "${BUILD_PRODUCTS_DIR}"
 
 info "Prepared build directory ${XC_BUILD_DIR}"
 
@@ -75,9 +76,11 @@ banner "Building ${APP}"
 if [ -z "${CODE_SIGN_IDENTITY}" ]; then
   COMMAND_LINE_BUILD=1 xcrun xcodebuild  \
     -SYMROOT="${XC_BUILD_DIR}" \
-    -derivedDataPath "${XC_BUILD_DIR}" \
+    BUILT_PRODUCTS_DIR="${BUILD_PRODUCTS_DIR}" \
+    TARGET_BUILD_DIR="${BUILD_PRODUCTS_DIR}" \
+    DWARF_DSYM_FOLDER_PATH="${BUILD_PRODUCTS_DIR}" \
     -project "${XC_PROJECT}" \
-    -scheme "${XC_TARGET}" \
+    -target "${XC_TARGET}" \
     -configuration "${XC_CONFIG}" \
     -sdk iphonesimulator \
     ARCHS="i386 x86_64" \
@@ -88,9 +91,11 @@ else
   COMMAND_LINE_BUILD=1 xcrun xcodebuild \
     CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY}" \
     -SYMROOT="${XC_BUILD_DIR}" \
-    -derivedDataPath "${XC_BUILD_DIR}" \
+    BUILT_PRODUCTS_DIR="${BUILD_PRODUCTS_DIR}" \
+    TARGET_BUILD_DIR="${BUILD_PRODUCTS_DIR}" \
+    DWARF_DSYM_FOLDER_PATH="${BUILD_PRODUCTS_DIR}" \
     -project "${XC_PROJECT}" \
-    -scheme "${XC_TARGET}" \
+    -target "${XC_TARGET}" \
     -configuration "${XC_CONFIG}" \
     -sdk iphonesimulator \
     ARCHS="i386 x86_64" \
