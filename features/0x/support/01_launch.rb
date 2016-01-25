@@ -95,7 +95,7 @@ Before('@reset_device_settings') do
   end
 end
 
-Before do |scenario|
+Before do |_|
   if !xamarin_test_cloud?
     LaunchControl.reset_before_any_tests
   end
