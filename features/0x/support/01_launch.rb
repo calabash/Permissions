@@ -80,17 +80,8 @@ module LaunchControl
       raise "Should only be called when target is a simulator"
     end
 
-    puts "Setting app locale to '#{self.app_locale}'"
-    puts "Setting app language to '#{self.app_lang}'"
-
-    path = File.expand_path(File.join(sim.simulator_preferences_plist_path,
-                                      "..", ".GlobalPreferences.plist"))
-    pbuddy = RunLoop::PlistBuddy.new
-    pbuddy.plist_set("AppleLocale", "string", self.app_locale, path)
-
-    xcrun = RunLoop::Xcrun.new
-    cmd = ["PlistBuddy", "-c", "Add :AppleLanguages:0 string '#{self.app_lang}'", path]
-    xcrun.exec(cmd, {:log_cmd => true})
+    RunLoop::CoreSimulator.set_locale(sim, self.app_locale)
+    RunLoop::CoreSimulator.set_language(sim, self.app_lang)
   end
 end
 

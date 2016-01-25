@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'calabash-cucumber', :github => "calabash/calabash-ios", :branch => "develop"
 gem "run_loop", :github => "calabash/run_loop", :branch => "develop"
-gem 'xamarin-test-cloud', '>= 1.1', '< 2.0'
+gem "xamarin-test-cloud", "2.0.0.pre2"
 
 gem 'retriable', '~> 2.0'
 
@@ -13,7 +13,7 @@ gem 'rspec', '~> 3.0'
 gem 'rake', '~> 10.3'
 gem 'bundler', '~> 1.6'
 gem 'xcpretty', '~> 0.1'
-gem 'briar', '>= 1.4.2', '< 2.0'
+gem "briar", "~> 2.0"
 
 # Debugging
 gem 'pry'
