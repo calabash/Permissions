@@ -190,6 +190,15 @@
 			attributes = {
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Calabash;
+				TargetAttributes = {
+					92D569FC18A38F0300B4369B = {
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 92D569F818A38F0300B4369B /* Build configuration list for PBXProject "Permissions" */;
 			compatibilityVersion = "Xcode 3.2";
