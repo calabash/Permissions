@@ -33,6 +33,7 @@ typedef enum : NSInteger {
   kTwitter,
   kHomeKit,
   kHealthKit,
+  kAPNS,
   kNumberOfRows
 } CalTableRows;
 
@@ -69,6 +70,7 @@ typedef enum : NSInteger {
 - (void) rowTouchedTwitter;
 - (void) rowTouchedHomeKit;
 - (void) rowTouchedHealthKit;
+- (void) rowTouchedApns;
 
 @end
 
@@ -338,6 +340,18 @@ typedef enum : NSInteger {
   [[self.alertFactory alertForHealthKitNYI] show];
 }
 
+- (void) rowTouchedApns {
+  UIApplication *shared = [UIApplication sharedApplication];
+
+  UIUserNotificationType types = (UIUserNotificationTypeBadge |
+                                  UIUserNotificationTypeSound |
+                                  UIUserNotificationTypeAlert);
+  UIUserNotificationSettings *settings;
+  settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+  [shared registerUserNotificationSettings:settings];
+  [shared registerForRemoteNotifications];
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (RowDetails *) detailsForRowAtIndexPath:(NSIndexPath *) path {
@@ -446,6 +460,13 @@ typedef enum : NSInteger {
       selector = @selector(rowTouchedHealthKit);
       title = @"Health Kit";
       identifier = @"health kit";
+      break;
+    }
+
+    case kAPNS: {
+      selector = @selector(rowTouchedApns);
+      title = @"APNS";
+      identifier = @"apns";
       break;
     }
 

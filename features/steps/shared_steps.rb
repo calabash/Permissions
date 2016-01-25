@@ -36,3 +36,7 @@ Then(/^I am waiting to figure out how to generate a Microphone alert$/) do
   pending(message)
 end
 
+When(/^I touch the APNS row$/) do
+  tap_row("apns")
+end
+

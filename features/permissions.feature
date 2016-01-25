@@ -68,3 +68,8 @@ Scenario: Camera alert is not dismissed
   When I touch the Camera row
   Then Calabash should dismiss the alert
 
+@apns
+Scenario: Apple Push Notification Services
+  When I touch the APNS row
+  Then Calabash should dismiss the alert
+
