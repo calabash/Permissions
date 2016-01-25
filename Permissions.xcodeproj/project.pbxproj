@@ -410,7 +410,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -437,7 +437,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
