@@ -116,8 +116,9 @@ Before do |_|
         "-AppleLocale", LaunchControl.app_locale
       ],
 
-      #:uia_strategy => :host
-      #:uia_strategy => :shared_element
+      #:uia_strategy => :preferences,
+      #:uia_strategy => :host,
+      #:uia_strategy => :shared_element,
       :uia_strategy => strategy
   }
 
