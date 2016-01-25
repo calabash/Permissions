@@ -72,7 +72,7 @@ module LaunchControl
   end
 
   def self.app_lang
-    @aap_lang = ENV["APP_LANG"] || "en_US"
+    @aap_lang = ENV["APP_LANG"] || "en-US"
   end
 
   def self.set_sim_locale_and_lang(sim)
