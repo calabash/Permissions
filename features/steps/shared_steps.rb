@@ -40,3 +40,32 @@ When(/^I touch the APNS row$/) do
   tap_row("apns")
 end
 
+Then(/^an NYI alert is presented$/) do
+  expect(alert_title).to be == 'Not Implemented'
+end
+
+Then(/^Calabash does not dismiss the alert$/) do
+  # See the comments below.
+  begin
+    with_timeout(3.0, 'Ignored') { uia_with_app('alert()') }
+    fail("Expected a Privacy Alert to be showing. Such alerts block UIA traffic")
+  rescue Calabash::IOS::RouteError => _
+  end
+end
+
+Then(/^Calabash should dismiss the alert$/) do
+  # In a previous implementation, I was able to demonstrate that the first
+  # UIA query after the `onAlert()` call will _time out_, regardless of
+  # whether or not the alert is dismissed.
+  # https://github.com/calabash/calabash/issues/277
+  # Calabash::Device.default.send(:uia_serialize_and_call, :query, 'window')
+
+  # If a Privacy Alert is showing, all UIAutomation traffic is blocked.
+  # query will still work because it does not interact with UIAutomation.
+  #
+  # If the UIA call times out, then there is probably a privacy alert.
+  timeout = 3.0
+  message = "Timed out after #{timeout} seconds waiting for alert to be dismissed"
+  with_timeout(timeout, message) { uia_with_app('alert()') }
+end
+
