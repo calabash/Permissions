@@ -112,6 +112,16 @@ def start_en(options={})
   start_test_server_in_background(launch_options)
 end
 
+def World(mod)
+  puts "Worlding module: #{mod}"
+  include mod
+end
+
+load("features/0x/support/2x-bridge.rb")
+load("features/0x/support/wait_for_alert.rb")
+load("features/0x/support/tap_row.rb")
+load("features/support/alerts.rb")
+
 def start_danish(options={})
   sim = default_sim
   RunLoop::CoreSimulator.erase(sim)
