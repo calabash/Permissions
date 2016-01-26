@@ -4,6 +4,7 @@ module LaunchControl
 
   @@launcher = nil
   @@is_first_launch = true
+  @@alert_results_file = nil
 
   def self.launcher
     @@launcher ||= Calabash::Cucumber::Launcher.new
@@ -13,9 +14,20 @@ module LaunchControl
     @@launcher = launcher
   end
 
+  def self.alert_results_file
+    @@alert_results_file
+  end
+
   def self.reset_before_any_tests
     if @@is_first_launch
       if self.target_is_simulator?
+        FileUtils.mkdir_p("tmp")
+        @@alert_results_file = "tmp/alert_text_#{LaunchControl.app_lang}.txt"
+        if File.exist?(@@alert_results_file)
+          FileUtils.rm_r(@@alert_results_file)
+        end
+
+        FileUtils.touch(@@alert_results_file)
         self.reset_simulator
       else
 
@@ -132,5 +144,21 @@ end
 
 After do |_|
 
+  alert_results_file = LaunchControl.alert_results_file
+  run_loop = LaunchControl.launcher.run_loop
+
+  if run_loop
+    log_file = run_loop[:log_file]
+    lines = File.read(log_file).force_encoding("UTF-8")
+    lines.split($-0).each do |line|
+      if line[/alert:/, 0]
+        puts "#{line}"
+        $stdout.flush
+        File.open(alert_results_file, "a:UTF-8") do |file|
+          file.puts(line)
+        end
+      end
+    end
+  end
 end
 
