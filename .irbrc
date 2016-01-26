@@ -126,17 +126,12 @@ def start_danish(options={})
   sim = default_sim
   RunLoop::CoreSimulator.erase(sim)
 
-  path = File.expand_path(File.join(sim.simulator_preferences_plist_path, "..", ".GlobalPreferences.plist"))
-  pbuddy = RunLoop::PlistBuddy.new
-  pbuddy.plist_set("AppleLocale", "string", "da_DA", path)
-
-  xcrun = RunLoop::Xcrun.new
-  cmd = ["PlistBuddy", "-c", "Add :AppleLanguages:0 string 'da'", path]
-  xcrun.exec(cmd, {:log_cmd => true})
+  RunLoop::CoreSimulator.set_locale(sim, "da")
+  RunLoop::CoreSimulator.set_language(sim, "da")
 
   launch_options = {
     :uia_strategy => :preferences,
-    :args => ["-AppleLanguages", "(da)", "-AppleLocale da_DA"],
+    :args => ["-AppleLanguages", "(da)", "-AppleLocale da"],
   }.merge(options)
   start_test_server_in_background(launch_options)
 end
@@ -145,17 +140,12 @@ def start_dutch(options={})
   sim = default_sim
   RunLoop::CoreSimulator.erase(sim)
 
-  path = File.expand_path(File.join(sim.simulator_preferences_plist_path, "..", ".GlobalPreferences.plist"))
-  pbuddy = RunLoop::PlistBuddy.new
-  pbuddy.plist_set("AppleLocale", "string", "nl_NL", path)
-
-  xcrun = RunLoop::Xcrun.new
-  cmd = ["PlistBuddy", "-c", "Add :AppleLanguages:0 string 'nl'", path]
-  xcrun.exec(cmd, {:log_cmd => true})
+  RunLoop::CoreSimulator.set_locale(sim, "nl")
+  RunLoop::CoreSimulator.set_language(sim, "nl")
 
   launch_options = {
     :uia_strategy => :preferences,
-    :args => ["-AppleLanguages", "(nl)", "-AppleLocale nl_NL"],
+    :args => ["-AppleLanguages", "(nl)", "-AppleLocale nl"],
   }.merge(options)
   start_test_server_in_background(launch_options)
 end
