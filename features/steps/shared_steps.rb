@@ -3,7 +3,11 @@ Given(/^I can see the list of services requiring authorization$/) do
   wait_for_view("view marked:'table'")
 end
 
-When(/^I touch the (Facebook|Contacts|Calendar|Reminders|Photos|Camera|Microphone) row$/) do |row|
+When(/^I touch the (Contacts|Calendar|Reminders|Photos|Camera|Microphone) row$/) do |row|
+  tap_row(row.downcase)
+end
+
+When(/^I touch the (Facebook|Twitter) row$/) do |row|
   tap_row(row.downcase)
 end
 

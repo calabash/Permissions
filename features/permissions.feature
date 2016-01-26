@@ -39,6 +39,11 @@ Scenario: Photos alert is dismissed
   Then Calabash should dismiss the alert
   And I see the photo roll
 
+@twitter
+Scenario:  Twitter alert is dismissed
+  When I touch the Twitter row
+  Then Calabash should dismiss the alert
+
 @bluetooth
 Scenario: Bluetooth Sharing alert
   When I touch the Bluetooth Sharing row
