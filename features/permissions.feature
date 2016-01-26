@@ -39,6 +39,11 @@ Scenario: Photos alert is dismissed
   Then Calabash should dismiss the alert
   And I see the photo roll
 
+@twitter
+Scenario:  Twitter alert is dismissed
+  When I touch the Twitter row
+  Then Calabash should dismiss the alert
+
 @bluetooth
 Scenario: Bluetooth Sharing alert
   When I touch the Bluetooth Sharing row
@@ -66,5 +71,10 @@ Scenario: Motion Activity alert is dismissed
 @camera
 Scenario: Camera alert is not dismissed
   When I touch the Camera row
+  Then Calabash should dismiss the alert
+
+@apns
+Scenario: Apple Push Notification Services
+  When I touch the APNS row
   Then Calabash should dismiss the alert
 
