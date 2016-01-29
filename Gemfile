@@ -4,10 +4,11 @@ gem 'calabash-cucumber', :github => "calabash/calabash-ios", :branch => "develop
 gem "run_loop", :github => "calabash/run_loop", :branch => "develop"
 gem "xamarin-test-cloud", "2.0.0.pre2"
 
-gem 'retriable', '~> 2.0'
-
-# For easy expectations
+# Sync these with config/xtc-other-gems
+gem "cucumber", "~> 1.3"
 gem 'rspec', '~> 3.0'
+
+gem 'retriable', '~> 2.0'
 
 # Workflow and build tools
 gem 'rake', '~> 10.3'
