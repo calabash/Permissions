@@ -29,7 +29,7 @@ device_list.each do |device|
 end
 
 if ENV["USER"] == "jenkins"
-  formatter = "progress"
+  formatter = "pretty"
 else
   formatter = "Slowhandcuke::Formatter"
 end
