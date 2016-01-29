@@ -71,7 +71,7 @@ Then(/^Calabash should dismiss the alert$/) do
   if RunLoop::Environment.ci?
     timeout = 15.0
   elsif RunLoop::Environment.xtc?
-    timeout = 3.0
+    timeout = 8.0
   else
     timeout = 3.0
   end
