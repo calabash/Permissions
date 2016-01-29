@@ -14,4 +14,6 @@ notifications:
       - villars.gimm@xamarin.com
     on_success: change
     on_failure: always
-
+  slack:
+    rooms:
+      secure: DwCnFdPTxdOX6/+0nYo60c02mpBQ9nHEzszdmIYtT4lcS9hMqO1IOyFbRYPnxhgW+TOK6ZAMtFDD88oyMpzUGTZ+qhDynWaoCEOkyXjuMD+qiGyzhaxzrRlqltIyLxpUuD0koKK2cuPD5JaADunGcLc7WiCyKqf6y//SPXnIxYk=
