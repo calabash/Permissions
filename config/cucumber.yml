@@ -8,10 +8,9 @@ if ENV["APP_BUNDLE_PATH"]
   Luffa.log_warn("APP_BUNDLE_PATH is deprecated; use APP instead")
 end
 
-APP = lambda do
-        ENV["APP"] || ENV["APP_BUNDLE_PATH"] ||
-        File.expand_path("./Products/app/Permissions.app")
-      end.call
+APP = ENV["APP"] ||
+      ENV["APP_BUNDLE_PATH"] ||
+      "./Products/app/Permissions.app"
 
 calabash_dir = File.expand_path(File.join(ENV["HOME"], ".calabash"))
 
