@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-if [ -z "${TRAVIS}" ]; then
-  echo "FAIL: only run this script on Travis"
+if [ -z "${TRAVIS}" ] && [ -z "${JENKINS_HOME}" ]; then
+  echo "FAIL: only run this script on Travis or Jenkins"
   exit 1
 fi
 
-if [ "${TRAVIS_SECURE_ENV_VARS}" != "true" ]; then
-  echo "INFO: skipping keychain install; non-maintainer activity"
+if [ -n "${TRAVIS}" ] && [ "${TRAVIS_SECURE_ENV_VARS}" != "true" ]; then
+  echo "INFO: skipping make framework; non-maintainer activity"
   exit 0
 fi
 

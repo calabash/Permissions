@@ -68,7 +68,14 @@ Then(/^Calabash should dismiss the alert$/) do
   # query will still work because it does not interact with UIAutomation.
   #
   # If the UIA call times out, then there is probably a privacy alert.
-  timeout = 3.0
+  if RunLoop::Environment.ci?
+    timeout = 15.0
+  elsif RunLoop::Environment.xtc?
+    timeout = 8.0
+  else
+    timeout = 3.0
+  end
+
   message = "Timed out after #{timeout} seconds waiting for alert to be dismissed"
   with_timeout(timeout, message) { uia_with_app('alert()') }
 end

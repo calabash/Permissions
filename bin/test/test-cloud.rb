@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require "luffa"
-require "bundler"
 require "run_loop"
+require "bundler"
 
 device_set = ENV["XTC_DEVICE_SET"]
 
@@ -14,30 +14,28 @@ if !device_set || device_set == ""
   device_set = ["35d0da97", "2c9fc4b1", "0a3b9ecb", "331ab3d4"].sample
 end
 
-if !Luffa::Environment.travis_ci? && !Luffa::Environment.jenkins_ci?
-  # For submitting tests locally
-  Luffa.unix_command("make ipa")
-  Bundler.with_clean_env do
-    Luffa.unix_command("bundle update")
+
+Bundler.with_clean_env do
+  Luffa.unix_command("bundle update")
+
+  if !Luffa::Environment.travis_ci? && !Luffa::Environment.jenkins_ci?
+    # For submitting tests locally
+    Luffa.unix_command("make ipa")
     Luffa.unix_command("bundle exec briar xtc #{device_set}")
-  end
-elsif Luffa::Environment.jenkins_ci?
-  # Not yet.
-elsif Luffa::Environment.travis_ci?
+  else
 
-  # Only maintainers can submit XTC tests.
-  if ENV["TRAVIS_SECURE_ENV_VARS"] != "true"
-    Luffa.log_info("Skipping XTC submission; non-maintainer activity")
-    exit 0
-  end
+    # Only maintainers can submit XTC tests.
+    if Luffa::Environment.travis_ci? && ENV["TRAVIS_SECURE_ENV_VARS"] != "true"
+      Luffa.log_info("Skipping XTC submission; non-maintainer activity")
+      exit 0
+    end
 
-  # Previous Travis steps do:
-  # 1. install cucumber/.env
-  # 2. make the ipa
-  # 3. stage the ipa
-
-  Bundler.with_clean_env do
-    Luffa.unix_command("bundle update")
+    # Previous steps do:
+    # 1. bundle update
+    # 1. install the Calabash.keychain
+    # 2. install .env
+    # 3. make the ipa
+    # 4. stage the ipa
 
     # rake install must succeed
     calabash_gem = `bundle show calabash-cucumber`.strip
