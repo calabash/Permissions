@@ -1,6 +1,12 @@
 
 Given(/^I can see the list of services requiring authorization$/) do
   wait_for_view("view marked:'table'")
+
+  if query("view marked:'page'", :isHealthKitAvailable).first == 1
+    @supports_health_kit = true
+  else
+    @supports_health_kit = false
+  end
 end
 
 When(/^I touch the (Contacts|Calendar|Reminders|Photos|Camera|Microphone) row$/) do |row|
