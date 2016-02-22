@@ -16,6 +16,22 @@
 #import "RowDetails.h"
 #import "CalAlertFactory.h"
 #import <objc/runtime.h>
+#import <HealthKit/HealthKit.h>
+
+@interface UIView (CalabashPermissions)
+
+- (BOOL) isHealthKitAvailable;
+
+@end
+
+@implementation UIView (CalabashPermissions)
+
+// HealthKit is avaiable on iOS > 7 and only on some devices
+- (BOOL) isHealthKitAvailable {
+  return NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable];
+}
+
+@end
 
 static NSString *const CalCellIdentifier = @"cell identifier";
 
