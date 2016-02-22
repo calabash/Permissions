@@ -608,7 +608,7 @@ void handleAddressBookChange(ABAddressBookRef addressBook,
 
 #pragma mark - <UIAlertViewDelegate>
 
-- (void)   alertView:(UIAlertView *) alertView
+- (void) alertView:(UIAlertView *) alertView
 clickedButtonAtIndex:(NSInteger) buttonIndex {
   NSLog(@"Alert button %@ tapped", @(buttonIndex));
 }
