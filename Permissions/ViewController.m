@@ -15,6 +15,7 @@
 
 #import "RowDetails.h"
 #import "CalAlertFactory.h"
+#import <objc/runtime.h>
 
 static NSString *const CalCellIdentifier = @"cell identifier";
 
@@ -343,13 +344,23 @@ typedef enum : NSInteger {
 - (void) rowTouchedApns {
   UIApplication *shared = [UIApplication sharedApplication];
 
-  UIUserNotificationType types = (UIUserNotificationTypeBadge |
-                                  UIUserNotificationTypeSound |
-                                  UIUserNotificationTypeAlert);
-  UIUserNotificationSettings *settings;
-  settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-  [shared registerUserNotificationSettings:settings];
-  [shared registerForRemoteNotifications];
+  Class klass = objc_getClass("UIUserNotificationSettings");
+  // iOS > 7.0
+  if (klass) {
+    UIUserNotificationType types = (UIUserNotificationTypeBadge |
+                                    UIUserNotificationTypeSound |
+                                    UIUserNotificationTypeAlert);
+    UIUserNotificationSettings *settings;
+    settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [shared registerUserNotificationSettings:settings];
+    [shared registerForRemoteNotifications];
+
+  } else {
+    UIRemoteNotificationType types = (UIRemoteNotificationTypeBadge |
+                                      UIRemoteNotificationTypeSound |
+                                      UIRemoteNotificationTypeAlert);
+    [shared registerForRemoteNotificationTypes:types];
+  }
 }
 
 #pragma mark - <UITableViewDataSource>
