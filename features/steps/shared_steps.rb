@@ -58,6 +58,31 @@ Then(/^a Not Supported alert is presented$/) do
   expect(alert_title).to be == "Not Supported"
 end
 
+Then(/^I see the HealthKit modal view or Not Supported alert$/) do
+  if @supports_health_kit
+    wait_for_none_animating
+  else
+    expect(alert_title).to be == "Not Supported"
+    button_title = leftmost_button_title
+    tap_alert_button(button_title)
+  end
+end
+
+And(/^Calabash should enable all categories and allow$/) do
+  if @supports_health_kit
+    sleep 2.0
+    uia_tap_mark("All Categories On")
+    sleep 2.0
+    uia_tap_mark("Allow")
+  else
+    # nop - device or iOS does not support health kit
+    puts "   Device or iOS version does not support HealthKit"
+  end
+
+  wait_for_none_animating
+  wait_for_view("view marked:'page'")
+end
+
 Then(/^Calabash does not dismiss the alert$/) do
   # See the comments below.
   begin
