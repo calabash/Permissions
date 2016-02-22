@@ -353,8 +353,39 @@ typedef enum : NSInteger {
 
 #pragma mark - Row Touched: Health Kit
 
+// http://jademind.com/blog/posts/healthkit-api-tutorial/
 - (void) rowTouchedHealthKit {
-  [[self.alertFactory alertForHealthKitNotSupported] show];
+  if ([[self view] isHealthKitAvailable]) {
+    HKHealthStore *healthStore = [[HKHealthStore alloc] init];
+
+    // Share body mass, height and body mass index
+    NSSet *shareObjectTypes = [NSSet setWithObjects:
+                               [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass],
+                               [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight],
+                               [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex],
+                               nil];
+
+    // Read date of birth, biological sex and step count
+    NSSet *readObjectTypes  = [NSSet setWithObjects:
+                               [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierDateOfBirth],
+                               [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierBiologicalSex],
+                               [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount],
+                               nil];
+
+    // Request access
+    [healthStore requestAuthorizationToShareTypes:shareObjectTypes
+                                        readTypes:readObjectTypes
+                                       completion:^(BOOL success, NSError *error) {
+                                         if (success) {
+                                           NSLog(@"Successfully enabled HealthKit");
+                                         } else {
+                                           NSLog(@"Did not enable HealthKit: %@",
+                                                 [error localizedDescription]);
+                                         }
+                                       }];
+  } else {
+   [[self.alertFactory alertForHealthKitNotSupported] show];
+  }
 }
 
 - (void) rowTouchedApns {
