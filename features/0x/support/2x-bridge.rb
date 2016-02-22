@@ -42,7 +42,7 @@ to match a view"
     # @!visibility private
     class PrivateWaitTimeoutError < RuntimeError ; end
 
-    def with_timeout(timeout, timeout_message, exception_class = TimeoutError, &block)
+    def with_timeout(timeout, timeout_message, exception_class = Timeout::Error, &block)
       if timeout_message.nil? ||
           (timeout_message.is_a?(String) && timeout_message.empty?)
         raise ArgumentError, 'You must provide a timeout message'
