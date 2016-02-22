@@ -338,7 +338,7 @@ typedef enum : NSInteger {
 #pragma mark - Row Touched: Health Kit
 
 - (void) rowTouchedHealthKit {
-  [[self.alertFactory alertForHealthKitNYI] show];
+  [[self.alertFactory alertForHealthKitNotSupported] show];
 }
 
 - (void) rowTouchedApns {

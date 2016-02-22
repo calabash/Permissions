@@ -48,6 +48,10 @@ Then(/^an NYI alert is presented$/) do
   expect(alert_title).to be == 'Not Implemented'
 end
 
+Then(/^a Not Supported alert is presented$/) do
+  expect(alert_title).to be == "Not Supported"
+end
+
 Then(/^Calabash does not dismiss the alert$/) do
   # See the comments below.
   begin
