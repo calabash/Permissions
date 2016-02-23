@@ -690,6 +690,7 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
 - (void) viewDidLoad {
   [super viewDidLoad];
 
+  self.view.accessibilityIdentifier = @"page";
   [self.table registerClass:[UITableViewCell class]
          forCellReuseIdentifier:CalCellIdentifier];
 }
