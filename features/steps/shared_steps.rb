@@ -89,13 +89,17 @@ Then(/^I can enable HealthKit permissions and dismiss the page$/) do
     end
 
     if ios8?
+      # Skip the 'Sex' row because the text varies across simulator,
+      # physical devices, and form factors - the 6 plus has: Biological Sex
       ["Body Mass Index", "Height", "Weight",
-       "Date of Birth", "Sex", "Steps"].each do |mark|
+       "Date of Birth", "Steps"].each do |mark|
+
         uia_call(:tableView, {:scrollToElementWithName => mark})
         sleep(pause)
         uia_call([:switch, {:marked => mark}], {:setValue => true})
         sleep(pause)
       end
+
       uia_tap_mark("Done")
     else
       sleep(pause)
