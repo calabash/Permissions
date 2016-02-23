@@ -1,7 +1,14 @@
 module Permissions
   module Alerts
     def wait_for_alert
-      timeout = 4
+      if RunLoop::Environment.ci?
+        timeout = 20.0
+      elsif RunLoop::Environment.xtc?
+        timeout = 10.0
+      else
+        timeout = 4.0
+      end
+
       message = "Waited #{timeout} seconds for an alert to appear"
       wait_for({:timeout => timeout, :timeout_message => message}) do
         alert_exists?
