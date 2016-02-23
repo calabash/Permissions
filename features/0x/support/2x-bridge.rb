@@ -82,6 +82,21 @@ to match a view"
         fail(message)
       end
     end
+
+    def wait_for(timeout_message, options={}, &block)
+      wait_options = @@default_options.merge(options)
+      timeout = wait_options[:timeout]
+
+      with_timeout(timeout, timeout_message, wait_options[:exception_class]) do
+        loop do
+          value = block.call
+
+          return value if value
+
+          sleep(wait_options[:retry_frequency])
+        end
+      end
+    end
   end
 end
 
