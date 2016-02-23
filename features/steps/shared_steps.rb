@@ -79,7 +79,7 @@ Then(/^Calabash should dismiss the alert$/) do
   #
   # If the UIA call times out, then there is probably a privacy alert.
   if RunLoop::Environment.ci?
-    timeout = 15.0
+    timeout = 30.0
   elsif RunLoop::Environment.xtc?
     timeout = 8.0
   else
