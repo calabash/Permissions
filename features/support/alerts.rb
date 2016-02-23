@@ -12,11 +12,17 @@ module Permissions
         end
       end
 
-      if res.empty?
-        false
-      else
-        res.first
+      if !res.is_a?(Hash)
+        fail("Expected `uia` to return a Hash but found #{res}")
       end
+
+      status = res["status"]
+
+      if status != "success"
+        fail("Expected `uia` to exist with 'success' but found #{status}")
+      end
+
+      res["value"]
     end
 
     def alert_button_exists?(button_title)
