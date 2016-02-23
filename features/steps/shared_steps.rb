@@ -60,6 +60,10 @@ end
 
 Then(/^I see the HealthKit modal view or Not Supported alert$/) do
   if @supports_health_kit
+    message = "Expected Health Access permissions view to appear"
+    wait_for(message) do
+      !uia_query(:view, {marked:"Health Access"}).empty?
+    end
     wait_for_none_animating
   else
     begin
@@ -67,6 +71,7 @@ Then(/^I see the HealthKit modal view or Not Supported alert$/) do
     rescue => e
       raise "Expected this device to support health kit: #{@supports_health_kit}\n#{e}"
     end
+
     expect(title).to be == "Not Supported"
     button_title = leftmost_button_title
     tap_alert_button(button_title)
