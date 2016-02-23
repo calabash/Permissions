@@ -89,7 +89,7 @@ this alert is 100% blocking, no file will be written.
 
 ### TODO
 
-- [ ] Health Kit
+- [ ] Facebook
 - [ ] Home Kit
 - [ ] Cannot get a Bluetooth Sharing alert to pop
 - [ ] Cannot get a Microphone alert to pop on iOS Simulators
