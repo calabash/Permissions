@@ -2,7 +2,7 @@
 Then(/^I see the HealthKit modal view or Not Supported alert$/) do
   if @supports_health_kit
     message = "Expected Health Access permissions view to appear"
-    wait_for(message) do
+    bridge_wait_for(message) do
       !uia_query(:view, {marked:"Health Access"}).empty?
     end
     wait_for_none_animating
@@ -54,7 +54,7 @@ Then(/^I can enable HealthKit permissions and dismiss the page$/) do
   end
 
   message = "Expected Health Access permissions view to disappear"
-  wait_for(message) do
+  bridge_wait_for(message) do
     uia_query(:view, {marked:"Health Access"}).empty?
   end
 
