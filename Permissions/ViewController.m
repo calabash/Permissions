@@ -16,6 +16,22 @@
 #import "RowDetails.h"
 #import "CalAlertFactory.h"
 #import <objc/runtime.h>
+#import <HealthKit/HealthKit.h>
+
+@interface UIView (CalabashPermissions)
+
+- (BOOL) isHealthKitAvailable;
+
+@end
+
+@implementation UIView (CalabashPermissions)
+
+// HealthKit is avaiable on iOS > 7 and only on some devices
+- (BOOL) isHealthKitAvailable {
+  return NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable];
+}
+
+@end
 
 static NSString *const CalCellIdentifier = @"cell identifier";
 
@@ -337,8 +353,39 @@ typedef enum : NSInteger {
 
 #pragma mark - Row Touched: Health Kit
 
+// http://jademind.com/blog/posts/healthkit-api-tutorial/
 - (void) rowTouchedHealthKit {
-  [[self.alertFactory alertForHealthKitNYI] show];
+  if ([[self view] isHealthKitAvailable]) {
+    HKHealthStore *healthStore = [[HKHealthStore alloc] init];
+
+    // Share body mass, height and body mass index
+    NSSet *shareObjectTypes = [NSSet setWithObjects:
+                               [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass],
+                               [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight],
+                               [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMassIndex],
+                               nil];
+
+    // Read date of birth, biological sex and step count
+    NSSet *readObjectTypes  = [NSSet setWithObjects:
+                               [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierDateOfBirth],
+                               [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierBiologicalSex],
+                               [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount],
+                               nil];
+
+    // Request access
+    [healthStore requestAuthorizationToShareTypes:shareObjectTypes
+                                        readTypes:readObjectTypes
+                                       completion:^(BOOL success, NSError *error) {
+                                         if (success) {
+                                           NSLog(@"Successfully enabled HealthKit");
+                                         } else {
+                                           NSLog(@"Did not enable HealthKit: %@",
+                                                 [error localizedDescription]);
+                                         }
+                                       }];
+  } else {
+   [[self.alertFactory alertForHealthKitNotSupported] show];
+  }
 }
 
 - (void) rowTouchedApns {
@@ -643,6 +690,7 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
 - (void) viewDidLoad {
   [super viewDidLoad];
 
+  self.view.accessibilityIdentifier = @"page";
   [self.table registerClass:[UITableViewCell class]
          forCellReuseIdentifier:CalCellIdentifier];
 }

@@ -3,7 +3,8 @@ module Permissions
 
     @@default_options = {
         timeout: 8.0,
-        retry_frequency: 0.1
+        retry_frequency: 0.1,
+        exception_class: Timeout::Error
      }
 
     def wait_for_view(query, options={})
@@ -80,6 +81,22 @@ to match a view"
 
       if failed
         fail(message)
+      end
+    end
+
+    def bridge_wait_for(timeout_message, options={}, &block)
+      wait_options = @@default_options.merge(options)
+      timeout = wait_options[:timeout]
+
+      exception_class = wait_options[:exception_class]
+      with_timeout(timeout, timeout_message, exception_class) do
+        loop do
+          value = block.call
+
+          return value if value
+
+          sleep(wait_options[:retry_frequency])
+        end
       end
     end
   end

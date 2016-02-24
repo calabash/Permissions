@@ -1,9 +1,15 @@
 #import "CalAlertFactory.h"
+#import <sys/utsname.h>
+
+static NSString *const LPDeviceSimKeyModelIdentifier = @"SIMULATOR_MODEL_IDENTIFIER";
 
 @interface CalAlertFactory ()
 
 @property(copy, nonatomic, readonly) NSString *localizedDismiss;
+
 - (UIAlertView *) alertForNYIWithMessage:(NSString *) message;
+- (UIAlertView *) alertForNotSupportedWithServiceName:(NSString *) serviceName;
+
 
 - (NSString *) facebookMessage;
 - (NSString *) homeKitMessage;
@@ -14,6 +20,26 @@
 @implementation CalAlertFactory
 
 @synthesize localizedDismiss = _localizedDismiss;
+
+- (NSString *) simulatorVersionInfo {
+  NSDictionary *env = [[NSProcessInfo processInfo] environment];
+  return [env objectForKey:LPDeviceSimKeyModelIdentifier];
+}
+
+- (NSString *) physicalDeviceModelIdentifier {
+  struct utsname systemInfo;
+  uname(&systemInfo);
+  return @(systemInfo.machine);
+}
+
+- (NSString *) modelIdentifier {
+  NSString *model = [self simulatorVersionInfo];
+  if (model) {
+    return model;
+  } else {
+    return [self physicalDeviceModelIdentifier];
+  }
+}
 
 - (id) initWithDelegate:(id<UIAlertViewDelegate>) delegate {
   self = [super init];
@@ -58,6 +84,24 @@
   return alert;
 }
 
+- (UIAlertView *) alertForNotSupportedWithServiceName:(NSString *) serviceName {
+  NSString *title = @"Not Supported";
+
+  NSString *version = [[UIDevice currentDevice] systemVersion];
+  NSString *model = [self modelIdentifier];
+  NSString *message = [NSString stringWithFormat:@"%@ is not supported on iOS %@ and/or this device model: %@.",
+                       serviceName, version, model];
+
+  UIAlertView *alert = [[UIAlertView alloc]
+                        initWithTitle:title
+                        message:message
+                        delegate:self.delegate
+                        cancelButtonTitle:self.localizedDismiss
+                        otherButtonTitles:nil];
+  return alert;
+
+}
+
 - (UIAlertView *) alertForFacebookNYI {
   return [self alertForNYIWithMessage:[self facebookMessage]];
 }
@@ -66,8 +110,8 @@
   return [self alertForNYIWithMessage:[self homeKitMessage]];
 }
 
-- (UIAlertView *) alertForHealthKitNYI {
-  return [self alertForNYIWithMessage:[self healthKitMessage]];
+- (UIAlertView *) alertForHealthKitNotSupported {
+  return [self alertForNotSupportedWithServiceName:@"HealthKit"];
 }
 
 // We have not been able to generate a Bluetooth alert, but we have one example

@@ -1,6 +1,12 @@
 
 Given(/^I can see the list of services requiring authorization$/) do
   wait_for_view("view marked:'table'")
+
+  if query("view marked:'page'", :isHealthKitAvailable).first == 1
+    @supports_health_kit = true
+  else
+    @supports_health_kit = false
+  end
 end
 
 When(/^I touch the (Contacts|Calendar|Reminders|Photos|Camera|Microphone) row$/) do |row|
@@ -48,6 +54,10 @@ Then(/^an NYI alert is presented$/) do
   expect(alert_title).to be == 'Not Implemented'
 end
 
+Then(/^a Not Supported alert is presented$/) do
+  expect(alert_title).to be == "Not Supported"
+end
+
 Then(/^Calabash does not dismiss the alert$/) do
   # See the comments below.
   begin
@@ -69,7 +79,7 @@ Then(/^Calabash should dismiss the alert$/) do
   #
   # If the UIA call times out, then there is probably a privacy alert.
   if RunLoop::Environment.ci?
-    timeout = 15.0
+    timeout = 30.0
   elsif RunLoop::Environment.xtc?
     timeout = 8.0
   else

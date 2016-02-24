@@ -8,7 +8,7 @@
 
 - (UIAlertView *) alertForFacebookNYI;
 - (UIAlertView *) alertForHomeKitNYI;
-- (UIAlertView *) alertForHealthKitNYI;
+- (UIAlertView *) alertForHealthKitNotSupported;
 - (UIAlertView *) alertForBluetoothFAKE;
 
 @end

@@ -2,11 +2,11 @@
 Feature: Health Kit Permissions
 In order to make testing Health Kit interactions easier
 As a developer
-I want Calabash to automatically dismiss Health Kit alerts
+I want an example of Calabash dismissng a Health Kit dialog
 
-@not_xtc
-Scenario: Health Kit privacy alerts are not handled yet
+Scenario: Enabling Health Kit permissions
   Given I can see the list of services requiring authorization
   When I touch the Health Kit row
-  Then an NYI alert is presented
+  Then I see the HealthKit modal view or Not Supported alert
+  Then I can enable HealthKit permissions and dismiss the page
 
