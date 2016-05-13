@@ -29,6 +29,8 @@ function ditto_or_exit {
   fi
 }
 
+rm -rf calabash-ios-server
+
 git clone \
   --recursive \
   --depth 1 \
