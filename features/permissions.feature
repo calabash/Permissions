@@ -1,3 +1,4 @@
+@supported
 Feature: Privacy Alerts
   In order to make testing app that require protected services easier
   As a developer
