@@ -13,14 +13,38 @@ module Permissions
 
       unless merged_options[:message]
         message = %Q{
-"Waited #{merged_options[:timeout]} seconds query:
-        #{query}
+"Waited #{merged_options[:timeout]} seconds for query:
+
+  #{query}
+
 to match a view"
         }
         merged_options[:timeout_message] = message
       end
 
       wait_for_element_exists(query, merged_options)
+    end
+
+    def wait_for_any(queries, options={})
+      default_options = @@default_options.dup
+      merged_options = default_options.merge(options)
+
+      unless merged_options[:message]
+        message = %Q[
+"Waited #{merged_options[:timeout]} seconds for any query:
+
+#{queries.join("\n")}
+
+to match a view"
+]
+        merged_options[:timeout_message] = message
+      end
+
+      bridge_wait_for(merged_options[:timeout_message], merged_options) do
+        queries.any? do |query|
+          query(query)
+        end
+      end
     end
 
     def wait_for_animations

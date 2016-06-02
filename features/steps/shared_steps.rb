@@ -38,7 +38,12 @@ When(/^I touch the Bluetooth Sharing row$/) do
 end
 
 And(/^I see the photo roll$/) do
-  wait_for_view("view marked:'Photos'")
+  queries = [
+    "* marked:'Photos'",
+    "* marked:'Fotos'",
+    "* marked:'Foto\'s'"
+  ]
+  wait_for_any(queries)
 end
 
 Then(/^I am waiting to figure out how to generate a Microphone alert$/) do
