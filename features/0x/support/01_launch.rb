@@ -22,7 +22,7 @@ module LaunchControl
     if @@is_first_launch
       if self.target_is_simulator?
         FileUtils.mkdir_p("tmp")
-        @@alert_results_file = "tmp/alert_text_#{LaunchControl.app_lang}.txt"
+        @@alert_results_file = "tmp/alert_text_#{LaunchControl.app_lang}_sim.txt"
         if File.exist?(@@alert_results_file)
           FileUtils.rm_r(@@alert_results_file)
         end
@@ -30,7 +30,13 @@ module LaunchControl
         FileUtils.touch(@@alert_results_file)
         self.reset_simulator
       else
+        FileUtils.mkdir_p("tmp")
+        @@alert_results_file = "tmp/alert_text_#{LaunchControl.app_lang}_device.txt"
+        if File.exist?(@@alert_results_file)
+          FileUtils.rm_r(@@alert_results_file)
+        end
 
+        FileUtils.touch(@@alert_results_file)
       end
     end
 
@@ -61,7 +67,7 @@ module LaunchControl
   end
 
   def self.ensure_ipa
-    ipa_path = File.expand_path('Products/ipa/Permission.ipa')
+    ipa_path = File.expand_path('Products/ipa/Permissions.ipa')
     unless File.exist?(ipa_path)
       system('make', 'ipa')
     end
@@ -114,12 +120,6 @@ Before do |_|
 
   launcher = LaunchControl.launcher
 
-  if xamarin_test_cloud?
-    strategy = :host
-  else
-    strategy = :preferences
-  end
-
   options =
     {
       :args =>
@@ -131,7 +131,8 @@ Before do |_|
       #:uia_strategy => :preferences,
       #:uia_strategy => :host,
       #:uia_strategy => :shared_element,
-      :uia_strategy => strategy
+      :uia_strategy => :host,
+      :uia_timeout => 30
   }
 
   launcher.relaunch(options)
