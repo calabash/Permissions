@@ -153,7 +153,7 @@ After do |_|
       log_file = run_loop[:log_file]
       lines = File.read(log_file).force_encoding("UTF-8")
       lines.split($-0).each do |line|
-        if line[/alert:/, 0]
+        if line[/capture/, 0]
           puts "#{line}"
           $stdout.flush
           File.open(alert_results_file, "a:UTF-8") do |file|
