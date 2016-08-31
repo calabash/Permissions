@@ -1,28 +1,34 @@
 module Permissions
   module Alerts
 
+
+
     def alert_exists?(alert_title=nil)
-      if alert_title.nil?
-        res = uia('uia.alert() != null')
-      else
-        if ios6?
-          res = uia("uia.alert().staticTexts()['#{alert_title}'].label()")
+      if uia_available?
+        if alert_title.nil?
+          res = uia('uia.alert() != null')
         else
-          res = uia("uia.alert().name() == '#{alert_title}'")
+          if ios6?
+            res = uia("uia.alert().staticTexts()['#{alert_title}'].label()")
+          else
+            res = uia("uia.alert().name() == '#{alert_title}'")
+          end
         end
+
+        if !res.is_a?(Hash)
+          fail("Expected `uia` to return a Hash but found #{res}")
+        end
+
+        status = res["status"]
+
+        if status != "success"
+          fail("Expected `uia` to exist with 'success' but found #{status}")
+        end
+
+        res["value"]
+      else
+         !query("view:'_UIAlertControllerActionView'").empty?
       end
-
-      if !res.is_a?(Hash)
-        fail("Expected `uia` to return a Hash but found #{res}")
-      end
-
-      status = res["status"]
-
-      if status != "success"
-        fail("Expected `uia` to exist with 'success' but found #{status}")
-      end
-
-      res["value"]
     end
 
     def alert_button_exists?(button_title)
@@ -30,40 +36,47 @@ module Permissions
         fail('Expected an alert to be showing')
       end
 
-      res = uia("uia.alert().buttons()['#{button_title}']")
+      if uia_available?
+        res = uia("uia.alert().buttons()['#{button_title}']")
 
-      if res.empty?
-        false
+        if res.empty?
+          false
+        else
+          res.first
+        end
       else
-        res.first
+         labels = query("view:'_UIAlertControllerActionView'",
+              :accessibilityLabel)
+         labels.include?(button_title)
       end
     end
 
     def tap_alert_button(button_title)
       wait_for_alert
 
-      uia("uia.alert().buttons()['#{button_title}'].tap()")
+      if uia_available?
+        uia("uia.alert().buttons()['#{button_title}'].tap()")
+      else
+         touch("view:'_UIAlertControllerActionView' marked:'#{button_title}'")
+      end
+
     end
 
     def alert_view_query_str
-      if ios8? || ios9?
-        "view:'_UIAlertControllerView'"
-      elsif ios7?
+      if ios7?
         "view:'_UIModalItemAlertContentView'"
       else
-        'UIAlertView'
+        "view:'_UIAlertControllerView'"
       end
     end
 
     def button_views
       wait_for_alert
 
-      if ios8? || ios9?
-        query = "view:'_UIAlertControllerActionView'"
-      elsif ios7?
+      if ios7?
         query = "view:'_UIModalItemAlertContentView' descendant UITableView descendant label"
       else
-        query = 'UIAlertView descendant button'
+        query = "view:'_UIAlertControllerActionView'"
       end
       query(query)
     end
