@@ -145,10 +145,9 @@ end
 
 After do |_|
 
-  if !xamarin_test_cloud?
+  if !xamarin_test_cloud? && uia_available?
     alert_results_file = LaunchControl.alert_results_file
     run_loop = LaunchControl.launcher.run_loop
-
     if run_loop
       log_file = run_loop[:log_file]
       lines = File.read(log_file).force_encoding("UTF-8")
