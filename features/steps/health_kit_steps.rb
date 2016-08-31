@@ -3,7 +3,11 @@ Then(/^I see the HealthKit modal view or Not Supported alert$/) do
   if @supports_health_kit
     message = "Expected Health Access permissions view to appear"
     bridge_wait_for(message) do
-      !uia_query(:view, {marked:"Health Access"}).empty?
+      if uia_available?
+        !uia_query(:view, {marked:"Health Access"}).empty?
+      else
+        raise RuntimeError, "NYI"
+      end
     end
     wait_for_none_animating
   else
