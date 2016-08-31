@@ -131,8 +131,10 @@ Before do |_|
       #:uia_strategy => :preferences,
       #:uia_strategy => :host,
       #:uia_strategy => :shared_element,
-      :uia_strategy => :host,
-      :uia_timeout => 30
+      #:uia_strategy => :host,
+      #:uia_timeout => 30
+      #:gesture_performer => :device_agent,
+      #:shutdown_device_agent_before_launch => true
   }
 
   launcher.relaunch(options)
