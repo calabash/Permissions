@@ -66,6 +66,7 @@ typedef enum : NSInteger {
 @property (strong, nonatomic) NSOperationQueue* motionActivityQueue;
 @property (strong, nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic, readonly) CalAlertFactory *alertFactory;
+@property (weak, nonatomic) IBOutlet UILabel *actionLabel;
 
 - (ABAddressBookRef) addressBook;
 - (void) setAddressBook:(ABAddressBookRef) newAddressBook;
@@ -88,6 +89,9 @@ typedef enum : NSInteger {
 - (void) rowTouchedHomeKit;
 - (void) rowTouchedHealthKit;
 - (void) rowTouchedApns;
+
+- (void)handleActionLabelTwoFingerTap:(UITapGestureRecognizer *) recognizer;
+- (void)handleActionLabelOneFingerTap:(UITapGestureRecognizer *) recognizer;
 
 @end
 
@@ -676,6 +680,20 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
   return YES;
 }
 
+- (void)handleActionLabelTwoFingerTap:(UITapGestureRecognizer *) recognizer {
+  UIGestureRecognizerState state = [recognizer state];
+  if (UIGestureRecognizerStateEnded == state) {
+      self.actionLabel.text = @"Alert Dismissed";
+  }
+}
+
+- (void)handleActionLabelOneFingerTap:(UITapGestureRecognizer *) recognizer {
+  UIGestureRecognizerState state = [recognizer state];
+  if (UIGestureRecognizerStateEnded == state) {
+    self.actionLabel.text = @"Ready for Next Alert";
+  }
+}
+
 #pragma mark - View Lifecycle
 
 - (void) setContentInsets:(UITableView *)tableView {
@@ -693,6 +711,26 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
   self.view.accessibilityIdentifier = @"page";
   [self.table registerClass:[UITableViewCell class]
          forCellReuseIdentifier:CalCellIdentifier];
+
+  UITapGestureRecognizer *oneFingerTapRecognizer;
+  oneFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                       action:@selector(handleActionLabelOneFingerTap:)];
+  oneFingerTapRecognizer.numberOfTapsRequired = 1;
+  oneFingerTapRecognizer.numberOfTouchesRequired = 1;
+
+  UITapGestureRecognizer *twoFingerTapRecognizer;
+  twoFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                       action:@selector(handleActionLabelTwoFingerTap:)];
+
+  twoFingerTapRecognizer.numberOfTapsRequired = 1;
+  twoFingerTapRecognizer.numberOfTouchesRequired = 2;
+
+  [self.actionLabel addGestureRecognizer:twoFingerTapRecognizer];
+  [self.actionLabel addGestureRecognizer:oneFingerTapRecognizer];
+
+  [twoFingerTapRecognizer requireGestureRecognizerToFail:oneFingerTapRecognizer];
+
+  self.actionLabel.accessibilityIdentifier = @"action label";
 }
 
 - (void) viewWillLayoutSubviews {
