@@ -1,0 +1,13 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE admin (key TEXT PRIMARY KEY NOT NULL, value INTEGER NOT NULL);
+INSERT INTO "admin" VALUES('version',8);
+CREATE TABLE policies (	id		INTEGER	NOT NULL PRIMARY KEY, 	bundle_id	TEXT	NOT NULL, 	uuid		TEXT	NOT NULL, 	display		TEXT	NOT NULL, 	UNIQUE (bundle_id, uuid));
+CREATE TABLE active_policy (	client		TEXT	NOT NULL, 	client_type	INTEGER	NOT NULL, 	policy_id	INTEGER NOT NULL, 	PRIMARY KEY (client, client_type), 	FOREIGN KEY (policy_id) REFERENCES policies(id) ON DELETE CASCADE ON UPDATE CASCADE);
+CREATE TABLE access (	service		TEXT	NOT NULL, 	client		TEXT	NOT NULL, 	client_type	INTEGER	NOT NULL, 	allowed		INTEGER	NOT NULL, 	prompt_count	INTEGER	NOT NULL, 	csreq		BLOB, 	policy_id	INTEGER, 	PRIMARY KEY (service, client, client_type),	FOREIGN KEY (policy_id) REFERENCES policies(id) ON DELETE CASCADE ON UPDATE CASCADE);
+INSERT INTO "access" VALUES('kTCCServiceLiverpool','com.apple.HealthKit',0,1,1,NULL,NULL);
+INSERT INTO "access" VALUES('kTCCServiceUbiquity','com.apple.PassKitCore',0,1,1,NULL,NULL);
+CREATE TABLE access_times (	service		TEXT	NOT NULL, 	client		TEXT	NOT NULL, 	client_type	INTEGER	NOT NULL, 	last_used_time	INTEGER	NOT NULL, 	policy_id	INTEGER, 	PRIMARY KEY (service, client, client_type), 	FOREIGN KEY (policy_id) REFERENCES policies(id) ON DELETE CASCADE ON UPDATE CASCADE);
+CREATE TABLE access_overrides (	service		TEXT	NOT NULL PRIMARY KEY);
+CREATE INDEX active_policy_id ON active_policy(policy_id);
+COMMIT;
