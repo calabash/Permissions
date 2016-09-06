@@ -8,7 +8,7 @@ gem "rb-readline"
 # Sync these with config/xtc-other-gems
 gem "cucumber", "~> 2.0"
 gem 'rspec', '~> 3.0'
-
+gem "xamarin-test-cloud", "~> 2.0"
 gem 'retriable', '~> 2.0'
 
 # Workflow and build tools
