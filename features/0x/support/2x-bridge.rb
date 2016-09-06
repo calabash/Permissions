@@ -1,50 +1,49 @@
-module Permissions
+module Calabash
   module Calabash2xBridge
 
     @@default_options = {
-        timeout: 8.0,
-        retry_frequency: 0.1,
-        exception_class: Timeout::Error
-     }
+      timeout: RunLoop::Environment.ci? ? 16 : 8,
+      retry_frequency: 0.1,
+      exception_class: Timeout::Error
+    }
 
     def wait_for_view(query, options={})
       default_options = @@default_options.dup
       merged_options = default_options.merge(options)
 
       unless merged_options[:message]
-        message = %Q{
-"Waited #{merged_options[:timeout]} seconds for query:
+        message = %Q[
+Waited #{merged_options[:timeout]} seconds for
 
-  #{query}
+ query("#{query}")
 
-to match a view"
-        }
+to match a view.
+
+]
         merged_options[:timeout_message] = message
       end
 
       wait_for_element_exists(query, merged_options)
+      query(query).first
     end
 
-    def wait_for_any(queries, options={})
+    def wait_for_no_view(query, options={})
       default_options = @@default_options.dup
       merged_options = default_options.merge(options)
 
       unless merged_options[:message]
         message = %Q[
-"Waited #{merged_options[:timeout]} seconds for any query:
+Waited #{merged_options[:timeout]} seconds for
 
-#{queries.join("\n")}
+ query("#{query}")
 
-to match a view"
+to match no views.
+
 ]
         merged_options[:timeout_message] = message
       end
 
-      bridge_wait_for(merged_options[:timeout_message], merged_options) do
-        queries.any? do |query|
-          query(query)
-        end
-      end
+      wait_for_element_does_not_exist(query, merged_options)
     end
 
     def wait_for_animations
@@ -69,7 +68,7 @@ to match a view"
 
     def with_timeout(timeout, timeout_message, exception_class = Timeout::Error, &block)
       if timeout_message.nil? ||
-          (timeout_message.is_a?(String) && timeout_message.empty?)
+        (timeout_message.is_a?(String) && timeout_message.empty?)
         raise ArgumentError, 'You must provide a timeout message'
       end
 
@@ -85,10 +84,10 @@ to match a view"
       end
 
       message = if timeout_message.is_a?(Proc)
-                  timeout_message.call({timeout: timeout})
-                else
-                  timeout_message
-                end
+        timeout_message.call({timeout: timeout})
+      else
+        timeout_message
+      end
 
       failed = false
 
@@ -126,5 +125,4 @@ to match a view"
   end
 end
 
-World(Permissions::Calabash2xBridge)
-
+World(Calabash::Calabash2xBridge)
