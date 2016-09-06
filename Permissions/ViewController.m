@@ -240,6 +240,9 @@ typedef enum : NSInteger {
 - (void) rowTouchedMicrophone {
   NSLog(@"Microphone requested");
 
+#if TARGET_IPHONE_SIMULATOR
+  [[self.alertFactory alertForMicrophoneOnSimulatorFAKE] show];
+#else
   [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
     if (granted) {
       NSLog(@"Micro Permission Granted");
@@ -258,6 +261,7 @@ typedef enum : NSInteger {
       NSLog(@"Permission Denied");
     }
   }];
+#endif
 }
 
 #pragma mark - Row Touched: Motion Activity

@@ -10,5 +10,6 @@
 - (UIAlertView *) alertForHomeKitNYI;
 - (UIAlertView *) alertForHealthKitNotSupported;
 - (UIAlertView *) alertForBluetoothFAKE;
+- (UIAlertView *) alertForMicrophoneOnSimulatorFAKE;
 
 @end

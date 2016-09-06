@@ -129,4 +129,17 @@ static NSString *const LPDeviceSimKeyModelIdentifier = @"SIMULATOR_MODEL_IDENTIF
           otherButtonTitles:ok, nil];
 }
 
+- (UIAlertView *) alertForMicrophoneOnSimulatorFAKE {
+  NSString *title = @"APP NAME Access the Microphone";
+  NSString *no = @"Don't Allow";
+  NSString *ok = @"OK";
+
+  return [[UIAlertView alloc]
+          initWithTitle:title
+          message:nil
+          delegate:self.delegate
+          cancelButtonTitle:no
+          otherButtonTitles:ok, nil];
+}
+
 @end
