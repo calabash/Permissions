@@ -11,8 +11,8 @@ module Permissions
       DeviceAgent.instance.alert_visible?
     end
 
-    def self.spring_board_alert_visible?
-      DeviceAgent.instance.spring_board_alert_visible?
+    def self.springboard_alert_visible?
+      DeviceAgent.instance.springboard_alert_visible?
     end
 
     def self.shutdown
@@ -47,8 +47,8 @@ module Permissions
       client.alert_visible?
     end
 
-    def spring_board_alert_visible?
-      client.spring_board_alert_visible?
+    def springboard_alert_visible?
+      client.springboard_alert_visible?
     end
 
     def shutdown

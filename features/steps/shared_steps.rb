@@ -78,7 +78,7 @@ Timed out waiting for In-Alert to disappear after #{timeout} seconds
         result["value"]
 
       else
-        Permissions::DeviceAgent.spring_board_alert_visible?
+        Permissions::DeviceAgent.springboard_alert_visible?
       end
     end
 
