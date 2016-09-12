@@ -316,7 +316,9 @@ Before do |scenario|
       #:uia_strategy => :shared_element,
       #:uia_strategy => :host,
       #:uia_timeout => 30
-      #:gesture_performer => :device_agent,
+
+      # Use xcodebuild to launch DeviceAgent.
+      # :cbx_launcher => :xcodebuild
   }.merge(Permissions::Launchctl.instance.environment)
 
   if Permissions::Launchctl.instance.first_launch
@@ -330,13 +332,16 @@ Before do |scenario|
 end
 
 After do |scenario|
-  if scenario.failed?
-    Permissions::Launchctl.instance.shutdown(self)
+
+  case :shutdown
+    when :shutdown
+      if scenario.failed?
+        Permissions::Launchctl.instance.shutdown(self)
+      end
+    when :exit
+      if scenario.failed?
+        exit!(9)
+      end
+    else
   end
-
-  # Super helpful for local testing.
-  # if scenario.failed?
-  #   exit!(9)
-  # end
 end
-
