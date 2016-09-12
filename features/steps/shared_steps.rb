@@ -322,3 +322,76 @@ Then(/^Calabash should dismiss the alert$/) do
   wait_for_alert_dismissed_text
 end
 
+Then(/^I see the HealthKit modal view or Not Supported alert$/) do
+  if @supports_health_kit
+    message = "Expected Health Access permissions view to appear"
+    bridge_wait_for(message) do
+      if uia_available?
+        !uia_query(:view, {marked:"Health Access"}).empty?
+      else
+        !device_agent.query({text: "Health Access"}).empty?
+      end
+    end
+    wait_for_none_animating
+  else
+    wait_for_alert
+    wait_for_none_animating
+    sleep(1.0)
+    touch("* marked:'Dismiss'")
+    wait_for_no_alert
+  end
+end
+
+Then(/^I can enable HealthKit permissions and dismiss the page$/) do
+  if !@supports_health_kit
+    # nop - device or iOS does not support health kit
+    puts "   Device or iOS version does not support HealthKit"
+    return
+  end
+
+  if RunLoop::Environment.ci?
+    pause = 10.0
+  elsif RunLoop::Environment.xtc?
+    pause = 8.0
+  else
+    pause = 3.0
+  end
+
+  if uia_available?
+    if ios8?
+      # Skip the 'Sex' row because the text varies across simulator,
+      # physical devices, and form factors - the 6 plus has: Biological Sex
+      ["Body Mass Index", "Height", "Weight",
+       "Date of Birth", "Steps"].each do |mark|
+
+        uia_call(:tableView, {:scrollToElementWithName => mark})
+        sleep(pause)
+        uia_call([:switch, {:marked => mark}], {:setValue => true})
+        sleep(pause)
+      end
+
+      uia_tap_mark("Done")
+    else
+      sleep(pause)
+      uia_tap_mark("All Categories On")
+      sleep(pause)
+      uia_tap_mark("Allow")
+    end
+  else
+    sleep(pause)
+    device_agent.touch({marked: "Turn All Categories On"})
+    sleep(pause)
+    device_agent.touch({marked: "Allow"})
+  end
+
+  message = "Expected Health Access permissions view to disappear"
+  bridge_wait_for(message) do
+    if uia_available?
+      uia_query(:view, {marked:"Health Access"}).empty?
+    else
+      device_agent.query({text: "Health Access"}).empty?
+    end
+  end
+
+  wait_for_view("view marked:'page'")
+end
