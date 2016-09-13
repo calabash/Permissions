@@ -1,17 +1,9 @@
-<%
-
-REQUIRES = "-r features/support -r features/steps -r features/0x/support"
-
-%>
-
 not_xtc:     --tags ~@not_xtc
 not_sim:     --tags ~@simulator --tags ~@simulator_only
 
 tags:        -p not_xtc -p not_sim
-env:         CALABASH=0x
 args:        --expand --backtrace --no-multiline
-requires:    <%= REQUIRES %>
-common:      -p tags -p env -p args -p requires
+common:      -p tags -p args
 
 default:     -p common
 

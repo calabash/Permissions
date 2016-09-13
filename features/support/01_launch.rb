@@ -1,83 +1,3 @@
-module Permissions
-  class DeviceAgent
-    require "singleton"
-    include Singleton
-
-    def self.query(mark, options={})
-      DeviceAgent.instance.query(mark, options)
-    end
-
-    def self.alert_visible?
-      DeviceAgent.instance.alert_visible?
-    end
-
-    def self.springboard_alert_visible?
-      DeviceAgent.instance.springboard_alert_visible?
-    end
-
-    def self.shutdown
-      DeviceAgent.instance.shutdown
-    end
-
-    # Use DeviceAgent to query for elements.
-    #
-    # @example Query by identifier.
-    #
-    #   DeviceAgent.query("login")
-    #
-    # @example Query by type
-    #
-    #   DeviceAgent.query("Button", {:specifier => :type})
-    #
-    # @example Query by text
-    #
-    #   DeviceAgent.query("Log In", {:specifier => :text})
-    #
-    # @param [String] mark An identifier.
-    # @param [Hash] options Control over the query
-    # @option options :all (true) Return all results, regardless of visibility.
-    # @option options :specifier (:id) What to match the mark against.
-    #
-    # @return [Array<Hash>] An array of elements that match the query.
-    def query(mark, options={})
-      client.query(mark, options)
-    end
-
-    def alert_visible?
-      client.alert_visible?
-    end
-
-    def springboard_alert_visible?
-      client.springboard_alert_visible?
-    end
-
-    def shutdown
-      performer = Permissions::Launchctl.instance.launcher.automator
-      return if !performer
-
-      if performer.name != :device_agent
-        raise "The client is not DeviceAgent!"
-      end
-
-      performer.client.send(:shutdown)
-    end
-
-    private
-
-    def client
-      performer = Permissions::Launchctl.instance.launcher.automator
-      if !performer
-        raise "There is no client!"
-      end
-
-      if performer.name != :device_agent
-        raise "The client is not DeviceAgent!"
-      end
-
-      @device_agent_client = performer.client
-    end
-  end
-end
 
 module Permissions
   class Launchctl
@@ -109,15 +29,8 @@ module Permissions
     end
 
     def shutdown(world)
-      world.send(:calabash_exit)
-      performer = Permissions::Launchctl.instance.launcher.automator
-      return if !performer
-
-      if performer.name == :device_agent
-        Permissions::DeviceAgent.shutdown
-      end
-
       @first_launch = true
+      world.calabash_exit
     end
 
     def lp_server_running?
@@ -179,18 +92,10 @@ module Permissions
     end
 
     def options
-      @options ||= begin
-        if xcode.version_gte_8?
-          performer = {
-            :gesture_performer => :device_agent
-          }
-        else
-          performer = {
-            :gesture_performer => :instruments
-          }
-        end
-
-        performer.merge(environment)
+      if RunLoop::Environment.xtc?
+        {}
+      else
+        environment
       end
     end
 
@@ -199,6 +104,7 @@ module Permissions
     end
 
     def reset_simulator_lang_locale_and_tcc
+      return if RunLoop::Environment.xtc?
       if device.physical_device?
         raise "Should only be called when target is a simulator"
       else
@@ -208,6 +114,7 @@ module Permissions
     end
 
     def maybe_reset_simulator_tcc(scenario)
+      return if RunLoop::Environment.xtc?
       return if device.physical_device?
 
       names = scenario.tags.map { |tag| tag.name }
@@ -283,13 +190,13 @@ module Permissions
 end
 
 Before("@reset_device_settings") do
-  Permissions::Launchctl.instance.shutdown(self)
-
   if xamarin_test_cloud?
     ENV["RESET_BETWEEN_SCENARIOS"] = "1"
+    Permissions::Launchctl.instance.shutdown(self)
   elsif Permissions::Launchctl.instance.device.simulator?
     Permissions::Launchctl.instance.reset_simulator_lang_locale_and_tcc
   else
+    Permissions::Launchctl.instance.shutdown(self)
     # Requires Settings.app > General > Reset > Reset Location and Privacy
     # Could be automated with DeviceAgent.
     Permissions::Launchctl.instance.install_on_physical_device
@@ -297,34 +204,26 @@ Before("@reset_device_settings") do
 end
 
 Before do |scenario|
+
   if !xamarin_test_cloud?
     if Permissions::Launchctl.instance.device.physical_device?
       Permissions::Launchctl.instance.ensure_app_installed_on_device
     end
-  end
 
-  options =
-    {
-      :args =>
-      [
-        "-AppleLanguages", "(#{Permissions::Launchctl.instance.app_lang})",
-        "-AppleLocale", Permissions::Launchctl.instance.app_locale,
-      ],
+    options = Permissions::Launchctl.instance.environment
+    options[:args] = [
+      "-AppleLanguages", "(#{Permissions::Launchctl.instance.app_lang})",
+      "-AppleLocale", Permissions::Launchctl.instance.app_locale,
+    ]
 
-      #:uia_strategy => :preferences,
-      #:uia_strategy => :host,
-      #:uia_strategy => :shared_element,
-      #:uia_strategy => :host,
-      #:uia_timeout => 30
+    if Permissions::Launchctl.instance.first_launch
+      Permissions::Launchctl.instance.maybe_reset_simulator_tcc(scenario)
+      Permissions::Launchctl.instance.launch(options)
+    end
 
-      # Use xcodebuild to launch DeviceAgent.
-      # :cbx_launcher => :xcodebuild
-  }.merge(Permissions::Launchctl.instance.environment)
-
-  if Permissions::Launchctl.instance.first_launch
-    Permissions::Launchctl.instance.maybe_reset_simulator_tcc(scenario)
+  else
+    options = {}
     Permissions::Launchctl.instance.launch(options)
-
     if xamarin_test_cloud?
       ENV["RESET_BETWEEN_SCENARIOS"] = "0"
     end
@@ -336,12 +235,17 @@ After do |scenario|
   case :shutdown
     when :shutdown
       if scenario.failed?
-        Permissions::Launchctl.instance.shutdown(self)
+        calabash_exit
       end
     when :exit
-      if scenario.failed?
-        exit!(9)
+      if !xamarin_test_cloud?
+        if scenario.failed?
+          exit!(9)
+        else
+          calabash_exit
+        end
       end
     else
   end
 end
+

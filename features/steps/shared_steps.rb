@@ -76,9 +76,8 @@ Timed out waiting for In-Alert to disappear after #{timeout} seconds
           fail("Expected `uia` to exist with 'success' but found #{status}")
         end
         result["value"]
-
       else
-        Permissions::DeviceAgent.springboard_alert_visible?
+        device_agent.springboard_alert_visible?
       end
     end
 

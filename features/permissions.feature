@@ -22,7 +22,6 @@ Then Calabash should dismiss the alert
 @health_kit
 @reset_device_settings
 Scenario: Enabling Health Kit permissions
-Given I can see the list of services requiring authorization
 When I touch the Health Kit row
 Then I see the HealthKit modal view or Not Supported alert
 Then I can enable HealthKit permissions and dismiss the page
