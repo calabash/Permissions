@@ -34,9 +34,3 @@ API_TOKEN=`${CODE_SIGN_DIR}/ios/find-xtc-credential.sh api-token | tr -d '\n'`
 mkdir -p "${HOME}/.calabash/test-cloud"
 echo $API_TOKEN > "${HOME}/.calabash/test-cloud/calabash-ios-ci"
 
-# Bug in Briar. :(
-ln -s "${HOME}/.calabash" "${HOME}/.xamarin"
-
-# Bug in Briar. :(
-touch "${HOME}/.calabash/test-cloud/ios-sets.csv"
-
