@@ -18,9 +18,12 @@
 #import <objc/runtime.h>
 #import <HealthKit/HealthKit.h>
 
+static NSString *const CalPresentAllAlertsNotification = @"sh.calaba.Permissions";
+
 @interface UIView (CalabashPermissions)
 
 - (BOOL) isHealthKitAvailable;
+- (void) sendNotificationToPresentAllAlerts;
 
 @end
 
@@ -29,6 +32,11 @@
 // HealthKit is avaiable on iOS > 7 and only on some devices
 - (BOOL) isHealthKitAvailable {
   return NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable];
+}
+
+- (void) sendNotificationToPresentAllAlerts {
+   [[NSNotificationCenter defaultCenter]
+    postNotificationName:CalPresentAllAlertsNotification object:nil];
 }
 
 @end
@@ -698,6 +706,18 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
   }
 }
 
+- (void)handlePostAllAlertsNotification:(NSNotification *)notification {
+  [self rowTouchedLocationServices];
+  [self rowTouchedBackgroundLocationServices];
+  [self rowTouchedContacts];
+  [self rowTouchedCalendars];
+  [self rowTouchedReminders];
+  [self rowTouchedMotionActivity];
+  [self rowTouchedCamera];
+  [self rowTouchedTwitter];
+  [self rowTouchedApns];
+}
+
 #pragma mark - View Lifecycle
 
 - (void) setContentInsets:(UITableView *)tableView {
@@ -711,6 +731,11 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
 
 - (void) viewDidLoad {
   [super viewDidLoad];
+
+  [[NSNotificationCenter defaultCenter]
+   addObserver:self
+   selector:@selector(handlePostAllAlertsNotification:)
+   name:CalPresentAllAlertsNotification object:nil];
 
   self.view.accessibilityIdentifier = @"page";
   [self.table registerClass:[UITableViewCell class]

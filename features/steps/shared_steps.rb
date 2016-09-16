@@ -345,52 +345,80 @@ Then(/^I can enable HealthKit permissions and dismiss the page$/) do
   if !@supports_health_kit
     # nop - device or iOS does not support health kit
     puts "   Device or iOS version does not support HealthKit"
-    return
-  end
 
-  if RunLoop::Environment.ci?
-    pause = 10.0
-  elsif RunLoop::Environment.xtc?
-    pause = 8.0
   else
-    pause = 3.0
-  end
-
-  if uia_available?
-    if ios8?
-      # Skip the 'Sex' row because the text varies across simulator,
-      # physical devices, and form factors - the 6 plus has: Biological Sex
-      ["Body Mass Index", "Height", "Weight",
-       "Date of Birth", "Steps"].each do |mark|
-
-        uia_call(:tableView, {:scrollToElementWithName => mark})
-        sleep(pause)
-        uia_call([:switch, {:marked => mark}], {:setValue => true})
-        sleep(pause)
-      end
-
-      uia_tap_mark("Done")
+    if RunLoop::Environment.ci?
+      pause = 10.0
+    elsif RunLoop::Environment.xtc?
+      pause = 8.0
     else
-      sleep(pause)
-      uia_tap_mark("All Categories On")
-      sleep(pause)
-      uia_tap_mark("Allow")
+      pause = 3.0
     end
-  else
-    sleep(pause)
-    device_agent.touch({marked: "Turn All Categories On"})
-    sleep(pause)
-    device_agent.touch({marked: "Allow"})
-  end
 
-  message = "Expected Health Access permissions view to disappear"
-  bridge_wait_for(message) do
     if uia_available?
-      uia_query(:view, {marked:"Health Access"}).empty?
-    else
-      device_agent.query({text: "Health Access"}).empty?
-    end
-  end
+      if ios8?
+        # Just enable some rows.  What is visible depends on iOS version
+        # and form factor.
+        ["Body Mass Index", "Height", "Weight"].each do |mark|
 
-  wait_for_view("view marked:'page'")
+          uia_call(:tableView, {:scrollToElementWithName => mark})
+          sleep(pause)
+          uia_call([:switch, {:marked => mark}], {:setValue => true})
+          sleep(pause)
+        end
+
+        uia_tap_mark("Done")
+      else
+        sleep(pause)
+        uia_tap_mark("All Categories On")
+        sleep(pause)
+        uia_tap_mark("Allow")
+      end
+    else
+      sleep(pause)
+      device_agent.touch({marked: "Turn All Categories On"})
+      sleep(pause)
+      device_agent.touch({marked: "Allow"})
+
+      # Remove when the Cannot wait for "Health Access" view to disappear
+      # issue is resolved.
+      # https://jira.xamarin.com/browse/TCFW-584
+      sleep(pause)
+    end
+
+    timeout = timeout_for_env
+    message = %Q[
+
+Waited for #{timeout} seconds for the Health Access permissions view to disappear
+
+]
+    bridge_wait_for(message, {:timeout => timeout} ) do
+      if uia_available?
+        uia_query(:view, {marked:"Health Access"}).empty?
+      else
+        # https://jira.xamarin.com/browse/TCFW-584
+        # Cannot wait for the "Health Access" view to disappear.
+        # device_agent.query({text: "Health Access"}).empty?
+        true
+      end
+    end
+
+    wait_for_view("view marked:'page'")
+  end
+end
+
+Then(/^the app pops all the alerts$/) do
+  query("* marked:'page'", :sendNotificationToPresentAllAlerts)
+end
+
+Then(/^I make a query to trigger the alerts to be dismissed$/) do
+  begin
+    query("*")
+  rescue => e
+    puts "timeout: #{e}"
+  end
+end
+
+Then(/^all the alerts have been dismissed$/) do
+  wait_for_alert_dismissed_text
 end

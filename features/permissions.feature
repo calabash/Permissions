@@ -99,3 +99,12 @@ Then Calabash should dismiss the alert
 Scenario: Apple Push Notification Services
 When I touch the APNS row
 Then Calabash should dismiss the alert
+
+#@all_alerts
+#@not_xtc
+#@reset_device_settings
+#https://jira.xamarin.com/browse/TCFW-589
+#Scenario: 999 Dismiss all alerts
+#Then the app pops all the alerts
+#Then I make a query to trigger the alerts to be dismissed
+#Then all the alerts have been dismissed
