@@ -348,7 +348,8 @@ We recommend installing ideviceinstaller with homebrew.
                   on: on
             }
 
-      Retriable.retriable(options) do
+      require "retriable"
+      ::Retriable.retriable(options) do
         options = {:timeout => 120, :log_cmd => true}
         result = RunLoop::Shell.run_shell_command(command, options)
 
