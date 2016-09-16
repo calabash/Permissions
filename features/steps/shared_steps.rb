@@ -330,7 +330,18 @@ Then(/^a Not Supported alert is presented$/) do
 end
 
 Then(/^Calabash should dismiss the alert$/) do
-  wait_for_springboard_alert
+  # If the alert is dismissed too fast, then waiting will timeout.
+  # There is no way to reliably wait for a SpringBoard alert.
+  # The automatic dismiss is async in both cases.
+  if uia_available?
+    sleep(timeout_for_env)
+  else
+    # The query causes the alert to be dismissed.
+    query("*")
+  end
+
+  # We can wait for no spring board alerts.
+  wait_for_no_springboard_alert
   wait_for_alert_dismissed_text
 end
 
