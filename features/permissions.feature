@@ -54,12 +54,14 @@ Scenario:  Twitter alert is dismissed
 When I touch the Twitter row
 Then Calabash should dismiss the alert
 
-@bluetooth
-Scenario: Bluetooth Sharing alert
-When I touch the Bluetooth Sharing row
-Then a fake Bluetooth alert is generated
-And Calabash backed by UIA automatically dismisses the alert
-But Calabash backed by DeviceAgent will not auto dismiss because it is fake
+#@bluetooth
+#Scenario: Bluetooth Sharing alert
+# Flickering.
+# https://jira.xamarin.com/browse/TCFW-588
+#When I touch the Bluetooth Sharing row
+#Then a fake Bluetooth alert is generated
+#And Calabash backed by UIA automatically dismisses the alert
+#But Calabash backed by DeviceAgent will not auto dismiss because it is fake
 
 @device
 @microphone
