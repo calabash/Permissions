@@ -18,6 +18,12 @@ end
 Bundler.with_clean_env do
   Luffa.unix_command("bundle update")
 
+  # Ensure the latest DeviceAgent is installed.
+  run_loop_gem = `bundle show run_loop`.strip
+  Dir.chdir(run_loop_gem) do
+    `rake device_agent:expand`
+  end
+
   if !Luffa::Environment.travis_ci? && !Luffa::Environment.jenkins_ci?
     # For submitting tests locally
     Luffa.unix_command("make ipa")

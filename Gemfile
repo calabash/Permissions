@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'calabash-cucumber', :github => "calabash/calabash-ios", :branch => "develop"
+gem "calabash-cucumber", :github => "calabash/calabash-ios", :branch => "develop"
+gem "run_loop", :github => "calabash/run_loop", :branch => "develop"
 
 # Sync these with config/xtc-other-gems
 gem "cucumber", "~> 2.0"
