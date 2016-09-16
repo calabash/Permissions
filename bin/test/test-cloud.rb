@@ -11,7 +11,7 @@ if !device_set || device_set == ""
 end
 
 if !device_set || device_set == ""
-  device_set = ["35d0da97", "2c9fc4b1", "0a3b9ecb", "331ab3d4"].sample
+  device_set = ["5780dc9d", "a970c1db", "024429de", "b21f5915"].sample
 end
 
 
