@@ -1,6 +1,19 @@
 module Permissions
   module SharedSteps
 
+    def tap_row(id)
+      query = "UITableView marked:'table'"
+      options = {
+        :scroll_position => :middle,
+        :query => query
+      }
+
+      scroll_to_row_with_mark(id, options)
+      wait_for_animations
+
+      touch("UITableViewCell marked:'#{id}'")
+    end
+
     def timeout_for_env
       if RunLoop::Environment.ci?
         30.0
