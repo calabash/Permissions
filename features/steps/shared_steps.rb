@@ -245,6 +245,7 @@ And(/^I can dismiss the Photo Roll by touching Cancel$/) do
     # Waiting for no alert does not work.
     sleep(timeout_for_env)
     touch("* marked:'Cancel'")
+    sleep(timeout_for_env)
   else
     # DeviceAgent does not like interacting with the Photo Roll animations.
     # Sleep for a long time to make sure the final touch actually happens.
