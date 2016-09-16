@@ -71,7 +71,7 @@ Timed out waiting for In-App Alert after #{timeout} seconds
       timeout = timeout_for_env
       message = %Q[
 
-Timed out waiting for In-Alert to disappear after #{timeout} seconds
+Timed out waiting for In-App Alert to disappear after #{timeout} seconds
 
 ]
       bridge_wait_for(message, {:timeout => timeout}) do
