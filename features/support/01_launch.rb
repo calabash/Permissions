@@ -66,9 +66,9 @@ module Permissions
 
       if !launcher.instruments?
         device_agent_running?
+      else
+        running
       end
-
-      running
     end
 
     def xcode
