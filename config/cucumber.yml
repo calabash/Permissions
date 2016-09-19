@@ -1,17 +1,5 @@
 <%
 
-require 'luffa'
-
-REQUIRES = "-r features/support -r features/steps -r features/0x/support"
-
-if ENV["APP_BUNDLE_PATH"]
-  Luffa.log_warn("APP_BUNDLE_PATH is deprecated; use APP instead")
-end
-
-APP = ENV["APP"] ||
-      ENV["APP_BUNDLE_PATH"] ||
-      "./Products/app/Permissions.app"
-
 calabash_dir = File.expand_path(File.join(ENV["HOME"], ".calabash"))
 
 devices = {}
@@ -28,27 +16,19 @@ device_list.each do |device|
   devices[device.to_sym] = ht
 end
 
-if ENV["USER"] == "jenkins"
-  formatter = "pretty"
-else
-  formatter = "Slowhandcuke::Formatter"
-end
-
 %>
 
-common:  CALABASH=0x <%= REQUIRES %>
-
 verbose: DEBUG=1
-formatter: -f <%= formatter %>
+formatter: -f pretty
 
 # Launch on default simulator.
-simulator_vars: APP=<%= APP %>
+simulator_vars: APP="./Products/app/Permissions.app"
 simulator_tags: --tags ~@device_only --tags ~@device
-default:        -p simulator_vars -p simulator_tags -p formatter -p common
+default:        -p simulator_vars -p simulator_tags -p formatter
 
 # Launch on device.
 device_tags:  --tags ~@simulator_only --tags ~@simulator
-device:       -p device_tags -p formatter BUNDLE_ID=sh.calaba.Permissions -p common
+device:       -p device_tags -p formatter APP=sh.calaba.Permissions -p formatter
 
 iphone5S:    -p device DEVICE_TARGET=<%= devices[:iphone5S][:udid] %>    DEVICE_ENDPOINT=<%= devices[:iphone5S][:ip] %>
 iphone4S:    -p device DEVICE_TARGET=<%= devices[:iphone4S][:udid] %>    DEVICE_ENDPOINT=<%= devices[:iphone4S][:ip] %>

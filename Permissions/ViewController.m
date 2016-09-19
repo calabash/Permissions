@@ -18,9 +18,12 @@
 #import <objc/runtime.h>
 #import <HealthKit/HealthKit.h>
 
+static NSString *const CalPresentAllAlertsNotification = @"sh.calaba.Permissions";
+
 @interface UIView (CalabashPermissions)
 
 - (BOOL) isHealthKitAvailable;
+- (void) sendNotificationToPresentAllAlerts;
 
 @end
 
@@ -29,6 +32,11 @@
 // HealthKit is avaiable on iOS > 7 and only on some devices
 - (BOOL) isHealthKitAvailable {
   return NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable];
+}
+
+- (void) sendNotificationToPresentAllAlerts {
+   [[NSNotificationCenter defaultCenter]
+    postNotificationName:CalPresentAllAlertsNotification object:nil];
 }
 
 @end
@@ -66,6 +74,7 @@ typedef enum : NSInteger {
 @property (strong, nonatomic) NSOperationQueue* motionActivityQueue;
 @property (strong, nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic, readonly) CalAlertFactory *alertFactory;
+@property (weak, nonatomic) IBOutlet UILabel *actionLabel;
 
 - (ABAddressBookRef) addressBook;
 - (void) setAddressBook:(ABAddressBookRef) newAddressBook;
@@ -88,6 +97,9 @@ typedef enum : NSInteger {
 - (void) rowTouchedHomeKit;
 - (void) rowTouchedHealthKit;
 - (void) rowTouchedApns;
+
+- (void)handleActionLabelTwoFingerTap:(UITapGestureRecognizer *) recognizer;
+- (void)handleActionLabelOneFingerTap:(UITapGestureRecognizer *) recognizer;
 
 @end
 
@@ -236,6 +248,9 @@ typedef enum : NSInteger {
 - (void) rowTouchedMicrophone {
   NSLog(@"Microphone requested");
 
+#if TARGET_IPHONE_SIMULATOR
+  [[self.alertFactory alertForMicrophoneOnSimulatorFAKE] show];
+#else
   [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
     if (granted) {
       NSLog(@"Micro Permission Granted");
@@ -254,6 +269,7 @@ typedef enum : NSInteger {
       NSLog(@"Permission Denied");
     }
   }];
+#endif
 }
 
 #pragma mark - Row Touched: Motion Activity
@@ -676,6 +692,32 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
   return YES;
 }
 
+- (void)handleActionLabelTwoFingerTap:(UITapGestureRecognizer *) recognizer {
+  UIGestureRecognizerState state = [recognizer state];
+  if (UIGestureRecognizerStateEnded == state) {
+      self.actionLabel.text = @"Alert Dismissed";
+  }
+}
+
+- (void)handleActionLabelOneFingerTap:(UITapGestureRecognizer *) recognizer {
+  UIGestureRecognizerState state = [recognizer state];
+  if (UIGestureRecognizerStateEnded == state) {
+    self.actionLabel.text = @"Ready for Next Alert";
+  }
+}
+
+- (void)handlePostAllAlertsNotification:(NSNotification *)notification {
+  [self rowTouchedLocationServices];
+  [self rowTouchedBackgroundLocationServices];
+  [self rowTouchedContacts];
+  [self rowTouchedCalendars];
+  [self rowTouchedReminders];
+  [self rowTouchedMotionActivity];
+  [self rowTouchedCamera];
+  [self rowTouchedTwitter];
+  [self rowTouchedApns];
+}
+
 #pragma mark - View Lifecycle
 
 - (void) setContentInsets:(UITableView *)tableView {
@@ -690,9 +732,34 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
 - (void) viewDidLoad {
   [super viewDidLoad];
 
+  [[NSNotificationCenter defaultCenter]
+   addObserver:self
+   selector:@selector(handlePostAllAlertsNotification:)
+   name:CalPresentAllAlertsNotification object:nil];
+
   self.view.accessibilityIdentifier = @"page";
   [self.table registerClass:[UITableViewCell class]
          forCellReuseIdentifier:CalCellIdentifier];
+
+  UITapGestureRecognizer *oneFingerTapRecognizer;
+  oneFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                       action:@selector(handleActionLabelOneFingerTap:)];
+  oneFingerTapRecognizer.numberOfTapsRequired = 1;
+  oneFingerTapRecognizer.numberOfTouchesRequired = 1;
+
+  UITapGestureRecognizer *twoFingerTapRecognizer;
+  twoFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                       action:@selector(handleActionLabelTwoFingerTap:)];
+
+  twoFingerTapRecognizer.numberOfTapsRequired = 1;
+  twoFingerTapRecognizer.numberOfTouchesRequired = 2;
+
+  [self.actionLabel addGestureRecognizer:twoFingerTapRecognizer];
+  [self.actionLabel addGestureRecognizer:oneFingerTapRecognizer];
+
+  [twoFingerTapRecognizer requireGestureRecognizerToFail:oneFingerTapRecognizer];
+
+  self.actionLabel.accessibilityIdentifier = @"action label";
 }
 
 - (void) viewWillLayoutSubviews {
