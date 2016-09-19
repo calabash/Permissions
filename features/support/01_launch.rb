@@ -194,6 +194,7 @@ Before("@reset_device_settings") do
     ENV["RESET_BETWEEN_SCENARIOS"] = "1"
     Permissions::Launchctl.instance.shutdown(self)
   elsif Permissions::Launchctl.instance.device.simulator?
+    Permissions::Launchctl.instance.shutdown(self)
     Permissions::Launchctl.instance.reset_simulator_lang_locale_and_tcc
   else
     Permissions::Launchctl.instance.shutdown(self)
