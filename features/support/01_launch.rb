@@ -109,7 +109,7 @@ module Permissions
         raise "Should only be called when target is a simulator"
       else
         RunLoop::CoreSimulator.erase(device, {:simctl => simctl})
-        set_sim_locale_and_lang(device)
+        set_sim_locale_and_lang
       end
     end
 
@@ -178,13 +178,13 @@ module Permissions
       @app_lang = ENV["APP_LANG"] || "en-US"
     end
 
-    def set_sim_locale_and_lang(sim)
+    def set_sim_locale_and_lang
       if device.physical_device?
         raise "Should only be called when target is a simulator"
       end
 
-      RunLoop::CoreSimulator.set_locale(sim, app_locale)
-      RunLoop::CoreSimulator.set_language(sim, app_lang)
+      RunLoop::CoreSimulator.set_locale(device, app_locale)
+      RunLoop::CoreSimulator.set_language(device, app_lang)
     end
   end
 end
