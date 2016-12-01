@@ -17,6 +17,7 @@
 #import "CalAlertFactory.h"
 #import <objc/runtime.h>
 #import <HealthKit/HealthKit.h>
+#import <StoreKit/StoreKit.h>
 
 static NSString *const CalPresentAllAlertsNotification = @"sh.calaba.Permissions";
 
@@ -59,6 +60,7 @@ typedef enum : NSInteger {
   kHomeKit,
   kHealthKit,
   kAPNS,
+  kStoreKitAppleMusic,
   kNumberOfRows
 } CalTableRows;
 
@@ -97,6 +99,7 @@ typedef enum : NSInteger {
 - (void) rowTouchedHomeKit;
 - (void) rowTouchedHealthKit;
 - (void) rowTouchedApns;
+- (void) rowTouchedStoreKitAppleMusic;
 
 - (void)handleActionLabelTwoFingerTap:(UITapGestureRecognizer *) recognizer;
 - (void)handleActionLabelOneFingerTap:(UITapGestureRecognizer *) recognizer;
@@ -121,8 +124,7 @@ typedef enum : NSInteger {
 
 - (CalAlertFactory *) alertFactory {
   if (_alertFactory) { return _alertFactory; }
-  _alertFactory = [[CalAlertFactory alloc]
-                   initWithDelegate:self];
+  _alertFactory = [[CalAlertFactory alloc] initWithDelegate:self];
   return _alertFactory;
 }
 
@@ -357,8 +359,10 @@ typedef enum : NSInteger {
   }
   ACAccountType *twitterAccount = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 
-  [self.accountStore requestAccessToAccountsWithType:twitterAccount options:nil completion:^(BOOL granted, NSError *error) {
-  }];
+  [self.accountStore requestAccessToAccountsWithType:twitterAccount
+                                             options:nil
+                                          completion:^(BOOL granted, NSError *error) {
+                                          }];
 }
 
 #pragma mark - Row Touched: Home Kit
@@ -424,6 +428,14 @@ typedef enum : NSInteger {
                                       UIRemoteNotificationTypeAlert);
     [shared registerForRemoteNotificationTypes:types];
   }
+}
+
+- (void) rowTouchedStoreKitAppleMusic {
+
+  [SKCloudServiceController requestAuthorization:^(SKCloudServiceAuthorizationStatus status) {
+
+  }];
+
 }
 
 #pragma mark - <UITableViewDataSource>
@@ -541,6 +553,13 @@ typedef enum : NSInteger {
       selector = @selector(rowTouchedApns);
       title = @"APNS";
       identifier = @"apns";
+      break;
+    }
+
+    case kStoreKitAppleMusic: {
+      selector = @selector(rowTouchedStoreKitAppleMusic);
+      title = @"StoreKit: Apple Music";
+      identifier = @"store kit: apple music";
       break;
     }
 
@@ -716,6 +735,7 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
   [self rowTouchedCamera];
   [self rowTouchedTwitter];
   [self rowTouchedApns];
+  [self rowTouchedStoreKitAppleMusic];
 }
 
 #pragma mark - View Lifecycle
