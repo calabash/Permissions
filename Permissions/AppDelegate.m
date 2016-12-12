@@ -20,7 +20,8 @@
 - (BOOL) addressBookStatus;
 - (BOOL) calendarStatus;
 - (BOOL) remindersStatus;
-- (BOOL) apnsStatus;
+// TODO Not working as expected.
+//- (BOOL) apnsStatus;
 
 @end
 
@@ -86,9 +87,10 @@
   EKAuthorizationStatusAuthorized;
 }
 
-- (BOOL) apnsStatus {
-  return [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
-}
+// TODO: not working as expected.
+//- (BOOL) apnsStatus {
+//  return [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
+//}
 
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

@@ -106,7 +106,6 @@ Then Calabash should dismiss the alert
 Scenario: Apple Push Notification Services
 When I touch the APNS row
 Then Calabash should dismiss the alert
-And APNS is authorized
 
 #@all_alerts
 #@not_xtc

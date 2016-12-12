@@ -2,7 +2,7 @@ module Permissions
   module SharedSteps
 
     SERVICES_WITH_BACKDOOR_CHECKS = [
-      "location", "background location", "contacts", "calendar", "reminders", "apns"
+      "location", "background location", "contacts", "calendar", "reminders"
     ]
 
     def service_authorized?(service_name)
@@ -493,10 +493,6 @@ end
 
 And(/^access to (reminders|calendar|contacts) is authorized$/) do |service|
   wait_for_service_authorized(service)
-end
-
-And(/^APNS is authorized$/) do
-  wait_for_service_authorized("apns")
 end
 
 Then(/^the app pops all the alerts$/) do
