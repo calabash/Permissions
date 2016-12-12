@@ -6,8 +6,20 @@
 //  Copyright (c) 2014 Villars Gimm. All rights reserved.
 
 #import "AppDelegate.h"
+#import "MBFingerTipWindow.h"
 
 @implementation AppDelegate
+
+- (UIWindow *)window {
+  if (!_window) {
+    MBFingerTipWindow *ftWindow = [[MBFingerTipWindow alloc]
+                                   initWithFrame:[[UIScreen mainScreen] bounds]];
+    ftWindow.alwaysShowTouches = YES;
+    _window = ftWindow;
+  }
+  return _window;
+}
+
 
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

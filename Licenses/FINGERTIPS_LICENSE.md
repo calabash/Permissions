@@ -1,0 +1,1 @@
+../Vendor/Fingertips/FINGERTIPS_LICENSE.md
