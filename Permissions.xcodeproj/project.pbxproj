@@ -214,7 +214,7 @@
 		92D569F518A38F0300B4369B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Calabash;
 				TargetAttributes = {
 					92D569FC18A38F0300B4369B = {
