@@ -4,8 +4,8 @@ To test apps that require protected services
 I want Calabash to automatically dismiss privacy alerts
 
 Background: The app has launched
-Given I rotate the device so the home button is on the bottom
 And I can see the list of services requiring authorization
+Given I rotate the device so the home button is on the bottom
 And the action label says Ready for Next Alert
 
 @location
@@ -54,9 +54,7 @@ Then I see the Photos alert
 Then I wait for the Photo Roll to finish animating on
 And for Calabash to dismiss the Photo Alert
 And I can dismiss the Photo Roll by touching Cancel
-When I touch the Photos row
-Then I see the Photo Roll
-And I can dismiss the Photo Roll by touching Cancel
+Then I verify that I have access to Photos
 
 @twitter
 Scenario:  Twitter alert is dismissed

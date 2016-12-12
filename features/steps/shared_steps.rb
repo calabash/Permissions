@@ -233,7 +233,11 @@ When(/^I touch the (Contacts|Calendar|Reminders|Camera) row$/) do |row|
 end
 
 And(/^I rotate the device so the home button is on the (top|bottom|left|right)$/) do |position|
+  wait_for_animations
+  sleep(1.0)
   rotate_home_button_to(position.to_s)
+  sleep(1.0)
+  wait_for_animations
 end
 
 When(/^I touch the Photos row$/) do
@@ -285,12 +289,24 @@ end
 Then(/^I see the Photo Roll$/) do
   wait_for_view("* marked:'Cancel'")
 
+end
+
+Then(/^I verify that I have access to Photos$/) do
+  expect_action_label_ready_for_next_alert
+  tap_row("photos")
+  wait_for_view("* marked:'Cancel'")
+
   if !uia_available?
     query = "* {text CONTAINS 'does not have access' }"
     if !query(query).empty?
       fail("Expected to see the photo roll")
     end
   end
+
+  sleep(timeout_for_env)
+
+  touch("* marked:'Cancel'")
+  wait_for_view("* marked:'action label'")
 end
 
 When(/^I touch the (Facebook|Twitter) row$/) do |row|

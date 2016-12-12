@@ -7,7 +7,7 @@ I want Calabash to automatically dismiss privacy alerts in every orientation
 Scenario Outline: Alerts in non-portrait orientation
 Given I can see the list of services requiring authorization
 Given I rotate the device so the home button is on the <position>
-Given I can see the list of services requiring authorization
+And the action label says Ready for Next Alert
 When I touch the Location Services row
 Then Calabash should dismiss the alert
 And location services are authorized
