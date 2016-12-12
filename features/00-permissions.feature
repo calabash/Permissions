@@ -4,7 +4,8 @@ To test apps that require protected services
 I want Calabash to automatically dismiss privacy alerts
 
 Background: The app has launched
-Given I can see the list of services requiring authorization
+Given I rotate the device so the home button is on the bottom
+And I can see the list of services requiring authorization
 And the action label says Ready for Next Alert
 
 @location
@@ -12,12 +13,14 @@ And the action label says Ready for Next Alert
 Scenario: Location alert is dismissed
 When I touch the Location Services row
 Then Calabash should dismiss the alert
+And location services are authorized
 
 @location
 @reset_device_settings
 Scenario: Background location alert is dismissed
 When I touch the Background Location Services row
 Then Calabash should dismiss the alert
+And background location services are authorized
 
 @health_kit
 @reset_device_settings
@@ -30,16 +33,19 @@ Then I can enable HealthKit permissions and dismiss the page
 Scenario: Contacts alert is dismissed
 When I touch the Contacts row
 Then Calabash should dismiss the alert
+And access to contacts is authorized
 
 @calendar
 Scenario: Calendar alert is dismissed
 When I touch the Calendar row
 Then Calabash should dismiss the alert
+And access to calendar is authorized
 
 @reminders
 Scenario: Reminders alert is not dismissed
 When I touch the Reminders row
 Then Calabash should dismiss the alert
+And access to reminders is authorized
 
 @photos
 Scenario: Photos alert is dismissed
@@ -50,6 +56,7 @@ And for Calabash to dismiss the Photo Alert
 And I can dismiss the Photo Roll by touching Cancel
 When I touch the Photos row
 Then I see the Photo Roll
+And I can dismiss the Photo Roll by touching Cancel
 
 @twitter
 Scenario:  Twitter alert is dismissed
@@ -101,6 +108,7 @@ Then Calabash should dismiss the alert
 Scenario: Apple Push Notification Services
 When I touch the APNS row
 Then Calabash should dismiss the alert
+And APNS is authorized
 
 #@all_alerts
 #@not_xtc

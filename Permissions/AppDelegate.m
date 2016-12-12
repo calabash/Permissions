@@ -7,6 +7,22 @@
 
 #import "AppDelegate.h"
 #import "MBFingerTipWindow.h"
+#import "RowDetails.h"
+#import <CoreLocation/CoreLocation.h>
+@import AddressBook;
+@import EventKit;
+
+@interface AppDelegate ()
+
+- (BOOL) isServiceAuthorized:(NSString *)service;
+- (BOOL) locationServicesStatus;
+- (BOOL) backgroundLocationServicesStatus;
+- (BOOL) addressBookStatus;
+- (BOOL) calendarStatus;
+- (BOOL) remindersStatus;
+- (BOOL) apnsStatus;
+
+@end
 
 @implementation AppDelegate
 
@@ -20,6 +36,59 @@
   return _window;
 }
 
+- (BOOL) isServiceAuthorized:(NSString *)service {
+  RowDetails *details = [[RowDetailsFactory shared] detailsForIdentifier:service];
+  if (!details) { return NO; }
+
+  SEL privacyStatusSelector = details.privacyStatusSelector;
+  if (!privacyStatusSelector) { return NO; }
+
+  NSMethodSignature *signature;
+  signature = [[self class] instanceMethodSignatureForSelector:privacyStatusSelector];
+
+  NSInvocation *invocation;
+  invocation = [NSInvocation invocationWithMethodSignature:signature];
+
+  invocation.target = self;
+  invocation.selector = privacyStatusSelector;
+
+  [invocation invoke];
+
+  char ref;
+  [invocation getReturnValue:(void **) &ref];
+  if (ref == (BOOL)1) {
+    return YES;
+  } else {
+    return NO;
+  }
+}
+
+
+- (BOOL)locationServicesStatus {
+  return [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse;
+}
+
+- (BOOL)backgroundLocationServicesStatus {
+  return [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways;
+}
+
+- (BOOL)addressBookStatus {
+  return ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized;
+}
+
+- (BOOL)calendarStatus {
+  return [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent] ==
+  EKAuthorizationStatusAuthorized;
+}
+
+- (BOOL)remindersStatus {
+  return [EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder] ==
+  EKAuthorizationStatusAuthorized;
+}
+
+- (BOOL) apnsStatus {
+  return [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
+}
 
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

@@ -29,7 +29,7 @@ static NSString *const CalPresentAllAlertsNotification = @"sh.calaba.Permissions
 
 @implementation UIView (CalabashPermissions)
 
-// HealthKit is avaiable on iOS > 7 and only on some devices
+// HealthKit is available on iOS > 7 and only on some devices
 - (BOOL) isHealthKitAvailable {
   return NSClassFromString(@"HKHealthStore") && [HKHealthStore isHealthDataAvailable];
 }
@@ -198,7 +198,6 @@ typedef enum : NSInteger {
 
   [self.eventStore requestAccessToEntityType:EKEntityTypeEvent
                                   completion:^(BOOL granted, NSError *error) {
-
                                   }];
 }
 
@@ -209,7 +208,6 @@ typedef enum : NSInteger {
 
   [self.eventStore requestAccessToEntityType:EKEntityTypeReminder
                                   completion:^(BOOL granted, NSError *error) {
-
                                   }];
 }
 
@@ -275,7 +273,7 @@ typedef enum : NSInteger {
 #pragma mark - Row Touched: Motion Activity
 
 - (void) rowTouchedMotionActivity {
-  NSLog(@"Motion Acitivty requested");
+  NSLog(@"Motion Activity requested");
   self.cmManger = [[CMMotionActivityManager alloc]init];
   self.motionActivityQueue = [[NSOperationQueue alloc] init];
 
@@ -355,9 +353,11 @@ typedef enum : NSInteger {
   if (!self.accountStore) {
     self.accountStore = [[ACAccountStore alloc] init];
   }
-  ACAccountType *twitterAccount = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+  ACAccountType *twitterAccount = [self.accountStore
+          accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 
-  [self.accountStore requestAccessToAccountsWithType:twitterAccount options:nil completion:^(BOOL granted, NSError *error) {
+  [self.accountStore requestAccessToAccountsWithType:twitterAccount options:nil
+                                          completion:^(BOOL granted, NSError *error) {
   }];
 }
 
@@ -433,112 +433,119 @@ typedef enum : NSInteger {
   RowDetails *details = [factory detailsForRowAtIndexPath:path];
   if (details) { return details; }
 
-  SEL selector = nil;
+  SEL rowTouchedSelector = nil;
+  SEL privacyStatusSelector = nil;
   NSString *title = nil;
   NSString *identifier = nil;
 
   CalTableRows row = (CalTableRows)path.row;
   switch (row) {
     case kRowLocationServices: {
-      selector = @selector(rowTouchedLocationServices);
+      rowTouchedSelector = @selector(rowTouchedLocationServices);
+      privacyStatusSelector = NSSelectorFromString(@"locationServicesStatus");
       title = @"Location Services";
       identifier = @"location";
       break;
     }
 
     case kRowBackgroundLocationServices: {
-      selector = @selector(rowTouchedBackgroundLocationServices);
+      rowTouchedSelector = @selector(rowTouchedBackgroundLocationServices);
+      privacyStatusSelector = NSSelectorFromString(@"backgroundLocationServicesStatus");
       title = @"Background Location Services";
       identifier = @"background location";
       break;
     }
 
     case kRowContacts: {
-      selector = @selector(rowTouchedContacts);
+      rowTouchedSelector = @selector(rowTouchedContacts);
+      privacyStatusSelector = NSSelectorFromString(@"addressBookStatus");
       title = @"Contacts";
       identifier = @"contacts";
       break;
     }
 
     case kRowCalendars: {
-      selector = @selector(rowTouchedCalendars);
+      rowTouchedSelector = @selector(rowTouchedCalendars);
+      privacyStatusSelector = NSSelectorFromString(@"calendarStatus");
       title = @"Calendar";
       identifier = @"calendar";
       break;
     }
 
     case kRowReminders: {
-      selector = @selector(rowTouchedReminders);
+      rowTouchedSelector = @selector(rowTouchedReminders);
+      privacyStatusSelector = NSSelectorFromString(@"remindersStatus");
       title = @"Reminders";
       identifier = @"reminders";
       break;
     }
 
     case kRowPhotos: {
-      selector = @selector(rowTouchedPhotos);
+      rowTouchedSelector = @selector(rowTouchedPhotos);
       title = @"Photos";
       identifier = @"photos";
       break;
     }
 
     case kRowBlueTooth: {
-      selector = @selector(rowTouchedBluetooth);
+      rowTouchedSelector = @selector(rowTouchedBluetooth);
       title = @"Bluetooth Sharing";
       identifier = @"bluetooth";
       break;
     }
 
     case kRowMicrophone: {
-      selector = @selector(rowTouchedMicrophone);
+      rowTouchedSelector = @selector(rowTouchedMicrophone);
       title = @"Microphone";
       identifier = @"microphone";
       break;
     }
 
     case kRowMotionActivity: {
-      selector = @selector(rowTouchedMotionActivity);
+      rowTouchedSelector = @selector(rowTouchedMotionActivity);
       title = @"Motion Activity";
       identifier = @"motion";
       break;
     }
 
     case kRowCamera: {
-      selector = @selector(rowTouchedCamera);
+      rowTouchedSelector = @selector(rowTouchedCamera);
       title = @"Camera";
       identifier = @"camera";
       break;
     }
 
     case kFacebook: {
-      selector = @selector(rowTouchedFacebook);
+      rowTouchedSelector = @selector(rowTouchedFacebook);
       title = @"Facebook";
       identifier = @"facebook";
       break;
     }
 
     case kTwitter: {
-      selector = @selector(rowTouchedTwitter);
+      rowTouchedSelector = @selector(rowTouchedTwitter);
       title = @"Twitter";
       identifier = @"twitter";
       break;
     }
 
     case kHomeKit: {
-      selector = @selector(rowTouchedHomeKit);
+      rowTouchedSelector = @selector(rowTouchedHomeKit);
       title = @"Home Kit";
       identifier = @"home kit";
       break;
     }
 
     case kHealthKit: {
-      selector = @selector(rowTouchedHealthKit);
+      rowTouchedSelector = @selector(rowTouchedHealthKit);
       title = @"Health Kit";
       identifier = @"health kit";
       break;
     }
 
     case kAPNS: {
-      selector = @selector(rowTouchedApns);
+      rowTouchedSelector = @selector(rowTouchedApns);
+      privacyStatusSelector = NSSelectorFromString(@"apnsStatus");
       title = @"APNS";
       identifier = @"apns";
       break;
@@ -557,9 +564,12 @@ typedef enum : NSInteger {
   }
 
   details = [[RowDetails alloc]
-             initWithSelector:selector
-             title:title
-             identifier:identifier];
+                         initWithRowTouchedSelector:rowTouchedSelector
+                              privacyStatusSelector:privacyStatusSelector
+                                              title:title
+                                         identifier:identifier];
+  [[RowDetailsFactory shared] addDetails:details forRowAtIndexPath:path];
+
   return details;
 }
 
@@ -586,7 +596,7 @@ typedef enum : NSInteger {
 
 - (void) tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
   RowDetails *details = [self detailsForRowAtIndexPath:indexPath];
-  SEL selector = details.selector;
+  SEL selector = details.rowTouchedSelector;
 
   NSMethodSignature *signature;
   signature = [[self class] instanceMethodSignatureForSelector:selector];
@@ -598,12 +608,6 @@ typedef enum : NSInteger {
   invocation.selector = selector;
 
   [invocation invoke];
-
-  double delayInSeconds = 0.4;
-  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-  dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-  });
 }
 
 #pragma mark - Address Book

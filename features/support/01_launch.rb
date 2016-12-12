@@ -249,4 +249,3 @@ After do |scenario|
     else
   end
 end
-

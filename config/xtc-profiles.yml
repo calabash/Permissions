@@ -10,4 +10,3 @@ default:     -p common
 wip:         -p common --tags @wip
 flicker:     -p common --tags @flickering
 pending:     -p common --tags @pending
-

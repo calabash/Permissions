@@ -1,6 +1,30 @@
 module Permissions
   module SharedSteps
 
+    SERVICES_WITH_BACKDOOR_CHECKS = [
+      "location", "background location", "contacts", "calendar", "reminders", "apns"
+    ]
+
+    def service_authorized?(service_name)
+      backdoor("isServiceAuthorized:", service_name)
+    end
+
+    def wait_for_service_authorized(service_name)
+      if !SERVICES_WITH_BACKDOOR_CHECKS.include?(service_name)
+        raise "Service '#{service_name}' does not have a backdoor status check"
+      end
+
+      timeout = timeout_for_env
+      message = %Q[
+
+Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
+
+]
+      bridge_wait_for(message, {:timeout => timeout}) do
+        service_authorized?(service_name)
+      end
+    end
+
     def tap_row(id)
       query = "UITableView marked:'table'"
       options = {
@@ -206,6 +230,10 @@ end
 When(/^I touch the (Contacts|Calendar|Reminders|Camera) row$/) do |row|
   expect_action_label_ready_for_next_alert
   tap_row(row.downcase)
+end
+
+And(/^I rotate the device so the home button is on the (top|bottom|left|right)$/) do |position|
+  rotate_home_button_to(position.to_s)
 end
 
 When(/^I touch the Photos row$/) do
@@ -441,6 +469,18 @@ Waited for #{timeout} seconds for the Health Access permissions view to disappea
 
     wait_for_view("view marked:'page'")
   end
+end
+
+And(/^(location|background location) services are authorized$/) do |service|
+  wait_for_service_authorized(service)
+end
+
+And(/^access to (reminders|calendar|contacts) is authorized$/) do |service|
+  wait_for_service_authorized(service)
+end
+
+And(/^APNS is authorized$/) do
+  wait_for_service_authorized("apns")
 end
 
 Then(/^the app pops all the alerts$/) do
