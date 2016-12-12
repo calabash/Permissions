@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <development version="6300" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,12 +18,12 @@
                         <viewControllerLayoutGuide type="bottom" id="KRL-1a-vrx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oXq-Bb-tkP">
-                                <rect key="frame" x="0.0" y="20" width="600" height="525"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="591"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="table"/>
                                 </userDefinedRuntimeAttributes>
@@ -31,29 +33,28 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Permissions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsS-dw-vQK">
-                                <rect key="frame" x="0.0" y="544" width="600" height="56"/>
+                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="0q8-s5-lpy"/>
-                                    <constraint firstAttribute="width" constant="600" id="wSS-cS-ggB"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="uTh-Ed-voy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration">
                             <bool key="isElement" value="YES"/>
                         </accessibility>
                         <constraints>
-                            <constraint firstItem="oXq-Bb-tkP" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="FxG-rb-Vor"/>
-                            <constraint firstItem="vsS-dw-vQK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="Qdd-Om-W2A"/>
-                            <constraint firstItem="KRL-1a-vrx" firstAttribute="top" secondItem="vsS-dw-vQK" secondAttribute="bottom" id="S2c-dU-QzT"/>
-                            <constraint firstItem="oXq-Bb-tkP" firstAttribute="top" secondItem="Jda-3y-HNp" secondAttribute="bottom" id="YAB-ro-le2"/>
-                            <constraint firstItem="KRL-1a-vrx" firstAttribute="top" secondItem="oXq-Bb-tkP" secondAttribute="bottom" constant="55" id="cOh-Mk-A2X"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vsS-dw-vQK" secondAttribute="trailing" constant="-20" id="ek3-Y6-cva"/>
-                            <constraint firstItem="oXq-Bb-tkP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="feB-X7-lFj"/>
-                            <constraint firstItem="vsS-dw-vQK" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="y4e-cE-7at"/>
+                            <constraint firstAttribute="trailing" secondItem="oXq-Bb-tkP" secondAttribute="trailing" id="AVY-tb-PP5"/>
+                            <constraint firstItem="KRL-1a-vrx" firstAttribute="top" secondItem="vsS-dw-vQK" secondAttribute="bottom" id="I2E-dS-99F"/>
+                            <constraint firstItem="vsS-dw-vQK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="OSG-LF-30C"/>
+                            <constraint firstItem="oXq-Bb-tkP" firstAttribute="top" secondItem="Jda-3y-HNp" secondAttribute="bottom" id="Pwm-k7-DCQ"/>
+                            <constraint firstAttribute="trailing" secondItem="vsS-dw-vQK" secondAttribute="trailing" id="npZ-TD-Vwe"/>
+                            <constraint firstItem="vsS-dw-vQK" firstAttribute="top" secondItem="oXq-Bb-tkP" secondAttribute="bottom" id="oE6-7S-Cta"/>
+                            <constraint firstItem="vsS-dw-vQK" firstAttribute="top" secondItem="oXq-Bb-tkP" secondAttribute="bottom" id="ouW-xR-Vca"/>
+                            <constraint firstItem="oXq-Bb-tkP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zp3-sx-oeg"/>
                         </constraints>
                     </view>
                     <connections>
@@ -63,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1166" y="491"/>
+            <point key="canvasLocation" x="1165.5999999999999" y="490.70464767616198"/>
         </scene>
     </scenes>
 </document>
