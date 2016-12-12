@@ -254,6 +254,17 @@ And(/^I can dismiss the Photo Roll by touching Cancel$/) do
   wait_for_alert_dismissed_text
 end
 
+Then(/^I see the Photo Roll$/) do
+  wait_for_view("* marked:'Cancel'")
+
+  if !uia_available?
+    query = "* {text CONTAINS 'does not have access' }"
+    if !query(query).empty?
+      fail("Expected to see the photo roll")
+    end
+  end
+end
+
 When(/^I touch the (Facebook|Twitter) row$/) do |row|
   expect_action_label_ready_for_next_alert
   tap_row(row.downcase)

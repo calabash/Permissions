@@ -48,6 +48,8 @@ Then I see the Photos alert
 Then I wait for the Photo Roll to finish animating on
 And for Calabash to dismiss the Photo Alert
 And I can dismiss the Photo Roll by touching Cancel
+When I touch the Photos row
+Then I see the Photo Roll
 
 @twitter
 Scenario:  Twitter alert is dismissed
