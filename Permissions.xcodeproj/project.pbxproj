@@ -42,6 +42,9 @@
 		92D56A1818A38F0300B4369B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		92D56A3818A3944C00B4369B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		92D56A3A18A3945700B4369B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		B2619C351E8193A300BB09B4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B2619C361E8193A300BB09B4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		B2619C371E8193A300BB09B4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F500E66D1B8DF42D00AA9A03 /* CalAlertFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalAlertFactory.h; sourceTree = "<group>"; };
 		F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalAlertFactory.m; sourceTree = "<group>"; };
 		F518EBBE1D00554D00B7211B /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -239,6 +242,7 @@
 				"es-419",
 				"es-US",
 				"es-MX",
+				ko,
 			);
 			mainGroup = 92D569F418A38F0300B4369B;
 			productRefGroup = 92D569FE18A38F0300B4369B /* Products */;
@@ -314,6 +318,7 @@
 				F518EBC01D00554D00B7211B /* es-419 */,
 				F518EBC31D005C2600B7211B /* es-US */,
 				F518EBC61D00899600B7211B /* es-MX */,
+				B2619C371E8193A300BB09B4 /* ko */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				F518EBBF1D00554D00B7211B /* es-419 */,
 				F518EBC21D005C2600B7211B /* es-US */,
 				F518EBC51D00899600B7211B /* es-MX */,
+				B2619C361E8193A300BB09B4 /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				F518EBBE1D00554D00B7211B /* es-419 */,
 				F518EBC11D005C2600B7211B /* es-US */,
 				F518EBC41D00899600B7211B /* es-MX */,
+				B2619C351E8193A300BB09B4 /* ko */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
