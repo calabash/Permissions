@@ -11,7 +11,8 @@ module RunLoop
       :motion => "kTCCServiceMotion",
       :photos => "kTCCServicePhotos",
       :reminders => "kTCCServiceReminders",
-      :twitter => "kTCCServiceTwitter"
+      :twitter => "kTCCServiceTwitter",
+      :media_library => "kTCCServiceMediaLibrary"
     }
 
     # Returns a list of known services as keys that can be passed

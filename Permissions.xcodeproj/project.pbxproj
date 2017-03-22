@@ -20,6 +20,7 @@
 		92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3A18A3945700B4369B /* CoreBluetooth.framework */; };
 		F500E66F1B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */; };
 		F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F54CCC281B84D79C0007F68D /* RowDetails.m */; };
+		F57474171DF00D5600431D2A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57474161DF00D5600431D2A /* StoreKit.framework */; };
 		F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57605151BC57F6A00E89C97 /* LaunchScreen.xib */; };
 		F5F1A8E41C7B54BB00BF8D6F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F1A8E31C7B54BB00BF8D6F /* HealthKit.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		F56F07E51C15A06900A88CED /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F56F07E61C15A06900A88CED /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		F56F07E71C15A06900A88CED /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F57474161DF00D5600431D2A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F57605161BC57F6A00E89C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F5F1A8E21C7B54BB00BF8D6F /* Permissions.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Permissions.entitlements; sourceTree = "<group>"; };
 		F5F1A8E31C7B54BB00BF8D6F /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -93,6 +95,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */,
+				F57474171DF00D5600431D2A /* StoreKit.framework in Frameworks */,
 				92D56A3918A3944C00B4369B /* CoreLocation.framework in Frameworks */,
 				92D56A0318A38F0300B4369B /* CoreGraphics.framework in Frameworks */,
 				F5F1A8E41C7B54BB00BF8D6F /* HealthKit.framework in Frameworks */,
@@ -126,6 +129,7 @@
 		92D569FF18A38F0300B4369B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F57474161DF00D5600431D2A /* StoreKit.framework */,
 				F5F1A8E31C7B54BB00BF8D6F /* HealthKit.framework */,
 				92917FF718CF72500095F2F7 /* CoreAudio.framework */,
 				92D56A3A18A3945700B4369B /* CoreBluetooth.framework */,
@@ -211,6 +215,9 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 							com.apple.Push = {
