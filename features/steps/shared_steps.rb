@@ -1,6 +1,30 @@
 module Permissions
   module SharedSteps
 
+    SERVICES_WITH_BACKDOOR_CHECKS = [
+      "location", "background location", "contacts", "calendar", "reminders"
+    ]
+
+    def service_authorized?(service_name)
+      backdoor("isServiceAuthorized:", service_name)
+    end
+
+    def wait_for_service_authorized(service_name)
+      if !SERVICES_WITH_BACKDOOR_CHECKS.include?(service_name)
+        raise "Service '#{service_name}' does not have a backdoor status check"
+      end
+
+      timeout = timeout_for_env
+      message = %Q[
+
+Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
+
+]
+      bridge_wait_for(message, {:timeout => timeout}) do
+        service_authorized?(service_name)
+      end
+    end
+
     def tap_row(id)
       query = "UITableView marked:'table'"
       options = {
@@ -12,6 +36,7 @@ module Permissions
       wait_for_animations
 
       touch("UITableViewCell marked:'#{id}'")
+      sleep(animation_sleep_for_env)
     end
 
     def timeout_for_env
@@ -208,6 +233,14 @@ When(/^I touch the (Contacts|Calendar|Reminders|Camera) row$/) do |row|
   tap_row(row.downcase)
 end
 
+And(/^I rotate the device so the home button is on the (top|bottom|left|right)$/) do |position|
+  wait_for_animations
+  sleep(1.0)
+  rotate_home_button_to(position.to_s)
+  sleep(1.0)
+  wait_for_animations
+end
+
 When(/^I touch the Photos row$/) do
   expect_action_label_ready_for_next_alert
   tap_row("photos")
@@ -252,6 +285,29 @@ And(/^I can dismiss the Photo Roll by touching Cancel$/) do
     sleep(timeout_for_env)
   end
   wait_for_alert_dismissed_text
+end
+
+Then(/^I see the Photo Roll$/) do
+  wait_for_view("* marked:'Cancel'")
+
+end
+
+Then(/^I verify that I have access to Photos$/) do
+  expect_action_label_ready_for_next_alert
+  tap_row("photos")
+  wait_for_view("* marked:'Cancel'")
+
+  if !uia_available?
+    query = "* {text CONTAINS 'does not have access' }"
+    if !query(query).empty?
+      fail("Expected to see the photo roll")
+    end
+  end
+
+  sleep(timeout_for_env)
+
+  touch("* marked:'Cancel'")
+  wait_for_view("* marked:'action label'")
 end
 
 When(/^I touch the (Facebook|Twitter) row$/) do |row|
@@ -430,6 +486,14 @@ Waited for #{timeout} seconds for the Health Access permissions view to disappea
 
     wait_for_view("view marked:'page'")
   end
+end
+
+And(/^(location|background location) services are authorized$/) do |service|
+  wait_for_service_authorized(service)
+end
+
+And(/^access to (reminders|calendar|contacts) is authorized$/) do |service|
+  wait_for_service_authorized(service)
 end
 
 Then(/^the app pops all the alerts$/) do

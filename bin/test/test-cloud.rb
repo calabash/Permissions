@@ -10,8 +10,9 @@ if !device_set || device_set == ""
   device_set = ARGV[0]
 end
 
+# iOS 8 - iOS 10
 if !device_set || device_set == ""
-  device_set = ["5780dc9d", "a970c1db", "024429de", "b21f5915"].sample
+  device_set = ["58194ce5", "5cedb29c", "9a0d9999", "b4ff432e"].sample
 end
 
 

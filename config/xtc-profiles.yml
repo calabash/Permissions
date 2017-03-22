@@ -5,9 +5,10 @@ tags:        -p not_xtc -p not_sim
 args:        --expand --backtrace --no-multiline
 common:      -p tags -p args
 
-default:     -p common
+# Cannot force an uninstall + permissions reset on XTC
+default:     -p common --tags ~@orientation
+orientation: -p common --tags @orientation
 
 wip:         -p common --tags @wip
 flicker:     -p common --tags @flickering
 pending:     -p common --tags @pending
-

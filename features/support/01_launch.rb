@@ -239,8 +239,8 @@ After do |scenario|
         calabash_exit
       end
     when :exit
-      if !xamarin_test_cloud?
-        if scenario.failed?
+      if scenario.failed?
+        if !xamarin_test_cloud?
           exit!(9)
         else
           calabash_exit
@@ -249,4 +249,3 @@ After do |scenario|
     else
   end
 end
-

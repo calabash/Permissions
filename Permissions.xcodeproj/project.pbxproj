@@ -20,6 +20,8 @@
 		92D56A3B18A3945700B4369B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D56A3A18A3945700B4369B /* CoreBluetooth.framework */; };
 		F500E66F1B8DF42D00AA9A03 /* CalAlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F500E66E1B8DF42D00AA9A03 /* CalAlertFactory.m */; };
 		F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F54CCC281B84D79C0007F68D /* RowDetails.m */; };
+		F55CD5FE1DF9B0F800F2CF68 /* MBFingerTipWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F55CD5FC1DF9B0F800F2CF68 /* MBFingerTipWindow.m */; };
+		F55CD5FF1DF9B10B00F2CF68 /* FINGERTIPS_LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F55CD5FA1DF9B0F800F2CF68 /* FINGERTIPS_LICENSE.md */; };
 		F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57605151BC57F6A00E89C97 /* LaunchScreen.xib */; };
 		F5F1A8E41C7B54BB00BF8D6F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F1A8E31C7B54BB00BF8D6F /* HealthKit.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,9 @@
 		F518EBC61D00899600B7211B /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F54CCC271B84D79C0007F68D /* RowDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowDetails.h; sourceTree = "<group>"; };
 		F54CCC281B84D79C0007F68D /* RowDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowDetails.m; sourceTree = "<group>"; };
+		F55CD5FA1DF9B0F800F2CF68 /* FINGERTIPS_LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = FINGERTIPS_LICENSE.md; path = Vendor/Fingertips/FINGERTIPS_LICENSE.md; sourceTree = SOURCE_ROOT; };
+		F55CD5FB1DF9B0F800F2CF68 /* MBFingerTipWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBFingerTipWindow.h; path = Vendor/Fingertips/MBFingerTipWindow.h; sourceTree = SOURCE_ROOT; };
+		F55CD5FC1DF9B0F800F2CF68 /* MBFingerTipWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBFingerTipWindow.m; path = Vendor/Fingertips/MBFingerTipWindow.m; sourceTree = SOURCE_ROOT; };
 		F56F07CD1C15A01A00A88CED /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F56F07CE1C15A01A00A88CED /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		F56F07CF1C15A01B00A88CED /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -143,6 +148,8 @@
 		92D56A0618A38F0300B4369B /* Permissions */ = {
 			isa = PBXGroup;
 			children = (
+				F55CD5FB1DF9B0F800F2CF68 /* MBFingerTipWindow.h */,
+				F55CD5FC1DF9B0F800F2CF68 /* MBFingerTipWindow.m */,
 				92D56A0F18A38F0300B4369B /* AppDelegate.h */,
 				92D56A1018A38F0300B4369B /* AppDelegate.m */,
 				92D56A1518A38F0300B4369B /* ViewController.h */,
@@ -161,6 +168,7 @@
 		92D56A0718A38F0300B4369B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F55CD5FA1DF9B0F800F2CF68 /* FINGERTIPS_LICENSE.md */,
 				F5F1A8E21C7B54BB00BF8D6F /* Permissions.entitlements */,
 				92D56A0818A38F0300B4369B /* Permissions-Info.plist */,
 				92D56A0918A38F0300B4369B /* InfoPlist.strings */,
@@ -206,7 +214,7 @@
 		92D569F518A38F0300B4369B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Calabash;
 				TargetAttributes = {
 					92D569FC18A38F0300B4369B = {
@@ -263,6 +271,7 @@
 				92D56A1918A38F0300B4369B /* Images.xcassets in Resources */,
 				92D56A0B18A38F0300B4369B /* InfoPlist.strings in Resources */,
 				92D56A1418A38F0300B4369B /* Main.storyboard in Resources */,
+				F55CD5FF1DF9B10B00F2CF68 /* FINGERTIPS_LICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +305,7 @@
 				F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */,
 				92D56A1118A38F0300B4369B /* AppDelegate.m in Sources */,
 				92D56A0D18A38F0300B4369B /* main.m in Sources */,
+				F55CD5FE1DF9B0F800F2CF68 /* MBFingerTipWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
