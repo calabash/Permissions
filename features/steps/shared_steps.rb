@@ -36,6 +36,7 @@ Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
       wait_for_animations
 
       touch("UITableViewCell marked:'#{id}'")
+      sleep(animation_sleep_for_env)
     end
 
     def timeout_for_env
