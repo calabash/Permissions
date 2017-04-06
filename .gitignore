@@ -57,3 +57,4 @@ xtc-submit
 build/*
 */build/*
 tmp
+.xtc/device-agent-sha
