@@ -31,11 +31,11 @@ Dir.chdir(working_directory) do
 
   if ENV["JENKINS_HOME"]
     devices = {
-      :iphone6s => "iPhone 6s",
+      :iphone7 => "iPhone 7"
     }
   else
     devices = {
-      :iphone6 => "iPhone 6",
+      :iphoneSE => "iPhone SE"
     }
   end
 
