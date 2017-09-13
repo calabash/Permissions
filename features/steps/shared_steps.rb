@@ -250,9 +250,13 @@ Then(/^I see the Photos alert$/) do
   if uia_available?
     # Impossible to wait for the alert because it is automatically dismissed
   else
-    # With DeviceAgent, we can wait for the alert.  It is the next query or
-    # gesture that causes the alert to be automatically dismissed.
-    wait_for_springboard_alert
+    if ios11?
+      # Surprise!  No alert for Photos in iOS 11.
+    else
+      # With DeviceAgent, we can wait for the alert.  It is the next query or
+      # gesture that causes the alert to be automatically dismissed.
+      wait_for_springboard_alert
+    end
   end
 end
 
@@ -284,12 +288,15 @@ And(/^I can dismiss the Photo Roll by touching Cancel$/) do
     # Sleep for a long time to make sure the final touch actually happens.
     sleep(timeout_for_env)
   end
-  wait_for_alert_dismissed_text
+  if ios11?
+    # Surprise!  There is no Photos alert in iOS 11
+  else
+    wait_for_alert_dismissed_text
+  end
 end
 
 Then(/^I see the Photo Roll$/) do
   wait_for_view("* marked:'Cancel'")
-
 end
 
 Then(/^I verify that I have access to Photos$/) do
