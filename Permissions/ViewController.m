@@ -152,16 +152,8 @@ typedef enum : NSInteger {
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.delegate = self;
 
-  SEL authorizationSelector = @selector(requestAlwaysAuthorization);
-  if ([self.locationManager respondsToSelector:authorizationSelector]) {
-    NSLog(@"Requesting background location authorization");
-    [self.locationManager requestAlwaysAuthorization];
-  } else {
-    if ([CLLocationManager locationServicesEnabled]) {
-      NSLog(@"Calling startUpdatingLocation");
-      [self.locationManager startUpdatingLocation];
-    }
-  }
+  NSLog(@"Requesting background location authorization");
+  [self.locationManager requestAlwaysAuthorization];
 }
 
 #pragma mark - Row Touched: Contacts
@@ -407,23 +399,13 @@ typedef enum : NSInteger {
 - (void) rowTouchedApns {
   UIApplication *shared = [UIApplication sharedApplication];
 
-  Class klass = objc_getClass("UIUserNotificationSettings");
-  // iOS > 7.0
-  if (klass) {
-    UIUserNotificationType types = (UIUserNotificationTypeBadge |
-                                    UIUserNotificationTypeSound |
-                                    UIUserNotificationTypeAlert);
-    UIUserNotificationSettings *settings;
-    settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-    [shared registerUserNotificationSettings:settings];
-    [shared registerForRemoteNotifications];
-
-  } else {
-    UIRemoteNotificationType types = (UIRemoteNotificationTypeBadge |
-                                      UIRemoteNotificationTypeSound |
-                                      UIRemoteNotificationTypeAlert);
-    [shared registerForRemoteNotificationTypes:types];
-  }
+  UIUserNotificationType types = (UIUserNotificationTypeBadge |
+                                  UIUserNotificationTypeSound |
+                                  UIUserNotificationTypeAlert);
+  UIUserNotificationSettings *settings;
+  settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+  [shared registerUserNotificationSettings:settings];
+  [shared registerForRemoteNotifications];
 }
 
 #pragma mark - <UITableViewDataSource>
