@@ -217,6 +217,13 @@ Before do |scenario|
       "-AppleLocale", Permissions::Launchctl.instance.app_locale,
     ]
 
+# Fingertips support; seems to be messing up tests on Xcode 9 simulators
+# as well as causing failures in Test Cloud
+#    if !RunLoop::Environment.xtc?
+#      # Fingertips animations are causing touch failures on Test Cloud
+#      options[:args].push("FINGERTIPS")
+#    end
+
     if Permissions::Launchctl.instance.first_launch
       Permissions::Launchctl.instance.maybe_reset_simulator_tcc(scenario)
       Permissions::Launchctl.instance.launch(options)

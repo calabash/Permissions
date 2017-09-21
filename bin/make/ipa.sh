@@ -130,5 +130,21 @@ info "Copied ${IPA} to ${XTC_DIR}/"
 ditto_or_exit "${INSTALLED_DSYM}" "${XTC_DIR}/${DSYM}"
 info "Copied ${DSYM} to ${XTC_DIR}/"
 
-info "Done!"
+rm -rf "${XTC_DIR}/.xtc"
+if [ -d ".xtc" ]; then
+  ditto_or_exit ".xtc" "${XTC_DIR}/.xtc"
+  info "Copied .xtc to ${XTC_DIR}/.xtc"
+else
+  info "No .xtc directory; skipping copy"
+fi
 
+
+cat >"${XTC_DIR}/Gemfile" <<EOF
+source "https://rubygems.org"
+
+gem "calabash-cucumber"
+EOF
+
+cat "config/xtc-other-gems.rb" >> "${XTC_DIR}/Gemfile"
+info "Wrote ${XTC_DIR}/Gemfile with contents"
+cat "${XTC_DIR}/Gemfile"
