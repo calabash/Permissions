@@ -41,7 +41,9 @@ Gemfile.lock
 ci-reports
 
 # xamarin build directory for XTC
-xtc-submit
+xtc-submit*
+.xtc-credentials
+.xtc
 
 # Xcode 4+
 *.xcodeproj/*.mode*
