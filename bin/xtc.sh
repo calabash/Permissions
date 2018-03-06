@@ -26,7 +26,7 @@ SKIP_IPA_BUILD: iff 1, then skip re-building the ipa.
                 features/ directory will be staged and sent to Test Cloud.
 BUILD_RUN_LOOP: iff 1, then rebuild run-loop gem before uploading.
 BUILD_RUN_LOOP: iff 1, then rebuild Calabash iOS gem before uploading.
-
+    APP_LOCALE: device locale
 "
 
   exit 64
@@ -88,6 +88,10 @@ else
   info "Uploading to Staging"
 fi
 
+if [ "${APP_LOCALE}" = "" ]; then
+  APP_LOCALE="en_US"
+fi
+
 PIPELINE="pipeline:detect-dylibs-to-inject-in-app-bundle"
 
 XTC_ENDPOINT="${ENDPOINT}" \
@@ -101,4 +105,5 @@ bundle exec test-cloud submit \
   --config cucumber.yml \
   --profile default \
   --dsym-file "Permissions.app.dSYM" \
-  --include .xtc
+  --include .xtc \
+  --locale "${APP_LOCALE}"
