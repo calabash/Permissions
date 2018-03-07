@@ -25,7 +25,7 @@ SKIP_IPA_BUILD: iff 1, then skip re-building the ipa.
                 'make test-ipa' will still be called, so changes in the
                 features/ directory will be staged and sent to Test Cloud.
 BUILD_RUN_LOOP: iff 1, then rebuild run-loop gem before uploading.
-BUILD_RUN_LOOP: iff 1, then rebuild Calabash iOS gem before uploading.
+BUILD_CALABASH: iff 1, then rebuild Calabash iOS gem before uploading.
     APP_LOCALE: device locale
 "
 
