@@ -5,8 +5,8 @@ if [ ! -z $COMMAND_LINE_BUILD ]; then
   exit 0
 fi
 
-source bin/log-functions.sh
-source bin/copy-with-ditto.sh
+source bin/log.sh
+source bin/ditto.sh
 
 if [ ${CONFIGURATION} != "Debug" ]; then
   info "Skipping staging to Products; only necessary for Debug configuration"

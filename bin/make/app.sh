@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source bin/log-functions.sh
-source bin/copy-with-ditto.sh
+source bin/log.sh
+source bin/ditto.sh
 
 set -e
 

@@ -1,4 +1,3 @@
-
 # Log functions for scripts.
 #
 # Suitable for Xcode Run Script Build Phase and command line scripts.
@@ -34,3 +33,4 @@ function banner {
     echo ""
   fi
 }
+
