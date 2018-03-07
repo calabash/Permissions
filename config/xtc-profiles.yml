@@ -2,12 +2,15 @@ not_xtc:     --tags ~@not_xtc
 not_sim:     --tags ~@simulator --tags ~@simulator_only
 
 tags:        -p not_xtc -p not_sim
-args:        --expand --backtrace --no-multiline
+args:        --expand --no-multiline
 common:      -p tags -p args
 
-# Cannot force an uninstall + permissions reset on XTC
+# Cannot force an uninstall + permissions reset on XTC which is
+# required for the @orientation tests
 default:     -p common --tags ~@orientation
 orientation: -p common --tags @orientation
+
+location:    -p common --tags @location
 
 wip:         -p common --tags @wip
 flicker:     -p common --tags @flickering
