@@ -52,6 +52,8 @@
 	<string>Permissions wants pictures of known associates.</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Permissions wants to bug you all the time.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Permissions wants to listen to your music.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

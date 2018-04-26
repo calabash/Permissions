@@ -12,6 +12,7 @@
 @import CoreMotion;
 @import Accounts;
 @import UIKit;
+@import MediaPlayer;
 
 #import "RowDetails.h"
 #import "CalAlertFactory.h"
@@ -59,6 +60,7 @@ typedef enum : NSInteger {
   kHomeKit,
   kHealthKit,
   kAPNS,
+  kAppleMusic,
   kNumberOfRows
 } CalTableRows;
 
@@ -97,6 +99,7 @@ typedef enum : NSInteger {
 - (void) rowTouchedHomeKit;
 - (void) rowTouchedHealthKit;
 - (void) rowTouchedApns;
+- (void) rowTouchedAppleMusic;
 
 - (void)handleActionLabelTwoFingerTap:(UITapGestureRecognizer *) recognizer;
 - (void)handleActionLabelOneFingerTap:(UITapGestureRecognizer *) recognizer;
@@ -396,6 +399,8 @@ typedef enum : NSInteger {
   }
 }
 
+#pragma mark - Row Touched: APNS
+
 - (void) rowTouchedApns {
   UIApplication *shared = [UIApplication sharedApplication];
 
@@ -406,6 +411,12 @@ typedef enum : NSInteger {
   settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
   [shared registerUserNotificationSettings:settings];
   [shared registerForRemoteNotifications];
+}
+
+#pragma mark - Row Touched: Apple Music
+
+- (void) rowTouchedAppleMusic {
+  [MPMediaLibrary requestAuthorization:^(MPMediaLibraryAuthorizationStatus status) {}];
 }
 
 #pragma mark - <UITableViewDataSource>
@@ -530,6 +541,13 @@ typedef enum : NSInteger {
       privacyStatusSelector = NSSelectorFromString(@"apnsStatus");
       title = @"APNS";
       identifier = @"apns";
+      break;
+    }
+
+    case kAppleMusic: {
+      rowTouchedSelector = @selector(rowTouchedAppleMusic);
+      title = @"Apple Music";
+      identifier = @"apple music";
       break;
     }
 
@@ -702,6 +720,7 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
   [self rowTouchedCamera];
   [self rowTouchedTwitter];
   [self rowTouchedApns];
+  [self rowTouchedAppleMusic];
 }
 
 #pragma mark - View Lifecycle
