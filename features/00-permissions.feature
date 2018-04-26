@@ -107,6 +107,11 @@ Scenario: Apple Push Notification Services
 When I touch the APNS row
 Then Calabash should dismiss the alert
 
+@music
+Scenario: Apple Music on Simulator
+When I touch the Apple Music row
+Then Calabash should dismiss the alert
+
 #@all_alerts
 #@not_xtc
 #@reset_device_settings

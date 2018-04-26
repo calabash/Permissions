@@ -383,6 +383,10 @@ When(/^I touch the APNS row$/) do
   tap_row("apns")
 end
 
+When(/^I touch the Apple Music row$/) do
+  tap_row("apple music")
+end
+
 Then(/^an NYI alert is presented$/) do
   wait_for_alert
   expect(alert_visible?("Not Implemented")).to be_truthy
