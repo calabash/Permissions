@@ -112,9 +112,9 @@ DETAILS=`xcrun codesign --display --verbose=2 ${INSTALLED_APP} 2>&1`
 
 echo "$(tput setaf 4)$DETAILS$(tput sgr0)"
 
-banner "Preparing for XTC Submit"
+banner "Preparing for AppCenter TestCloud Submit"
 
-XTC_DIR="xtc-submit"
+XTC_DIR="testcloud-submit"
 rm -rf "${XTC_DIR}"
 mkdir -p "${XTC_DIR}"
 
