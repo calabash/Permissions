@@ -44,6 +44,8 @@ ci-reports
 xtc-submit*
 .xtc-credentials
 .xtc
+.appcenter-credentials
+testcloud-submit
 
 # Xcode 4+
 *.xcodeproj/*.mode*
