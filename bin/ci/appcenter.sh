@@ -34,7 +34,7 @@ appcenter test run calabash \
   --app App-Center-Test-Cloud/Permissions \
   --project-dir testcloud-submit \
   --token $AC_TOKEN \
-  --test-series develop \
+  --test-series master \
   --devices App-Center-Test-Cloud/daily-ios \
   --config-path cucumber.yml \
   --profile default \
