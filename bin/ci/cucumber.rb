@@ -48,7 +48,13 @@ Dir.chdir(working_directory) do
   passed_sims = []
   failed_sims = []
   devices.each do |key, name|
-    cucumber_cmd = "bundle exec cucumber -p default --format json -o reports/#{key}.json #{cucumber_args}"
+    args = [
+      "bundle", "exec",
+      "cucumber", "-p", "default",
+      "-f", "json", "-o", "reports/#{key}.json",
+      "-f", "junit", "-o", "reports/junit",
+      "#{cucumber_args}"
+    ]
 
     match = simulators.find do |sim|
       sim.name == name && sim.version == sim_version
@@ -56,7 +62,7 @@ Dir.chdir(working_directory) do
 
     env_vars = {"DEVICE_TARGET" => match.udid}
 
-    exit_code = Luffa.unix_command(cucumber_cmd, {:exit_on_nonzero_status => false,
+    exit_code = Luffa.unix_command(args.join(" "), {:exit_on_nonzero_status => false,
                                                   :env_vars => env_vars})
     if exit_code == 0
       passed_sims << name
