@@ -13,6 +13,7 @@
 @import Accounts;
 @import UIKit;
 @import MediaPlayer;
+@import Speech;
 
 #import "RowDetails.h"
 #import "CalAlertFactory.h"
@@ -61,6 +62,7 @@ typedef enum : NSInteger {
   kHealthKit,
   kAPNS,
   kAppleMusic,
+  kSpeechRecognition,
   kNumberOfRows
 } CalTableRows;
 
@@ -69,6 +71,7 @@ typedef enum : NSInteger {
 @interface ViewController ()
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) SFSpeechRecognizer *speechRecognizer;
 @property (strong, nonatomic) EKEventStore *eventStore;
 @property (strong, nonatomic) UIImagePickerController *picker;
 @property (strong, nonatomic) CBCentralManager *cbManager;
@@ -100,6 +103,7 @@ typedef enum : NSInteger {
 - (void) rowTouchedHealthKit;
 - (void) rowTouchedApns;
 - (void) rowTouchedAppleMusic;
+- (void) rowTouchedSpeechRecognition;
 
 - (void)handleActionLabelTwoFingerTap:(UITapGestureRecognizer *) recognizer;
 - (void)handleActionLabelOneFingerTap:(UITapGestureRecognizer *) recognizer;
@@ -419,6 +423,12 @@ typedef enum : NSInteger {
   [MPMediaLibrary requestAuthorization:^(MPMediaLibraryAuthorizationStatus status) {}];
 }
 
+#pragma mark - Row Touched: Speech Recognition
+
+- (void) rowTouchedSpeechRecognition {
+  [SFSpeechRecognizer requestAuthorization:^(SFSpeechRecognizerAuthorizationStatus status) {}];
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (RowDetails *) detailsForRowAtIndexPath:(NSIndexPath *) path {
@@ -548,6 +558,13 @@ typedef enum : NSInteger {
       rowTouchedSelector = @selector(rowTouchedAppleMusic);
       title = @"Apple Music";
       identifier = @"apple music";
+      break;
+    }
+      
+    case kSpeechRecognition: {
+      rowTouchedSelector = @selector(rowTouchedSpeechRecognition);
+      title = @"Speech Recognition";
+      identifier = @"speech recognition";
       break;
     }
 
@@ -721,6 +738,7 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
   [self rowTouchedTwitter];
   [self rowTouchedApns];
   [self rowTouchedAppleMusic];
+  [self rowTouchedSpeechRecognition];
 }
 
 #pragma mark - View Lifecycle
@@ -736,6 +754,8 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
 
 - (void) viewDidLoad {
   [super viewDidLoad];
+  
+  self.speechRecognizer.delegate = self;
 
   [[NSNotificationCenter defaultCenter]
    addObserver:self

@@ -17,6 +17,7 @@ UIImagePickerControllerDelegate,
 CBCentralManagerDelegate,
 UITableViewDataSource,
 UITableViewDelegate,
-UIAlertViewDelegate>
+UIAlertViewDelegate,
+SFSpeechRecognizerDelegate>
 
 @end
