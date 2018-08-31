@@ -112,6 +112,11 @@ Scenario: Apple Music on Simulator
 When I touch the Apple Music row
 Then Calabash should dismiss the alert
 
+@speech
+Scenario: Speech Recognition on Simulator
+When I touch the Speech Recognition row
+Then Calabash should dismiss the alert
+
 #@all_alerts
 #@not_xtc
 #@reset_device_settings
