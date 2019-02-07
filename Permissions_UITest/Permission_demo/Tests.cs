@@ -71,7 +71,7 @@ namespace Permission_demo
                 //There is generally no need to call DismissSpringboardAlerts()in user test code, I'm calling this method to play it safe
                 app.DismissSpringboardAlerts();
                 app.Screenshot("alert dismissed"); 
-                //adding a sleep of 10 seconds before tapping the next menu item to give the UI time to be ready
+                //adding a sleep of 5 seconds before tapping the next menu item to give the UI time to be ready
                 Thread.Sleep(5*1000);
                 if (i >= 6)
                 {
@@ -83,7 +83,7 @@ namespace Permission_demo
 
         }
 
-        //checking separtely since tapping on photos naviagating to a new screen
+        //checking separtely since tapping on photos naviagates to a different screen
 
         [Test]
         public void AlertShowsUpForPhotos(){
