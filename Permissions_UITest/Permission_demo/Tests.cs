@@ -30,11 +30,11 @@ namespace Permission_demo
             //    #endif
             app = ConfigureApp
                 .iOS
-               // TODO: Update this path to point to your iOS app and uncomment the
-               // code if the app is not included in the solution.
-               //.AppBundle("../../../../../Permissions.app")
+              // TODO: Update this path to point to your iOS app and uncomment the
+              // code if the app is not included in the solution.
+              //.AppBundle("../../../../../Permissions.app")
               .StartApp();
-               
+
         }
 
 
@@ -43,60 +43,142 @@ namespace Permission_demo
         // checking if the the popups have been dismissed by the logic here https://github.com/calabash/DeviceAgent.iOS/blob/develop/Server/Utilities/SpringBoardAlerts.m
 
         [Test]
-        public void AlertShowsUp()
+        public void AlertShowsUpForBackgroundLocation()
         {
-
-            //creating an anrray of menu items:
-            string[] stringArray = new string[12];
-            stringArray[0] = "background location";
-            stringArray[1] = "contacts";
-            stringArray[2] = "calendar";
-            stringArray[3] = "reminders";
-            stringArray[4] = "microphone";
-            stringArray[5] = "motion";
-            stringArray[6] = "camera";
-            stringArray[7] = "twitter";
-            stringArray[8] = "apns";
-            stringArray[9] = "apple music";
-            stringArray[10] = "speech recognition";
-            stringArray[11] = "health kit";
-           
-
-            for (int i = 0; i < stringArray.Length; i++)
-            {
-                //tapping each menu item
-                app.Tap(x => x.Marked(stringArray[i]));
-                //taking the screenshot
-                app.Screenshot("Show Alert for " + stringArray[i]);
-                //There is generally no need to call DismissSpringboardAlerts()in user test code, I'm calling this method to play it safe
-                app.DismissSpringboardAlerts();
-                app.Screenshot("alert dismissed"); 
-                //adding a sleep of 5 seconds before tapping the next menu item to give the UI time to be ready
-                Thread.Sleep(5*1000);
-                if (i >= 6)
-                {
-                    app.ScrollDown();
-
-                }
-               
-            }
+            app.Tap(x => x.Marked("background location"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
 
         }
 
-        //checking separtely since tapping on photos naviagates to a different screen
+        [Test]
+        public void AlertShowsUpForContacts()
+        {
+            app.Tap(x => x.Marked("contacts"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+
+        }
+
+        [Test]
+        public void AlertShowsUpForCalender()
+        {
+            app.Tap(x => x.Marked("calendar"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+       }
+
+        [Test]
+        public void AlertShowsUpForReminders()
+        {
+            app.Tap(x => x.Marked("reminders"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
+
+        [Test]
+        public void AlertShowsUpForMicrophone()
+        {
+            app.Tap(x => x.Marked("microphone"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
+
+        [Test]
+        public void AlertShowsUpForMotion()
+        {
+            app.Tap(x => x.Marked("motion"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
+
+        [Test]
+        public void AlertShowsUpForCamera()
+        {
+            app.ScrollDown();
+            app.Tap(x => x.Marked("camera"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
+
+        [Test]
+        public void AlertShowsUpForBluetooth()
+        {
+            app.ScrollDown();
+            app.Tap(x => x.Marked("bluetooth"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
+
+        [Test]
+        public void AlertShowsUpForTwitter()
+        {
+            app.ScrollDown();
+            app.Tap(x => x.Marked("twitter"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
+
+        [Test]
+        public void AlertShowsUpForAPNS()
+        {
+            app.ScrollDown();
+            app.Tap(x => x.Marked("apns"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
+
+
+        [Test]
+        public void AlertShowsUpForAppleMusic()
+        {
+            app.ScrollDown();
+            app.Tap(x => x.Marked("apple music"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
+
+        [Test]
+        public void AlertShowsUpForSpeechRecognition()
+        {
+            app.ScrollDown();
+            app.Tap(x => x.Marked("speech recognition"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
+
+        [Test]
+        public void AlertShowsUpForHealthKit()
+        {
+            app.ScrollDown();
+            app.Tap(x => x.Marked("health kit"));
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
+        }
 
         [Test]
         public void AlertShowsUpForPhotos(){
-       
+
             app.Tap(x => x.Marked("photos"));
-            app.Screenshot("Alert shows up");
-
+            app.Screenshot("Show Alert");
+            app.DismissSpringboardAlerts();
+            app.Screenshot("alert dismissed");
         }
-
-       
 
 
     }
 
 }
-

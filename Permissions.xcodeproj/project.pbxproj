@@ -222,8 +222,7 @@
 				ORGANIZATIONNAME = Calabash;
 				TargetAttributes = {
 					92D569FC18A38F0300B4369B = {
-						DevelopmentTeam = FYD86LA7RE;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -471,7 +470,8 @@
 				CODE_SIGN_ENTITLEMENTS = Permissions/Permissions.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
@@ -487,7 +487,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c8596c2c-b8a8-474d-a864-c06cb013eff4";
-				PROVISIONING_PROFILE_SPECIFIER = PermissionsDevelopment;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -501,7 +501,8 @@
 				CODE_SIGN_ENTITLEMENTS = Permissions/Permissions.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FYD86LA7RE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Permissions/Permissions-Prefix.pch";
 				INFOPLIST_FILE = "Permissions/Permissions-Info.plist";
@@ -510,7 +511,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "sh.calaba.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c8596c2c-b8a8-474d-a864-c06cb013eff4";
-				PROVISIONING_PROFILE_SPECIFIER = PermissionsDevelopment;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

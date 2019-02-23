@@ -1,17 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workbench ActiveDocument="Tests.cs">
     <Files>
-      <File FileName="Tests.cs" Line="94" Column="42" />
+      <File FileName="Tests.cs" Line="81" Column="30" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="Permission_demo" expanded="True" selected="True">
-            <Node name="Permission_demo" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
