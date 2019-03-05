@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Permissions.xcodeproj">
+      location = "self:/Users/ahanag22/Desktop/Permissions/Permissions.xcodeproj">
    </FileRef>
 </Workspace>

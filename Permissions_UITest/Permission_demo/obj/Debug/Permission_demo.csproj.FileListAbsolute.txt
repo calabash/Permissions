@@ -34,7 +34,6 @@
 /Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/Xamarin.UITest.dll
 /Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/nunit.framework.xml
 /Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/Xamarin.UITest.xml
-/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.csprojAssemblyReference.cache
 /Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.csproj.CoreCompileInputs.cache
 /Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.csproj.CopyComplete
 /Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.dll
