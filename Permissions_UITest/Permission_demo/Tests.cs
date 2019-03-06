@@ -55,7 +55,8 @@ namespace Permission_demo
             //sleep 1 sec
 
             bool IsVisible = false;
-            for (int i = 0; i <= 20; i++)
+            long startTime = Environment.TickCount;
+            while ((Environment.TickCount - startTime)< 20000)
             {
                 app.Tap(x => x.Marked(s));
                 Thread.Sleep(1000);
@@ -112,7 +113,7 @@ namespace Permission_demo
          {
              String s = "calendar";
              helperMethod(s);
-        }
+         }
 
         [Test]
         public void AlertShowsUpForReminders()
