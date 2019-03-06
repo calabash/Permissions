@@ -1,8 +1,25 @@
-﻿<Properties>
+﻿<Properties StartupConfiguration="{66AD15AD-7B04-4E07-98C2-C88E0B4CA451}|Unit Tests">
+  <MonoDevelop.Ide.ItemProperties.Permission__demo PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Tests.cs">
     <Files>
-      <File FileName="Tests.cs" Line="48" Column="24" />
+      <File FileName="Tests.cs" Line="108" Column="8" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Permission_demo" expanded="True">
+            <Node name="Permission_demo" expanded="True">
+              <Node name="Tests.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Permission_demo" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

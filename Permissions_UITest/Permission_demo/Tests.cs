@@ -39,8 +39,6 @@ namespace Permission_demo
 
         }
 
-      
-       
         public bool IsAlertVisible()
         {
 
@@ -48,18 +46,45 @@ namespace Permission_demo
 
         }
 
-        public void helperMethod()
+        public void helperMethod(String s)
         {
-            app.DismissSpringboardAlerts();
-            if (IsAlertVisible())
+            //loop until timeout(20 secs?) :
+            //tap the element
+            //wait for alert(1 sec?)
+            //if alert found - exit loop
+            //sleep 1 sec
+
+            bool IsVisible = false;
+            for (int i = 0; i <= 20; i++)
             {
-               
-                Console.WriteLine("Alert has not been disapppeard");
+                app.Tap(x => x.Marked(s));
+                Thread.Sleep(1000);
+                if (IsAlertVisible())
+                {
+
+                    app.Screenshot("Alert Appeared");
+                    IsVisible = true;
+                    break;
+                }
+
+                Thread.Sleep(1000);
+
             }
-            else
+            if (!IsVisible)
             {
-                app.Screenshot("Alert has been disapppeard");
-                Console.WriteLine("Alert has been disapppeard");
+                app.Screenshot("Alert has not been appeared");
+            }
+            if (IsVisible)
+            {
+                Thread.Sleep(5 * 1000);
+                if (!IsAlertVisible())
+                {
+                    app.Screenshot("Alert has been disappeared");
+                }
+                else
+                {
+                    app.Screenshot("Alert has not been disappeared");
+                }
             }
         }
 
@@ -70,112 +95,78 @@ namespace Permission_demo
         [Test]
         public void AlertShowsUpForBackgroundLocation()
         {
-
-            app.Tap(x => x.Marked("background location"));
-            app.Screenshot("After tapping the menu item Background Location");
-            //app.Repl();
-            helperMethod();
-
-
-
+            String s = "background location";
+            helperMethod(s);
         }
 
         [Test]
         public void AlertShowsUpForContacts()
         {
-            app.Tap(x => x.Marked("contacts"));
-            //if(app.Query(c => c.ClassFull("_UIAlertControllerView")).Any())
-            //if (app.Query(c => c.Marked("OK").Parent().ClassFull("_UIAlertControllerView")).Any())
-            //if(app.Query(c => c.Class("UILabel").Text("\"Permissions\" Would Like to Access Your Contacts")) 
-            app.Screenshot("After tapping menu item Contacts");
-            //app.Repl();
-            helperMethod();
+            String s = "contacts";
+            helperMethod(s);
+
         }
 
-
-        [Test]
-        public void AlertShowsUpForCalender()
-        {
-            app.Tap(x => x.Marked("calendar"));
-            app.Screenshot("After tapping menu item Calender");
-            //app.Repl();
-            helperMethod();
-           
-
-       }
+         [Test]
+         public void AlertShowsUpForCalender()
+         {
+             String s = "calendar";
+             helperMethod(s);
+        }
 
         [Test]
         public void AlertShowsUpForReminders()
         {
-            app.Tap(x => x.Marked("reminders"));
-            app.Screenshot("After tapping menu item Reminders");
-            //app.Repl();
-            helperMethod();
-           
-
+            String s = "reminders";
+            helperMethod(s);
         }
 
         [Test]
         public void AlertShowsUpForMicrophone()
         {
-            app.Tap(x => x.Marked("microphone"));
-            app.Screenshot("After tapping menu item Microphone");
-            app.Repl();
-            helperMethod();
-
+            String s = "microphone";
+            helperMethod(s);
         }
 
         [Test]
         public void AlertShowsUpForMotion()
         {
-            app.Tap(x => x.Marked("motion"));
-            app.Screenshot("After tapping menu item Motion");
-            app.Repl();
-            helperMethod();
-
+            String s = "motion";
+            helperMethod(s);
         }
 
         [Test]
         public void AlertShowsUpForCamera()
         {
             app.ScrollDown();
-            app.Tap(x => x.Marked("camera"));
-            app.Screenshot("After tapping menu item Camera");
-            //app.Repl();
-            helperMethod();
-          
+            String s = "camera";
+            helperMethod(s);
         }
 
-        [Test]
-        public void AlertShowsUpForBluetooth()
-        {
-            app.ScrollDown();
-            app.Tap(x => x.Marked("bluetooth"));
-            app.Screenshot("After tapping the menu item blutooth");
-            //app.Repl();
-            helperMethod();
-        }
+        //[Test]
+        //public void AlertShowsUpForBluetooth()
+        //{
+        //    app.ScrollDown();
+        //    app.Tap(x => x.Marked("bluetooth"));
+        //    app.Screenshot("After tapping the menu item blutooth");
+
+        //}
+
 
         [Test]
         public void AlertShowsUpForTwitter()
         {
             app.ScrollDown();
-            app.Tap(x => x.Marked("twitter"));
-            app.Screenshot("After tapping menu item Camera");
-            //app.Repl();
-            helperMethod();
-
+            String s = "twitter";
+            helperMethod(s);
         }
 
         [Test]
         public void AlertShowsUpForAPNS()
         {
             app.ScrollDown();
-            app.Tap(x => x.Marked("apns"));
-            app.Screenshot("After tapping menu item APNS");
-            //app.Repl();
-            helperMethod();
-
+            String s = "apns";
+            helperMethod(s);
         }
 
 
@@ -183,37 +174,31 @@ namespace Permission_demo
         public void AlertShowsUpForAppleMusic()
         {
             app.ScrollDown();
-            app.Tap(x => x.Marked("apple music"));
-            app.Screenshot("After tapping menu item Apple Music");
-            //app.Repl();
-            helperMethod();
-
+            String s = "apple music";
+            helperMethod(s);
         }
 
         [Test]
         public void AlertShowsUpForSpeechRecognition()
         {
             app.ScrollDown();
-            app.Tap(x => x.Marked("speech recognition"));
-            app.Screenshot("After tapping menu item Speech Recognition");
-            //app.Repl();
-            helperMethod();
-
+            String s = "speech recognition";
+            helperMethod(s);
         }
 
         [Test]
         public void AlertShowsUpForHealthKit()
         {
             app.ScrollDown();
-            app.Tap(x => x.Marked("health kit"));
-            app.Screenshot("After tapping menu item Health Kit");
+            String s = "health kit";
+            helperMethod(s);
             //app.Repl();
-            helperMethod();
-           
+
         }
 
         [Test]
-        public void AlertShowsUpForPhotos(){
+        public void AlertShowsUpForPhotos()
+        {
 
             app.Tap(x => x.Marked("photos"));
             app.Screenshot("After tapping menu item Photos");
