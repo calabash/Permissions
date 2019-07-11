@@ -39,7 +39,7 @@ Bundler.with_clean_env do
 
     # Previous steps do:
     # 1. bundle update
-    # 1. install the Calabash.keychain
+    # 1. install the TestCloudDev.keychain
     # 2. install .env
     # 3. make the ipa
     # 4. stage the ipa

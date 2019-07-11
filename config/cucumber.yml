@@ -1,6 +1,6 @@
 <%
 
-calabash_dir = File.expand_path(File.join(ENV["HOME"], ".calabash"))
+calabash_dir = File.expand_path(File.join(ENV["HOME"], ".test-cloud-dev"))
 
 devices = {}
 
