@@ -10,9 +10,9 @@ if [ -n "${TRAVIS}" ] && [ "${TRAVIS_SECURE_ENV_VARS}" != "true" ]; then
   exit 0
 fi
 
-mkdir -p "${HOME}/.test-cloud-dev"
+mkdir -p "${HOME}/.calabash"
 
-CODE_SIGN_DIR="${HOME}/.test-cloud-dev/test-cloud-dev-ios-keychain"
+CODE_SIGN_DIR="${HOME}/.calabash/calabash-codesign"
 
 # Requires API token for Calabash CI user
 # https://travis-ci.org/calabash/Permissions/settings
@@ -29,8 +29,4 @@ fi
 (cd "${CODE_SIGN_DIR}" && ios/import-profiles.sh)
 
 API_TOKEN=`${CODE_SIGN_DIR}/ios/find-xtc-credential.sh api-token | tr -d '\n'`
-
-# Install the API token where briar can find it.
-mkdir -p "${HOME}/.test-cloud-dev/test-cloud"
-echo $API_TOKEN > "${HOME}/.test-cloud-dev/test-cloud/calabash-ios-ci"
 

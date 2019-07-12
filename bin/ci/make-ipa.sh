@@ -12,8 +12,7 @@ fi
 
 bin/ci/install-keychain.sh
 
-CODE_SIGN_DIR="${HOME}/.test-cloud-dev/test-cloud-dev-ios-keychain"
-KEYCHAIN="${CODE_SIGN_DIR}/ios/TestCloudDev.keychain"
+KEYCHAIN="${HOME}/Library/Keychains/test-cloud-dev/TestCloudDev.keychain-db"
 
 if [ -e ".env" ]; then
   cp .env .env-backup
