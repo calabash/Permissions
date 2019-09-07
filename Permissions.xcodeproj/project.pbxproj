@@ -23,7 +23,6 @@
 		F54CCC291B84D79C0007F68D /* RowDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = F54CCC281B84D79C0007F68D /* RowDetails.m */; };
 		F55CD5FE1DF9B0F800F2CF68 /* MBFingerTipWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F55CD5FC1DF9B0F800F2CF68 /* MBFingerTipWindow.m */; };
 		F55CD5FF1DF9B10B00F2CF68 /* FINGERTIPS_LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F55CD5FA1DF9B0F800F2CF68 /* FINGERTIPS_LICENSE.md */; };
-		F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F57605151BC57F6A00E89C97 /* LaunchScreen.xib */; };
 		F5F1A8E41C7B54BB00BF8D6F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F1A8E31C7B54BB00BF8D6F /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -240,6 +239,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				fr,
@@ -271,7 +271,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F57605171BC57F6A00E89C97 /* LaunchScreen.xib in Resources */,
 				92D56A1918A38F0300B4369B /* Images.xcassets in Resources */,
 				92D56A0B18A38F0300B4369B /* InfoPlist.strings in Resources */,
 				92D56A1418A38F0300B4369B /* Main.storyboard in Resources */,
