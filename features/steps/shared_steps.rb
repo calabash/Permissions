@@ -251,7 +251,7 @@ Then(/^I see the Photos alert$/) do
     # Impossible to wait for the alert because it is automatically dismissed
   else
     if ios_gte_11?
-      # Surprise!  No alert for Photos in iOS 11.
+      # Surprise!  No alert for Photos in iOS 11+.
     else
       # With DeviceAgent, we can wait for the alert.  It is the next query or
       # gesture that causes the alert to be automatically dismissed.
@@ -288,7 +288,7 @@ And(/^I can dismiss the Photo Roll by touching Cancel$/) do
     # Sleep for a long time to make sure the final touch actually happens.
     sleep(timeout_for_env)
   end
-  if ios_gte_11?
+  if ios11?
     # Surprise!  There is no Photos alert in iOS 11
   else
     wait_for_alert_dismissed_text
