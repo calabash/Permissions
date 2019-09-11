@@ -204,6 +204,11 @@ Before("@reset_device_settings") do
   end
 end
 
+Before("@skip_for_non_english") do
+  app_lang = Permissions::Launchctl.instance.app_lang
+  skip_this_scenario if app_lang != 'en' && app_lang != 'en-US'
+end
+
 Before do |scenario|
 
   if !xamarin_test_cloud?
