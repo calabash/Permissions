@@ -34,7 +34,7 @@ Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
 
       scroll_to_row_with_mark(id, options)
       wait_for_animations
-
+      # binding.pry
       touch("UITableViewCell marked:'#{id}'")
       sleep(animation_sleep_for_env)
     end
@@ -55,7 +55,7 @@ Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
       elsif RunLoop::Environment.xtc?
         3.0
       else
-        3.0
+        1.0
       end
     end
 
@@ -273,7 +273,8 @@ end
 And(/^for Calabash to dismiss the Photo Alert$/) do
   # DeviceAgent will dismiss the alert by attempting to touch the Cancel button.
   if !uia_available?
-    touch("* marked:'Cancel'")
+    device_agent.touch({marked:"Cancel"})
+    # touch("* marked:'Cancel'")
   end
 end
 
@@ -281,7 +282,8 @@ And(/^I can dismiss the Photo Roll by touching Cancel$/) do
   if uia_available?
     # Waiting for no alert does not work.
     sleep(timeout_for_env)
-    touch("* marked:'Cancel'")
+    device_agent.touch({marked:"Cancel"})
+    # touch("* marked:'Cancel'")
     sleep(timeout_for_env)
   else
     # DeviceAgent does not like interacting with the Photo Roll animations.
@@ -302,7 +304,8 @@ end
 Then(/^I verify that I have access to Photos$/) do
   expect_action_label_ready_for_next_alert
   tap_row("photos")
-  wait_for_view("* marked:'Cancel'")
+  # wait_for_view("* marked:'Cancel'")
+  device_agent.wait_for_view({marked:"Cancel"})
 
   if !uia_available?
     query = "* {text CONTAINS 'does not have access' }"
@@ -310,10 +313,12 @@ Then(/^I verify that I have access to Photos$/) do
       fail("Expected to see the photo roll")
     end
   end
+  # binding.pry
 
   sleep(timeout_for_env)
 
-  touch("* marked:'Cancel'")
+  # touch("* marked:'Cancel'")
+  device_agent.touch({marked:"Cancel"})
   wait_for_view("* marked:'action label'")
 end
 
