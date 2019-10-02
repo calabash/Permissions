@@ -52,12 +52,6 @@ jobs:
       calabash-codesign/apple/create-keychain.sh
     displayName: "Download and install keychain"
 
-  - script: bin/ci/travis/instruments-auth.sh
-    displayName: "Before scripts"
-
-  - script: make clean
-    displayName: "Make clean"
-
   - script: make app
     displayName: "Make app"
 
@@ -66,12 +60,9 @@ jobs:
 
   - script: bundle exec bin/ci/cucumber.rb
     displayName: "exec cucumber"
-    # We have to skip cucmber tests for Xcode 11 due to its instability.
-    # This tests will be enabled for the stable Xcode 11 release
-    # condition: and(succeeded(), ne(variables['XCODE_VERSION'], '11'))
 
-  # - task: PublishTestResults@2
-  #   displayName: 'Publish Test Results'
-  #   inputs:
-  #     testResultsFiles: 'reports/*.xml'
-  #   condition: always()
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results'
+    inputs:
+      testResultsFiles: 'reports/junit/*.xml'
+    condition: always()
