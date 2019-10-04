@@ -49,7 +49,6 @@ Dir.chdir(working_directory) do
   
   cucumber_args= which_languages(cucumber_args)
 
-  binding.pry
   cucumber_args.each do |item|
     args = [
       "bundle", "exec",
