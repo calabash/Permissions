@@ -32,7 +32,7 @@ Dir.chdir(working_directory) do
       "bundle", "exec",
       "cucumber", "-p", "default",
       "-f", "json", "-o", "reports/#{item}.json",
-      "-f", "junit", "-o", "reports/junit",
+      "-f", "junit", "-o", "reports/junit/#{item}",
       "#{language}"
     ]
 

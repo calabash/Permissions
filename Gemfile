@@ -9,7 +9,7 @@ gem "json", "1.8.6"
 gem 'rspec', '~> 3.0'
 gem "xamarin-test-cloud", "~> 2.0"
 gem 'retriable', '~> 2.0'
-# >=
+
 # Workflow and build tools
 gem 'rake', '~> 10.3'
 gem 'bundler', '~> 2.0'

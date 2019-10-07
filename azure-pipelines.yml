@@ -60,5 +60,5 @@ jobs:
     displayName: 'Publish Test Results'
     inputs:
       failTaskOnFailedTests: true
-      testResultsFiles: 'reports/junit/*.xml'
+      testResultsFiles: 'reports/junit/**/*.xml'
     condition: always()
