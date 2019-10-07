@@ -34,7 +34,7 @@ Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
 
       scroll_to_row_with_mark(id, options)
       wait_for_animations
-      
+
       touch("UITableViewCell marked:'#{id}'")
       sleep(animation_sleep_for_env)
     end
