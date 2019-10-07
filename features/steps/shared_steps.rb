@@ -105,18 +105,8 @@ Timed out waiting for In-App Alert to disappear after #{timeout} seconds
     end
 
     def springboard_alert_visible?
-      if uia_available?
-        result = uia('uia.alert() != null')
 
-        status = result["status"]
-
-        if status != "success"
-          fail("Expected `uia` to exist with 'success' but found #{status}")
-        end
-        result["value"]
-      else
-        device_agent.springboard_alert_visible?
-      end
+      device_agent.springboard_alert_visible?
     end
 
     def wait_for_springboard_alert
@@ -247,16 +237,13 @@ When(/^I touch the Photos row$/) do
 end
 
 Then(/^I see the Photos alert$/) do
-  if uia_available?
-    # Impossible to wait for the alert because it is automatically dismissed
+
+  if ios_gte_11?
+    # Surprise!  No alert for Photos in iOS 11+.
   else
-    if ios_gte_11?
-      # Surprise!  No alert for Photos in iOS 11+.
-    else
-      # With DeviceAgent, we can wait for the alert.  It is the next query or
-      # gesture that causes the alert to be automatically dismissed.
-      wait_for_springboard_alert
-    end
+    # With DeviceAgent, we can wait for the alert.  It is the next query or
+    # gesture that causes the alert to be automatically dismissed.
+    wait_for_springboard_alert
   end
 end
 
@@ -270,24 +257,12 @@ Then(/^the Photo Roll is visible behind the alert$/) do
   wait_for_view("* marked:'Cancel'")
 end
 
-And(/^for Calabash to dismiss the Photo Alert$/) do
-  # DeviceAgent will dismiss the alert by attempting to touch the Cancel button.
-  if !uia_available?
-    touch("* marked:'Cancel'")
-  end
-end
-
 And(/^I can dismiss the Photo Roll by touching Cancel$/) do
-  if uia_available?
-    # Waiting for no alert does not work.
-    sleep(timeout_for_env)
-    touch("* marked:'Cancel'")
-    sleep(timeout_for_env)
-  else
-    # DeviceAgent does not like interacting with the Photo Roll animations.
-    # Sleep for a long time to make sure the final touch actually happens.
-    sleep(timeout_for_env)
-  end
+  # Waiting for no alert does not work.
+  sleep(timeout_for_env)
+  device_agent.touch({marked: "Cancel"})
+  sleep(timeout_for_env)
+
   if ios11?
     # Surprise!  There is no Photos alert in iOS 11
   else
@@ -302,18 +277,16 @@ end
 Then(/^I verify that I have access to Photos$/) do
   expect_action_label_ready_for_next_alert
   tap_row("photos")
-  wait_for_view("* marked:'Cancel'")
+  device_agent.wait_for_view({marked: "Cancel"})
 
-  if !uia_available?
-    query = "* {text CONTAINS 'does not have access' }"
-    if !query(query).empty?
-      fail("Expected to see the photo roll")
-    end
+  query = "* {text CONTAINS 'does not have access' }"
+  if !query(query).empty?
+    fail("Expected to see the photo roll")
   end
 
   sleep(timeout_for_env)
 
-  touch("* marked:'Cancel'")
+  device_agent.touch({marked: "Cancel"})
   wait_for_view("* marked:'action label'")
 end
 
@@ -369,14 +342,12 @@ And(/^Calabash backed by UIA automatically dismisses the alert$/) do
 end
 
 But(/^Calabash backed by DeviceAgent will not auto dismiss because it is fake$/) do
-  if !uia_available?
-    wait_for_animations
-    sleep(0.4)
-    touch("* marked:'OK'")
-    wait_for_animations
-    wait_for_no_alert
-    wait_for_alert_dismissed_text
-  end
+  wait_for_animations
+  sleep(0.4)
+  touch("* marked:'OK'")
+  wait_for_animations
+  wait_for_no_alert
+  wait_for_alert_dismissed_text
 end
 
 When(/^I touch the APNS row$/) do
@@ -421,11 +392,8 @@ Then(/^I see the HealthKit modal view or Not Supported alert$/) do
   if @supports_health_kit
     message = "Expected Health Access permissions view to appear"
     bridge_wait_for(message) do
-      if uia_available?
-        !uia_query(:view, {marked:"Health Access"}).empty?
-      else
-        !device_agent.query({marked: "Health Access"}).empty?
-      end
+
+    device_agent.query({marked: "Health Access"}).empty?
     end
     wait_for_none_animating
   else
@@ -451,36 +419,15 @@ Then(/^I can enable HealthKit permissions and dismiss the page$/) do
       pause = 3.0
     end
 
-    if uia_available?
-      if ios8?
-        # Just enable some rows.  What is visible depends on iOS version
-        # and form factor.
-        ["Body Mass Index", "Height", "Weight"].each do |mark|
 
-          uia_call(:tableView, {:scrollToElementWithName => mark})
-          sleep(pause)
-          uia_call([:switch, {:marked => mark}], {:setValue => true})
-          sleep(pause)
-        end
-
-        uia_tap_mark("Done")
-      else
-        sleep(pause)
-        uia_tap_mark("All Categories On")
-        sleep(pause)
-        uia_tap_mark("Allow")
-      end
-    else
-      sleep(pause)
-      device_agent.touch({marked: "Turn All Categories On"})
-      sleep(pause)
-      device_agent.touch({marked: "Allow"})
-
-      # Remove when the Cannot wait for "Health Access" view to disappear
-      # issue is resolved.
-      # https://jira.xamarin.com/browse/TCFW-584
-      sleep(pause)
-    end
+    sleep(pause)
+    device_agent.touch({marked: "Turn All Categories On"})
+    sleep(pause)
+    device_agent.touch({marked: "Allow"})
+    # Remove when the Cannot wait for "Health Access" view to disappear
+    # issue is resolved.
+    # https://jira.xamarin.com/browse/TCFW-584
+    sleep(pause)
 
     timeout = timeout_for_env
     message = %Q[
