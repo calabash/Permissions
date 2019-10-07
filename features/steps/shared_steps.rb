@@ -34,6 +34,7 @@ Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
 
       scroll_to_row_with_mark(id, options)
       wait_for_animations
+      
       touch("UITableViewCell marked:'#{id}'")
       sleep(animation_sleep_for_env)
     end
@@ -54,7 +55,7 @@ Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
       elsif RunLoop::Environment.xtc?
         3.0
       else
-        1.0
+        3.0
       end
     end
 
@@ -309,7 +310,7 @@ Then(/^I verify that I have access to Photos$/) do
       fail("Expected to see the photo roll")
     end
   end
-  
+
   sleep(timeout_for_env)
 
   touch("* marked:'Cancel'")
