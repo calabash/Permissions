@@ -436,7 +436,7 @@ Waited for #{timeout} seconds for the Health Access permissions view to disappea
 ]
     bridge_wait_for(message, {:timeout => timeout} ) do
       if uia_available?
-        uia_query(:view, {marked:"Health Access"}).empty?
+        device_agent.query({marked: "Health Access"}).empty?
       else
         # https://jira.xamarin.com/browse/TCFW-584
         # Cannot wait for the "Health Access" view to disappear.
