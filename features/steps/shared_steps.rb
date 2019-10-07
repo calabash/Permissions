@@ -344,7 +344,7 @@ end
 But(/^Calabash backed by DeviceAgent will not auto dismiss because it is fake$/) do
   wait_for_animations
   sleep(0.4)
-  touch("* marked:'OK'")
+  device_agent.touch({marked: "OK"})
   wait_for_animations
   wait_for_no_alert
   wait_for_alert_dismissed_text
@@ -392,7 +392,7 @@ Then(/^I see the HealthKit modal view or Not Supported alert$/) do
   if @supports_health_kit
     message = "Expected Health Access permissions view to appear"
     bridge_wait_for(message) do
-    device_agent.query({marked: "Health Access"}).empty?
+      device_agent.query({marked: "Health Access"}).empty?
     end
     wait_for_none_animating
   else
