@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/XamarinUiTests/DeviceAgent/_apis/build/status/dmitry-shibanov.Permissions%20(1)?branchName=v-dmshib%2Fconfigure-pipelines)](https://dev.azure.com/XamarinUiTests/DeviceAgent/_build/latest?definitionId=8&branchName=v-dmshib%2Fconfigure-pipelines)
+[![Build Status](https://msmobilecenter.visualstudio.com/Mobile-Center/_apis/build/status/test-cloud/xamarin-uitest/calabash.Permissions?branchName=master)](https://msmobilecenter.visualstudio.com/Mobile-Center/_build/latest?definitionId=3621&branchName=master)
 ## Permissions
 
 An app for displaying Privacy Alerts for iOS 8 and greater.
