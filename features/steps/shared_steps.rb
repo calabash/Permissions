@@ -433,7 +433,7 @@ Then(/^I see the HealthKit modal view or Not Supported alert$/) do
     wait_for_none_animating
     sleep(1.0)
     touch("* marked:'Dismiss'")
-    wait_for_alert
+    wait_for_no_alert
   end
 end
 
@@ -464,23 +464,23 @@ Then(/^I can enable HealthKit permissions and dismiss the page$/) do
         end
 
         uia_tap_mark("Done")
-       else
-         sleep(pause)
-         uia_tap_mark("All Categories On")
-         sleep(pause)
-         uia_tap_mark("Allow")
-       end
-     else
-       sleep(pause)
-       device_agent.touch({marked: "Turn All Categories On"})
-       sleep(pause)
-       device_agent.touch({marked: "Allow"})
+      else
+        sleep(pause)
+        uia_tap_mark("All Categories On")
+        sleep(pause)
+        uia_tap_mark("Allow")
+      end
+    else
+      sleep(pause)
+      device_agent.touch({marked: "Turn All Categories On"})
+      sleep(pause)
+      device_agent.touch({marked: "Allow"})
 
-       # Remove when the Cannot wait for "Health Access" view to disappear
-       # issue is resolved.
-       # https://jira.xamarin.com/browse/TCFW-584
-       sleep(pause)
-     end
+      # Remove when the Cannot wait for "Health Access" view to disappear
+      # issue is resolved.
+      # https://jira.xamarin.com/browse/TCFW-584
+      sleep(pause)
+    end
 
     timeout = timeout_for_env
     message = %Q[
