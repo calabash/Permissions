@@ -391,7 +391,9 @@ end
 Then(/^I see the HealthKit modal view or Not Supported alert$/) do
   if @supports_health_kit
     message = "Expected Health Access permissions view to appear"
-    device_agent.query({marked: "Health Access"}).empty?
+    bridge_wait_for(message) do
+      !device_agent.query({marked: "Health Access"}).empty?
+    end
     wait_for_none_animating
   else
     wait_for_alert

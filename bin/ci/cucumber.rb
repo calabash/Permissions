@@ -8,7 +8,6 @@ cucumber_args = "#{ARGV.join(" ")}"
 this_dir = File.expand_path(File.dirname(__FILE__))
 working_directory = File.join(this_dir, "..", "..")
 
-
 # on-simulator tests of features in test/cucumber
 Dir.chdir(working_directory) do
 
