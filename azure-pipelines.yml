@@ -62,14 +62,13 @@ jobs:
   - script: bundle exec bin/ci/cucumber.rb
     displayName: "exec cucumber"
 
-  - bash: "./bin/ci/az-publish.sh"
-    env:
-      AZURE_STORAGE_ACCOUNT: $(AzureStorageAccount)
-      AZURE_STORAGE_KEY: $(AzureStorageKey)
-      AZURE_STORAGE_CONNECTION_STRING: $(AzureStorageConnectionString)
-      SOURCE_BRANCH: $(Build.SourceBranch)
-    displayName: "Publish to Azure Blob Storage"
-#     condition: and(succeeded(), eq(variables['Agent.JobName'], variables['AzurePublishWhen']), startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
+  - bash: "./bin/ci/az-publish.sh"
+    env:
+      AZURE_STORAGE_ACCOUNT: $(AzureStorageAccount)
+      AZURE_STORAGE_KEY: $(AzureStorageKey)
+      AZURE_STORAGE_CONNECTION_STRING: $(AzureStorageConnectionString)
+      SOURCE_BRANCH: $(Build.SourceBranch)
+    displayName: "Publish to Azure Blob Storage"
     condition: and(succeeded(), eq(variables['Agent.JobName'], variables['AzurePublishWhen']))
     
   - task: PublishTestResults@2
