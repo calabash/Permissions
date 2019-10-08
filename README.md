@@ -1,3 +1,4 @@
+[![Build Status](https://msmobilecenter.visualstudio.com/Mobile-Center/_apis/build/status/test-cloud/xamarin-uitest/calabash.Permissions?branchName=master)](https://msmobilecenter.visualstudio.com/Mobile-Center/_build/latest?definitionId=3621&branchName=master)
 ## Permissions
 
 An app for displaying Privacy Alerts for iOS 8 and greater.
