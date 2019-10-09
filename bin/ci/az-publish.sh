@@ -28,14 +28,6 @@ function azupload {
   echo "${1} artifact uploaded with name ${2}"
 }
 
-function azupload {
-  az storage blob upload \
-    --container-name test-apps \
-    --source "${1}" \
-    --name "${2}"
-  echo "${1} artifact uploaded with name ${2}"
-}
-
 function xcode_version {
   xcrun xcodebuild -version | \
     grep -E "(\d+\.\d+(\.\d+)?)" | cut -f2- -d" " | \
