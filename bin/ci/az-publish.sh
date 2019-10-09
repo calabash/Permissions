@@ -67,15 +67,15 @@ azupload "${IPA}" "${IPA_NAME}"
 
 # Upload `Permissions.app.dSYM`
 IPA="${WORKING_DIR}/Products/ipa/Permissions.ipa.dSYM.zip"
-IPA_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.ipa.dSYM"
+IPA_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.ipa.dSYM.zip"
 azupload "${IPA}" "${IPA_NAME}"
 
 # Upload `Permissions.app`
 APP="${WORKING_DIR}/Products/app/Permissions.app.zip"
-APP_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.app"
+APP_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.app.zip"
 azupload "${APP}" "${APP_NAME}"
 
 # Upload `Permissions.app.dSYM`
 APP="${WORKING_DIR}/Products/app/Permissions.app.dSYM.zip"
-APP_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.app.dSYM"
+APP_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.app.dSYM.zip"
 azupload "${APP}" "${APP_NAME}"
