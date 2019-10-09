@@ -13,10 +13,10 @@ DSYM="${APP}.dSYM"
 INSTALL_DIR="Products"
 BUILD_PRODUCTS_DSYM_APP="Products/app"
 BUILD_PRODUCTS_DSYM_IPA="Products/ipa"
-echo "here1"
+
 zip_with_ditto "${BUILD_PRODUCTS_DSYM_APP}/${DSYM}" "${BUILD_PRODUCTS_DSYM_APP}/Permissions.app.dSYM.zip"
 zip_with_ditto "${BUILD_PRODUCTS_DSYM_IPA}/${DSYM}" "${BUILD_PRODUCTS_DSYM_IPA}/Permissions.ipa.dSYM.zip"
-echo "here2"
+zip_with_ditto "${BUILD_PRODUCTS_DSYM_APP}/${APP}" "${BUILD_PRODUCTS_DSYM_APP}/Permissions.app.zip"
 
 # $1 => SOURCE PATH
 # $2 => TARGET NAME
@@ -75,7 +75,7 @@ IPA_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.ipa.dSYM"
 azupload "${IPA}" "${IPA_NAME}"
 
 # Upload `Permissions.app`
-APP="${WORKING_DIR}/Products/app/Permissions.app"
+APP="${WORKING_DIR}/Products/app/Permissions.app.zip"
 APP_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.app"
 azupload "${APP}" "${APP_NAME}"
 
