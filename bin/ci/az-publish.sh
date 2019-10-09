@@ -2,12 +2,36 @@
 
 set -eo pipefail
 
+source bin/log.sh
+source bin/ditto.sh
+source bin/simctl.sh
+
+set -e
+
+APP="Permissions.app"
+DSYM="${APP}.dSYM"
+INSTALL_DIR="Products"
+BUILD_PRODUCTS_DSYM_APP="Products/app"
+BUILD_PRODUCTS_DSYM_IPA="Products/ipa"
+echo "here1"
+zip_with_ditto "${BUILD_PRODUCTS_DSYM_APP}/${DSYM}" "${BUILD_PRODUCTS_DSYM_APP}/Permissions.app.dSYM.zip"
+zip_with_ditto "${BUILD_PRODUCTS_DSYM_IPA}/${DSYM}" "${BUILD_PRODUCTS_DSYM_IPA}/Permissions.ipa.dSYM.zip"
+echo "here2"
+
 # $1 => SOURCE PATH
 # $2 => TARGET NAME
 function azupload {
   az storage blob upload \
     --container-name test-apps \
     --file "${1}" \
+    --name "${2}"
+  echo "${1} artifact uploaded with name ${2}"
+}
+
+function azupload {
+  az storage blob upload \
+    --container-name test-apps \
+    --source "${1}" \
     --name "${2}"
   echo "${1} artifact uploaded with name ${2}"
 }
@@ -54,7 +78,7 @@ IPA_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.ipa"
 azupload "${IPA}" "${IPA_NAME}"
 
 # Upload `Permissions.app.dSYM`
-IPA="${WORKING_DIR}/Products/ipa/Permissions.app.dSYM"
+IPA="${WORKING_DIR}/Products/ipa/Permissions.ipa.dSYM"
 IPA_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.ipa.dSYM"
 azupload "${IPA}" "${IPA_NAME}"
 
