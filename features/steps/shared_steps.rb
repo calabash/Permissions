@@ -285,7 +285,7 @@ Then(/^I verify that I have access to Photos$/) do
   sleep(timeout_for_env)
 
   device_agent.touch({marked: "Cancel"})
-  device_agent.wait_for_view(marked:"action label")
+  wait_for_view("* marked:'action label'")
 end
 
 When(/^I touch the (Facebook|Twitter) row$/) do |row|
