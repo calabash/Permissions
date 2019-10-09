@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
-
-source bin/log.sh
 source bin/ditto.sh
-source bin/simctl.sh
 
 set -e
 
