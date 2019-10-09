@@ -285,7 +285,7 @@ Then(/^I verify that I have access to Photos$/) do
   sleep(timeout_for_env)
 
   device_agent.touch({marked: "Cancel"})
-  wait_for_view("* marked:'action label'")
+  device_agent.wait_for_view(marked:"action label")
 end
 
 When(/^I touch the (Facebook|Twitter) row$/) do |row|
@@ -395,9 +395,8 @@ Then(/^I see the HealthKit modal view or Not Supported alert$/) do
     wait_for_none_animating
   else
     wait_for_alert
-    # wait_for_none_animating
+    wait_for_none_animating
     device_agent.touch({marked: "Dismiss"})
-    # touch("* marked:'Dismiss'")
     wait_for_no_alert
   end
 end
