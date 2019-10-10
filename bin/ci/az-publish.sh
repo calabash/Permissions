@@ -2,7 +2,7 @@
 
 source bin/ditto.sh
 
-set -e
+set -eo pipefail
 
 APP="Permissions.app"
 DSYM="${APP}.dSYM"
@@ -30,6 +30,10 @@ function xcode_version {
     tr -d "\n"
 }
 
+if [ -e ./.azure-credentials ]; then
+  source ./.azure-credentials
+fi
+
 # Pipeline Variables are set through the AzDevOps UI
 # See also the ./azdevops-pipeline.yml
 if [[ -z "${AZURE_STORAGE_ACCOUNT}" ]]; then
@@ -50,32 +54,41 @@ fi
 # Evaluate git-sha value
 GIT_SHA=$(git rev-parse --verify HEAD | tr -d '\n')
 
-# Evaluate Permissions version (from Info.plist)
-VERSION=$(plutil -p ./Products/app/Permissions.app/Info.plist | grep CFBundleShortVersionString | grep -o '"[[:digit:].]*"' | sed 's/"//g')
+if [ "${BUILD_SOURCESDIRECTORY}" != "" ]; then
+  WORKING_DIR="${BUILD_SOURCESDIRECTORY}"
+else
+  WORKING_DIR="."
+fi
 
-# Evaluate the Xcode version used to build artifacts
-XC_VERSION=$(xcode_version)
+PRODUCT_DIR="${WORKING_DIR}/Products/ipa"
+INFO_PLIST="${PRODUCT_DIR}/Permissions.app/Info.plist"
 
-az --version
+VERSION=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" ${INFO_PLIST})
 
-WORKING_DIR="${BUILD_SOURCESDIRECTORY}"
+XC_VERSION=$(/usr/libexec/PlistBuddy -c "Print :DTXcode" ${INFO_PLIST})
+XC_BUILD=$(/usr/libexec/PlistBuddy -c "Print :DTXcodeBuild" ${INFO_PLIST})
+
+GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [[ "${GIT_BRANCH}" =~ "tag/" ]]; then
+  BUILD_ID="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}"
+else
+  BUILD_ID="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}-AdHoc"
+fi
 
 # Upload `Permissions.ipa`
 IPA="${WORKING_DIR}/Products/ipa/Permissions.ipa"
-IPA_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.ipa"
-azupload "${IPA}" "${IPA_NAME}"
+azupload "${IPA}" "${BUILD_ID}"
 
 # Upload `Permissions.app.dSYM`
 IPA="${WORKING_DIR}/Products/ipa/Permissions.ipa.dSYM.zip"
-IPA_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.ipa.dSYM.zip"
-azupload "${IPA}" "${IPA_NAME}"
+azupload "${IPA}" "${BUILD_ID}"
 
 # Upload `Permissions.app`
 APP="${WORKING_DIR}/Products/app/Permissions.app.zip"
-APP_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.app.zip"
-azupload "${APP}" "${APP_NAME}"
+azupload "${APP}" "${BUILD_ID}"
 
 # Upload `Permissions.app.dSYM`
 APP="${WORKING_DIR}/Products/app/Permissions.app.dSYM.zip"
-APP_NAME="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}.app.dSYM.zip"
-azupload "${APP}" "${APP_NAME}"
+azupload "${APP}" "${BUILD_ID}"
+
+echo "${BUILD_ID}"

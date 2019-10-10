@@ -4,7 +4,7 @@ tags
 *.bak
 *.swp
 *.swo
-
+.azure-credentials
 # git mergetool (Guiffy)
 *.orig
 
