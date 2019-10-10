@@ -4,38 +4,21 @@ source bin/ditto.sh
 
 set -eo pipefail
 
-APP="Permissions.app"
-DSYM="${APP}.dSYM"
-INSTALL_DIR="Products"
-BUILD_PRODUCTS_DSYM_APP="Products/app"
-BUILD_PRODUCTS_DSYM_IPA="Products/ipa"
-
-zip_with_ditto "${BUILD_PRODUCTS_DSYM_APP}/${DSYM}" "${BUILD_PRODUCTS_DSYM_APP}/Permissions.app.dSYM.zip"
-zip_with_ditto "${BUILD_PRODUCTS_DSYM_IPA}/${DSYM}" "${BUILD_PRODUCTS_DSYM_IPA}/Permissions.ipa.dSYM.zip"
-zip_with_ditto "${BUILD_PRODUCTS_DSYM_APP}/${APP}" "${BUILD_PRODUCTS_DSYM_APP}/Permissions.app.zip"
-
 # $1 => SOURCE PATH
 # $2 => TARGET NAME
+# $3 => CONTAINER NAME
 function azupload {
   az storage blob upload \
-    --container-name test-apps \
+    --container-name "${3}" \
     --file "${1}" \
     --name "${2}"
   echo "${1} artifact uploaded with name ${2}"
-}
-
-function xcode_version {
-  xcrun xcodebuild -version | \
-    grep -E "(\d+\.\d+(\.\d+)?)" | cut -f2- -d" " | \
-    tr -d "\n"
 }
 
 if [ -e ./.azure-credentials ]; then
   source ./.azure-credentials
 fi
 
-# Pipeline Variables are set through the AzDevOps UI
-# See also the ./azdevops-pipeline.yml
 if [[ -z "${AZURE_STORAGE_ACCOUNT}" ]]; then
   echo "AZURE_STORAGE_ACCOUNT is required"
   exit 1
@@ -60,32 +43,56 @@ else
   WORKING_DIR="."
 fi
 
-PRODUCT_DIR="${WORKING_DIR}/Products/ipa"
-INFO_PLIST="${PRODUCT_DIR}/Permissions.app/Info.plist"
+PRODUCT_DIR="${WORKING_DIR}/Products"
+APP_PRODUCT_DIR="${PRODUCT_DIR}/app"
+IPA_PRODUCT_DIR="${PRODUCT_DIR}/ipa"
+INFO_PLIST="${APP_PRODUCT_DIR}/Permissions.app/Info.plist"
 
+# Evaluate Permissions version (from Info.plist)
 VERSION=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" ${INFO_PLIST})
 
+# Evaluate the Xcode version used to build artifacts
 XC_VERSION=$(/usr/libexec/PlistBuddy -c "Print :DTXcode" ${INFO_PLIST})
-XC_BUILD=$(/usr/libexec/PlistBuddy -c "Print :DTXcodeBuild" ${INFO_PLIST})
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+# We don't need to use AdHoc when executing locally
+if [[ "${GIT_BRANCH}" =~ "tag/" && -e ./.azure-credentials ]]; then
+  BUILD_ID="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}"
+else
+  BUILD_ID="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}-AdHoc"
+fi
 
-BUILD_ID="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}"
+# Simulators
+SIM_CONTAINER_NAME="ios-simulator-test-apps"
 
-# Upload `Permissions.ipa`
-IPA="${WORKING_DIR}/Products/ipa/Permissions.ipa"
-azupload "${IPA}" "${BUILD_ID}.ipa"
+# Upload `app/Permissions.app` (zipped)
+SIM_APP_ZIP="${APP_PRODUCT_DIR}/Permissions.app.zip"
+zip_with_ditto "${APP_PRODUCT_DIR}/Permissions.app" "${SIM_APP_ZIP}"
+SIM_APP_NAME="${BUILD_ID}.app.zip"
+azupload "${SIM_APP_ZIP}" "${SIM_APP_NAME}" "${SIM_CONTAINER_NAME}"
 
-# Upload `Permissions.app.dSYM`
-IPA="${WORKING_DIR}/Products/ipa/Permissions.ipa.dSYM.zip"
-azupload "${IPA}" "${BUILD_ID}.ipa.dSYM.zip"
+# Upload `app/Permissions.app.dSYM` (zipped)
+SIM_APP_DSYM_ZIP="${APP_PRODUCT_DIR}/Permissions.app.dSYM.zip"
+zip_with_ditto "${APP_PRODUCT_DIR}/Permissions.app.dSYM" "${SIM_APP_DSYM_ZIP}"
+SIM_APP_DSYM_NAME="${BUILD_ID}.app.dSYM.zip"
+azupload "${SIM_APP_DSYM_ZIP}" "${SIM_APP_DSYM_NAME}" "${SIM_CONTAINER_NAME}"
 
-# Upload `Permissions.app`
-APP="${WORKING_DIR}/Products/app/Permissions.app.zip"
-azupload "${APP}" "${BUILD_ID}.app.zip"
+# ARM
+ARM_CONTAINER_NAME="ios-arm-test-apps"
 
-# Upload `Permissions.app.dSYM`
-APP="${WORKING_DIR}/Products/app/Permissions.app.dSYM.zip"
-azupload "${APP}" "${BUILD_ID}.app.dSYM.zip"
+# Upload `ipa/Permissions.ipa`
+ARM_IPA="${IPA_PRODUCT_DIR}/Permissions.ipa"
+ARM_IPA_NAME="${BUILD_ID}.ipa"
+azupload "${ARM_IPA}" "${ARM_IPA_NAME}" "${ARM_CONTAINER_NAME}"
 
-echo "${BUILD_ID}"
+# Upload `ipa/Permissions.app` (zipped)
+ARM_APP_ZIP="${IPA_PRODUCT_DIR}/Permissions.app.zip"
+zip_with_ditto "${IPA_PRODUCT_DIR}/Permissions.app" "${ARM_APP_ZIP}"
+ARM_APP_NAME="${BUILD_ID}.app.zip"
+azupload "${ARM_APP_ZIP}" "${ARM_APP_NAME}" "${ARM_CONTAINER_NAME}"
+
+# Upload `ipa/Permissions.app.dSYM` (zipped)
+ARM_APP_DSYM_ZIP="${IPA_PRODUCT_DIR}/Permissions.app.dSYM.zip"
+zip_with_ditto "${IPA_PRODUCT_DIR}/Permissions.app.dSYM" "${ARM_APP_DSYM_ZIP}"
+ARM_APP_DSYM_NAME="${BUILD_ID}.app.dSYM.zip"
+azupload "${ARM_APP_DSYM_ZIP}" "${ARM_APP_DSYM_NAME}" "${ARM_CONTAINER_NAME}"
