@@ -1,8 +1,8 @@
-﻿<Properties StartupConfiguration="{66AD15AD-7B04-4E07-98C2-C88E0B4CA451}|Unit Tests">
+﻿<Properties>
   <MonoDevelop.Ide.ItemProperties.Permission__demo PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Tests.cs">
     <Files>
-      <File FileName="Tests.cs" Line="108" Column="8" />
+      <File FileName="Tests.cs" Line="166" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
