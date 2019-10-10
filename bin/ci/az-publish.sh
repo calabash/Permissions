@@ -69,26 +69,23 @@ XC_VERSION=$(/usr/libexec/PlistBuddy -c "Print :DTXcode" ${INFO_PLIST})
 XC_BUILD=$(/usr/libexec/PlistBuddy -c "Print :DTXcodeBuild" ${INFO_PLIST})
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-if [[ "${GIT_BRANCH}" =~ "tag/" ]]; then
-  BUILD_ID="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}"
-else
-  BUILD_ID="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}-AdHoc"
-fi
+
+BUILD_ID="Permissions-${VERSION}-Xcode-${XC_VERSION}-${GIT_SHA}"
 
 # Upload `Permissions.ipa`
 IPA="${WORKING_DIR}/Products/ipa/Permissions.ipa"
-azupload "${IPA}" "${BUILD_ID}"
+azupload "${IPA}" "${BUILD_ID}.ipa"
 
 # Upload `Permissions.app.dSYM`
 IPA="${WORKING_DIR}/Products/ipa/Permissions.ipa.dSYM.zip"
-azupload "${IPA}" "${BUILD_ID}"
+azupload "${IPA}" "${BUILD_ID}.ipa.dSYM.zip"
 
 # Upload `Permissions.app`
 APP="${WORKING_DIR}/Products/app/Permissions.app.zip"
-azupload "${APP}" "${BUILD_ID}"
+azupload "${APP}" "${BUILD_ID}.app.zip"
 
 # Upload `Permissions.app.dSYM`
 APP="${WORKING_DIR}/Products/app/Permissions.app.dSYM.zip"
-azupload "${APP}" "${BUILD_ID}"
+azupload "${APP}" "${BUILD_ID}.app.dSYM.zip"
 
 echo "${BUILD_ID}"
