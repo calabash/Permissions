@@ -1,3 +1,8 @@
+variables:
+  # When Agent.JobName matches this value (and the git ref is a tag), then
+  # built artifacts will be published to Azure Blob Storage.
+  AzurePublishWhen: "Mojave-Xcode-10.3"
+  
 trigger:
   tags:
     include:
@@ -64,6 +69,18 @@ jobs:
   - script: bundle exec bin/ci/cucumber.rb
     displayName: "exec cucumber"
 
+  - task: Bash@3
+    inputs:
+      targetType: filePath
+      filePath: "./bin/ci/az-publish.sh"
+    env:
+      AZURE_STORAGE_ACCOUNT: $(AzureStorageAccount)
+      AZURE_STORAGE_KEY: $(AzureStorageKey)
+      AZURE_STORAGE_CONNECTION_STRING: $(AzureStorageConnectionString)
+      SOURCE_BRANCH: $(Build.SourceBranch)
+    displayName: "Publish to Azure Blob Storage"
+    condition: and(succeeded(), eq(variables['Agent.JobName'], variables['AzurePublishWhen']), eq(variables['Build.SourceBranch'], 'master'), eq(variables['Build.Reason'], 'IndividualCI'))
+    
   - task: PublishTestResults@2
     displayName: 'Publish Test Results'
     inputs:
