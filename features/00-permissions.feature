@@ -22,6 +22,7 @@ When I touch the Background Location Services row
 Then Calabash should dismiss the alert
 And background location services are authorized
 
+@skip_for_non_english
 @health_kit
 @reset_device_settings
 Scenario: Enabling Health Kit permissions
@@ -47,12 +48,12 @@ When I touch the Reminders row
 Then Calabash should dismiss the alert
 And access to reminders is authorized
 
+@skip_for_non_english
 @photos
 Scenario: Photos alert is dismissed
 When I touch the Photos row
 Then I see the Photos alert
 Then I wait for the Photo Roll to finish animating on
-And for Calabash to dismiss the Photo Alert
 And I can dismiss the Photo Roll by touching Cancel
 Then I verify that I have access to Photos
 
