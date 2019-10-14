@@ -23,7 +23,7 @@
             Queries view objects using the fluent API. Defaults to only return view objects that are visible.
             </summary>
             <param name="query">
-            Entry point for the fluent API to specify the element. If left as <c>null</c> returns all visible view 
+            Entry point for the fluent API to specify the element. If left as <c>null</c> returns all visible view
             objects.
             </param>
             <returns>An array representing the matched view objects.</returns>
@@ -33,7 +33,7 @@
             Queries web view objects using the fluent API. Defaults to only return view objects that are visible.
             </summary>
             <param name="query">
-            Entry point for the fluent API to specify the element. If left as <c>null</c> returns all visible view 
+            Entry point for the fluent API to specify the element. If left as <c>null</c> returns all visible view
             objects.
             </param>
             <returns>An array representing the matched view objects.</returns>
@@ -43,7 +43,7 @@
             Queries view objects values using the fluent API.
             </summary>
             <param name="query">
-            Entry point for the fluent API to specify the element. If left as <c>null</c> returns all visible view 
+            Entry point for the fluent API to specify the element. If left as <c>null</c> returns all visible view
             objects.
             </param>
             <returns>An array containing the values of the matched view objects.</returns>
@@ -57,11 +57,11 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Flash(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery})">
             <summary>
-            Highlights the results of the query by making them flash. Specify view elements using the fluent API. 
+            Highlights the results of the query by making them flash. Specify view elements using the fluent API.
             Defaults to all view objects that are visible.
             </summary>
             <param name="query">
-            Entry point for the fluent API to specify the elements. If left as <c>null</c> flashes all visible view 
+            Entry point for the fluent API to specify the elements. If left as <c>null</c> flashes all visible view
             objects.
             </param>
             <returns>An array representing the matched view objects.</returns>
@@ -74,45 +74,45 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.EnterText(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.String)">
             <summary>
-            Enters text into a matching element that supports it. 
+            Enters text into a matching element that supports it.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
             <param name="text">The text to enter.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.EnterText(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.String)">
             <summary>
-            Enters text into a matching element that supports it. 
+            Enters text into a matching element that supports it.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
             <param name="text">The text to enter.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ClearText(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery})">
             <summary>
-            Clears text from a matching element that supports it. 
+            Clears text from a matching element that supports it.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ClearText(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery})">
             <summary>
-            Clears text from a matching element that supports it. 
+            Clears text from a matching element that supports it.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ClearText">
             <summary>
-            Clears text from the currently focused element. 
+            Clears text from the currently focused element.
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Tap(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery})">
             <summary>
-            Performs a tap / touch gesture on the matched element. If multiple elements are matched, the first one 
+            Performs a tap / touch gesture on the matched element. If multiple elements are matched, the first one
             will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Tap(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery})">
             <summary>
-            Performs a tap / touch gesture on the matched element. If multiple elements are matched, the first one 
+            Performs a tap / touch gesture on the matched element. If multiple elements are matched, the first one
             will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
@@ -126,7 +126,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.TouchAndHold(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery})">
             <summary>
-            Performs a continuous touch gesture on the matched element. If multiple elements are matched, the first 
+            Performs a continuous touch gesture on the matched element. If multiple elements are matched, the first
             one will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
@@ -142,7 +142,7 @@
             <summary>>
             Performs a long touch on an item, followed by dragging the item to a second item and dropping it
             </summary>
-            <param name="from">The query of the item to be dragged</param>"> 
+            <param name="from">The query of the item to be dragged</param>">
             <param name="to">The query of the location for the item to be dropped</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.DragAndDrop(System.String,System.String)">
@@ -156,7 +156,7 @@
             <summary>>
             Performs a long touch on an item, followed by dragging the item to a second item and dropping it
             </summary>
-            <param name="from">The query of the item to be dragged</param>"> 
+            <param name="from">The query of the item to be dragged</param>">
             <param name="to">The query of the location for the item to be dropped</param>
             <param name="placement">
             The placement of the drop (on top, above, below, left, right) relative to the to query
@@ -168,14 +168,14 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.DoubleTap(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery})">
             <summary>
-            Performs two quick tap / touch gestures on the matched element. If multiple elements are matched, the 
+            Performs two quick tap / touch gestures on the matched element. If multiple elements are matched, the
             first one will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.DoubleTap(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery})">
             <summary>
-            Performs two quick tap / touch gestures on the matched element. If multiple elements are matched, the 
+            Performs two quick tap / touch gestures on the matched element. If multiple elements are matched, the
             first one will be used.
             This version is specifically for queries on web views
             </summary>
@@ -190,7 +190,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.PinchToZoomIn(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Nullable{System.TimeSpan})">
             <summary>
-            Performs a pinch gestures on the matched element to zoom the view in. If multiple elements are matched, 
+            Performs a pinch gestures on the matched element to zoom the view in. If multiple elements are matched,
             the first one will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
@@ -206,7 +206,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.PinchToZoomOut(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Nullable{System.TimeSpan})">
             <summary>
-            Performs a pinch gestures on the matched element to zoom the view out. If multiple elements are matched, 
+            Performs a pinch gestures on the matched element to zoom the view out. If multiple elements are matched,
             the first one will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
@@ -229,129 +229,84 @@
             <param name="toX">The x coordinate to drag to.</param>
             <param name="toY">The y coordinate to drag to.</param>
         </member>
-        <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeRight">
-            <summary>
-            Performs a left to right swipe gesture.
-            </summary>
-        </member>
-        <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeRight(System.String,System.Double,System.Int32,System.Boolean)">
-            <summary>
-            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the 
-            first one will be used.
-            </summary>
-            <param name="marked">
-            Marked selector to match. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
-            </param>
-            <param name="swipePercentage">How far across the screen to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
-            <param name="withInertia">Whether swipes should cause inertia.</param>
-        </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeLeftToRight(System.Double,System.Int32,System.Boolean)">
             <summary>
             Performs a left to right swipe gesture.
             </summary>
-            <param name="swipePercentage">How far across the screen to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
+            <param name="swipePercentage">How far across the screen to swipe (from 0.0 to 1.0).</param>
+            <param name="swipeSpeed">The speed of the gesture.</param>
             <param name="withInertia">Whether swipes should cause inertia.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeLeftToRight(System.String,System.Double,System.Int32,System.Boolean)">
             <summary>
-            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the 
+            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the
             first one will be used.
             </summary>
             <param name="marked">
             Marked selector to match. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
             </param>
-            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
+            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param>
+            <param name="swipeSpeed">The speed of the gesture.</param>
             <param name="withInertia">Whether swipes should cause inertia.</param>
-        </member>
-        <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeRight(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery})">
-            <summary>
-            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the 
-            first one will be used.
-            </summary>
-            <param name="query">Entry point for the fluent API to specify the element.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeLeftToRight(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Double,System.Int32,System.Boolean)">
             <summary>
-            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the 
+            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the
             first one will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
-            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
+            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param>
+            <param name="swipeSpeed">The speed of the gesture.</param>
             <param name="withInertia">Whether swipes should cause inertia.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeLeftToRight(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.Double,System.Int32,System.Boolean)">
             <summary>
-            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the 
+            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the
             first one will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
-            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
+            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param>
+            <param name="swipeSpeed">The speed of the gesture.</param>
             <param name="withInertia">Whether swipes should cause inertia.</param>
-        </member>
-        <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeLeft">
-            <summary>
-            Performs a right to left swipe gesture.
-            </summary>
-        </member>
-        <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeLeft(System.String)">
-            <summary>
-            Performs a right to left swipe gesture on the matching element. If multiple elements are matched, the 
-            first one will be used.
-            </summary>
-            <param name="marked">
-            Marked selector to match. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
-            </param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeRightToLeft(System.Double,System.Int32,System.Boolean)">
             <summary>
             Performs a right to left swipe gesture.
             </summary>
-            <param name="swipePercentage">How far across the screen to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
+            <param name="swipePercentage">How far across the screen to swipe (from 0.0 to 1.0).</param>
+            <param name="swipeSpeed">The speed of the gesture.</param>
             <param name="withInertia">Whether swipes should cause inertia.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeRightToLeft(System.String,System.Double,System.Int32,System.Boolean)">
             <summary>
-            Performs a right to left swipe gesture on the matching element. If multiple elements are matched, the 
+            Performs a right to left swipe gesture on the matching element. If multiple elements are matched, the
             first one will be used.
             </summary>
             <param name="marked">
             Marked selector to match. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
             </param>
-            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
+            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param>
+            <param name="swipeSpeed">The speed of the gesture.</param>
             <param name="withInertia">Whether swipes should cause inertia.</param>
-        </member>
-        <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeLeft(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery})">
-            <summary>
-            Performs a right to left swipe gesture on the matching element. If multiple elements are matched, the 
-            first one will be used.
-            </summary>
-            <param name="query">Entry point for the fluent API to specify the element.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeRightToLeft(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Double,System.Int32,System.Boolean)">
             <summary>
-            Performs a right to left swipe gesture on the matching element. If multiple elements are matched, the 
+            Performs a right to left swipe gesture on the matching element. If multiple elements are matched, the
             first one will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
-            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
+            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param>
+            <param name="swipeSpeed">The speed of the gesture.</param>
             <param name="withInertia">Whether swipes should cause inertia.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.SwipeRightToLeft(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.Double,System.Int32,System.Boolean)">
             <summary>
-            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the 
+            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the
             first one will be used.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
-            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
+            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param>
+            <param name="swipeSpeed">The speed of the gesture.</param>
             <param name="withInertia">Whether swipes should cause inertia.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollUp(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean)">
@@ -364,8 +319,8 @@
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollDown(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean)">
@@ -378,8 +333,8 @@
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollLeft(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean)">
@@ -392,8 +347,8 @@
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollRight(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean)">
@@ -406,204 +361,204 @@
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollUpTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll up until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll up until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinQuery">Entry point for the fluent API to specify what element to scroll within.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollUpTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll up until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll up until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinQuery">Entry point for the fluent API to specify what element to scroll within.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollDownTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll down until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll down until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinQuery">Entry point for the fluent API to specify what element to scroll within.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollDownTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll down until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll down until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinQuery">Entry point for the fluent API to specify what element to scroll within.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollLeftTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll left until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll left until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinQuery">Entry point for the fluent API to specify what element to scroll within.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollLeftTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll left until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll left until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinQuery">Entry point for the fluent API to specify what element to scroll within.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollRightTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll right until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll right until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinQuery">Entry point for the fluent API to specify what element to scroll within.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollRightTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll right until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll right until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinQuery">Entry point for the fluent API to specify what element to scroll within.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollToVerticalEnd(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll the matching element so that its bottom child element is visible. If multiple elements are matched, 
+            Scroll the matching element so that its bottom child element is visible. If multiple elements are matched,
             the first one will be used.
             </summary>
             <param name="withinQuery">Entry point for the fluent API to specify the elements.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollToVerticalStart(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll the matching element so that its top child element is visible. If multiple elements are matched, 
+            Scroll the matching element so that its top child element is visible. If multiple elements are matched,
             the first one will be used.
             <param name="withinQuery">Entry point for the fluent API to specify the elements.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollToHorizontalEnd(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll the matching element so that its rightmost child element is visible. If multiple elements are 
+            Scroll the matching element so that its rightmost child element is visible. If multiple elements are
             matched, the first one will be used.
             </summary>
             <param name="withinQuery">Entry point for the fluent API to specify the elements.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollToHorizontalStart(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll the matching element so that its leftmost child element is visible. If multiple elements are 
+            Scroll the matching element so that its leftmost child element is visible. If multiple elements are
             matched, the first one will be used.
             <param name="withinQuery">Entry point for the fluent API to specify the elements.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinQuery">Entry point for the fluent API to specify what element to scroll within.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll until an element that matches the <c>toQuery</c> is shown on the screen. 
+            Scroll until an element that matches the <c>toQuery</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the screen to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Back">
             <summary>
-            Presses the back button of the device. 
+            Presses the back button of the device.
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.PressVolumeUp">
@@ -618,12 +573,12 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.PressMenu">
             <summary>
-            Presses the menu button of the device. 
+            Presses the menu button of the device.
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.PressEnter">
             <summary>
-            Presses the enter key in the app. 
+            Presses the enter key in the app.
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.PressUserAction(System.Nullable{Xamarin.UITest.Android.UserAction})">
@@ -651,7 +606,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.WaitFor(System.Func{System.Boolean},System.String,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
             <summary>
-            Generic wait function that will repeatly call the <c>predicate</c> function until it returns <c>true</c>. 
+            Generic wait function that will repeatly call the <c>predicate</c> function until it returns <c>true</c>.
             Throws a <see cref="T:System.TimeoutException"/> if the predicate is not fullfilled within the time limit.
             </summary>
             <param name="predicate">Predicate function that should return <c>true</c> when waiting is complete.</param>
@@ -664,7 +619,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.WaitForElement(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.String,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
             <summary>
-            Wait function that will repeatly query the app until a matching element is found. Throws a 
+            Wait function that will repeatly query the app until a matching element is found. Throws a
             <see cref="T:System.TimeoutException"/> if no element is found within the time limit.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
@@ -678,7 +633,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.WaitForNoElement(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.String,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
             <summary>
-            Wait function that will repeatly query the app until a matching element is no longer found. Throws a 
+            Wait function that will repeatly query the app until a matching element is no longer found. Throws a
             <see cref="T:System.TimeoutException"/> if the element is visible at the end of the time limit.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
@@ -691,7 +646,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.WaitForElement(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.String,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
             <summary>
-            Wait function that will repeatly query the app until a matching element is found. Throws a 
+            Wait function that will repeatly query the app until a matching element is found. Throws a
             <see cref="T:System.TimeoutException"/> if no element is found within the time limit.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
@@ -705,7 +660,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.WaitForNoElement(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.String,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
             <summary>
-            Wait function that will repeatly query the app until a matching element is no longer found. Throws a 
+            Wait function that will repeatly query the app until a matching element is no longer found. Throws a
             <see cref="T:System.TimeoutException"/> if the element is visible at the end of the time limit.
             </summary>
             <param name="query">Entry point for the fluent API to specify the element.</param>
@@ -718,7 +673,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Screenshot(System.String)">
             <summary>
-            Takes a screenshot of the app in it's current state. This is used to denote test steps in the Xamarin 
+            Takes a screenshot of the app in it's current state. This is used to denote test steps in the Xamarin
             Test Cloud.
             </summary>
             <param name="title">The title of screenshot, used as step name.</param>
@@ -726,58 +681,53 @@
         </member>
         <member name="P:Xamarin.UITest.Android.AndroidApp.Print">
             <summary>
-            Contains helper methods for outputting the result of queries instead of resorting to 
+            Contains helper methods for outputting the result of queries instead of resorting to
             <see cref="T:System.Console"/>.
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Repl">
             <summary>
-            Starts an interactive REPL (Read-Eval-Print-Loop) for app exploration and pauses test execution until 
+            Starts an interactive REPL (Read-Eval-Print-Loop) for app exploration and pauses test execution until
             it is closed.
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Invoke(System.String,System.Object)">
-            <summary>
-            Invokes a method on the app's main activity. For Xamarin apps, methods must be exposed using attributes 
-            as shown below.
+             <summary>
+             Invokes a method on the app's main activity. For Xamarin apps, methods must be exposed using attributes
+             as shown below.
             
-            Android example in activity:
+             Android example in activity:
             
-            <code>
-            [Export]
-            public string MyInvokeMethod(string arg)
-            {
-                return "uitest";
-            }
-            </code>
-            </summary>
-            <param name="methodName">The name of the method to invoke.</param>
-            <param name="argument">The argument to pass to the method.</param>
-            <returns>The result of the invocation.</returns>
+             <code>
+             [Export]
+             public string MyInvokeMethod(string arg)
+             {
+                 return "uitest";
+             }
+             </code>
+             </summary>
+             <param name="methodName">The name of the method to invoke.</param>
+             <param name="argument">The argument to pass to the method.</param>
+             <returns>The result of the invocation.</returns>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Invoke(System.String,System.Object[])">
-            <summary>
-            Invokes a method on the app's main activity. For Xamarin apps, methods must be exposed using attributes 
-            as shown below.
+             <summary>
+             Invokes a method on the app's main activity. For Xamarin apps, methods must be exposed using attributes
+             as shown below.
             
-            Android example in activity:
+             Android example in activity:
             
-            <code>
-            [Export]
-            public string MyInvokeMethod(string arg, string arg2)
-            {
-                return "uitest";
-            }
-            </code>
-            </summary>
-            <param name="methodName">The name of the method to invoke.</param>
-            <param name="arguments">An array of arguments to pass to the method.</param>
-            <returns>The result of the invocation.</returns>
-        </member>
-        <member name="P:Xamarin.UITest.Android.AndroidApp.Config">
-            <summary>
-            Contains runtime information about the currently running device.
-            </summary>
+             <code>
+             [Export]
+             public string MyInvokeMethod(string arg, string arg2)
+             {
+                 return "uitest";
+             }
+             </code>
+             </summary>
+             <param name="methodName">The name of the method to invoke.</param>
+             <param name="arguments">An array of arguments to pass to the method.</param>
+             <returns>The result of the invocation.</returns>
         </member>
         <member name="P:Xamarin.UITest.Android.AndroidApp.Xamarin#UITest#IApp#Device">
             <summary>
@@ -805,7 +755,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Flash(System.String)">
             <summary>
-            Highlights the results of the query by making them flash. Specify view elements using marked string. 
+            Highlights the results of the query by making them flash. Specify view elements using marked string.
             </summary>
             <param name="marked">
             Marked selector to match. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
@@ -814,7 +764,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.EnterText(System.String,System.String)">
             <summary>
-            Enters text into a matching element that supports it. 
+            Enters text into a matching element that supports it.
             </summary>
             <param name="marked">
             Marked selector to match. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
@@ -823,7 +773,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ClearText(System.String)">
             <summary>
-            Clears text from a matching element that supports it. 
+            Clears text from a matching element that supports it.
             </summary>
             <param name="marked">
             Marked selector to match. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
@@ -831,7 +781,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Tap(System.String)">
             <summary>
-            Performs a tap / touch gesture on the matched element. If multiple elements are matched, the first one 
+            Performs a tap / touch gesture on the matched element. If multiple elements are matched, the first one
             will be used.
             </summary>
             <param name="marked">
@@ -840,7 +790,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.TouchAndHold(System.String)">
             <summary>
-            Performs a continuous touch gesture on the matched element. If multiple elements are matched, the first 
+            Performs a continuous touch gesture on the matched element. If multiple elements are matched, the first
             one will be used.
             </summary>
             <param name="marked">
@@ -849,7 +799,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.DoubleTap(System.String)">
             <summary>
-            Performs two quick tap / touch gestures on the matched element. If multiple elements are matched, the 
+            Performs two quick tap / touch gestures on the matched element. If multiple elements are matched, the
             first one will be used.
             </summary>
             <param name="marked">
@@ -858,7 +808,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.PinchToZoomIn(System.String,System.Nullable{System.TimeSpan})">
             <summary>
-            Performs a pinch gestures on the matched element to zoom the view in. If multiple elements are matched, 
+            Performs a pinch gestures on the matched element to zoom the view in. If multiple elements are matched,
             the first one will be used.
             </summary>
             <param name="marked">
@@ -868,7 +818,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.PinchToZoomOut(System.String,System.Nullable{System.TimeSpan})">
             <summary>
-            Performs a pinch gestures on the matched element to zoom the view out. If multiple elements are matched, 
+            Performs a pinch gestures on the matched element to zoom the view out. If multiple elements are matched,
             the first one will be used.
             </summary>
             <param name="marked">
@@ -878,7 +828,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.WaitForNoElement(System.String,System.String,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
             <summary>
-            Wait function that will repeatly query the app until a matching element is no longer found. Throws a 
+            Wait function that will repeatly query the app until a matching element is no longer found. Throws a
             <see cref="T:System.TimeoutException"/> if the element is visible at the end of the time limit.
             </summary>
             <param name="marked">
@@ -893,7 +843,7 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.WaitForElement(System.String,System.String,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
             <summary>
-            Wait function that will repeatly query the app until a matching element is found. Throws a 
+            Wait function that will repeatly query the app until a matching element is found. Throws a
             <see cref="T:System.TimeoutException"/> if no element is found within the time limit.
             </summary>
             <param name="marked">
@@ -915,7 +865,7 @@
             Marked selector for the item to be dragged. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
             </param>
             <param name="toMarked">
-            Marked selector for the location for the item to be dropped. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector for the location for the item to be dropped. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="placement">
@@ -931,14 +881,14 @@
             Scrolls up on the first element matching query.
             </summary>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollDown(System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean)">
@@ -946,14 +896,14 @@
             Scrolls down on the first element matching query.
             </summary>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollLeft(System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean)">
@@ -961,14 +911,14 @@
             Scrolls left on the first element matching query.
             </summary>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollRight(System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean)">
@@ -976,245 +926,245 @@
             Scrolls right on the first element matching query.
             </summary>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollUpTo(System.String,System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll up until an element that matches the <c>toMarked</c> is shown on the screen. 
+            Scroll up until an element that matches the <c>toMarked</c> is shown on the screen.
             </summary>
             <param name="toMarked">
-            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollUpTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll up until an element that matches the <c>toMarked</c> is shown on the screen. 
+            Scroll up until an element that matches the <c>toMarked</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollDownTo(System.String,System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll down until an element that matches the <c>toMarked</c> is shown on the screen. 
+            Scroll down until an element that matches the <c>toMarked</c> is shown on the screen.
             </summary>
             <param name="toMarked">
-            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollDownTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll down until an element that matches the <c>toMarked</c> is shown on the screen. 
+            Scroll down until an element that matches the <c>toMarked</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollLeftTo(System.String,System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll left until an element that matches the <c>toMarked</c> is shown on the screen. 
+            Scroll left until an element that matches the <c>toMarked</c> is shown on the screen.
             </summary>
             <param name="toMarked">
-            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollLeftTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll left until an element that matches the <c>toMarked</c> is shown on the screen. 
+            Scroll left until an element that matches the <c>toMarked</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollRightTo(System.String,System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll right until an element that matches the <c>toMarked</c> is shown on the screen. 
+            Scroll right until an element that matches the <c>toMarked</c> is shown on the screen.
             </summary>
             <param name="toMarked">
-            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollRightTo(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppWebQuery},System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll right until an element that matches the <c>toMarked</c> is shown on the screen. 
+            Scroll right until an element that matches the <c>toMarked</c> is shown on the screen.
             </summary>
             <param name="toQuery">Entry point for the fluent API to specify the element to bring on screen.</param>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollToVerticalEnd(System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll the matching element so that its bottom child element is visible. If multiple elements are matched, 
+            Scroll the matching element so that its bottom child element is visible. If multiple elements are matched,
             the first one will be used.
             </summary>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollToVerticalStart(System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll the matching element so that its top child element is visible. If multiple elements are matched, 
+            Scroll the matching element so that its top child element is visible. If multiple elements are matched,
             the first one will be used.
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollToHorizontalEnd(System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll the matching element so that its rightmost child element is visible. If multiple elements are 
+            Scroll the matching element so that its rightmost child element is visible. If multiple elements are
             matched, the first one will be used.
             </summary>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollToHorizontalStart(System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll the matching element so that its leftmost child element is visible. If multiple elements are 
+            Scroll the matching element so that its leftmost child element is visible. If multiple elements are
             matched, the first one will be used.
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.ScrollTo(System.String,System.String,Xamarin.UITest.ScrollStrategy,System.Double,System.Int32,System.Boolean,System.Nullable{System.TimeSpan})">
             <summary>
-            Scroll until an element that matches the <c>toMarked</c> is shown on the screen. 
+            Scroll until an element that matches the <c>toMarked</c> is shown on the screen.
             </summary>
             <param name="toMarked">
-            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to bring on screen. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="withinMarked">
-            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more 
+            Marked selector to select what element to scroll within. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more
             information.
             </param>
             <param name="strategy">Strategy for scrolling element.</param>
             <param name="swipePercentage">
             How far across the element to swipe (from 0.0 to 1.0).  Ignored for programmatic scrolling.
-            </param> 
-            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param> 
+            </param>
+            <param name="swipeSpeed">The speed of the gesture.  Ignored for programmatic scrolling.</param>
             <param name="withInertia">Whether swipes should cause inertia.  Ignored for programmatic scrolling.</param>
             <param name="timeout">The <see cref="T:System.TimeSpan"/> to wait before failing.</param>
         </member>
@@ -1916,11 +1866,6 @@
             The desired state of the app after test initialization. Either the test framework can start the app or connect to an already running app in more advanced scenarios.
             </summary>
         </member>
-        <member name="P:Xamarin.UITest.Configuration.IiOSAppConfiguration.PreferDeviceAgent">
-            <summary>
-            Use DeviceAgent when iOS version and Xcode version support both DeviceAgent and UIAutomation
-            </summary>
-        </member>
         <member name="M:Xamarin.UITest.Configuration.IiOSAppConfiguration.Verify">
             <summary>
             Verify the state of a configuration. Throw exception if invalid.
@@ -2243,22 +2188,6 @@
             <param name="x">The x coordinate to tap.</param>
             <param name="y">The y coordinate to tap.</param>
         </member>
-        <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeRight">
-            <summary>
-            Performs a left to right swipe gesture.
-            </summary>
-        </member>
-        <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeRight(System.String,System.Double,System.Int32)">
-            <summary>
-            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the first
-            one will be used.
-            </summary>
-            <param name="marked">
-            Marked selector to match. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
-            </param>
-            <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
-            <param name="swipeSpeed">The speed of the gesture.</param> 
-        </member>
         <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeLeftToRight(System.Double,System.Int32,System.Boolean)">
             <summary>
             Performs a left to right swipe gesture.
@@ -2278,13 +2207,6 @@
             <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
             <param name="swipeSpeed">The speed of the gesture.</param> 
             <param name="withInertia">Whether swipes should cause inertia.</param>
-        </member>
-        <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeRight(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery})">
-            <summary>
-            Performs a left to right swipe gesture on the matching element. If multiple elements are matched, the first
-            one will be used.
-            </summary>
-            <param name="query">Entry point for the fluent API to specify the element.</param>
         </member>
         <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeLeftToRight(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Double,System.Int32,System.Boolean)">
             <summary>
@@ -2306,20 +2228,6 @@
             <param name="swipeSpeed">The speed of the gesture.</param> 
             <param name="withInertia">Whether swipes should cause inertia.</param>
         </member>
-        <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeLeft">
-            <summary>
-            Performs a right to left swipe gesture.
-            </summary>
-        </member>
-        <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeLeft(System.String)">
-            <summary>
-            Performs a right to left swipe gesture on the matching element. If multiple elements are matched, the first
-            one will be used.
-            </summary>
-            <param name="marked">
-            Marked selector to match. See <see cref="M:Xamarin.UITest.Queries.AppQuery.Marked(System.String)" /> for more information.
-            </param>
-        </member>
         <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeRightToLeft(System.Double,System.Int32,System.Boolean)">
             <summary>
             Performs a right to left swipe gesture.
@@ -2339,13 +2247,6 @@
             <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
             <param name="swipeSpeed">The speed of the gesture.</param> 
             <param name="withInertia">Whether swipes should cause inertia.</param>
-        </member>
-        <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeLeft(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery})">
-            <summary>
-            Performs a right to left swipe gesture on the matching element. If multiple elements are matched, the first 
-            one will be used.
-            </summary>
-            <param name="query">Entry point for the fluent API to specify the element.</param>
         </member>
         <member name="M:Xamarin.UITest.iOS.iOSApp.SwipeRightToLeft(System.Func{Xamarin.UITest.Queries.AppQuery,Xamarin.UITest.Queries.AppQuery},System.Double,System.Int32,System.Boolean)">
             <summary>
@@ -2663,13 +2564,6 @@
         <member name="M:Xamarin.UITest.iOS.iOSApp.DismissSpringboardAlerts">
             <summary>
             Uses Device Agent to dismiss springboard alerts.
-            </summary>
-        </member>
-        <member name="P:Xamarin.UITest.iOS.iOSApp.Config">
-            <summary>
-            Obsolete, use Device instead.
-            Contains runtime information about the currently running device.
-            
             </summary>
         </member>
         <member name="P:Xamarin.UITest.iOS.iOSApp.Xamarin#UITest#IApp#Device">
@@ -4354,11 +4248,6 @@
             <param name="title">The title of screenshot, used as step name.</param>
             <returns>The screenshot file.</returns>
         </member>
-        <member name="M:Xamarin.UITest.IApp.SwipeRight">
-            <summary>
-            Performs a left to right swipe gesture.
-            </summary>
-        </member>
         <member name="M:Xamarin.UITest.IApp.SwipeLeftToRight(System.Double,System.Int32,System.Boolean)">
             <summary>
             Performs a left to right swipe gesture.
@@ -4378,11 +4267,6 @@
             <param name="swipePercentage">How far across the element to swipe (from 0.0 to 1.0).</param> 
             <param name="swipeSpeed">The speed of the gesture.</param> 
             <param name="withInertia">Whether swipes should cause inertia.</param>
-        </member>
-        <member name="M:Xamarin.UITest.IApp.SwipeLeft">
-            <summary>
-            Performs a right to left swipe gesture.
-            </summary>
         </member>
         <member name="M:Xamarin.UITest.IApp.SwipeRightToLeft(System.Double,System.Int32,System.Boolean)">
             <summary>
