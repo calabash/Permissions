@@ -1,0 +1,9 @@
+/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Release/Permission_demo.dll
+/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Release/nunit.framework.dll
+/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Release/Xamarin.UITest.dll
+/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Release/nunit.framework.pdb
+/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Release/nunit.framework.xml
+/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Release/Xamarin.UITest.xml
+/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Release/Permission_demo.csproj.CoreCompileInputs.cache
+/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Release/Permission_demo.csproj.CopyComplete
+/Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Release/Permission_demo.dll
