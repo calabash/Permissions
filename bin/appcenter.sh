@@ -3,17 +3,14 @@ source bin/log.sh
 set -e
 
 if [ -z ${1} ]; then
-  echo "Usage: ${0} device-set [DeviceAgent-SHA]
+  echo "Usage: ${0} device-set
 
 Examples:
 
-$ bin/appcenter.sh e9232255
-$ SKIP_IPA_BUILD=1 SERIES='Args and env' bin/appcenter.sh e9232255
-$ SERIES='DeviceAgent 2.0' bin/appcenter.sh e9232255 48d137d6228ccda303b2a71b0d09e1d0629bf980
-
-The DeviceAgent-SHA optional argument allows tests to be run against any
-DeviceAgent that has been uploaded to S3 rather than the current active
-DeviceAgent for Test Cloud.
+$ bin/appcenter.sh ios13-and-friends
+$ SKIP_IPA_BUILD=1 SERIES='Args and env' bin/appcenter.sh daily-deploy-ios
+$ SERIES='DeviceAgent 2.0' bin/appcenter.sh tier1
+$ TEST_LOCALE=da_DK bin/appcenter.sh hej-screen
 
 If you need to test local changes to run-loop or Calabash on Test Cloud,
 use the BUILD_RUN_LOOP and BUILD_CALABASH env variables.
@@ -26,7 +23,7 @@ SKIP_IPA_BUILD: iff 1, then skip re-building the ipa.
                 features/ directory will be staged and sent to Test Cloud.
 BUILD_RUN_LOOP: iff 1, then rebuild run-loop gem before uploading.
 BUILD_CALABASH: iff 1, then rebuild Calabash iOS gem before uploading.
-    APP_LOCALE: device locale
+   TEST_LOCALE: device locale
 "
 
   exit 64
@@ -61,28 +58,22 @@ fi
 
 PREPARE_XTC_ONLY="${SKIP_IPA_BUILD}" make ipa
 
-(cd testcloud-submit
+if [ "${SERIES}" = "" ]; then
+  SERIES=master
+fi
 
-rm -rf .xtc
-mkdir -p .xtc
-
-if [ "${2}" != "" ]; then
-  echo "${2}" > .xtc/device-agent-sha
-fi)
-
-if [ "${APP_LOCALE}" = "" ]; then
-  APP_LOCALE="en_US"
+if [ "${TEST_LOCALE}" = "" ]; then
+  TEST_LOCALE="en_US"
 fi
 
 appcenter test run calabash \
-  --debug \
   --app-path testcloud-submit/Permissions.ipa \
   --app App-Center-Test-Cloud/Permissions \
   --project-dir testcloud-submit \
   --token $APPCENTER_TOKEN \
-  --devices "${1}" \
+  --devices "App-Center-Test-Cloud/${1}" \
   --config-path cucumber.yml \
   --profile default \
-  --include .xtc \
-  --test-series ${SERIES} \
+  --test-series master \
+  --locale "${TEST_LOCALE}" \
   --disable-telemetry

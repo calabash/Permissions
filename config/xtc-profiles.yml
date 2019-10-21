@@ -11,6 +11,7 @@ default:     -p common --tags ~@orientation
 orientation: -p common --tags @orientation
 
 location:    -p common --tags @location
+apns:        -p common --tags @apns
 
 wip:         -p common --tags @wip
 flicker:     -p common --tags @flickering
