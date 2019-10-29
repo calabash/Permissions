@@ -142,7 +142,7 @@ source "https://rubygems.org"
 
 gem "calabash-cucumber"
 gem "json", "1.8.6"
-gem "cucumber", "2.99.0"
+gem "cucumber", "~> 2.0"
 EOF
 
 cat "config/xtc-other-gems.rb" >> "${XTC_DIR}/Gemfile"

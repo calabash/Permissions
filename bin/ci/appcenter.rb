@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 require "luffa"
+require "pry"
 
-AC_TOKEN= `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`
+AC_TOKEN= `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`.chomp
 
 def languages
-  languages = ["da_DK","ru_RU","en_US","ja_JP"]
+  languages = ["da_DK"]#,"ru_RU","en_US","ja_JP"]
   threads = []
   languages.each do |item|
     threads << Thread.new(item) do |i|
@@ -14,11 +15,10 @@ def languages
       ' --project-dir testcloud-submit' \
       " --token #{AC_TOKEN}" \
       " --test-series master" \
+      ' --devices "App-Center-Test-Cloud/daily-ios"' \
       " --locale #{i}" \
-      ' --devices App-Center-Test-Cloud/daily-ios' \
       ' --config-path cucumber.yml' \
       ' --profile default' \
-      ' --async' \
       ' --disable-telemetry'
       exit_code = Luffa.unix_command(str)
       puts "exit code language #{i} is #{exit_code}"
