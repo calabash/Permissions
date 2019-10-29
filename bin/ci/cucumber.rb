@@ -12,9 +12,9 @@ def languages
   languages = ["da_DK","ru_RU","en_US","ja_JP"]
   threads = []
   languages.each do |item|
-    threads << Thread.new(url) do |i|
-      exit_code = Luffa.unix_command("language=#{item} ./bin/ci/appcenter.sh ")
-      puts "exit code language #{item} is #{exit_code}"
+    threads << Thread.new(item) do |i|
+      exit_code = Luffa.unix_command("language=#{i} ./bin/ci/appcenter.sh ")
+      puts "exit code language #{i} is #{exit_code}"
     end
   end
   threads.each { |thr| thr.join }
