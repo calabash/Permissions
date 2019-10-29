@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 source "bin/log.sh"
-
 set +e
 hash appcenter 2>/dev/null
 if [ $? -eq 0 ]; then
@@ -28,6 +27,7 @@ if [ "${AC_TOKEN}" = "" ]; then
 fi
 
 IPA=Products/ipa/Permissions.ipa
+echo "Current language is ${language}"
 
 appcenter test run calabash \
   --app-path testcloud-submit/Permissions.ipa \
@@ -35,6 +35,7 @@ appcenter test run calabash \
   --project-dir testcloud-submit \
   --token $AC_TOKEN \
   --test-series master \
+  --locale language
   --devices App-Center-Test-Cloud/daily-ios \
   --config-path cucumber.yml \
   --profile default \

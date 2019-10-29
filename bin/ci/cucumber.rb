@@ -8,7 +8,19 @@ cucumber_args = "#{ARGV.join(" ")}"
 this_dir = File.expand_path(File.dirname(__FILE__))
 working_directory = File.join(this_dir, "..", "..")
 
+def languages
+  languages = ["da_DK","ru_RU","en_US","ja_JP"]
+  threads = []
+  languages.each do |item|
+    threads << Thread.new(url) do |i|
+      exit_code = Luffa.unix_command("language=#{item} ./bin/ci/appcenter.sh ")
+      puts "exit code language #{item} is #{exit_code}"
+    end
+  end
+  threads.each { |thr| thr.join }
+end
 # on-simulator tests of features in test/cucumber
+languages
 Dir.chdir(working_directory) do
 
   FileUtils.rm_rf("reports")
