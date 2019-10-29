@@ -1,10 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ruby
 require "luffa"
 
-AC_TOKEN=$("${HOME}/.calabash/find-keychain-credential.sh" api-token)
-IPA=Products/ipa/Permissions.ipa
+AC_TOKEN= `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`
 
- def languages
+def languages
   languages = ["da_DK","ru_RU","en_US","ja_JP"]
   threads = []
   languages.each do |item|
