@@ -66,6 +66,9 @@ jobs:
   - script: make ipa
     displayName: "Make ipa"
 
+  - script: bundle exec bin/ci/appcenter.rb
+    displayName: "exec appcenter"
+
   - script: bundle exec bin/ci/cucumber.rb
     displayName: "exec cucumber"
 
