@@ -2,6 +2,7 @@
 
 source "bin/log.sh"
 set +e
+echo $language
 hash appcenter 2>/dev/null
 if [ $? -eq 0 ]; then
   info "Using $(appcenter --version)"
@@ -35,7 +36,7 @@ appcenter test run calabash \
   --project-dir testcloud-submit \
   --token $AC_TOKEN \
   --test-series master \
-  --locale language
+  --locale $language \
   --devices App-Center-Test-Cloud/daily-ios \
   --config-path cucumber.yml \
   --profile default \
