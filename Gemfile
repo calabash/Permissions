@@ -22,3 +22,5 @@ gem 'pry-nav'
 
 # CI Stack
 gem 'luffa', '~> 1.0', '>= 1.0.2'
+
+gem 'rubysl-open3', '~> 2.0'
