@@ -68,8 +68,8 @@ jobs:
   - script: make ipa
     displayName: "Make ipa"
 
-  # - script: bundle exec bin/ci/cucumber.rb
-  #   displayName: "exec cucumber"
+  - script: bundle exec bin/ci/cucumber.rb
+    displayName: "exec cucumber"
 
   - task: Bash@3
     inputs:
@@ -81,7 +81,7 @@ jobs:
       AZURE_STORAGE_CONNECTION_STRING: $(AzureStorageConnectionString)
       SOURCE_BRANCH: $(Build.SourceBranch)
     displayName: "Publish to Azure Blob Storage"
-    # condition: always()
+    condition: and(succeeded(), eq(variables['Agent.JobName'], variables['AzurePublishWhen']), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.Reason'], 'IndividualCI'))
 
   - task: PublishTestResults@2
     displayName: 'Publish Test Results'
