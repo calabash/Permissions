@@ -24,3 +24,4 @@ gem 'pry-nav'
 gem 'luffa', '~> 1.0', '>= 1.0.2'
 
 gem 'rubysl-open3', '~> 2.0'
+gem 'parallel', '~> 1.11', '>= 1.11.2'
