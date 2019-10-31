@@ -24,7 +24,7 @@ end
 threads.each { |thr| thr.join }
 
 puts "Summary:"
-JSON.pretty_generate(summary)
+puts JSON.pretty_generate(summary)
 
 # exit 0 if all tests passed
 exit summary.values.sum
