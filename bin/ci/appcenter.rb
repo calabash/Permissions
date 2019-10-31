@@ -15,6 +15,7 @@ languages.each do |lang|
       puts "Run tests for language '#{item}'"
       puts output
       puts "Finished with exit code '#{$?.exitstatus}'"
+      puts "------------------------------------------"
       summary[item] = $?.exitstatus
     end
   end
