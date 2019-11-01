@@ -258,7 +258,7 @@ end
 And(/^I can dismiss the Photo Roll by touching Cancel$/) do
   # Waiting for no alert does not work.
   sleep(timeout_for_env)
-  device_agent.touch({marked: "Cancel"})
+  device_agent.touch({type: "Button"})
   sleep(timeout_for_env)
 
   if ios11?
@@ -275,7 +275,7 @@ end
 Then(/^I verify that I have access to Photos$/) do
   expect_action_label_ready_for_next_alert
   tap_row("photos")
-  device_agent.wait_for_view({marked: "Cancel"})
+  device_agent.wait_for_view({type: "Button"})
 
   query = "* {text CONTAINS 'does not have access' }"
   if !query(query).empty?
@@ -284,7 +284,7 @@ Then(/^I verify that I have access to Photos$/) do
 
   sleep(timeout_for_env)
 
-  device_agent.touch({marked: "Cancel"})
+  device_agent.touch({type: "Button"})
   wait_for_view("* marked:'action label'")
 end
 
@@ -390,7 +390,7 @@ Then(/^I see the HealthKit modal view or Not Supported alert$/) do
   if @supports_health_kit
     message = "Expected Health Access permissions view to appear"
     bridge_wait_for(message) do
-      !device_agent.query({marked: "Health Access"}).empty?
+      !device_agent.query({type: "NavigationBar"}).empty?
     end
     wait_for_none_animating
   else
@@ -417,9 +417,11 @@ Then(/^I can enable HealthKit permissions and dismiss the page$/) do
 
 
     sleep(pause)
-    device_agent.touch({marked: "Turn All Categories On"})
+    device_agent.touch({type: "Switch"})
     sleep(pause)
-    device_agent.touch({marked: "Allow"})
+    buttons = device_agent.query({type: "Button"})
+    allow_label = buttons[1]["label"]
+    device_agent.touch({marked: allow_label})
     # Remove when the Cannot wait for "Health Access" view to disappear
     # issue is resolved.
     # https://jira.xamarin.com/browse/TCFW-584
