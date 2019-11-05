@@ -74,7 +74,7 @@ jobs:
   - script: make ipa
     displayName: "Make ipa"
 
-  - script: bundle exec bin/ci/cucumber.rb
+  - script: DEBUG=1 bundle exec bin/ci/cucumber.rb
     displayName: "exec cucumber"
 
   - task: Bash@3
