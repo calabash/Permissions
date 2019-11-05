@@ -3,7 +3,7 @@ module Calabash
 
     @@default_options = {
       timeout: RunLoop::Environment.ci? ? 16 : 8,
-      retry_frequency: 0.1,
+      retry_frequency: 1,
       exception_class: Timeout::Error
     }
 

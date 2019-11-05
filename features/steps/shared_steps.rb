@@ -41,7 +41,7 @@ Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
 
     def timeout_for_env
       if RunLoop::Environment.ci?
-        120.0
+        30.0
       elsif RunLoop::Environment.xtc?
         10.0
       else
