@@ -58,6 +58,8 @@ jobs:
       set -e
       ruby -v
       gem list
+      echo "--------------"
+      gem env
       echo -e "install: --no-document --env-shebang\nupdate:  --no-document --env-shebang" > ~/.gemrc
       gem install bundler -v 1.17.3 --force
       bundle _1.17.3_ install
