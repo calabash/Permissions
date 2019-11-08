@@ -51,8 +51,7 @@ jobs:
       set -e
       ruby -v
       echo -e "install: --no-document --env-shebang\nupdate:  --no-document --env-shebang" > ~/.gemrc
-      gem install bundler -v 1.17.3
-      bundle _1.17.3_ install
+      bundle install
     displayName: "Prepare Ruby Environment"
 
   - script: |
