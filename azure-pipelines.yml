@@ -57,11 +57,9 @@ jobs:
   - script: |
       set -e
       ruby -v
-      gem list
-      echo "--------------"
-      gem env
       echo -e "install: --no-document --env-shebang\nupdate:  --no-document --env-shebang" > ~/.gemrc
-      gem install bundler -v 1.17.3 --force
+      gem uninstall -Vax --force --no-abort-on-dependent bundler
+      gem install bundler -v 1.17.3
       bundle _1.17.3_ install
     displayName: "Prepare Ruby Environment"
 
