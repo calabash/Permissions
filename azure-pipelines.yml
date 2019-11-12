@@ -43,6 +43,7 @@ jobs:
         XCODE_VERSION: '11.2'
   pool:
     vmImage: $(IMAGE_POOL)
+  timeoutInMinutes: 240
 
   steps:
 
@@ -58,8 +59,7 @@ jobs:
       set -e
       ruby -v
       echo -e "install: --no-document --env-shebang\nupdate:  --no-document --env-shebang" > ~/.gemrc
-      gem install bundler -v 1.17.3
-      bundle _1.17.3_ install
+      bundle install
     displayName: "Prepare Ruby Environment"
 
   - script: |
@@ -73,6 +73,9 @@ jobs:
 
   - script: make ipa
     displayName: "Make ipa"
+
+  - script: bundle exec bin/appcenter.rb
+    displayName: "exec appcenter"
 
   - script: bundle exec bin/ci/cucumber.rb
     displayName: "exec cucumber"

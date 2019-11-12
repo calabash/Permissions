@@ -7,10 +7,10 @@ if [ -z ${1} ]; then
 
 Examples:
 
-$ bin/appcenter.sh ios13-and-friends
-$ SKIP_IPA_BUILD=1 SERIES='Args and env' bin/appcenter.sh daily-deploy-ios
-$ SERIES='DeviceAgent 2.0' bin/appcenter.sh tier1
-$ TEST_LOCALE=da_DK bin/appcenter.sh hej-screen
+$ bin/appcenter-local.sh ios13-and-friends
+$ SKIP_IPA_BUILD=1 SERIES='Args and env' bin/appcenter-local.sh daily-deploy-ios
+$ SERIES='DeviceAgent 2.0' bin/appcenter-local.sh tier1
+$ TEST_LOCALE=da_DK bin/appcenter-local.sh hej-screen
 
 If you need to test local changes to run-loop or Calabash on Test Cloud,
 use the BUILD_RUN_LOOP and BUILD_CALABASH env variables.
