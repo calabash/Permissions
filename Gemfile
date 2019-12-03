@@ -14,7 +14,6 @@ gem 'retriable', '~> 2.0'
 gem 'rake', '~> 10.3'
 gem 'bundler', '2.0.2'
 gem 'xcpretty', '~> 0.1'
-gem "briar", "~> 2.0"
 
 # Debugging
 gem 'pry'

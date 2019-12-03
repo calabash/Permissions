@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require "run_loop"
-require "luffa"
 
 cucumber_args = "#{ARGV.join(" ")}"
 
@@ -23,19 +22,30 @@ Dir.chdir(working_directory) do
   match = RunLoop::Device.detect_device(options, xcode, simctl, instruments)
   env_vars = {"DEVICE_TARGET" => match.udid}
 
-  languagesLiterals = ["en", "ru"]
+  languagesLiterals = { "en" => "en_US", "ru" => "ru_RU" }
 
-  languagesLiterals.each do |item|
-    language = "APP_LANG=#{item} APP_LOCALE=#{item}"
+  failed_langs = []
+
+  languagesLiterals.each do |key, value|
+    env_vars["APP_LANG"] = key
+    env_vars["APP_LOCALE"] = value
+
     args = [
       "bundle", "exec",
       "cucumber", "-p", "default",
-      "-f", "json", "-o", "reports/#{item}.json",
-      "-f", "junit", "-o", "reports/junit/#{item}",
-      "#{language}"
+      "-f", "junit", "-o", "reports/#{key}",
     ]
 
-    exit_code = Luffa.unix_command(args.join(" "), {:exit_on_nonzero_status => true,
-                                                :env_vars => env_vars})
+    if !system(env_vars, *args)
+      failed_langs << key
+    end
+  end
+
+  if failed_lang.count == 0
+    puts "Cucumber tests passed for #{languagesLiterals}"
+    exit 0
+  else
+    puts "Cucumber tests failed for #{failed_langs}"
+    exit 1
   end
 end
