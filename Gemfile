@@ -19,6 +19,3 @@ gem "briar", "~> 2.0"
 # Debugging
 gem 'pry'
 gem 'pry-nav'
-
-# CI Stack
-gem 'luffa', '~> 1.0', '>= 1.0.2'

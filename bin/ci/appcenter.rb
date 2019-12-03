@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "luffa"
+
 require "json"
 
 AC_TOKEN = `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`.chomp
