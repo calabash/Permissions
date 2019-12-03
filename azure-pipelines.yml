@@ -3,8 +3,8 @@ variables:
   # built artifacts will be published to Azure Blob Storage.
 - name: "AzurePublishWhen"
   value: "Mojave-Xcode-11.1"
-  - name: "RunTestCloudTestsWhen"
-    value: "Mojave-Xcode-11.2"
+- name: "RunTestCloudTestsWhen"
+  value: "Mojave-Xcode-11.2"
 - group: XamarinUITestCI
 
 trigger:
