@@ -10,15 +10,15 @@ threads = []
 summary = {}
 languages.each do |lang|
   threads << Thread.new(lang) do |item|
-    args = ['--app-path testcloud-submit/Permissions.ipa', 
-    '--app App-Center-Test-Cloud/Permissions', 
-    '--project-dir testcloud-submit', 
-    "--token #{AC_TOKEN}", 
-    '--test-series master', 
-    '--devices "App-Center-Test-Cloud/daily-ios"', 
-    "--locale #{item}", 
-    "--config-path cucumber.yml", 
-    "--profile default", 
+    args = ['--app-path testcloud-submit/Permissions.ipa',
+    '--app App-Center-Test-Cloud/Permissions',
+    '--project-dir testcloud-submit',
+    "--token #{AC_TOKEN}",
+    '--test-series master',
+    '--devices "App-Center-Test-Cloud/Calabash.iOS.CI"',
+    "--locale #{item}",
+    "--config-path cucumber.yml",
+    "--profile default",
     "--disable-telemetry"]
     output = `appcenter test run calabash #{args.join(' ')}`
     semaphore.synchronize do
