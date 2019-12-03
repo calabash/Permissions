@@ -41,8 +41,8 @@ Dir.chdir(working_directory) do
     end
   end
 
-  if failed_lang.count == 0
-    puts "Cucumber tests passed for #{languagesLiterals}"
+  if failed_langs.count == 0
+    puts "Cucumber tests passed for #{languagesLiterals.keys}"
     exit 0
   else
     puts "Cucumber tests failed for #{failed_langs}"
