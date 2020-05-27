@@ -40,3 +40,15 @@
 /Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.pdb
 /Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/nunit.framework.pdb
 /Users/ahanag22/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.csprojAssemblyReference.cache
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/Permission_demo.dll
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/Permission_demo.pdb
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/nunit.framework.dll
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/Xamarin.UITest.dll
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/nunit.framework.pdb
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/nunit.framework.xml
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/bin/Debug/Xamarin.UITest.xml
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.csprojAssemblyReference.cache
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.csproj.CoreCompileInputs.cache
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.csproj.CopyComplete
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.dll
+/Users/ahana/Desktop/Permissions/Permissions_UITest/Permission_demo/obj/Debug/Permission_demo.pdb

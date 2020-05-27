@@ -673,11 +673,12 @@
         </member>
         <member name="M:Xamarin.UITest.Android.AndroidApp.Screenshot(System.String)">
             <summary>
-            Takes a screenshot of the app in it's current state. This is used to denote test steps in the Xamarin
-            Test Cloud.
+            Takes a screenshot of the app in it's current state. This is used to denote test steps in the Xamarin 
+            Test Cloud. When executed locally, the <see cref="T:System.IO.FileInfo"/> returned is the file the screenshot has
+            been saved to.
             </summary>
             <param name="title">The title of screenshot, used as step name.</param>
-            <returns>The screenshot file.</returns>
+            <returns>The screenshot file when executing locally or a dummy file when executing in AppCenter.</returns>
         </member>
         <member name="P:Xamarin.UITest.Android.AndroidApp.Print">
             <summary>
@@ -1421,13 +1422,13 @@
         </member>
         <member name="M:Xamarin.UITest.Configuration.iOSAppConfigurator.AppBundle(System.String)">
             <summary>
-            Configures the app bundle to use. Will force a run on simulator.
+            Configures the app bundle to use.
             </summary>
             <param name="path">Path to the directory containing the app bundle.</param>
         </member>
         <member name="M:Xamarin.UITest.Configuration.iOSAppConfigurator.AppBundleZip(System.String)">
             <summary>
-            Configures the zipped app bundle to use. Will force a run on simulator.
+            Configures the zipped app bundle to use.
             </summary>
             <param name="path">Path to the directory containing the zipped app bundle.</param>
         </member>
@@ -2482,10 +2483,11 @@
         <member name="M:Xamarin.UITest.iOS.iOSApp.Screenshot(System.String)">
             <summary>
             Takes a screenshot of the app in it's current state. This is used to denote test steps in the Xamarin 
-            Test Cloud.
+            Test Cloud. When executed locally, the <see cref="T:System.IO.FileInfo"/> returned is the file the screenshot has
+            been saved to.
             </summary>
             <param name="title">The title of screenshot, used as step name.</param>
-            <returns>The screenshot file.</returns>
+            <returns>The screenshot file when executing locally or a dummy file when executing in AppCenter.</returns>
         </member>
         <member name="P:Xamarin.UITest.iOS.iOSApp.Print">
             <summary>
@@ -4243,10 +4245,11 @@
         <member name="M:Xamarin.UITest.IApp.Screenshot(System.String)">
             <summary>
             Takes a screenshot of the app in it's current state. This is used to denote test steps in the Xamarin 
-            Test Cloud.
+            Test Cloud. When executed locally, the <see cref="T:System.IO.FileInfo"/> returned is the file the screenshot has
+            been saved to.
             </summary>
             <param name="title">The title of screenshot, used as step name.</param>
-            <returns>The screenshot file.</returns>
+            <returns>The screenshot file when executing locally or a dummy file when executing in AppCenter.</returns>
         </member>
         <member name="M:Xamarin.UITest.IApp.SwipeLeftToRight(System.Double,System.Int32,System.Boolean)">
             <summary>
