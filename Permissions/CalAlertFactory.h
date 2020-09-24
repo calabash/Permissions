@@ -6,10 +6,10 @@
 
 - (id) initWithDelegate:(id<UIAlertViewDelegate>) delegate;
 
-- (UIAlertView *) alertForFacebookNYI;
-- (UIAlertView *) alertForHomeKitNYI;
-- (UIAlertView *) alertForHealthKitNotSupported;
-- (UIAlertView *) alertForBluetoothFAKE;
-- (UIAlertView *) alertForMicrophoneOnSimulatorFAKE;
+- (UIAlertController *) alertForFacebookNYI;
+- (UIAlertController *) alertForHomeKitNYI;
+- (UIAlertController *) alertForHealthKitNotSupported;
+- (UIAlertController *) alertForBluetoothFAKE;
+- (UIAlertController *) alertForMicrophoneOnSimulatorFAKE;
 
 @end

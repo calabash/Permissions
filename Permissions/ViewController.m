@@ -224,8 +224,8 @@ typedef enum : NSInteger {
 
 - (void) rowTouchedBluetooth {
   NSLog(@"Bluetooth Sharing is requested");
-
-  [[self.alertFactory alertForBluetoothFAKE] show];
+  
+  [self presentViewController:[self.alertFactory alertForBluetoothFAKE] animated:YES completion:nil];
 
   /* Have not been able to generate a Bluetooth alert reliably, so we'll
      generate a fake one with the same title.
@@ -246,7 +246,7 @@ typedef enum : NSInteger {
   NSLog(@"Microphone requested");
 
 #if TARGET_IPHONE_SIMULATOR
-  [[self.alertFactory alertForMicrophoneOnSimulatorFAKE] show];
+  [self presentViewController:[self.alertFactory alertForMicrophoneOnSimulatorFAKE] animated:YES completion:nil];
 #else
   [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
     if (granted) {
@@ -309,7 +309,7 @@ typedef enum : NSInteger {
   // not yet
   // http://nsscreencast.com/episodes/57-facebook-integration
 
-  [[self.alertFactory alertForFacebookNYI] show];
+  [self presentViewController:[self.alertFactory alertForFacebookNYI] animated:YES completion:nil];
 
 /*
   NSLog(@"Facebook requested");
@@ -363,7 +363,7 @@ typedef enum : NSInteger {
 #pragma mark - Row Touched: Home Kit
 
 - (void) rowTouchedHomeKit {
-  [[self.alertFactory alertForHomeKitNYI] show];
+  [self presentViewController:[self.alertFactory alertForHomeKitNYI]animated:YES completion:nil];
 }
 
 #pragma mark - Row Touched: Health Kit
@@ -399,7 +399,7 @@ typedef enum : NSInteger {
                                          }
                                        }];
   } else {
-   [[self.alertFactory alertForHealthKitNotSupported] show];
+    [self presentViewController:[self.alertFactory alertForHealthKitNotSupported] animated:YES completion:nil];
   }
 }
 
