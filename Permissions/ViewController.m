@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Villars Gimm. All rights reserved.
 
 @import AddressBook;
+@import Contacts;
 @import EventKit;
 @import AVFoundation;
 @import CoreBluetooth;
@@ -81,8 +82,8 @@ typedef enum : NSInteger {
 @property (strong, nonatomic, readonly) CalAlertFactory *alertFactory;
 @property (weak, nonatomic) IBOutlet UILabel *actionLabel;
 
-- (ABAddressBookRef) addressBook;
-- (void) setAddressBook:(ABAddressBookRef) newAddressBook;
+- (CNContactStore *) addressBook;
+- (void) setAddressBook:(CNContactStore *) newAddressBook;
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
@@ -111,7 +112,7 @@ typedef enum : NSInteger {
 @end
 
 @implementation ViewController{
-  ABAddressBookRef _addressBook;
+  CNContactStore * _addressBook;
 }
 
 #pragma mark - Memory Management
@@ -167,24 +168,22 @@ typedef enum : NSInteger {
 
 - (void) rowTouchedContacts {
   NSLog(@"Contacts requested");
-  ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+  CNContactStore *addressBook = [[CNContactStore alloc] init];
 
   if (addressBook) {
-    self.addressBook = CFAutorelease(addressBook);
+    self.addressBook = addressBook;
 
      // Register for a callback if the addressbook data changes this is
      // important to be notified of new data when the user grants access to the
      // contacts. the application should also be able to handle a nil object
      // being returned as well if the user denies access to the address book.
-    ABAddressBookRegisterExternalChangeCallback(self.addressBook,
-                                                handleAddressBookChange,
-                                                (__bridge void *)(self));
+     // ABAddressBookRegisterExternalChangeCallback(self.addressBook,
+     //                                           handleAddressBookChange,
+     //                                           (__bridge void *)(self));
 
     // When the application requests to receive address book data that is when
     // the user is presented with a consent dialog.
-    ABAddressBookRequestAccessWithCompletion(self.addressBook,
-                                             ^(bool granted, CFErrorRef error) {
-    });
+    [addressBook requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error){}];
   }
 }
 
@@ -629,23 +628,17 @@ typedef enum : NSInteger {
 
 #pragma mark - Address Book
 
-- (ABAddressBookRef) addressBook {
+- (CNContactStore *) addressBook {
   return _addressBook;
 }
 
-- (void) setAddressBook:(ABAddressBookRef) newAddressBook {
+- (void) setAddressBook:(CNContactStore *) newAddressBook {
   if (_addressBook != newAddressBook) {
-    if (_addressBook != NULL) {
-      CFRelease(_addressBook);
-    }
-    if (newAddressBook != NULL) {
-      CFRetain(newAddressBook);
-    }
     _addressBook = newAddressBook;
   }
 }
 
-void handleAddressBookChange(ABAddressBookRef addressBook,
+void handleAddressBookChange(CNContactStore *addressBook,
                              CFDictionaryRef info,
                              void *context) {
 

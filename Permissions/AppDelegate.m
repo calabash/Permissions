@@ -10,6 +10,7 @@
 #import "RowDetails.h"
 #import <CoreLocation/CoreLocation.h>
 @import AddressBook;
+@import Contacts;
 @import EventKit;
 
 @interface AppDelegate ()
@@ -75,7 +76,7 @@
 }
 
 - (BOOL)addressBookStatus {
-  return ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized;
+  return [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusAuthorized;
 }
 
 - (BOOL)calendarStatus {
