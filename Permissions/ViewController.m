@@ -225,7 +225,7 @@ typedef enum : NSInteger {
 
 - (void) rowTouchedBluetooth {
   NSLog(@"Bluetooth Sharing is requested");
-  
+
   [self presentViewController:[self.alertFactory alertForBluetoothFAKE] animated:YES completion:nil];
 
   /* Have not been able to generate a Bluetooth alert reliably, so we'll
