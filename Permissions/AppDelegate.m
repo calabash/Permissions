@@ -9,7 +9,6 @@
 #import "MBFingerTipWindow.h"
 #import "RowDetails.h"
 #import <CoreLocation/CoreLocation.h>
-@import AddressBook;
 @import Contacts;
 @import EventKit;
 
