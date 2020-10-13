@@ -641,11 +641,7 @@ typedef enum : NSInteger {
 }
 
 - (void) addressBookDidChange:(NSNotification *)notification {
-  [self handleAddressBookChange];
-}
-
-- (void) handleAddressBookChange; {
-
+  // We don't need to check this. This is just the stub for CNContactStore workflow.
 }
 
 #pragma mark - <CBCentralManagerDelegate>
