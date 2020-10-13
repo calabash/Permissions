@@ -177,13 +177,15 @@ typedef enum : NSInteger {
      // important to be notified of new data when the user grants access to the
      // contacts. the application should also be able to handle a nil object
      // being returned as well if the user denies access to the address book.
-     // ABAddressBookRegisterExternalChangeCallback(self.addressBook,
-     //                                           handleAddressBookChange,
-     //                                           (__bridge void *)(self));
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector: @selector(addressBookDidChange:)
+                                                 name:CNContactStoreDidChangeNotification
+                                               object:nil];
 
     // When the application requests to receive address book data that is when
     // the user is presented with a consent dialog.
-    [addressBook requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error){}];
+    [self.addressBook requestAccessForEntityType:CNEntityTypeContacts
+                               completionHandler:^(BOOL granted, NSError * _Nullable error){}];
   }
 }
 
@@ -638,9 +640,11 @@ typedef enum : NSInteger {
   }
 }
 
-void handleAddressBookChange(CNContactStore *addressBook,
-                             CFDictionaryRef info,
-                             void *context) {
+- (void) addressBookDidChange:(NSNotification *)notification {
+  [self handleAddressBookChange];
+}
+
+- (void) handleAddressBookChange; {
 
 }
 
