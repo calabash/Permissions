@@ -141,7 +141,7 @@ cat >"${XTC_DIR}/Gemfile" <<EOF
 source "https://rubygems.org"
 
 gem "calabash-cucumber"
-gem "json", "1.8.6"
+gem "json", "2.5.1"
 gem "cucumber", "~> 2.0"
 EOF
 
