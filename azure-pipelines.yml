@@ -58,6 +58,11 @@ jobs:
     displayName: "Select Xcode $(XCODE_VERSION)"
 
   - script: |
+      gem uninstall bundler
+      gem install bundler -v 2.2.7
+    displayName: "Bundler 2.2.7 Install"
+
+  - script: |
       set -e
       ruby -v
       echo -e "install: --no-document --env-shebang\nupdate:  --no-document --env-shebang" > ~/.gemrc
