@@ -60,6 +60,7 @@ jobs:
   - script: |
       gem uninstall bundler
       gem install bundler:2.2.7
+      bundle _2.2.7_ install
     displayName: "Bundler 2.2.7 Install"
 
   - script: |
