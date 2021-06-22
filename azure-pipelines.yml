@@ -47,9 +47,9 @@ jobs:
         IMAGE_POOL: 'TestCloudPool2'
         XCODE_VERSION: '12.5'
   pool:
-    ${{ if ne(XCODE_VERSION, '12.5') }}:
+    ${{ if ne($XCODE_VERSION, '12.5') }}:
       vmImage: $(IMAGE_POOL)
-    ${{ if eq(XCODE_VERSION, '12.5') }}:
+    ${{ if eq($XCODE_VERSION, '12.5') }}:
       name: ${{ IMAGE_POOL }}
   timeoutInMinutes: 240
 
