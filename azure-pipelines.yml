@@ -31,26 +31,26 @@ jobs:
 - job:
   strategy:
     matrix:
-      Mojave-Xcode-10.3:
-        IMAGE_POOL: 'macOS-10.14'
-        XCODE_VERSION: '10.3'
-      Mojave-Xcode-11.0:
-        IMAGE_POOL: 'macOS-10.14'
-        XCODE_VERSION: '11'
-      Mojave-Xcode-11.1:
-        IMAGE_POOL: 'macOS-10.14'
-        XCODE_VERSION: '11.1'
-      Mojave-Xcode-11.2:
-        IMAGE_POOL: 'macOS-10.14'
-        XCODE_VERSION: '11.2'
+      # Mojave-Xcode-10.3:
+      #   IMAGE_POOL: 'macOS-10.14'
+      #   XCODE_VERSION: '10.3'
+      # Mojave-Xcode-11.0:
+      #   IMAGE_POOL: 'macOS-10.14'
+      #   XCODE_VERSION: '11'
+      # Mojave-Xcode-11.1:
+      #   IMAGE_POOL: 'macOS-10.14'
+      #   XCODE_VERSION: '11.1'
+      # Mojave-Xcode-11.2:
+      #   IMAGE_POOL: 'macOS-10.14'
+      #   XCODE_VERSION: '11.2'
       BigSur-Xcode-12.5:
         IMAGE_POOL: 'TestCloudPool2'
         XCODE_VERSION: '12.5'
   pool:
-    ${{ if ne(variables['XCODE_VERSION'], '12.5') }}:
-      vmImage: $(IMAGE_POOL)
-    ${{ if eq(variables['XCODE_VERSION'], '12.5') }}:
-      name: ${{ IMAGE_POOL }}
+    # ${{ if ne(variables['XCODE_VERSION'], '12.5') }}:
+    #   vmImage: $(IMAGE_POOL)
+    # ${{ if eq(variables['XCODE_VERSION'], '12.5') }}:
+      name: TestCloudPool2
   timeoutInMinutes: 240
 
   steps:
