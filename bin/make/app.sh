@@ -16,7 +16,7 @@ fi
 XC_TARGET="Permissions"
 XC_PROJECT="${XC_TARGET}.xcodeproj"
 XC_CONFIG=Debug
-XC_BUILD_DIR="build/app"
+XC_BUILD_DIR="$(pwd)/build/app"
 mkdir -p "${XC_BUILD_DIR}"
 
 INSTALL_DIR=Products/app
