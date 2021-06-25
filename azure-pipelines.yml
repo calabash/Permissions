@@ -64,6 +64,9 @@ jobs:
     displayName: "Select Xcode $(XCODE_VERSION)"
 
   - script: |
+      ruby -v
+      rbenv global 2.7.2
+      ruby -v
       gem uninstall bundler
       gem install bundler:2.2.7
       bundle _2.2.7_ install
