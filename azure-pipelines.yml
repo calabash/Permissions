@@ -64,7 +64,7 @@ jobs:
     displayName: "Select Xcode $(XCODE_VERSION)"
 
   - script: |
-      ruby -v
+      eval "$(/opt/homebrew/bin/rbenv init -)" && ruby -v
       rbenv global 2.7.2
       ruby -v
       gem uninstall bundler
