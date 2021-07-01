@@ -65,6 +65,7 @@ jobs:
 
   - script: |
       set -e
+      whoami
       ruby -v
       echo -e "install: --no-document --env-shebang\nupdate:  --no-document --env-shebang" > ~/.gemrc
       bundle install
