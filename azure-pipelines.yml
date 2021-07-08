@@ -74,6 +74,10 @@ jobs:
 
   - script: |
       set -e
+      whoami
+      echo $0
+      echo $SHELL
+      echo $PATH
       ruby -v
       echo -e "install: --no-document --env-shebang\nupdate:  --no-document --env-shebang" > ~/.gemrc
       bundle install
@@ -81,6 +85,7 @@ jobs:
 
   - script: |
       set -e
+      rm -rf calabash-codesign
       [ -d "calabash-codesign" ] && rm -rf calabash-codesign
       git clone https://$(CalabashKeychainGitHubAccessToken)@github.com/xamarinhq/calabash-codesign.git
       calabash-codesign/apple/create-keychain.sh
