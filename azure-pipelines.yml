@@ -50,7 +50,7 @@ jobs:
     # ${{ if ne(variables['XCODE_VERSION'], '12.5') }}:
     #   vmImage: $(IMAGE_POOL)
     # ${{ if eq(variables['XCODE_VERSION'], '12.5') }}:
-      name: TestCloudPool2
+    name: TestCloudPool2
   timeoutInMinutes: 240
 
   steps:
