@@ -73,6 +73,8 @@ jobs:
     displayName: "Bundler 2.2.7 Install"
 
   - script: |
+      pwd
+      ls
       set -e
       whoami
       echo $0
