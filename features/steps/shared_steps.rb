@@ -45,7 +45,8 @@ Timed out waiting for #{service_name} to be authorized after #{timeout} seconds.
       elsif RunLoop::Environment.xtc?
         10.0
       else
-        6.0
+        10.0
+        #6.0
       end
     end
 
