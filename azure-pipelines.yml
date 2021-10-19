@@ -1,11 +1,8 @@
 variables:
   # When Agent.JobName matches this value (and the git ref is a tag), then
   # built artifacts will be published to Azure Blob Storage.
-- name: "AzurePublishWhen"
-  value: "Mojave-Xcode-11.1"
-- name: "RunTestCloudTestsWhen"
-  value: "Mojave-Xcode-11.2"
-- group: XamarinUITestCI
+  AzurePublishWhen: "BigSur-Xcode-13.0"
+  - group: XamarinUITestCI
 
 trigger:
   tags:
@@ -50,10 +47,10 @@ jobs:
         IMAGE_POOL: 'macOS-11'
         XCODE_VERSION: '13.0'
   pool:
+    vmImage: $(IMAGE_POOL)
     # ${{ if ne(variables['XCODE_VERSION'], '12.5') }}:
     #   vmImage: $(IMAGE_POOL)
     # ${{ if eq(variables['XCODE_VERSION'], '12.5') }}:
-    name: TestCloudPool2
   timeoutInMinutes: 240
 
   steps:
