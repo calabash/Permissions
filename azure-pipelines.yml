@@ -2,7 +2,6 @@ variables:
   # When Agent.JobName matches this value (and the git ref is a tag), then
   # built artifacts will be published to Azure Blob Storage.
   AzurePublishWhen: "BigSur-Xcode-13.0"
-  - group: XamarinUITestCI
 
 trigger:
   tags:
@@ -52,6 +51,7 @@ jobs:
     #   vmImage: $(IMAGE_POOL)
     # ${{ if eq(variables['XCODE_VERSION'], '12.5') }}:
   timeoutInMinutes: 240
+  - group: XTCRunTimeArtifactsCI
 
   steps:
 
