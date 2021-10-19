@@ -11,12 +11,12 @@ And the action label says Ready for Next Alert
 When I touch the Location Services row
 Then Calabash should dismiss the alert
 And location services are authorized
-#When I touch the Contacts row
-#Then Calabash should dismiss the alert
-#And access to contacts is authorized
-#When I touch the Reminders row
-#Then Calabash should dismiss the alert
-#And access to reminders is authorized
+When I touch the Contacts row
+Then Calabash should dismiss the alert
+And access to contacts is authorized
+When I touch the Reminders row
+Then Calabash should dismiss the alert
+And access to reminders is authorized
 
 Examples:
 | position |
