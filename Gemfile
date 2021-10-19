@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 gem "calabash-cucumber", :github => "calabash/calabash-ios", :branch => "develop"
-gem "cucumber", "~> 2.0"
+gem "cucumber", "7.0.0"
 gem "run_loop", :github => "calabash/run_loop", :branch => "develop"
 gem "json", "2.5.1"
 
 # Sync these with config/xtc-other-gems
-gem 'rspec', '~> 3.0'
-gem "xamarin-test-cloud", "~> 2.0"
+gem 'rspec', "3.10.0"
+gem "xamarin-test-cloud", "2.3.0"
 gem 'retriable', '~> 2.0'
 
 # Workflow and build tools

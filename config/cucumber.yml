@@ -23,11 +23,11 @@ formatter: -f pretty
 
 # Launch on default simulator.
 simulator_vars: APP="./Products/app/Permissions.app"
-simulator_tags: --tags ~@device_only --tags ~@device
+simulator_tags: --tags 'not @device_only' --tags 'not @device'
 default:        -p simulator_vars -p simulator_tags -p formatter
 
 # Launch on device.
-device_tags:  --tags ~@simulator_only --tags ~@simulator
+device_tags:  --tags 'not @simulator_only' --tags 'not @simulator'
 device:       -p device_tags -p formatter APP=sh.calaba.Permissions -p formatter
 
 iphone5S:    -p device DEVICE_TARGET=<%= devices[:iphone5S][:udid] %>    DEVICE_ENDPOINT=<%= devices[:iphone5S][:ip] %>

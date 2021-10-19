@@ -47,7 +47,7 @@ jobs:
 #         IMAGE_POOL: 'TestCloudPool2'
 #         XCODE_VERSION: '12.5'
       BigSur-Xcode-13.0:
-        IMAGE_POOL: 'TestCloudPool2'
+        IMAGE_POOL: 'macOS-11'
         XCODE_VERSION: '13.0'
   pool:
     # ${{ if ne(variables['XCODE_VERSION'], '12.5') }}:
