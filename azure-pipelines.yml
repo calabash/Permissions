@@ -79,13 +79,28 @@ jobs:
   - script: make ipa
     displayName: "Make ipa"
 
-  - script: bundle exec bin/ci/appcenter.rb
-    displayName: "bin/ci/appcenter.rb"
-    condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
+      #  - script: bundle exec bin/ci/appcenter.rb
+      #    displayName: "bin/ci/appcenter.rb"
+      #    condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
+
+  - script: |
+      pwd
+      ls
+      nuget restore $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/Permissions_UITest.sln
+      msbuild $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/Permissions_UITest.csproj
+    displayName: Build Permissions_UITest
+  - script: |
+      export APPCENTER_ACCESS_TOKEN=$(AppCenterAPITokenProd)
+      appcenter test run uitest \
+      --app "App-Center-Test-Cloud/Palisade-iOS" \
+      --devices a1ffffc1 \
+      --app-path $(Build.SourcesDirectory)/Products/ipa/Permissions.ipa \
+      --locale "en_US" --build-dir $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/bin/Debug/
+    displayName: Run Appcenter Test
 
 
-  - script: bundle exec bin/ci/cucumber.rb
-    displayName: "bin/ci/cucumber.rb"
+      #- script: bundle exec bin/ci/cucumber.rb
+      #  displayName: "bin/ci/cucumber.rb"
 
   - task: Bash@3
     inputs:
