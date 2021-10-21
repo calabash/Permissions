@@ -8,7 +8,9 @@
         <State name="__root__">
           <Node name="Permissions_UITest" expanded="True">
             <Node name="Permissions_UITest" expanded="True">
-              <Node name="Tests.cs" selected="True" />
+              <Node name="Packages" expanded="True">
+                <Node name="Xamarin.UITest" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
