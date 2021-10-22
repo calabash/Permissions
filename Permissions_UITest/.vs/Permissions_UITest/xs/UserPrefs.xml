@@ -1,4 +1,4 @@
-﻿<Properties>
+﻿<Properties StartupConfiguration="{A3B4C280-9AE9-46B8-8484-848B3711DE81}|Unit Tests">
   <MonoDevelop.Ide.Workbench ActiveDocument="Permissions_UITest/Tests.cs">
     <Files>
       <File FileName="Permissions_UITest/Tests.cs" Line="63" Column="28" />
@@ -8,9 +8,7 @@
         <State name="__root__">
           <Node name="Permissions_UITest" expanded="True">
             <Node name="Permissions_UITest" expanded="True">
-              <Node name="Packages" expanded="True">
-                <Node name="Xamarin.UITest" selected="True" />
-              </Node>
+              <Node name="Packages" expanded="True" selected="True" />
             </Node>
           </Node>
         </State>
