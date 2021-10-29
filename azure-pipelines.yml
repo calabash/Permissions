@@ -101,6 +101,7 @@ jobs:
     inputs:
       targetType: filePath
       filePath: "./bin/ci/az-publish.sh"
+      arguments: $(AppCenterAPITokenProd)
     env:
       AZURE_STORAGE_ACCOUNT: $(AzureStorageAccount)
       AZURE_STORAGE_KEY: $(AzureStorageKey)

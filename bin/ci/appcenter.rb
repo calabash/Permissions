@@ -3,7 +3,9 @@
 require "json"
 
 #AC_TOKEN = `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`.chomp
-AC_TOKEN = %x[echo $(AppCenterAPITokenProd)]
+#AC_TOKEN = %x[echo $(AppCenterAPITokenProd)]
+param1 = ARGV[0]
+AC_TOKEN = param1
 puts "token=#{AC_TOKEN}"
 
 semaphore = Mutex.new
