@@ -77,6 +77,7 @@ namespace Permissions_UITest
             app.Tap(x => x.Id("action label"));
             //app.Repl();
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
         [Test]
@@ -90,6 +91,7 @@ namespace Permissions_UITest
             app.Screenshot("Background Location Services Notification");
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
 
@@ -177,6 +179,7 @@ namespace Permissions_UITest
 
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
 
@@ -194,7 +197,7 @@ namespace Permissions_UITest
             app.DismissSpringboardAlerts();
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
-
+            app.Screenshot("Notification dismissed");
         }
 
         [Test]
@@ -212,6 +215,7 @@ namespace Permissions_UITest
 
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
         [Test]
@@ -228,6 +232,7 @@ namespace Permissions_UITest
             app.DismissSpringboardAlerts();
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
 
@@ -275,6 +280,7 @@ namespace Permissions_UITest
 
             //TODO:
             //Then I verify that I have access to Photos
+            app.Screenshot("Notification dismissed");
         }
 
         [Test]
@@ -291,7 +297,7 @@ namespace Permissions_UITest
             app.DismissSpringboardAlerts();
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
-
+            app.Screenshot("Notification dismissed");
         }
 
         [Test]
@@ -318,6 +324,7 @@ namespace Permissions_UITest
 
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
 
@@ -335,6 +342,7 @@ namespace Permissions_UITest
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
 
+            app.Screenshot("Notification dismissed");
             //Device
             //# Requires Settings > Privacy > Motion & Fitness to be on for the alert to pop.
         }
@@ -354,6 +362,7 @@ namespace Permissions_UITest
             app.DismissSpringboardAlerts();
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
         [Test]
@@ -370,7 +379,7 @@ namespace Permissions_UITest
             app.DismissSpringboardAlerts();
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
-
+            app.Screenshot("Notification dismissed");
         }
 
 
@@ -387,6 +396,7 @@ namespace Permissions_UITest
             app.DismissSpringboardAlerts();
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
         [Test]
@@ -404,6 +414,7 @@ namespace Permissions_UITest
             app.DismissSpringboardAlerts();
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
 
@@ -420,6 +431,7 @@ namespace Permissions_UITest
             app.DismissSpringboardAlerts();
             app.Tap(x => x.Id("action label"));
             app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
         }
 
     }
