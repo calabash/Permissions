@@ -80,10 +80,6 @@ jobs:
   - script: make ipa
     displayName: "Make ipa"
 
-  - script: bundle exec bin/ci/appcenter.rb $(AppCenterAPITokenProd)
-    displayName: "bin/ci/appcenter.rb"
-    condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
-
   - script: |
       nuget restore $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/Permissions_UITest.sln
       msbuild $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/Permissions_UITest.csproj
