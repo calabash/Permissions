@@ -437,8 +437,6 @@ typedef enum : NSInteger {
 - (void) rowTouchedAppTrackingTransparency {
   if (@available(iOS 14, *)) {
     [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {}];
-  } else {
-    // Fallback on earlier versions
   }
 }
 

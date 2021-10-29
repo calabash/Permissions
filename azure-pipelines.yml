@@ -54,12 +54,7 @@ jobs:
     displayName: "Bundler 2.2.7 Install"
 
   - script: |
-      pwd
       set -e
-      whoami
-      echo $0
-      echo $SHELL
-      echo $PATH
       ruby -v
       echo -e "install: --no-document --env-shebang\nupdate:  --no-document --env-shebang" > ~/.gemrc
       bundle install
@@ -79,13 +74,11 @@ jobs:
   - script: make ipa
     displayName: "Make ipa"
 
-      #  - script: bundle exec bin/ci/appcenter.rb
-      #    displayName: "bin/ci/appcenter.rb"
-      #    condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
+  - script: bundle exec bin/ci/appcenter.rb
+    displayName: "bin/ci/appcenter.rb"
+    condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
 
   - script: |
-      pwd
-      ls
       nuget restore $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/Permissions_UITest.sln
       msbuild $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/Permissions_UITest.csproj
     displayName: Build Permissions_UITest
@@ -97,10 +90,6 @@ jobs:
       --app-path $(Build.SourcesDirectory)/Products/ipa/Permissions.ipa \
       --locale "en_US" --build-dir $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/bin/Debug/
     displayName: Run Appcenter Test
-
-
-      #- script: bundle exec bin/ci/cucumber.rb
-      #  displayName: "bin/ci/cucumber.rb"
 
   - task: Bash@3
     inputs:

@@ -1,14 +1,14 @@
-﻿<Properties StartupConfiguration="{A3B4C280-9AE9-46B8-8484-848B3711DE81}|Unit Tests">
+﻿<Properties>
   <MonoDevelop.Ide.Workbench ActiveDocument="Permissions_UITest/Tests.cs">
     <Files>
-      <File FileName="Permissions_UITest/Tests.cs" Line="63" Column="28" />
+      <File FileName="Permissions_UITest/Tests.cs" Line="72" Column="53" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Permissions_UITest" expanded="True">
             <Node name="Permissions_UITest" expanded="True">
-              <Node name="Packages" expanded="True" selected="True" />
+              <Node name="Tests.cs" selected="True" />
             </Node>
           </Node>
         </State>
