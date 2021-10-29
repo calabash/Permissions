@@ -1,3 +1,10 @@
+variables:
+  # When Agent.JobName matches this value (and the git ref is a tag), then
+  # built artifacts will be published to Azure Blob Storage.
+- name: "AzurePublishWhen"
+  value: "BigSur-Xcode-12.5"
+- name: "RunTestCloudTestsWhen"
+  value: "BigSur-Xcode-13.0"
 trigger:
   tags:
     include:
@@ -62,7 +69,6 @@ jobs:
 
   - script: |
       set -e
-      rm -rf calabash-codesign
       [ -d "calabash-codesign" ] && rm -rf calabash-codesign
       git clone https://$(CalabashKeychainGitHubAccessToken)@github.com/xamarinhq/calabash-codesign.git
       calabash-codesign/apple/create-keychain.sh
@@ -86,7 +92,7 @@ jobs:
       export APPCENTER_ACCESS_TOKEN=$(AppCenterAPITokenProd)
       appcenter test run uitest \
       --app "App-Center-Test-Cloud/Palisade-iOS" \
-      --devices a1ffffc1 \
+      --devices "App-Center-Test-Cloud/daily-ios" \
       --app-path $(Build.SourcesDirectory)/Products/ipa/Permissions.ipa \
       --locale "en_US" --build-dir $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/bin/Debug/
     displayName: Run Appcenter Test
