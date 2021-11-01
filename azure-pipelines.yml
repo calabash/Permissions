@@ -92,6 +92,8 @@ jobs:
       --app-path $(Build.SourcesDirectory)/Products/ipa/Permissions.ipa \
       --locale "en_US" --build-dir $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/bin/Debug/
     displayName: Run Appcenter Test
+    condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
+
 
   - task: Bash@3
     inputs:
