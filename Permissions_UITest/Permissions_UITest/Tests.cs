@@ -421,6 +421,7 @@ namespace Permissions_UITest
         [Test]
         public void AppTrackingTransparency()
         {
+            app.DismissSpringboardAlerts();
             app.Screenshot("App Tracking Transparency");
             app.WaitForElement("Permissions");
 
