@@ -385,21 +385,21 @@ namespace Permissions_UITest
         //}
 
 
-        //[Test]
-        //public void AppleMusic()
-        //{
-        //    app.Screenshot("Apple Music");
-        //    app.WaitForElement("Permissions");
-        //    app.ScrollTo("Apple Music");
-        //    app.Tap(x => x.Marked("Apple Music"));
+        [Test]
+        public void AppleMusic()
+        {
+            app.Screenshot("Apple Music");
+            app.WaitForElement("Permissions");
+            app.ScrollTo("Apple Music");
+            app.Tap(x => x.Marked("Apple Music"));
 
-        //    Thread.Sleep(5000);
-        //    app.Screenshot("Apple Music Notification");
-        //    app.DismissSpringboardAlerts();
-        //    app.Tap(x => x.Id("action label"));
-        //    app.WaitForElement("Ready for Next Alert");
-        //    app.Screenshot("Notification dismissed");
-        //}
+            Thread.Sleep(5000);
+            app.Screenshot("Apple Music Notification");
+            app.DismissSpringboardAlerts();
+            app.Tap(x => x.Id("action label"));
+            app.WaitForElement("Ready for Next Alert");
+            app.Screenshot("Notification dismissed");
+        }
 
         //[Test]
         //public void Speech()
