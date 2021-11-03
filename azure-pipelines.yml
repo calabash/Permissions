@@ -88,7 +88,6 @@ jobs:
       export APPCENTER_ACCESS_TOKEN=$(AppCenterAPITokenProd)
       appcenter test run uitest \
       --app "App-Center-Test-Cloud/Palisade-iOS" \
-      #--devices "App-Center-Test-Cloud/daily-ios" \
       --devices 3262862e \
       --app-path $(Build.SourcesDirectory)/Products/ipa/Permissions.ipa \
       --locale "en_US" --build-dir $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/bin/Debug/
