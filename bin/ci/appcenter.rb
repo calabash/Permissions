@@ -2,12 +2,7 @@
 
 require "json"
 
-#AC_TOKEN = `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`.chomp
-#AC_TOKEN = %x[echo $(AppCenterAPITokenProd)]
-param1 = ARGV[0]
-AC_TOKEN = param1
-#AC_TOKEN = %x[echo $(AC_TOKEN)]
-puts "token=#{AC_TOKEN}"
+AC_TOKEN = `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`.chomp
 
 semaphore = Mutex.new
 languages = ["da_DK", "ru_RU", "en_US", "ja_JP"]
@@ -20,7 +15,7 @@ languages.each do |lang|
     '--project-dir testcloud-submit',
     "--token #{AC_TOKEN}",
     '--test-series master',
-    '--devices "App-Center-Test-Cloud/Calabash.iOS.CI"',
+    '--devices "App-Center-Test-Cloud/daily-ios"',
     "--locale #{item}",
     "--config-path cucumber.yml",
     "--profile default",
