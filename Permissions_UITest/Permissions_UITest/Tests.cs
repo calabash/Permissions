@@ -57,7 +57,8 @@ namespace Permissions_UITest
             app.Tap(x => x.Marked("Bluetooth Sharing"));
 
             Thread.Sleep(5000);
-            app.DismissSpringboardAlerts();
+            //app.DismissSpringboardAlerts();
+            app.Tap(x => x.Marked("OK"));
             app.Screenshot("Fake Notification");
             app.Tap(x => x.Id("action label"));
             //app.Repl();
