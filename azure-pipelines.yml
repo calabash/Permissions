@@ -74,8 +74,8 @@ jobs:
       calabash-codesign/apple/create-keychain.sh
     displayName: "Download and install keychain"
 
-      #- script: make app
-      #  displayName: "Make app"
+  - script: make app
+    displayName: "Make app"
 
   - script: make ipa
     displayName: "Make ipa"
