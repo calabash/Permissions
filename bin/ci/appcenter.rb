@@ -2,7 +2,9 @@
 
 require "json"
 
-AC_TOKEN = `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`.chomp
+AC_TOKEN = ENV['APPCENTER_ACCESS_TOKEN'] #ENV['PATH']
+
+#AC_TOKEN = `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`.chomp
 
 semaphore = Mutex.new
 languages = ["da_DK", "ru_RU", "en_US", "ja_JP"]
