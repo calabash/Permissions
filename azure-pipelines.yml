@@ -80,16 +80,18 @@ jobs:
   - script: make ipa
     displayName: "Make ipa"
 
-  - task: Bash@3
-    inputs:
-      targetType: filePath
-      filePath: "bin/ci/appcenter.rb"
+      #- task: Bash@3
+      #  inputs:
+      #    targetType: filePath
+      #    filePath: "bin/ci/appcenter.rb"
+      #  env:
+      #    APPCENTER_ACCESS_TOKEN: $(AppCenterAPITokenProd)
+      #  displayName: "Appcenter test"
+
+  - script: bundle exec bin/ci/appcenter.rb
     env:
       APPCENTER_ACCESS_TOKEN: $(AppCenterAPITokenProd)
-    displayName: "Appcenter test"
-
-      #- script: bundle exec bin/ci/appcenter.rb
-      #  displayName: "bin/ci/appcenter.rb"
+    displayName: "bin/ci/appcenter.rb"
 
   - script: bundle exec bin/ci/cucumber.rb
     displayName: "bin/ci/cucumber.rb"
