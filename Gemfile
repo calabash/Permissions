@@ -16,5 +16,5 @@ gem 'bundler', '2.2.7'
 gem 'xcpretty', '~> 0.1'
 
 # Debugging
-gem "pry", "0.12.2"
-gem "pry-nav", "0.2.2"
+gem "pry", "0.13.1"
+gem "pry-nav", "1.0.0"
