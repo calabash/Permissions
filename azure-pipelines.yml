@@ -87,14 +87,12 @@ jobs:
       nuget restore $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/Permissions_UITest.sln
       msbuild $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/Permissions_UITest.csproj
     displayName: Build Permissions_UITest
-    condition: eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen'])
 
   - script: bundle exec bin/ci/appcenter.rb
     env:
       APPCENTER_ACCESS_TOKEN: $(AppCenterAPITokenProd)
       SOURCE_DIRECTORY: $(Build.SourcesDirectory)
     displayName: Run Appcenter Test
-    condition: and(succeeded(), eq(variables['RunTestCloudTestsWhen'])
 
   - task: Bash@3
     inputs:
@@ -106,7 +104,7 @@ jobs:
       AZURE_STORAGE_CONNECTION_STRING: $(AzureStorageConnectionString)
       SOURCE_BRANCH: $(Build.SourceBranch)
     displayName: "Publish to Azure Blob Storage"
-    condition: and(succeeded(), eq(variables['Agent.JobName'], variables['AzurePublishWhen']), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.Reason'], 'IndividualCI'))
+    condition: and(succeeded(), eq(variables['Agent.JobName'], variables['RunTestCloudTestsWhen']), eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.Reason'], 'IndividualCI'))
 
   - task: PublishTestResults@2
     displayName: 'Publish Test Results'
