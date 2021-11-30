@@ -36,8 +36,9 @@ end
 
 #Xamarin.UITest test
 threads << Thread.new("Xamarin.UITest_en_US") do |item|
-  args = ["--app-path #{SOURCE_DIR}/Products/ipa/Permissions.ipa",
+  args = ['--app-path testcloud-submit/Permissions.ipa',
   "--app App-Center-Test-Cloud/Permissions",
+  '--project-dir testcloud-submit',
   "--token #{AC_TOKEN}",
   '--devices "App-Center-Test-Cloud/daily-ios"',
   '--locale "en_US"',

@@ -94,6 +94,7 @@ jobs:
       APPCENTER_ACCESS_TOKEN: $(AppCenterAPITokenProd)
       SOURCE_DIRECTORY: $(Build.SourcesDirectory)
     displayName: Run Appcenter Test
+    condition: and(succeeded(), eq(variables['RunTestCloudTestsWhen'])
 
   - task: Bash@3
     inputs:
