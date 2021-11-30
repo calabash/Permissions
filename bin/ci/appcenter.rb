@@ -2,14 +2,15 @@
 
 require "json"
 
-AC_TOKEN = ENV['APPCENTER_ACCESS_TOKEN'] #ENV['PATH']
-
-#AC_TOKEN = `#{Dir.home}/.calabash/find-keychain-credential.sh api-token`.chomp
+AC_TOKEN = ENV['APPCENTER_ACCESS_TOKEN']
+SOURCE_DIR = ENV['SOURCE_DIRECTORY']
 
 semaphore = Mutex.new
 languages = ["da_DK", "ru_RU", "en_US", "ja_JP"]
 threads = []
 summary = {}
+
+#calabash tests
 languages.each do |lang|
   threads << Thread.new(lang) do |item|
     args = ['--app-path testcloud-submit/Permissions.ipa',
@@ -30,6 +31,24 @@ languages.each do |lang|
       puts "------------------------------------------"
       summary[item] = $?.exitstatus
     end
+  end
+end
+
+#Xamarin.UITest test
+threads << Thread.new("Xamarin.UITest_en_US") do |item|
+  args = ["--app-path #{SOURCE_DIR}/Products/ipa/Permissions.ipa",
+  "--app App-Center-Test-Cloud/Permissions",
+  "--token #{AC_TOKEN}",
+  '--devices "App-Center-Test-Cloud/daily-ios"',
+  '--locale "en_US"',
+  "--build-dir #{SOURCE_DIR}/Permissions_UITest/Permissions_UITest/bin/Debug/"]
+  output = `appcenter test run uitest #{args.join(' ')}`
+  semaphore.synchronize do
+    puts "Run '#{item}' tests"
+    puts output
+    puts "Finished with exit code '#{$?.exitstatus}'"
+    puts "------------------------------------------"
+    summary[item] = $?.exitstatus
   end
 end
 
