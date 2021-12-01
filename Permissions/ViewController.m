@@ -14,6 +14,7 @@
 @import UIKit;
 @import MediaPlayer;
 @import Speech;
+@import AppTrackingTransparency;
 
 #import "RowDetails.h"
 #import "CalAlertFactory.h"
@@ -63,6 +64,7 @@ typedef enum : NSInteger {
   kAPNS,
   kAppleMusic,
   kSpeechRecognition,
+  kAppTrackingTransparency,
   kNumberOfRows
 } CalTableRows;
 
@@ -104,6 +106,7 @@ typedef enum : NSInteger {
 - (void) rowTouchedApns;
 - (void) rowTouchedAppleMusic;
 - (void) rowTouchedSpeechRecognition;
+- (void) rowTouchedAppTrackingTransparency;
 
 - (void)handleActionLabelTwoFingerTap:(UITapGestureRecognizer *) recognizer;
 - (void)handleActionLabelOneFingerTap:(UITapGestureRecognizer *) recognizer;
@@ -429,6 +432,14 @@ typedef enum : NSInteger {
   [SFSpeechRecognizer requestAuthorization:^(SFSpeechRecognizerAuthorizationStatus status) {}];
 }
 
+#pragma mark - Row Touched: Speech Recognition
+
+- (void) rowTouchedAppTrackingTransparency {
+  if (@available(iOS 14, *)) {
+    [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {}];
+  }
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (RowDetails *) detailsForRowAtIndexPath:(NSIndexPath *) path {
@@ -567,7 +578,14 @@ typedef enum : NSInteger {
       identifier = @"speech recognition";
       break;
     }
-
+      
+    case kAppTrackingTransparency: {
+      rowTouchedSelector = @selector(rowTouchedAppTrackingTransparency);
+      title = @"App Tracking Transparency";
+      identifier = @"app tracking transparency";
+      break;
+    }
+      
     default: {
       NSString *reason;
       reason = [NSString stringWithFormat:@"Could not create row details for row %@",
@@ -739,6 +757,7 @@ clickedButtonAtIndex:(NSInteger) buttonIndex {
   [self rowTouchedApns];
   [self rowTouchedAppleMusic];
   [self rowTouchedSpeechRecognition];
+  [self rowTouchedAppTrackingTransparency];
 }
 
 #pragma mark - View Lifecycle
