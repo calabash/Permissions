@@ -5,6 +5,8 @@ variables:
   value: "BigSur-Xcode-12.5"
 - name: "RunTestCloudTestsWhen"
   value: "BigSur-Xcode-13.0"
+- name: EOCompliance-Mac
+  value: true
 trigger:
   tags:
     include:
