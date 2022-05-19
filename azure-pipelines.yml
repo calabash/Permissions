@@ -2,9 +2,9 @@ variables:
   # When Agent.JobName matches this value (and the git ref is a tag), then
   # built artifacts will be published to Azure Blob Storage.
 - name: "AzurePublishWhen"
-  value: "BigSur-Xcode-12.5"
+  value: "Monterey-Xcode-13.3.1"
 - name: "RunTestCloudTestsWhen"
-  value: "BigSur-Xcode-13.0"
+  value: "Monterey-Xcode-13.3.1"
 - name: EOCompliance-Mac
   value: true
 trigger:
@@ -31,12 +31,12 @@ jobs:
 - job:
   strategy:
     matrix:
-      BigSur-Xcode-12.5:
+      BigSur-Xcode-13.2:
         IMAGE_POOL: 'macOS-11'
-        XCODE_VERSION: '12.5.1'
-      BigSur-Xcode-13.0:
-        IMAGE_POOL: 'macOS-11'
-        XCODE_VERSION: '13.0'
+        XCODE_VERSION: '13.2'
+      Monterey-Xcode-13.3.1:
+        IMAGE_POOL: 'macOS-12'
+        XCODE_VERSION: '13.3.1'
   timeoutInMinutes: 180
   pool:
     vmImage: $(IMAGE_POOL)
@@ -52,15 +52,6 @@ jobs:
       echo "Xcode path: $(xcrun -f xcodebuild)"
       echo "Xcode select path: $(xcode-select --print-path)"
     displayName: "Select Xcode $(XCODE_VERSION)"
-
-  - script: |
-      eval "$(/opt/homebrew/bin/rbenv init -)" && ruby -v
-      rbenv global 2.7.2
-      ruby -v
-      gem uninstall bundler
-      gem install bundler:2.2.7
-      bundle _2.2.7_ install
-    displayName: "Bundler 2.2.7 Install"
 
   - script: |
       set -e
