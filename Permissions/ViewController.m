@@ -16,6 +16,7 @@
 @import MediaPlayer;
 @import Speech;
 @import AppTrackingTransparency;
+@import UserNotifications;
 
 #import "RowDetails.h"
 #import "CalAlertFactory.h"
@@ -410,15 +411,15 @@ typedef enum : NSInteger {
 #pragma mark - Row Touched: APNS
 
 - (void) rowTouchedApns {
-  UIApplication *shared = [UIApplication sharedApplication];
-
-  UIUserNotificationType types = (UIUserNotificationTypeBadge |
-                                  UIUserNotificationTypeSound |
-                                  UIUserNotificationTypeAlert);
-  UIUserNotificationSettings *settings;
-  settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-  [shared registerUserNotificationSettings:settings];
-  [shared registerForRemoteNotifications];
+  UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+  [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert)
+                        completionHandler:^(BOOL success, NSError *error) {
+    if (success) {
+      NSLog(@"");
+    } else {
+      NSLog(@"");
+    }
+  }];
 }
 
 #pragma mark - Row Touched: Apple Music
@@ -666,9 +667,9 @@ typedef enum : NSInteger {
 
 - (void) centralManagerDidUpdateState:(CBCentralManager *)central{
   NSLog(@"Central Bluetooth manager did update state");
-  if (central.state != CBCentralManagerStatePoweredOn) { return; }
+  if (central.state != CBManagerStatePoweredOn) { return; }
 
-  if (central.state == CBCentralManagerStatePoweredOn) {
+  if (central.state == CBManagerStatePoweredOn) {
     [self.cbManager scanForPeripheralsWithServices:nil options:nil];
   }
 }
