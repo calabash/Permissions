@@ -3253,7 +3253,7 @@
         </member>
         <member name="P:Xamarin.UITest.Queries.AppWebQuery.Platform">
             <summary>
-            The tokens of the current query.
+            The target platform of the query. Useful when writing extensions methods for queries for platform differences.
             </summary>
         </member>
         <member name="M:Xamarin.UITest.Queries.AppWebQuery.Index(System.Int32)">

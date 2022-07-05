@@ -1,7 +1,0 @@
-<Project>
-  <ItemGroup>
-    <None Include="$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', '..', 'tools', 'test-cloud.exe'))"
-          CopyToOutputDirectory="PreserveNewest"
-          Visible="false" />
-  </ItemGroup>
-</Project>

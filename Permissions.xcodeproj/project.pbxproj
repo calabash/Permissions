@@ -293,7 +293,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bin/xcode-build-phase/stage-products.sh";
+			shellScript = "bin/xcode-build-phase/stage-products.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -491,7 +491,7 @@
 				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
 					"-ObjC",
 					"-force_load",
-					"$(PROJECT_DIR)/calabash.xcframework/ios-arm64_x86_64-simulator/libcalabash.a",
+					"$(SRCROOT)/calabash.xcframework/ios-arm64_x86_64-simulator/libcalabash.a",
 					"-framework",
 					CFNetwork,
 				);
@@ -532,7 +532,7 @@
 				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
 					"-ObjC",
 					"-force_load",
-					"$(PROJECT_DIR)/calabash.xcframework/ios-arm64_x86_64-simulator/libcalabash.a",
+					"$(PROJECT_DIR)/calabash.xcframework/ios-arm64_x86_64-simulator",
 					"-framework",
 					CFNetwork,
 				);
