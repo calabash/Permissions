@@ -1,12 +1,9 @@
-﻿<Properties>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+﻿<Properties StartupConfiguration="{A3B4C280-9AE9-46B8-8484-848B3711DE81}|Unit Tests">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Permissions_UITest/Tests.cs">
     <Files>
       <File FileName="Permissions_UITest/Tests.cs" Line="51" Column="1" />
-      <File FileName="Permissions_UITest/AppInitializer.cs" Line="39" Column="50" />
+      <File FileName="Permissions_UITest/AppInitializer.cs" Line="39" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +11,7 @@
           <Node name="Permissions_UITest" expanded="True">
             <Node name="Permissions_UITest" expanded="True">
               <Node name="References" expanded="True" />
-              <Node name="Tests.cs" selected="True" />
+              <Node name="Packages" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -29,7 +26,10 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Permissions__UITest PreferredExecutionTarget="MonoDevelop.Default" />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
