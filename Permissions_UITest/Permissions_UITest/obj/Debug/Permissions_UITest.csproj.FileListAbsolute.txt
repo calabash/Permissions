@@ -12,3 +12,16 @@
 /Users/alanmaxwell/Documents/repositories/calabash/Permissions/Permissions_UITest/Permissions_UITest/obj/Debug/Permissions_UITest.dll
 /Users/alanmaxwell/Documents/repositories/calabash/Permissions/Permissions_UITest/Permissions_UITest/obj/Debug/Permissions_UITest.pdb
 /Users/alanmaxwell/Documents/repositories/calabash/Permissions/Permissions_UITest/Permissions_UITest/obj/Debug/Permissions_UITest.csproj.AssemblyReference.cache
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/bin/Debug/test-cloud.exe
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/bin/Debug/Permissions_UITest.dll
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/bin/Debug/Permissions_UITest.pdb
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/bin/Debug/Newtonsoft.Json.dll
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/bin/Debug/nunit.framework.dll
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/bin/Debug/nunit.framework.xml
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/bin/Debug/Newtonsoft.Json.xml
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/bin/Debug/Xamarin.UITest.xml
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/obj/Debug/Permissions_UITest.csproj.AssemblyReference.cache
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/obj/Debug/Permissions_UITest.csproj.CoreCompileInputs.cache
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/obj/Debug/Permissions_UITest.csproj.CopyComplete
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/obj/Debug/Permissions_UITest.dll
+/Users/dima/workspace/appcenter/test-cloud/Permissions/Permissions_UITest/Permissions_UITest/obj/Debug/Permissions_UITest.pdb

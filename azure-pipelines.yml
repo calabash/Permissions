@@ -83,11 +83,11 @@ jobs:
       msbuild $(Build.SourcesDirectory)/Permissions_UITest/Permissions_UITest/Permissions_UITest.csproj
     displayName: Build Permissions_UITest
 
-    #- script: bundle exec bin/ci/appcenter.rb
-    #  env:
-    #    APPCENTER_ACCESS_TOKEN: $(AppCenterAPITokenProd)
-    #    SOURCE_DIRECTORY: $(Build.SourcesDirectory)
-    #  displayName: Run Appcenter Test
+    - script: bundle exec bin/ci/appcenter.rb
+     env:
+       APPCENTER_ACCESS_TOKEN: $(AppCenterAPITokenProd)
+       SOURCE_DIRECTORY: $(Build.SourcesDirectory)
+     displayName: Run Appcenter Test
 
   - task: Bash@3
     inputs:
