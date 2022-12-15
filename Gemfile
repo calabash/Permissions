@@ -12,7 +12,7 @@ gem 'retriable', "2.0.2"
 
 # Workflow and build tools
 gem 'rake', "13.0.6"
-gem 'bundler', "2.3.18"
+gem 'bundler', "~> 2.3.11"
 gem 'xcpretty', "0.3.0"
 
 # Debugging
