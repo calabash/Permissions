@@ -7,8 +7,8 @@ static NSString *const LPDeviceSimKeyModelIdentifier = @"SIMULATOR_MODEL_IDENTIF
 
 @property(copy, nonatomic, readonly) NSString *localizedDismiss;
 
-- (UIAlertView *) alertForNYIWithMessage:(NSString *) message;
-- (UIAlertView *) alertForNotSupportedWithServiceName:(NSString *) serviceName;
+- (UIAlertController *) alertForNYIWithMessage:(NSString *) message;
+- (UIAlertController *) alertForNotSupportedWithServiceName:(NSString *) serviceName;
 
 
 - (NSString *) facebookMessage;
@@ -72,74 +72,91 @@ static NSString *const LPDeviceSimKeyModelIdentifier = @"SIMULATOR_MODEL_IDENTIF
                            @"Alert message");
 }
 
-- (UIAlertView *) alertForNYIWithMessage:(NSString *) message {
+- (UIAlertController *) alertForNYIWithMessage:(NSString *) message {
   NSString *title = NSLocalizedString(@"Not Implemented",
                                       @"Alert title: feature is not implemented yet");
-  UIAlertView *alert = [[UIAlertView alloc]
-                        initWithTitle:title
-                        message:message
-                        delegate:self.delegate
-                        cancelButtonTitle:self.localizedDismiss
-                        otherButtonTitles:nil];
+  UIAlertController *alert = [UIAlertController  alertControllerWithTitle:title
+                              message:message
+                              preferredStyle:UIAlertControllerStyleAlert];
+  UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:self.localizedDismiss
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction *action) {}];
+  [alert addAction:cancelButton];
   return alert;
 }
 
-- (UIAlertView *) alertForNotSupportedWithServiceName:(NSString *) serviceName {
+- (UIAlertController *) alertForNotSupportedWithServiceName:(NSString *) serviceName {
   NSString *title = @"Not Supported";
 
   NSString *version = [[UIDevice currentDevice] systemVersion];
   NSString *model = [self modelIdentifier];
   NSString *message = [NSString stringWithFormat:@"%@ is not supported on iOS %@ and/or this device model: %@.",
                        serviceName, version, model];
+  UIAlertController *alert = [UIAlertController  alertControllerWithTitle:title
+                              message:message
+                              preferredStyle:UIAlertControllerStyleAlert];
+  UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:self.localizedDismiss
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction *action) {}];
+  [alert addAction:cancelButton];
 
-  UIAlertView *alert = [[UIAlertView alloc]
-                        initWithTitle:title
-                        message:message
-                        delegate:self.delegate
-                        cancelButtonTitle:self.localizedDismiss
-                        otherButtonTitles:nil];
+  
   return alert;
 
 }
 
-- (UIAlertView *) alertForFacebookNYI {
+- (UIAlertController *) alertForFacebookNYI {
   return [self alertForNYIWithMessage:[self facebookMessage]];
 }
 
-- (UIAlertView *) alertForHomeKitNYI {
+- (UIAlertController *) alertForHomeKitNYI {
   return [self alertForNYIWithMessage:[self homeKitMessage]];
 }
 
-- (UIAlertView *) alertForHealthKitNotSupported {
+- (UIAlertController *) alertForHealthKitNotSupported {
   return [self alertForNotSupportedWithServiceName:@"HealthKit"];
 }
 
 // We have not been able to generate a Bluetooth alert, but we have one example
 // in English.
-- (UIAlertView *) alertForBluetoothFAKE {
+- (UIAlertController *) alertForBluetoothFAKE {
   NSString *title = @"APP NAME would like to make data available to nearby bluetooth devices even when you're not using the app";
   NSString *no = @"Don't Allow";
   NSString *ok = @"OK";
+  
+  UIAlertController *alert = [UIAlertController  alertControllerWithTitle:title
+                              message:nil
+                              preferredStyle:UIAlertControllerStyleAlert];
+  UIAlertAction *noButton = [UIAlertAction actionWithTitle:no
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction *action) {}];
+  UIAlertAction *okButton = [UIAlertAction actionWithTitle:ok
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction *action) {}];
+  [alert addAction:noButton];
+  [alert addAction:okButton];
 
-  return [[UIAlertView alloc]
-          initWithTitle:title
-          message:nil
-          delegate:self.delegate
-          cancelButtonTitle:no
-          otherButtonTitles:ok, nil];
+  return alert;
 }
 
-- (UIAlertView *) alertForMicrophoneOnSimulatorFAKE {
+- (UIAlertController *) alertForMicrophoneOnSimulatorFAKE {
   NSString *title = @"APP NAME Access the Microphone";
   NSString *no = @"Don't Allow";
   NSString *ok = @"OK";
+  
+  UIAlertController *alert = [UIAlertController  alertControllerWithTitle:title
+                              message:nil
+                              preferredStyle:UIAlertControllerStyleAlert];
+  UIAlertAction *noButton = [UIAlertAction actionWithTitle:no
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction *action) {}];
+  UIAlertAction *okButton = [UIAlertAction actionWithTitle:ok
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction *action) {}];
+  [alert addAction:noButton];
+  [alert addAction:okButton];
 
-  return [[UIAlertView alloc]
-          initWithTitle:title
-          message:nil
-          delegate:self.delegate
-          cancelButtonTitle:no
-          otherButtonTitles:ok, nil];
+  return alert;
 }
 
 @end

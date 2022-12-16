@@ -41,10 +41,7 @@ namespace Permissions_UITest
 #if ENABLE_TEST_CLOUD
                 Xamarin.Calabash.Start();
 #endif
-
-            app = ConfigureApp
-                .iOS
-                .StartApp(Xamarin.UITest.Configuration.AppDataMode.Clear);
+            AppInitializer.StartApp(Platform.iOS);
 
             app.SetOrientationPortrait();
         }
